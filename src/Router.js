@@ -18,8 +18,8 @@ const login = lazy(() =>
   import("./views/pages/authentication/login/Login")
 )
 
-const Map = lazy(() =>
-  import("./views/pages/Map")
+const MapComponent = lazy(() =>
+  import("./views/pages/MapComponent")
 )
 
 // Set Layout and Component Using App Route
@@ -85,7 +85,7 @@ class AppRouter extends React.Component {
           />
           <AppRoute
             path="/map"
-            component={Map}
+            component={MapComponent}
           />
         </Switch>
       </Router>
