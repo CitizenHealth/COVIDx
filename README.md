@@ -1,7 +1,6 @@
 # CovidX
 
-[https://covidx-6344c.web.app/map](Using wearables to predict & prevent COVID-19 infections)
-
+[Using wearables to predict & prevent COVID-19 infections](https://covidx-6344c.web.app/)
 
 <!-- This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
