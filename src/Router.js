@@ -8,19 +8,23 @@ import { ContextLayout } from "./utility/context/Layout"
 // Route-based code splitting
 const Home = lazy(() =>
   import("./views/pages/Home")
-)
+);
 
 const Page2 = lazy(() =>
   import("./views/pages/Page2")
-)
+);
 
 const login = lazy(() =>
   import("./views/pages/authentication/login/Login")
-)
+);
 
 const MapComponent = lazy(() =>
   import("./views/pages/MapComponent")
-)
+);
+
+const Profile = lazy(() => 
+  import("./views/pages/profile/Profile")
+);
 
 // Set Layout and Component Using App Route
 const RouteConfig = ({
@@ -86,6 +90,10 @@ class AppRouter extends React.Component {
           <AppRoute
             path="/map"
             component={MapComponent}
+          />
+          <AppRoute 
+            path="/profile"
+            component={ Profile }
           />
         </Switch>
       </Router>
