@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../profile.scss";
 
 export function UserProfile() {
-  const navBarItems = ["these", "are", "some", "items"]
+  const userNavBar = ["these", "are", "some", "links"]
 
   return(
     <div id="user-profile">
@@ -25,7 +25,7 @@ export function UserProfile() {
                 <div className="collapse navbar-collapse">
                   <ul className="justify-content-around w-75 ml-sm-auto navbar-nav nav">
                     {
-                      navBarItems.map(item => 
+                      userNavBar.map(item => 
                         <li className="px-sm-0 nav-item">
                           <a>{ item }</a>
                         </li>
@@ -41,13 +41,13 @@ export function UserProfile() {
       <div id="profile-info">
         <div className="row">
           <div className="col-md-12 col-lg-3">
-            COLUMN 1
+            ME
           </div>
           <div className="col-md-12 col-lg-6">
-            COLUMN 2
+            CONTENT
           </div>
           <div className="col-md-12 col-lg-3">
-            COLUMN 3
+            SOME OTHER STUFF
           </div>
         </div>
       </div>
