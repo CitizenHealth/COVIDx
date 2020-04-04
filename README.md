@@ -1,7 +1,7 @@
 # COVIDx
 
 
-## Moonshot Objective: Reduce the R0 to < 1 by October 1, 2020
+### Moonshot Objective: Reduce the R0 to < 1 by October 1, 2020
 
 
 We're trying to predict & prevent the spread of COVID-19 infections by:
