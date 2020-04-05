@@ -1,5 +1,5 @@
 import React, { Suspense, lazy } from "react"
-import { Router, Switch, Route } from "react-router-dom"
+import { Router, Switch, Route, Redirect } from "react-router-dom"
 import { history } from "./history"
 import { connect } from "react-redux"
 import Spinner from "./components/@vuexy/spinner/Loading-spinner"
@@ -72,10 +72,10 @@ class AppRouter extends React.Component {
     return (
       // Set the directory path if you are deploying in sub-folder
       <Router history={history}>
+        <Redirect from="/" to="/login" />
         <Switch>
           <AppRoute
-            exact
-            path="/"
+            path="/home"
             component={Home}
           />
           <AppRoute
@@ -83,7 +83,7 @@ class AppRouter extends React.Component {
             component={Page2}
           />
           <AppRoute
-            path="/pages/login"
+            path="/login"
             component={login}
             fullLayout
           />

@@ -6,7 +6,7 @@ export function UserProfile() {
 
   return(
     <div id="user-profile">
-      <div className="row">
+      {/*<div className="row">
         <div className="col-sm-12">
           <div className="profile-header mb-2">
             <div className="position-relative">
@@ -49,6 +49,23 @@ export function UserProfile() {
           <div className="col-md-12 col-lg-3">
             SOME OTHER STUFF
           </div>
+        </div>
+      </div>*/}
+      
+      <div className="profile-info">
+        {/*<p>
+          We'd like this info as accurate as possible.
+        </p>*/}
+        <div className="row">
+          <div className="col-md-12 col-lg-2" />
+          <div className="col-md-12 col-lg-8">
+            <div className="card">
+              <div className="card-body">
+                some user data
+              </div>
+            </div>
+          </div>
+          <div className="col-md-12 col-lg-2" />             
         </div>
       </div>
     </div>
