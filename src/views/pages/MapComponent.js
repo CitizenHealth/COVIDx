@@ -1,10 +1,22 @@
 import React from 'react';
-import { Map, TileLayer, Marker, Circle, Polygon, Popup, GeoJSON, ScaleControl } from 'react-leaflet';
+import { Map, TileLayer, Marker, Circle, Polygon, Popup, GeoJSON, ScaleControl, LayerGroup, LayersControl } from 'react-leaflet';
 import Control from 'react-leaflet-control';
 import HeatmapLayer from 'react-leaflet-heatmap-layer';
-import { addressPoints, bigList, statesData } from '../../example/realworld.10000.js';
+import { addressPoints, bigList, statesData, } from '../../example/realworld.10000.js';
+// TODO: trying to use polygons for each FIPS county in the US causes a JavaScript heap out of memory error ... on MacBook Pro w/16GB RAM
+import { geoJSONCountiesFIPS } from '../../example/geo-json-counties-fips';
 import { map } from 'leaflet';
+const { BaseLayer, Overlay } = LayersControl;
 
+// const alabama = geoJSONCountiesFIPS.features.filter(county => {
+//   return county.properties.STATE === '01'
+// });
+
+// console.log('alabama: ', alabama);
+// const alabamaJSON = {
+//   "type": "FeatureCollection",
+//   "features": alabama
+// }
 
 const randomizeLocations = (addressPoints) => {
   return addressPoints.map(points => {
@@ -37,7 +49,10 @@ class MapComponent extends React.Component {
       max: 0.5,
       limitAddressPoints: false,
       controlContent: null,
-      grades: [0, 10, 20, 50, 100, 200, 500, 1000]
+      grades: [0, 10, 20, 50, 100, 200, 500, 1000],
+      useStreets: true,
+      useHeatmap: false,
+      useChoropleth: true
     };
 
     this.handleClick = this.handleClick.bind(this);
@@ -51,28 +66,38 @@ class MapComponent extends React.Component {
 
   // TODO: extending the MapControl class from react-leaflet is probably a better solution ...
   // controlContent { name: String , density: Number }
-  updateControl = (controlContent = null) => {
-    this.setState({
-      controlContent
+  updateControl = (controlContent = null, layer) => {
+    this.setState((state) => {
+      return { controlContent }
+    }, () => {
+      // TODO: here instead of in highlightFeature because this change wasn't being applied (or at least wasn't showing up) when it was called in highlightFeature
+      if (controlContent) {
+        layer.setStyle({
+          weight: 5,
+          color: '666',
+          dashArray: '',
+          fillOpacity: 0.4
+        });
+      }
     });
   }
 
   highlightFeature = (e) => {
-    e.layer.setStyle({
+    const layer = e.layer;
+    // debugger;
+    layer.setStyle({
       weight: 5,
       color: '666',
       dashArray: '',
-      fillOpacity: 0.7
+      fillOpacity: 0.4
     });
     // TODO: this has browser compatibility issues?
-    e.layer.bringToFront();
+    // layer.bringToFront();
 
-    console.log('e.layer: ', e.layer);
+    console.log('layer: ', layer);
 
-    this.updateControl({
-      name: e.layer.feature.properties.name,
-      density: e.layer.feature.properties.density
-    });
+    const { name, density } = layer.feature.properties;
+    this.updateControl({ name, density }, layer);
   }
 
   resetHighlight = (e) => {
@@ -108,6 +133,7 @@ class MapComponent extends React.Component {
   style = (feature) => {
     return {
       fillColor: this.getColor(feature.properties.density),
+      // fillColor: 'blue',
       weight: 2,
       opacity: 1,
       color: 'white',
@@ -175,48 +201,66 @@ class MapComponent extends React.Component {
       <div>
         <Map
           ref={this.mapRef}
+          // yes choropleth, no heatmap
           // center={[0, 0]}
-            // heatmap
-          center={[-37.8869090667, 175.3657417333,]}
-            // choropleth
-          // center={[36.778259, -119.417931]}
+          center={[36.778259, -119.417931]} // choropleth
+
+          // no choropleth, yes heatmap
+          // center={[-37.8869090667, 175.3657417333]} // heatmap
+          // center={[36, 273]} // alabama
           zoom={1}
           style={{ width: '80%', height: '80vh' }}
           onClick={this.handleClick}
           maxZoom={20}
         >
-          {!this.state.layerHidden &&
-              <HeatmapLayer
-                // fitBoundsOnLoad
-                // fitBoundsOnUpdate
-                points={this.state.addressPoints}
-                longitudeExtractor={m => m[1]}
-                latitudeExtractor={m => m[0]}
-                gradient={gradient}
-                intensityExtractor={m => parseFloat(m[2])}
-                radius={Number(this.state.radius)}
-                blur={Number(this.state.blur)}
-                max={Number.parseFloat(this.state.max)}
-                maxZoom={20}
+          <LayersControl position="bottomleft">
+            <BaseLayer checked={this.state.useStreets} name="streets">
+              <TileLayer
+                url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"
+                attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
               />
-            }
-          <TileLayer
-            url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"
-            attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-          />
-          <GeoJSON
-            ref={this.geoJSONRef}
-            data={statesData}
-            onEachFeature={(feature, layer) => {
-              if (feature.properties && feature.properties.popupContent) {
-                layer.bindPopup(feature.properties.popupContent);
-              }
-            }}
-            style={this.style}
-            onMouseOver={this.highlightFeature}
-            onMouseOut={this.resetHighlight}
-            onClick={this.zoomToFeature}
-          ></GeoJSON>
+            </BaseLayer>
+            <Overlay checked={this.state.useHeatmap} name="heatmap">
+              <LayerGroup>
+                {!this.state.layerHidden &&
+                  <HeatmapLayer
+                    // fitBoundsOnLoad
+                    // fitBoundsOnUpdate
+                    points={this.state.addressPoints}
+                    longitudeExtractor={m => m[1]}
+                    latitudeExtractor={m => m[0]}
+                    gradient={gradient}
+                    intensityExtractor={m => parseFloat(m[2])}
+                    radius={Number(this.state.radius)}
+                    blur={Number(this.state.blur)}
+                    max={Number.parseFloat(this.state.max)}
+                    maxZoom={20}
+                  />
+                }
+              </LayerGroup>
+            </Overlay>
+            <Overlay checked={this.state.useChoropleth} name="choropleth">
+              <LayerGroup>
+                <GeoJSON
+                  // fitBoundsOnLoad
+                  ref={this.geoJSONRef}
+                  data={statesData}
+                  // data={alabamaJSON}
+                  // data={geoJSONCountiesFIPS}
+                  onEachFeature={(feature, layer) => {
+                    if (feature.properties && feature.properties.popupContent) {
+                      layer.bindPopup(feature.properties.popupContent);
+                    }
+                  }}
+                  style={this.style}
+                  onMouseOver={this.highlightFeature}
+                  onMouseOut={this.resetHighlight}
+                  onClick={this.zoomToFeature}
+                >
+                </GeoJSON>
+              </LayerGroup>
+            </Overlay>
+          </LayersControl>
           <Control
             ref={this.controlRef}
             position="topright"
@@ -256,7 +300,7 @@ class MapComponent extends React.Component {
               {legend}
             </div>
           </Control>
-          <ScaleControl></ScaleControl>
+          <ScaleControl position="topleft"></ScaleControl>
         </Map>
 
         <input
