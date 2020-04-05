@@ -1,9 +1,21 @@
 import React from 'react';
-import { Map, TileLayer, Marker, Circle, Polygon, Popup, GeoJSON, } from 'react-leaflet';
+import { Map, TileLayer, Marker, Circle, Polygon, Popup, GeoJSON, ScaleControl } from 'react-leaflet';
 import Control from 'react-leaflet-control';
 import HeatmapLayer from 'react-leaflet-heatmap-layer';
 import { addressPoints, bigList, statesData } from '../../example/realworld.10000.js';
 import { map } from 'leaflet';
+
+
+const randomizeLocations = (addressPoints) => {
+  return addressPoints.map(points => {
+    const arr = [];
+    for (let i = 0; i < 2; i++) {
+      arr.push(points[i] + Math.random());
+    }
+
+    return arr.concat(points[2]);
+  });
+};
 
 
 // TODO: would be better to name this component something else, so that that publicly displayed url path can be consistent with the component name
@@ -31,6 +43,11 @@ class MapComponent extends React.Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
+  randomize = () => {
+    this.setState({
+      addressPoints: randomizeLocations(addressPoints)
+    });
+  }
 
   // TODO: extending the MapControl class from react-leaflet is probably a better solution ...
   // controlContent { name: String , density: Number }
@@ -139,7 +156,7 @@ class MapComponent extends React.Component {
     // TODO: change to SCSS styles
     const legend = this.state.grades.map((grade, i) => {
       return (
-        <div style={{ disply: 'flex', alignItems: 'center', padding: '0.5rem' }}>
+        <div key={i} style={{ disply: 'flex', alignItems: 'center', padding: '0.5rem' }}>
           <span key={i} style={{
             display: 'inline-block',
             backgroundColor: this.getColor(grade + 1),
@@ -159,11 +176,14 @@ class MapComponent extends React.Component {
         <Map
           ref={this.mapRef}
           // center={[0, 0]}
-          // center={[-37.8927369333, 178.4087452333]}
-          center={[36.778259, -119.417931]}
-          zoom={3}
+            // heatmap
+          center={[-37.8869090667, 175.3657417333,]}
+            // choropleth
+          // center={[36.778259, -119.417931]}
+          zoom={1}
           style={{ width: '80%', height: '80vh' }}
           onClick={this.handleClick}
+          maxZoom={20}
         >
           {!this.state.layerHidden &&
               <HeatmapLayer
@@ -236,6 +256,7 @@ class MapComponent extends React.Component {
               {legend}
             </div>
           </Control>
+          <ScaleControl></ScaleControl>
         </Map>
 
         <input
@@ -252,6 +273,11 @@ class MapComponent extends React.Component {
           type="button"
           value="Toggle Limited Data"
           onClick={this.toggleLimitedAddressPoints.bind(this)}
+        />
+        <input
+          type="button"
+          value="Randomize Data Points"
+          onClick={this.randomize}
         />
 
         <div>
