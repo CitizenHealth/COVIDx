@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useContext } from "react"
 import {
   Button,
   Card,
@@ -16,13 +16,18 @@ import Checkbox from "../../../../components/@vuexy/checkbox/CheckboxesVuexy"
 import googleSvg from "../../../../assets/img/svg/google.svg"
 
 import { auth, provider } from "../auth";
+import { AuthenticationContext } from "App";
 
 import loginImg from "../../../../assets/img/pages/login.png"
 import "../../../../assets/scss/pages/authentication.scss"
 
+// const AuthenticatedContext = React.createContext({
+//   authenticated:false,
+//   setAuthenticated: () => {}
+// });
 
 export default function Login() {
-
+  const { dispatch } = React.useContext(AuthenticationContext);
   const [userExist, setUserExist] = useState(null)
   const [userData, setUserData] = useState(null)
 
@@ -47,7 +52,12 @@ export default function Login() {
       const fetchUserData = async () => {
         fetch(`http://127.0.0.1:5000/login_user?user_id=${res.user.uid}`, getPayload)
           .then(res => res.json())
-          .then(json => setUserExist(json))
+          .then(json => {
+            setUserExist(json)
+            dispatch({
+              type:"LOGIN"
+            })
+          })
           .catch(e => console.log(e));
       };
       fetchUserData();
@@ -69,9 +79,9 @@ export default function Login() {
               display_name:userData.display_name, 
               email:userData.email})
           };
-          console.log(postPayload)
           await fetch(`http://127.0.0.1:5000/create_user`, postPayload)
             .then(res => console.log(`USER CREATED @ ${userData.user_id}`))
+            .then(foo => dispatch({ type:"LOGIN" }))
             .catch(e => console.log(e));
         } catch (err) {
           console.log("fetching failed", err);

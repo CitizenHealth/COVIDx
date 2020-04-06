@@ -1,4 +1,4 @@
-import React, { Suspense, lazy } from "react"
+import React, { Suspense, lazy, useContext, useState } from "react"
 import { Router, Switch, Route, Redirect } from "react-router-dom"
 import { history } from "./history"
 import { connect } from "react-redux"
@@ -14,7 +14,7 @@ const Page2 = lazy(() =>
   import("./views/pages/Page2")
 );
 
-const login = lazy(() =>
+const Login = lazy(() =>
   import("./views/pages/authentication/login/Login")
 );
 
@@ -65,40 +65,85 @@ const mapStateToProps = state => {
   }
 }
 
-const AppRoute = connect(mapStateToProps)(RouteConfig)
+const AppRoute = connect(mapStateToProps)(RouteConfig);
 
-class AppRouter extends React.Component {
-  render() {
-    return (
-      // Set the directory path if you are deploying in sub-folder
-      <Router history={history}>
-        <Redirect from="/" to="/login" />
-        <Switch>
-          <AppRoute
-            path="/home"
-            component={Home}
-          />
-          <AppRoute
-            path="/page2"
-            component={Page2}
-          />
-          <AppRoute
-            path="/login"
-            component={login}
-            fullLayout
-          />
-          <AppRoute
-            path="/map"
-            component={MapComponent}
-          />
-          <AppRoute 
-            path="/profile"
-            component={ Profile }
-          />
-        </Switch>
-      </Router>
-    )
-  }
+// const AuthenticatedContext = React.createContext({
+//   authenticated: false,
+//   setAuthenticated: () => {}
+// });
+
+// const AuthenticatedSwitcher = () => {
+//   const { authenticated, setAuthenticated } = useContext(AuthenticatedContext);
+//   useEffect(() => {
+//     setAuthenticated(!authenticated);
+//   });
+//   return(authenticated)
+// };
+
+
+export default function AppRouter(props) {
+  // const [authenticated, setAuthenticated] = useState(false);
+  // const value = { authenticated, setAuthenticated };
+
+  return (
+    <Router history={history}>
+      <Redirect from="/" to="/home" />
+      <Switch>
+        <AppRoute
+          path="/home"
+          component={Home}
+        />
+        <AppRoute
+          path="/page2"
+          component={Page2}
+        />
+        <AppRoute
+          path="/login"
+          component={Login}
+          fullLayout
+        />
+        <AppRoute
+          path="/map"
+          component={MapComponent}
+        />
+        <AppRoute 
+          path="/profile"
+          component={ Profile }
+        />
+      </Switch>
+    </Router>
+  )
 }
-
-export default AppRouter
+// class AppRouter extends React.Component {
+//   render() {
+//     return (
+//       // Set the directory path if you are deploying in sub-folder
+//       <Router history={history}>
+//         <Redirect from="/" to="/login" />
+//         <Switch>
+//           <AppRoute
+//             path="/home"
+//             component={Home}
+//           />
+//           <AppRoute
+//             path="/page2"
+//             component={Page2}
+//           />
+//           <AppRoute
+//             path="/login"
+//             component={login}
+//             fullLayout
+//           />
+//           <AppRoute
+//             path="/map"
+//             component={MapComponent}
+//           />
+//           <AppRoute 
+//             path="/profile"
+//             component={ Profile }
+//           />
+//         </Switch>
+//       </Router>
+//     )
+//   }
+// }
