@@ -15,11 +15,10 @@ export default function Profile() {
       <ProfileTitleSection
       name = "Huzaifa Ahmad"
       joinDate = "Joined April 8, 2020"
-      Image = {require("./images/placeholder.jpg")} 
+      Image = {require("./images/placeholder.png")} 
       />
 
       <div className="cards">
-        {/* <h1>Actions</h1> */}
         <div className="CardGroup">
           <ImageCard
           link = "../"
