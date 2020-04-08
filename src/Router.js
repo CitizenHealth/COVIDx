@@ -67,23 +67,8 @@ const mapStateToProps = state => {
 
 const AppRoute = connect(mapStateToProps)(RouteConfig);
 
-// const AuthenticatedContext = React.createContext({
-//   authenticated: false,
-//   setAuthenticated: () => {}
-// });
-
-// const AuthenticatedSwitcher = () => {
-//   const { authenticated, setAuthenticated } = useContext(AuthenticatedContext);
-//   useEffect(() => {
-//     setAuthenticated(!authenticated);
-//   });
-//   return(authenticated)
-// };
-
 
 export default function AppRouter(props) {
-  // const [authenticated, setAuthenticated] = useState(false);
-  // const value = { authenticated, setAuthenticated };
 
   return (
     <Router history={history}>
@@ -114,36 +99,3 @@ export default function AppRouter(props) {
     </Router>
   )
 }
-// class AppRouter extends React.Component {
-//   render() {
-//     return (
-//       // Set the directory path if you are deploying in sub-folder
-//       <Router history={history}>
-//         <Redirect from="/" to="/login" />
-//         <Switch>
-//           <AppRoute
-//             path="/home"
-//             component={Home}
-//           />
-//           <AppRoute
-//             path="/page2"
-//             component={Page2}
-//           />
-//           <AppRoute
-//             path="/login"
-//             component={login}
-//             fullLayout
-//           />
-//           <AppRoute
-//             path="/map"
-//             component={MapComponent}
-//           />
-//           <AppRoute 
-//             path="/profile"
-//             component={ Profile }
-//           />
-//         </Switch>
-//       </Router>
-//     )
-//   }
-// }

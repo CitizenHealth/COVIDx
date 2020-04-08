@@ -15,6 +15,19 @@ const initialState = {
   isAuthenticated:false,
 };
 
+const linkShare = () => {
+  fetch("https://firebasedynamiclinks.googleapis.com/v1/shortLinks?key=AIzaSyB5Pi7YveAC7biXFWZXjxU_z6aI1LLi-eY", {
+    method:"POST",
+    headers: {
+      "Accept": "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      longDynamicLink: "https://covidx.page.link/?link=http://covidx.app&apn=http://covidx.app"
+    })
+  });
+};
+
 const reducer = (state, action) => {
   switch (action.type) {
     case "LOGIN":
