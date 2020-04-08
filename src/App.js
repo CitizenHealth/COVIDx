@@ -12,7 +12,7 @@ import FullPageLayout from "layouts/FullpageLayout"
 export const AuthenticationContext = React.createContext();
 
 const initialState = {
-  isAuthenticated:false,
+  isAuthenticated:true,
 };
 
 const reducer = (state, action) => {

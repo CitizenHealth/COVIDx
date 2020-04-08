@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import StatisticsCard from "components/@vuexy/statisticsCard/StatisticsCard";
 import { UserProfile } from "./components/UserProfile";
-
+import  ProfileTitleSection from "./components/TitleSection";
+import ImageCard from "components/imageCard/imageCard.js"
 export default function Profile() {
   const [userData, setUserData] = useState(null)
 
@@ -11,9 +12,42 @@ export default function Profile() {
 
   return (
     <>
-      <h2 className="content-header-title mb-0">About Me</h2>
-      <div>pls provide as much info as possible</div>
-      <UserProfile />
+      <ProfileTitleSection
+      name = "Huzaifa Ahmad"
+      joinDate = "Joined April 8, 2020"
+      Image = {require("./images/placeholder.jpg")} 
+      />
+
+      <div className="cards">
+        {/* <h1>Actions</h1> */}
+        <div className="CardGroup">
+          <ImageCard
+          link = "../"
+          title="Donate to the cause"
+          text="Every Penny Counts"
+          Image = {require("./images/coronavirus.jpg")}
+          />
+          <ImageCard
+          link = "../"
+          title="Record Data"
+          text="Track using devices"
+          Image = {require("./images/progress.jpg")}
+          />
+          <ImageCard
+          link = "../"
+          title="Donate to the cause"
+          text="Every Penny Counts"
+          Image = {require("./images/graphs.jpg")}
+          />
+          <ImageCard
+          link = "../"
+          title="Donate to the cause"
+          text="Every Penny Counts"
+          Image = {require("./images/coronavirus.jpg")}
+          />
+        </div>
+
+      </div>
     </>
   )
 };
