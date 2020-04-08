@@ -15,23 +15,21 @@ import { history } from "../../../../history"
 import Checkbox from "../../../../components/@vuexy/checkbox/CheckboxesVuexy"
 import googleSvg from "../../../../assets/img/svg/google.svg"
 
-import { auth, provider } from "../auth";
+import { auth, googleProvider, facebookProvider } from "../auth";
 import { AuthenticationContext } from "App";
 
 import loginImg from "../../../../assets/img/pages/login.png"
 import "../../../../assets/scss/pages/authentication.scss"
 
-// const AuthenticatedContext = React.createContext({
-//   authenticated:false,
-//   setAuthenticated: () => {}
-// });
 
 export default function Login() {
   const { dispatch } = React.useContext(AuthenticationContext);
-  const [userExist, setUserExist] = useState(null)
-  const [userData, setUserData] = useState(null)
+  const [userExist, setUserExist] = useState(null);
+  const [userData, setUserData] = useState(null);
+  const [email, setEmail] = useState(null);
+  const [password, setPassword] = useState(null);
 
-  const signInWithGoogle = () => {
+  const signInWith = provider => {
     auth.signInWithPopup(provider).then(res => {
       console.log(`DISPLAY NAME: ${ res.user.displayName }`);
       console.log(`EMAIL: ${ res.user.email }`);
@@ -41,7 +39,7 @@ export default function Login() {
         user_id:res.user.uid, 
         display_name:res.user.displayName, 
         email:res.user.email 
-      })
+      });
 
       const getPayload = {
         headers: {
@@ -50,7 +48,7 @@ export default function Login() {
         }
       };
       const fetchUserData = async () => {
-        fetch(`http://127.0.0.1:5000/login_user?user_id=${res.user.uid}`, getPayload)
+        fetch(`http://covidx-dev.eba-mayqvyww.us-west-2.elasticbeanstalk.com/login_user?user_id=${res.user.uid}`, getPayload)
           .then(res => res.json())
           .then(json => {
             setUserExist(json)
@@ -63,6 +61,16 @@ export default function Login() {
       fetchUserData();
     })
   };
+
+  // const signInWithEmail = () => {
+  //   auth.signInWithEmailAndPassword(email, password)
+  //     .catch(e => console.log(e));
+  // };
+
+  // const createAccountWithEmail = () => {
+  //   auth.createUserWithEmailAndPassword(email, password)
+  //     .catch()
+  // };
 
   useEffect(() => {
     if (userExist && userExist.userExist===false && userData) {
@@ -79,7 +87,7 @@ export default function Login() {
               display_name:userData.display_name, 
               email:userData.email})
           };
-          await fetch(`http://127.0.0.1:5000/create_user`, postPayload)
+          await fetch(`http://covidx-dev.eba-mayqvyww.us-west-2.elasticbeanstalk.com/create_user`, postPayload)
             .then(res => console.log(`USER CREATED @ ${userData.user_id}`))
             .then(foo => dispatch({ type:"LOGIN" }))
             .catch(e => console.log(e));
@@ -111,17 +119,56 @@ export default function Login() {
             <Col lg="6" md="12" className="p-0">
               <Card className="rounded-0 mb-0 px-2">
                 <CardBody>
-                  <h4>Login</h4>
-                  <p>Welcome back, please login to your account.</p>
+                  <h2 style={{ marginBottom:"2rem" }}>Login</h2>
+                  <p>
+                    Welcome! You're one step away from a healthcare revolution.
+                  </p>
+                  <p>
+                    Select any of the options below to sign in.
+                  </p>
+                  {/*<Form onSubmit={ e => e.preventDefault() }>
+                    <FormGroup className="form-label-group position-relative has-icon-left">
+                      <Input
+                        type="email"
+                        placeholder="Email"
+                        value={ email }
+                        onChange={e => setEmail(e.target.value) }
+                      />
+                      <div className="form-control-position">
+                        <Mail size={15} />
+                      </div>
+                      <Label>Email</Label>
+                    </FormGroup>
+                    <FormGroup className="form-label-group position-relative has-icon-left">
+                      <Input
+                        type="password"
+                        placeholder="Password"
+                        value={ password }
+                        onChange={ e => setPassword(e.target.value) }
+                      />
+                      <div className="form-control-position">
+                        <Lock size={15} />
+                      </div>
+                      <Label>Password</Label>
+                    </FormGroup>
+                    <div className="d-flex justify-content-between">
+                      <Button.Ripple color="primary" outline>
+                       Register                           
+                      </Button.Ripple>
+                      <Button.Ripple color="primary" type="submit" onClick={ signInWithEmail }>
+                          Login 
+                      </Button.Ripple>
+                    </div>
+                  </Form>*/}
                 </CardBody>
                 <CardBody>
                   <Button.Ripple 
                     className="btn-google" color="" 
-                    onClick={ signInWithGoogle }
+                    onClick={ () => signInWith(googleProvider) }
                   >
                     <Row>
                       <Col lg="2">
-                        <img src={ googleSvg } onClick={ signInWithGoogle } style={{ height:"1.5rem"}} />
+                        <img src={ googleSvg } style={{ height:"1.5rem"}} />
                       </Col>
                       <Col lg="10" style={{ display:"flex", alignItems:"center" }}>
                         <h4 style={{ color:"white" }}>
@@ -132,7 +179,7 @@ export default function Login() {
                   </Button.Ripple>
                 </CardBody>
                 <CardBody style={{ paddingTop:"0" }}>
-                  <Button.Ripple className="btn-facebook" color="" style={{ marginBottom:"0.5rem" }}>
+                  <Button.Ripple  onClick={ () => signInWith(facebookProvider) } className="btn-facebook" color="" style={{ marginBottom:"0.5rem" }}>
                     <Row>
                       <Col lg="2">
                         <Facebook />
@@ -140,20 +187,6 @@ export default function Login() {
                       <Col lg="10" style={{ display:"flex", alignItems:"center" }}>
                         <h4 style={{ color:"white" }}>
                           Sign in with Facebook
-                        </h4>
-                      </Col>
-                    </Row>
-                  </Button.Ripple>
-                </CardBody>
-                <CardBody style={{ paddingTop:"0" }}>
-                  <Button.Ripple className="btn-twitter" color="" style={{ marginBottom:"0.5rem" }}>
-                    <Row>
-                      <Col lg="2">
-                        <Twitter style={{ color:"white" }}/>
-                      </Col>
-                      <Col lg="10" style={{ display:"flex", alignItems:"center" }}>
-                        <h4 style={{ color:"white" }}>
-                          Sign in with Twitter
                         </h4>
                       </Col>
                     </Row>
