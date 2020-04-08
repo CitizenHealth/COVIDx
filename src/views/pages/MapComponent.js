@@ -1,34 +1,22 @@
 import React from 'react';
-import { Map, TileLayer, Marker, Circle, Polygon, Popup, GeoJSON, ScaleControl, LayerGroup, LayersControl } from 'react-leaflet';
+import {
+  Map,
+  TileLayer,
+  Marker,
+  Circle,
+  CircleMarker,
+  Polygon,
+  Popup,
+  GeoJSON,
+  ScaleControl,
+  LayerGroup,
+  LayersControl
+} from 'react-leaflet';
 import Control from 'react-leaflet-control';
 import HeatmapLayer from 'react-leaflet-heatmap-layer';
 import { addressPoints, bigList, statesData, } from '../../example/realworld.10000.js';
-// TODO: trying to use polygons for each FIPS county in the US causes a JavaScript heap out of memory error ... on MacBook Pro w/16GB RAM
-import { geoJSONCountiesFIPS } from '../../example/geo-json-counties-fips';
-import { map } from 'leaflet';
+
 const { BaseLayer, Overlay } = LayersControl;
-
-// const alabama = geoJSONCountiesFIPS.features.filter(county => {
-//   return county.properties.STATE === '01'
-// });
-
-// console.log('alabama: ', alabama);
-// const alabamaJSON = {
-//   "type": "FeatureCollection",
-//   "features": alabama
-// }
-
-const randomizeLocations = (addressPoints) => {
-  return addressPoints.map(points => {
-    const arr = [];
-    for (let i = 0; i < 2; i++) {
-      arr.push(points[i] + Math.random());
-    }
-
-    return arr.concat(points[2]);
-  });
-};
-
 
 // TODO: would be better to name this component something else, so that that publicly displayed url path can be consistent with the component name
 class MapComponent extends React.Component {
@@ -41,27 +29,16 @@ class MapComponent extends React.Component {
     this.controlRef = React.createRef();
 
     this.state = {
-      mapHidden: false,
-      layerHidden: false,
       addressPoints: addressPoints,
       radius: 4,
       blur: 8,
       max: 0.5,
-      limitAddressPoints: false,
       controlContent: null,
       grades: [0, 10, 20, 50, 100, 200, 500, 1000],
       useStreets: true,
-      useHeatmap: false,
-      useChoropleth: true
+      useHeatmap: true,
+      useChoropleth: false
     };
-
-    this.handleClick = this.handleClick.bind(this);
-  }
-
-  randomize = () => {
-    this.setState({
-      addressPoints: randomizeLocations(addressPoints)
-    });
   }
 
   // TODO: extending the MapControl class from react-leaflet is probably a better solution ...
@@ -71,6 +48,7 @@ class MapComponent extends React.Component {
       return { controlContent }
     }, () => {
       // TODO: here instead of in highlightFeature because this change wasn't being applied (or at least wasn't showing up) when it was called in highlightFeature
+      // TODO: would changing to Redux for state help here?
       if (controlContent) {
         layer.setStyle({
           weight: 5,
@@ -84,7 +62,6 @@ class MapComponent extends React.Component {
 
   highlightFeature = (e) => {
     const layer = e.layer;
-    // debugger;
     layer.setStyle({
       weight: 5,
       color: '666',
@@ -105,20 +82,6 @@ class MapComponent extends React.Component {
     this.updateControl();
   }
 
-  // makeLabel = () => {
-  //   grades = [0, 10, 20, 50, 100, 200, 500, 1000],
-  //   labels = [];
-
-  //   // loop through our density intervals and generate a label with a colored square for each interval
-  //   for (var i = 0; i < grades.length; i++) {
-  //     div.innerHTML +=
-  //         '<i style="background:' + this.getColor(grades[i] + 1) + '"></i> ' +
-  //         grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
-  //   }
-
-  //   return div
-  // }
-
   getColor = (d) => {
     return d > 1000 ? '#800026' :
            d > 500  ? '#BD0026' :
@@ -133,7 +96,6 @@ class MapComponent extends React.Component {
   style = (feature) => {
     return {
       fillColor: this.getColor(feature.properties.density),
-      // fillColor: 'blue',
       weight: 2,
       opacity: 1,
       color: 'white',
@@ -146,34 +108,7 @@ class MapComponent extends React.Component {
     this.mapRef.current.leafletElement.fitBounds(e.layer.getBounds());
   }
 
-  /**
-   * Toggle limiting the address points to test behavior with refocusing/zooming when data points change
-   */
-  toggleLimitedAddressPoints() {
-    if (!this.state.limitAddressPoints) {
-      this.setState({ addressPoints: addressPoints.slice(500, 1000), limitAddressPoints: true });
-    } else {
-      this.setState({ addressPoints, limitAddressPoints: false });
-    }
-  }
-
-  handleClick(e) {
-    console.log(e.latlng);
-  }
-
   render() {
-    if (this.state.mapHidden) {
-      return (
-        <div>
-          <input
-            type="button"
-            value="Toggle Map"
-            onClick={() => this.setState({ mapHidden: !this.state.mapHidden })}
-          />
-        </div>
-      );
-    }
-
     const gradient = {
       0.1: '#89BDE0', 0.2: '#96E3E6', 0.4: '#82CEB6',
       0.6: '#FAF3A5', 0.8: '#F5D98B', '1.0': '#DE9A96'
@@ -201,16 +136,9 @@ class MapComponent extends React.Component {
       <div>
         <Map
           ref={this.mapRef}
-          // yes choropleth, no heatmap
-          // center={[0, 0]}
-          center={[36.778259, -119.417931]} // choropleth
-
-          // no choropleth, yes heatmap
-          // center={[-37.8869090667, 175.3657417333]} // heatmap
-          // center={[36, 273]} // alabama
-          zoom={1}
-          style={{ width: '80%', height: '80vh' }}
-          onClick={this.handleClick}
+          center={[-37.8869090667, 175.3657417333]} // heatmap
+          zoom={10}
+          style={{ width: '100%', height: '80vh' }}
           maxZoom={20}
         >
           <LayersControl position="bottomleft">
@@ -222,42 +150,20 @@ class MapComponent extends React.Component {
             </BaseLayer>
             <Overlay checked={this.state.useHeatmap} name="heatmap">
               <LayerGroup>
-                {!this.state.layerHidden &&
-                  <HeatmapLayer
-                    // fitBoundsOnLoad
-                    // fitBoundsOnUpdate
-                    points={this.state.addressPoints}
-                    longitudeExtractor={m => m[1]}
-                    latitudeExtractor={m => m[0]}
-                    gradient={gradient}
-                    intensityExtractor={m => parseFloat(m[2])}
-                    radius={Number(this.state.radius)}
-                    blur={Number(this.state.blur)}
-                    max={Number.parseFloat(this.state.max)}
-                    maxZoom={20}
-                  />
-                }
-              </LayerGroup>
-            </Overlay>
-            <Overlay checked={this.state.useChoropleth} name="choropleth">
-              <LayerGroup>
-                <GeoJSON
+                <HeatmapLayer
                   // fitBoundsOnLoad
-                  ref={this.geoJSONRef}
-                  data={statesData}
-                  // data={alabamaJSON}
-                  // data={geoJSONCountiesFIPS}
-                  onEachFeature={(feature, layer) => {
-                    if (feature.properties && feature.properties.popupContent) {
-                      layer.bindPopup(feature.properties.popupContent);
-                    }
-                  }}
-                  style={this.style}
-                  onMouseOver={this.highlightFeature}
-                  onMouseOut={this.resetHighlight}
-                  onClick={this.zoomToFeature}
-                >
-                </GeoJSON>
+                  // fitBoundsOnUpdate
+                  points={this.state.addressPoints}
+                  longitudeExtractor={m => m[1]}
+                  latitudeExtractor={m => m[0]}
+                  gradient={gradient}
+                  intensityExtractor={m => parseFloat(m[2])}
+                  // intensityExtractor={m => 1}
+                  radius={Number(this.state.radius)}
+                  blur={Number(this.state.blur)}
+                  max={Number.parseFloat(this.state.max)}
+                  maxZoom={20}
+                />
               </LayerGroup>
             </Overlay>
           </LayersControl>
@@ -303,27 +209,6 @@ class MapComponent extends React.Component {
           <ScaleControl position="topleft"></ScaleControl>
         </Map>
 
-        <input
-          type="button"
-          value="Toggle Map"
-          onClick={() => this.setState({ mapHidden: !this.state.mapHidden })}
-        />
-        <input
-          type="button"
-          value="Toggle Layer"
-          onClick={() => this.setState({ layerHidden: !this.state.layerHidden })}
-        />
-        <input
-          type="button"
-          value="Toggle Limited Data"
-          onClick={this.toggleLimitedAddressPoints.bind(this)}
-        />
-        <input
-          type="button"
-          value="Randomize Data Points"
-          onClick={this.randomize}
-        />
-
         <div>
           Radius
           <input
@@ -363,26 +248,3 @@ class MapComponent extends React.Component {
 }
 
 export default MapComponent;
-
-
-{/* <Marker position={[0, 0]}></Marker>
-<Circle
-  center={[-37.9033391333, 175.4244005667]}
-  radius={1800}
-  color="red"
-  fillOpacity="0.5"
->
-  <Popup>
-    <div>this is content in the popup</div>
-  </Popup>
-</Circle>
-
-<Polygon
-  positions={[
-    [-37.8869090667, 175.3657417333],
-    [-37.8894207167, 175.4015351167],
-    [-37.8927369333, 175.4087452333],
-]}
->
-</Polygon>
-<Popup position={[-37.8927369333, 175.4087452333]}>popup not tied to a specific object</Popup> */}
