@@ -6,14 +6,16 @@ import ImageCard from "components/imageCard/imageCard.js"
 export default function Profile() {
   const [userData, setUserData] = useState(null)
 
-  // useEffect(() => {
-  //   fetch()
-  // })
-
+  
   return (
     <>
+    {/* Pass user data in object ProfileTitleSection. 
+    name = Full Name
+    joinDate = Date Joined by the user,
+    and Image = Profile Image URL */}
+
       <ProfileTitleSection
-      name = "Huzaifa Ahmad"
+      name = "John Doe"
       joinDate = "Joined April 8, 2020"
       Image = {require("./images/placeholder.png")} 
       />
