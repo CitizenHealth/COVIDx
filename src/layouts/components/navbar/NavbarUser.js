@@ -20,7 +20,7 @@ import { history } from "../../../history"
 const UserDropdown = props => {
   return (
     <DropdownMenu right>
-      <DropdownItem tag="a" href="#">
+      <DropdownItem tag="a" href="">
         <Icon.User size={14} className="mr-50" />
         <span className="align-middle">Edit Profile</span>
       </DropdownItem>

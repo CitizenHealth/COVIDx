@@ -1,5 +1,5 @@
-import React, { Suspense, lazy } from "react"
-import { Router, Switch, Route } from "react-router-dom"
+import React, { Suspense, lazy, useContext, useState } from "react"
+import { Router, Switch, Route, Redirect } from "react-router-dom"
 import { history } from "./history"
 import { connect } from "react-redux"
 import Spinner from "./components/@vuexy/spinner/Loading-spinner"
@@ -8,19 +8,24 @@ import { ContextLayout } from "./utility/context/Layout"
 // Route-based code splitting
 const Home = lazy(() =>
   import("./views/pages/Home")
-)
+);
 
 const Page2 = lazy(() =>
   import("./views/pages/Page2")
-)
+);
 
-const login = lazy(() =>
+const Login = lazy(() =>
   import("./views/pages/authentication/login/Login")
-)
+);
 
 const MapComponent = lazy(() =>
   import("./views/pages/MapComponent")
-)
+);
+
+const Profile = lazy(() => 
+  import("./views/pages/profile/Profile")
+);
+
 
 // Set Layout and Component Using App Route
 const RouteConfig = ({
@@ -61,36 +66,37 @@ const mapStateToProps = state => {
   }
 }
 
-const AppRoute = connect(mapStateToProps)(RouteConfig)
+const AppRoute = connect(mapStateToProps)(RouteConfig);
 
-class AppRouter extends React.Component {
-  render() {
-    return (
-      // Set the directory path if you are deploying in sub-folder
-      <Router history={history}>
-        <Switch>
-          <AppRoute
-            exact
-            path="/"
-            component={Home}
-          />
-          <AppRoute
-            path="/page2"
-            component={Page2}
-          />
-          <AppRoute
-            path="/pages/login"
-            component={login}
-            fullLayout
-          />
-          <AppRoute
-            path="/map"
-            component={MapComponent}
-          />
-        </Switch>
-      </Router>
-    )
-  }
+
+export default function AppRouter(props) {
+
+  return (
+    <Router history={history}>
+      <Redirect from="/" to="/home" />
+      <Switch>
+        <AppRoute
+          path="/home"
+          component={Home}
+        />
+        <AppRoute
+          path="/page2"
+          component={Page2}
+        />
+        <AppRoute
+          path="/login"
+          component={Login}
+          fullLayout
+        />
+        <AppRoute
+          path="/map"
+          component={MapComponent}
+        />
+        <AppRoute 
+          path="/profile"
+          component={ Profile }
+        />
+      </Switch>
+    </Router>
+  )
 }
-
-export default AppRouter
