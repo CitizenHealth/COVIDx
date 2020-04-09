@@ -9,7 +9,6 @@ export const PrivacyPolicy = () => {
         backgroundColor:"white", 
         height:"100%", 
         padding:"3rem",
-        cursor:"auto"
       }}
     >
       <h1>COVIDx</h1>

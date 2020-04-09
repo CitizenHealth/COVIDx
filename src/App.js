@@ -63,7 +63,9 @@ export default function App(props) {
       }}
     >
       <Router>
-        <Link to="/privacy-policy"><PrivacyPolicy /></Link>
+        <Switch>
+          <Route path="/privacy-policy"><PrivacyPolicy /></Route>
+        </Switch>
       </Router>
 
       <>
