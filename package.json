@@ -58,7 +58,7 @@
     "react-input-mask": "~2.0.4",
     "react-intl": "^3.11.0",
     "react-joyride": "^2.2.1",
-    "react-leaflet": "^2.6.1",
+    "react-leaflet": "^2.6.3",
     "react-leaflet-control": "^2.1.2",
     "react-leaflet-heatmap-layer": "^2.0.0",
     "react-numeric-input": "~2.2.3",
@@ -96,6 +96,7 @@
     "extends": "react-app"
   },
   "devDependencies": {
+    "html-webpack-plugin": "^4.0.4",
     "node-sass": "^4.13.1",
     "react-app-rewire-postcss": "^3.0.2",
     "react-app-rewired": "^2.1.5"
