@@ -26,6 +26,7 @@ const Profile = lazy(() =>
   import("./views/pages/profile/Profile")
 );
 
+
 // Set Layout and Component Using App Route
 const RouteConfig = ({
   component: Component,

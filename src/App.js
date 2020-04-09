@@ -1,5 +1,4 @@
 import React, { useState, useReducer } from "react"
-import Router from "./Router"
 import "./components/@vuexy/rippleButton/RippleButton"
 
 import "react-perfect-scrollbar/dist/css/styles.css"
@@ -7,6 +6,14 @@ import "prismjs/themes/prism-tomorrow.css"
 
 import Login from "./views/pages/authentication/login/Login"
 import FullPageLayout from "layouts/FullpageLayout"
+import { 
+  BrowserRouter as Router, 
+  Link, 
+  Switch, 
+  Route, 
+  Redirect 
+} from "react-router-dom";
+import { PrivacyPolicy } from "views/pages/privacyPolicy/privacyPolicy"
 
 
 export const AuthenticationContext = React.createContext();
@@ -55,6 +62,10 @@ export default function App(props) {
         dispatch
       }}
     >
+      <Router>
+        <Link to="/privacy-policy"><PrivacyPolicy /></Link>
+      </Router>
+
       <>
         {
           !state.isAuthenticated ? 
