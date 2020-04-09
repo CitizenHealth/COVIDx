@@ -23,6 +23,13 @@ const navigationConfig = [
     type: "item",
     // permissions: [] // TODO: what are the options here?
     navLink: "/map"
+  },
+  {
+    id: "profile",
+    title: "My Profile",
+    type: "item",
+    // permissions: [] // TODO: what are the options here?
+    navLink: "/profile"
   }
 ]
 
