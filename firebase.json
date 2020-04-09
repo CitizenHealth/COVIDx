@@ -12,6 +12,10 @@
         "source": "/share/**", 
         "dynamicLinks": true 
       },
+      { 
+        "source": "/share**", 
+        "dynamicLinks": true 
+      },
       {
         "source": "!/share/**",
         "destination": "/index.html"
