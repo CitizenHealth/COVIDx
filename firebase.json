@@ -1,0 +1,21 @@
+{
+  "hosting": {
+    "public": "build",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "appAssociation": "AUTO",
+    "rewrites": [ 
+      { 
+        "source": "/share/**", 
+        "dynamicLinks": true 
+      },
+      {
+        "source": "!/share/**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}

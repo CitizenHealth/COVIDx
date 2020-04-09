@@ -23,6 +23,3 @@ Let's apply behavioral economics & gamification techniques that incentivize peop
 ---
 
 The end goal is to get ahead of the coronavirus infection and flatten the curve before our healthcare system collapses even more.
-
-
-
