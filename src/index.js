@@ -8,6 +8,9 @@ import Spinner from "./components/@vuexy/spinner/Fallback-spinner"
 import "./index.scss"
 import "./@fake-db"
 
+// Firebase
+// import '@/firebase/firebaseConfig'
+
 const LazyApp = lazy(() => import("./App"))
 
 
