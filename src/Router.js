@@ -7,22 +7,14 @@ import { ContextLayout } from "./utility/context/Layout"
 
 // Route-based code splitting
 const Home = lazy(() =>
-  import("./views/pages/Home")
-);
-
-const Page2 = lazy(() =>
-  import("./views/pages/Page2")
+  import("./views/pages/questionnaire/Questionnaire")
 );
 
 const Login = lazy(() =>
   import("./views/pages/authentication/login/Login")
 );
 
-const MapComponent = lazy(() =>
-  import("./views/pages/MapComponent")
-);
-
-const Profile = lazy(() => 
+const Profile = lazy(() =>
   import("./views/pages/profile/Profile")
 );
 
@@ -94,19 +86,11 @@ export default function AppRouter(props) {
           component={Home}
         />
         <AppRoute
-          path="/page2"
-          component={Page2}
-        />
-        <AppRoute
           path="/login"
           component={Login}
           fullLayout
         />
         <AppRoute
-          path="/map"
-          component={MapComponent}
-        />
-        <AppRoute 
           path="/profile"
           component={ Profile }
         />
@@ -123,7 +107,7 @@ export default function AppRouter(props) {
 //         <Switch>
 //           <AppRoute
 //             path="/home"
-//             component={Home}
+//             component={Questionnaire}
 //           />
 //           <AppRoute
 //             path="/page2"
@@ -138,7 +122,7 @@ export default function AppRouter(props) {
 //             path="/map"
 //             component={MapComponent}
 //           />
-//           <AppRoute 
+//           <AppRoute
 //             path="/profile"
 //             component={ Profile }
 //           />

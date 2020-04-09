@@ -36,19 +36,6 @@ export default function App(props) {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   return (
-    <AuthenticationContext.Provider 
-      value={{
-        state,
-        dispatch
-      }}
-    >
-      <>
-        {
-          !state.isAuthenticated ? 
-          <FullPageLayout><Login /></FullPageLayout> : 
-          <Router />
-        }
-      </>
-    </AuthenticationContext.Provider>
+    <Router />
   )
 }
