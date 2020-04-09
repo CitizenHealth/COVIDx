@@ -6,8 +6,9 @@ import "prismjs/themes/prism-tomorrow.css"
 
 import Login from "./views/pages/authentication/login/Login"
 import FullPageLayout from "layouts/FullpageLayout"
+import Router from "./Router"
 import { 
-  BrowserRouter as Router, 
+  BrowserRouter as BRouter, 
   Link, 
   Switch, 
   Route, 
@@ -30,7 +31,7 @@ const linkShare = () => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      longDynamicLink: "https://covidx.page.link/?link=http://covidx.app&apn=http://covidx.app"
+      longDynamicLink: "https://covidx.page.link/?link=http://covidx.app"
     })
   });
 };
@@ -67,7 +68,6 @@ export default function App(props) {
           <Route path="/privacy-policy"><PrivacyPolicy /></Route>
         </Switch>
       </Router>
-
       <>
         {
           !state.isAuthenticated ? 
