@@ -75,7 +75,7 @@ const ThemeNavbar = props => {
               {props.horizontal ? (
                 <div className="logo d-flex align-items-center">
                   <div className="brand-logo mr-50"></div>
-                  <h2 className="text-primary brand-text mb-0">Vuexy</h2>
+                  <h2 className="text-primary brand-text mb-0">COVIDx</h2>
                 </div>
               ) : null}
               <NavbarUser

@@ -6,7 +6,7 @@
 
 We're trying to predict & prevent the spread of COVID-19 infections by:
 
-**1. Using wearables to detect variances in resting heart rate, sleep, & body temperature** 
+**1. Using wearables to detect variances in resting heart rate, sleep, & body temperature**
 
 Studies show that resting heart rate data measured from a Fitbit can predict influenza-like illnesses at the state level. We're extending this study to detect COVID-19.
 
@@ -18,7 +18,7 @@ Along with passive, synchronous, and physiological data analysis, we're crowdsou
 
 **3. Gamifying self-quarantine, isolation, & social distancing protocols**
 
-Let's apply behavioral economics & gamification techniques that incentivize people to follow the best protocols for their situation. Let's make it helpful, fun and less scary. We can have leaderboards for the most time stayed at home, mint cryptocurrency for daily check-ins, etc. 
+Let's apply behavioral economics & gamification techniques that incentivize people to follow the best protocols for their situation. Let's make it helpful, fun and less scary. We can have leaderboards for the most time stayed at home, mint cryptocurrency for daily check-ins, etc.
 
 ---
 
