@@ -1,21 +1,73 @@
-import React from 'react';
-import {
-  Map,
-  TileLayer,
-  ScaleControl,
-  LayerGroup,
-  LayersControl
-} from 'react-leaflet';
-import Control from 'react-leaflet-control';
-import HeatmapLayer from 'react-leaflet-heatmap-layer';
-// import { addressPoints, } from '../../example/realworld.10000.js';
+import React, { useEffect, useState, createRef } from 'react';
+import L from "leaflet";
+import HeatmapOverlay from "leaflet-heatmap";
 
-const { BaseLayer, Overlay } = LayersControl;
+// import { addressPoints, } from 'example/realworld.10000.js';
 
-export default function MapComponent() {
+import "./heatMap.scss";
+import "leaflet/dist/leaflet.css"
+
+
+export default function HeatMap() {
+  // const [gradient, setGradient] = useState(null);
+  // const mapId = Math.round(Math.random()*100);
+  // console.log(addressPoints)
+  const fakeHeatData = { data: [] };
+
+  const genFakeData = () => {
+    return (Math.random() * (180+180)-180).toFixed(3) * 1;
+  };
+
+  useEffect(() => {
+    // setGradient({
+    //   0.1: '#89BDE0', 
+    //   0.2: '#96E3E6', 
+    //   0.4: '#82CEB6',
+    //   0.6: '#FAF3A5', 
+    //   0.8: '#F5D98B', 
+    //   1.0: '#DE9A96'
+    // });
+    // build base layer for the map
+    const map = L.map('mapId', {
+      center:[0,0],
+      zoom:13
+    });
+    L.tileLayer("http://{s}.tile.osm.org/{z}/{x}/{y}.png", {
+      maxZoom:5,
+      tileSize:512,
+      zoomOffset:-1,
+    }).addTo(map);
+    // find user location
+    map.locate({ setView:true })
+      .on('locationfound', e => {
+        let marker = L.marker([e.latitude, e.longitude]).bindPopup("HERE").addTo(map);
+      }).on("locationerror", e => {
+        console.log('user not found')
+      });
+    // add heatmap layer
+    for (let i=0; i < 100; i++) {
+      let coords = {
+        lat: genFakeData(), 
+        lon: genFakeData(),
+        count:Math.round(Math.random()*100)
+      }
+      fakeHeatData.data.push(coords);
+    };
+    const heatLayer = new HeatmapOverlay({
+      radius:2,
+      maxOpacity:0.8,
+      scaleRadius:true,
+      useLocalExtrema:true,
+      latField:"lat",
+      lngField:"lon",
+      valueField:"count"
+    });
+    heatLayer.setData(fakeHeatData);
+    map.addLayer(heatLayer)
+  }, []);
+
   return (
-    <div>
-    </div>
+    <div id={ 'mapId' } style={{ height:"80vh" }} />
   )
 }
 

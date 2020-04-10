@@ -22,7 +22,7 @@ const navigationConfig = [
     title: "Heat Map",
     type: "item",
     // permissions: [] // TODO: what are the options here?
-    navLink: "/map"
+    navLink: "/heatmap"
   },
   {
     id: "profile",
