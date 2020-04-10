@@ -6,9 +6,9 @@ import "prismjs/themes/prism-tomorrow.css"
 
 import Login from "./views/pages/authentication/login/Login"
 import FullPageLayout from "layouts/FullpageLayout"
-import Router from "./Router"
+import ViewRouter from "./_viewRouter"
 import { 
-  BrowserRouter as BRouter, 
+  BrowserRouter as Router, 
   Link, 
   Switch, 
   Route, 
@@ -50,16 +50,16 @@ export default function App(props) {
         dispatch
       }}
     >
-      <BRouter>
+      <Router>
         <Switch>
           <Route path="/privacy-policy"><PrivacyPolicy /></Route>
         </Switch>
-      </BRouter>
+      </Router>
       <>
         {
           !state.isAuthenticated ? 
           <FullPageLayout><Login /></FullPageLayout> : 
-          <Router />
+          <ViewRouter />
         }
       </>
     </AuthenticationContext.Provider>

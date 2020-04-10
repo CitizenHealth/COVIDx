@@ -1,33 +1,23 @@
 import React, { Suspense, lazy, useContext, useState } from "react"
-import { Router, Switch, Route, Redirect } from "react-router-dom"
+import { 
+  BrowserRouter as Router, 
+  Switch, 
+  Route, 
+  Redirect 
+} from "react-router-dom"
 import { history } from "./history"
-import { connect } from "react-redux"
+// import { connect } from "react-redux"
 import Spinner from "./components/@vuexy/spinner/Loading-spinner"
 import { ContextLayout } from "./utility/context/Layout"
+import HeatMap from "./views/pages/heatMap/heatMap";
+import Profile from "./views/pages/profile/Profile"
 
 // Route-based code splitting
-const Home = lazy(() =>
-  import("./views/pages/Home")
-);
+// const Home = lazy(() =>
+//   import("./views/pages/Home")
+// );
+// 
 
-const Page2 = lazy(() =>
-  import("./views/pages/Page2")
-);
-
-const Login = lazy(() =>
-  import("./views/pages/authentication/login/Login")
-);
-
-const MapComponent = lazy(() =>
-  import("./views/pages/MapComponent")
-);
-
-const Profile = lazy(() => 
-  import("./views/pages/profile/Profile")
-);
-
-
-// Set Layout and Component Using App Route
 const RouteConfig = ({
   component: Component,
   fullLayout,
@@ -38,6 +28,7 @@ const RouteConfig = ({
   <Route
     {...rest}
     render={props => {
+      console.log(props)
       return (
         <ContextLayout.Consumer>
           {context => {
@@ -60,39 +51,26 @@ const RouteConfig = ({
     }}
   />
 )
-const mapStateToProps = state => {
-  return {
-    user: state.auth.login.userRole
-  }
-}
+// const mapStateToProps = state => {
+//   return {
+//     user: state.auth.login.userRole
+//   }
+// }
 
-const AppRoute = connect(mapStateToProps)(RouteConfig);
+// const AppRoute = connect(mapStateToProps)(RouteConfig);
 
 
-export default function AppRouter(props) {
+export default function ViewRouter(props) {
 
   return (
     <Router history={history}>
-      <Redirect from="/" to="/home" />
+      <Redirect from="/" to="/profile" />
       <Switch>
-        <AppRoute
-          path="/home"
-          component={Home}
+        <RouteConfig
+          path="/heatmap"
+          component={ HeatMap }
         />
-        <AppRoute
-          path="/page2"
-          component={Page2}
-        />
-        <AppRoute
-          path="/login"
-          component={Login}
-          fullLayout
-        />
-        <AppRoute
-          path="/map"
-          component={MapComponent}
-        />
-        <AppRoute 
+        <RouteConfig 
           path="/profile"
           component={ Profile }
         />
