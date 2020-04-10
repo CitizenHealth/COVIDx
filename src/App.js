@@ -40,6 +40,16 @@ const reducer = (state, action) => {
   }
 };
 
+const ProtectedPath = ({ user, render, fail }) => {
+  if (user) {
+    if (fail) {
+      return fail();
+    }
+    return null;
+  }
+  return render();
+};
+
 export default function App(props) {
   const [state, dispatch] = useReducer(reducer, initialState);
 
@@ -50,18 +60,16 @@ export default function App(props) {
         dispatch
       }}
     >
-      <Router>
+      {/*<Router>
         <Switch>
           <Route path="/privacy-policy"><PrivacyPolicy /></Route>
         </Switch>
-      </Router>
-      <>
-        {
-          !state.isAuthenticated ? 
-          <FullPageLayout><Login /></FullPageLayout> : 
-          <ViewRouter />
-        }
-      </>
+      </Router>*/}
+        <ProtectedPath 
+          user={ !state.isAuthenticated }
+          render = { () => <ViewRouter /> }
+          fail = { () => <FullPageLayout><Login /></FullPageLayout> }
+        />
     </AuthenticationContext.Provider>
   )
 }
