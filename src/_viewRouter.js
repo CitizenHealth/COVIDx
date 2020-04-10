@@ -28,7 +28,6 @@ const RouteConfig = ({
   <Route
     {...rest}
     render={props => {
-      console.log(props)
       return (
         <ContextLayout.Consumer>
           {context => {
