@@ -27,16 +27,13 @@ import { store } from "redux/storeConfig/store";
 import { connect } from "react-redux";
 
 
-
 const mapStateToProps = state => ({ isAuthenticated: state.auth });
 export default connect(mapStateToProps, { setAuth })(Login);
 
 export function Login(props) {
-  // console.log(props)
-  const [userExist, setUserExist] = useState(null);
   const [userData, setUserData] = useState(null);
-  const [email, setEmail] = useState(null);
-  const [password, setPassword] = useState(null);
+  // const [email, setEmail] = useState(null);
+  // const [password, setPassword] = useState(null);
 
   const signInWith = provider => {
     auth.signInWithPopup(provider).then(res => {
@@ -60,8 +57,9 @@ export function Login(props) {
         fetch(`http://covidx-dev.eba-mayqvyww.us-west-2.elasticbeanstalk.com/login_user?user_id=${res.user.uid}`, getPayload)
           .then(res => res.json())
           .then(json => {
-            setUserExist(json)
             props.setAuth({type: "LOGIN"})
+            // save access token in localStorage
+            localStorage.setItem('token', res.credential.accessToken);
           })
           .catch(e => console.log(e));
       };
@@ -80,7 +78,7 @@ export function Login(props) {
   // };
 
   useEffect(() => {
-    if (userExist && userExist.userExist===false && userData) {
+    if (props.isAuthenticated.isAuthenticated && props.isAuthenticated.isAuthenticated.login===false && userData) {
       const postUserData = async () => {
         try {
           const postPayload = {
@@ -104,7 +102,7 @@ export function Login(props) {
       };
       postUserData()
     };
-  }, [userExist]);
+  }, [props.isAuthenticated]);
 
   return (
     <Row className="m-0 justify-content-center">

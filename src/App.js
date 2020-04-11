@@ -32,8 +32,8 @@ import { connect } from "react-redux";
 
 // console.log(store.getState());
 
-const ProtectedRoute = ({ auth, render, fail }) => {
-  if (auth) {
+const ProtectedRoute = ({ auth, token, render, fail }) => {
+  if (!token) {
     if (fail) {
       return fail();
     }
@@ -43,9 +43,9 @@ const ProtectedRoute = ({ auth, render, fail }) => {
 };
 
 const mapStateToProps = state => ({ isAuthenticated: state.auth });
-export default connect(mapStateToProps, { setAuth })(App);
-
 export function App(props) {
+  const token = localStorage.getItem('token');
+
   return (
     <>
     <Router>
@@ -54,10 +54,13 @@ export function App(props) {
       </Switch>
     </Router>
     <ProtectedRoute 
-      auth={ !props.isAuthenticated.login.isAuthenticated }
+      auth={ props.isAuthenticated.login.isAuthenticated }
+      token={ token }
       render={ () => <ViewRouter /> }
       fail={() => <FullPageLayout><Login /></FullPageLayout>}
     />
     </>
   )
 }
+
+export default connect(mapStateToProps)(App);
