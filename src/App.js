@@ -32,9 +32,8 @@ import { connect } from "react-redux";
 
 // console.log(store.getState());
 
-
-const ProtectedPath = ({ user, render, fail }) => {
-  if (user) {
+const ProtectedRoute = ({ auth, render, fail }) => {
+  if (auth) {
     if (fail) {
       return fail();
     }
@@ -43,17 +42,22 @@ const ProtectedPath = ({ user, render, fail }) => {
   return render();
 };
 
-
 const mapStateToProps = state => ({ isAuthenticated: state.auth });
 export default connect(mapStateToProps, { setAuth })(App);
 
-
 export function App(props) {
   return (
-    <ProtectedPath 
-      user={ !props.isAuthenticated.login.isAuthenticated }
+    <>
+    <Router>
+      <Switch>
+        <Route path="/privacy-policy"><PrivacyPolicy /></Route>
+      </Switch>
+    </Router>
+    <ProtectedRoute 
+      auth={ !props.isAuthenticated.login.isAuthenticated }
       render={ () => <ViewRouter /> }
       fail={() => <FullPageLayout><Login /></FullPageLayout>}
     />
+    </>
   )
 }
