@@ -5,4 +5,4 @@ const authReducers = combineReducers({
   login
 })
 
-export default authReducers
+export default authReducers;

@@ -1,25 +1,25 @@
-import React, { Suspense, lazy } from "react"
-import ReactDOM from "react-dom"
-import { Provider } from "react-redux"
-import { Layout } from "./utility/context/Layout"
-import * as serviceWorker from "./serviceWorker"
-import { store } from "./redux/storeConfig/store"
-import Spinner from "./components/@vuexy/spinner/Fallback-spinner"
+import React, { Suspense, lazy } from "react";
+import ReactDOM from "react-dom";
+
+import Spinner from "./components/@vuexy/spinner/Fallback-spinner";
+
+import { Provider } from "react-redux";
+import { store } from "./redux/storeConfig/store";
+
+import { Layout } from "./utility/context/Layout";
+
+import * as serviceWorker from "./serviceWorker";
+
 import "./index.scss"
-import "./@fake-db"
+import App from "./App"
 
-// Firebase
-// import '@/firebase/firebaseConfig'
+const unsubscribe = store.subscribe(() => console.log(store.getState()));
 
-const LazyApp = lazy(() => import("./App"))
-
-
-// configureDatabase()
 ReactDOM.render(
     <Provider store={store}>
       <Suspense fallback={<Spinner />}>
         <Layout>
-            <LazyApp />
+            <App />
         </Layout>
       </Suspense>
     </Provider>,

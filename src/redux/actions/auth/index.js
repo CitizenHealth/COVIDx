@@ -1,2 +1,3 @@
-import * as loginAction from "./loginActions"
-export default loginAction
+import * as setAuth from "./authActions"
+export default setAuth
+

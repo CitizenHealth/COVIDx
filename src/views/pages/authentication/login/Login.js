@@ -21,9 +21,18 @@ import { AuthenticationContext } from "App";
 import loginImg from "../../../../assets/img/pages/login.png"
 import "../../../../assets/scss/pages/authentication.scss"
 
+import { login } from "redux/reducers/auth/loginReducer"
+import { setAuth } from "redux/actions/auth/authAction";
+import { store } from "redux/storeConfig/store";
+import { connect } from "react-redux";
 
-export default function Login() {
-  const { dispatch } = React.useContext(AuthenticationContext);
+
+
+const mapStateToProps = state => ({ isAuthenticated: state.auth });
+export default connect(mapStateToProps, { setAuth })(Login);
+
+export function Login(props) {
+  // console.log(props)
   const [userExist, setUserExist] = useState(null);
   const [userData, setUserData] = useState(null);
   const [email, setEmail] = useState(null);
@@ -52,9 +61,7 @@ export default function Login() {
           .then(res => res.json())
           .then(json => {
             setUserExist(json)
-            dispatch({
-              type:"LOGIN"
-            })
+            props.setAuth({type: "LOGIN"})
           })
           .catch(e => console.log(e));
       };
@@ -89,7 +96,7 @@ export default function Login() {
           };
           await fetch(`http://covidx-dev.eba-mayqvyww.us-west-2.elasticbeanstalk.com/create_user`, postPayload)
             .then(res => console.log(`USER CREATED @ ${userData.user_id}`))
-            .then(foo => dispatch({ type:"LOGIN" }))
+            .then(foo => props.setAuth({type: "LOGIN"}))
             .catch(e => console.log(e));
         } catch (err) {
           console.log("fetching failed", err);

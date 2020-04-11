@@ -12,33 +12,26 @@ import {
   Link, 
   Switch, 
   Route, 
-  Redirect 
+  IndexRoute,
+  BrowserHistory
 } from "react-router-dom";
+
 import { PrivacyPolicy } from "views/pages/privacyPolicy/privacyPolicy"
 
+import { login } from "redux/reducers/auth/loginReducer"
+import { setAuth } from "redux/actions/auth/authAction";
+import { store } from "redux/storeConfig/store";
+import { connect } from "react-redux";
 
-export const AuthenticationContext = React.createContext();
 
-const initialState = {
-  isAuthenticated:false,
-};
+// export const AuthenticationContext = React.createContext();
 
-const reducer = (state, action) => {
-  switch (action.type) {
-    case "LOGIN":
-      return {
-        ...state,
-        isAuthenticated:true
-      };
-    case "LOGOUT":
-      return {
-        ...state,
-        isAuthenticated:false
-      };
-    default:
-      return state;
-  }
-};
+// const initialState = {
+//   isAuthenticated:false,
+// };
+
+// console.log(store.getState());
+
 
 const ProtectedPath = ({ user, render, fail }) => {
   if (user) {
@@ -50,26 +43,17 @@ const ProtectedPath = ({ user, render, fail }) => {
   return render();
 };
 
-export default function App(props) {
-  const [state, dispatch] = useReducer(reducer, initialState);
 
+const mapStateToProps = state => ({ isAuthenticated: state.auth });
+export default connect(mapStateToProps, { setAuth })(App);
+
+
+export function App(props) {
   return (
-    <AuthenticationContext.Provider 
-      value={{
-        state,
-        dispatch
-      }}
-    >
-      {/*<Router>
-        <Switch>
-          <Route path="/privacy-policy"><PrivacyPolicy /></Route>
-        </Switch>
-      </Router>*/}
-        <ProtectedPath 
-          user={ !state.isAuthenticated }
-          render = { () => <ViewRouter /> }
-          fail = { () => <FullPageLayout><Login /></FullPageLayout> }
-        />
-    </AuthenticationContext.Provider>
+    <ProtectedPath 
+      user={ !props.isAuthenticated.login.isAuthenticated }
+      render={ () => <ViewRouter /> }
+      fail={() => <FullPageLayout><Login /></FullPageLayout>}
+    />
   )
 }
