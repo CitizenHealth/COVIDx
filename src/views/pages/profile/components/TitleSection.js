@@ -9,7 +9,7 @@ const ProfileTitleSection = props => (
             <div className="titleInfo">
                 <h1>{props.name}</h1>
                 <p>{props.joinDate}</p>
-                <button>Edit Profile</button>
+                {/* <button>Edit Profile</button> */}
             </div>
         </div>
     </div>

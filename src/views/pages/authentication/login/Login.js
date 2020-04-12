@@ -75,7 +75,6 @@ export function Login(props) {
         'Accept': 'application/json'
       }
     };
-
     const postPayload = {
       method: "POST",
       headers: { 
@@ -150,40 +149,6 @@ export function Login(props) {
                   <p>
                     Select any of the options below to sign in.
                   </p>
-                  {/*<Form onSubmit={ e => e.preventDefault() }>
-                    <FormGroup className="form-label-group position-relative has-icon-left">
-                      <Input
-                        type="email"
-                        placeholder="Email"
-                        value={ email }
-                        onChange={e => setEmail(e.target.value) }
-                      />
-                      <div className="form-control-position">
-                        <Mail size={15} />
-                      </div>
-                      <Label>Email</Label>
-                    </FormGroup>
-                    <FormGroup className="form-label-group position-relative has-icon-left">
-                      <Input
-                        type="password"
-                        placeholder="Password"
-                        value={ password }
-                        onChange={ e => setPassword(e.target.value) }
-                      />
-                      <div className="form-control-position">
-                        <Lock size={15} />
-                      </div>
-                      <Label>Password</Label>
-                    </FormGroup>
-                    <div className="d-flex justify-content-between">
-                      <Button.Ripple color="primary" outline>
-                       Register                           
-                      </Button.Ripple>
-                      <Button.Ripple color="primary" type="submit" onClick={ signInWithEmail }>
-                          Login 
-                      </Button.Ripple>
-                    </div>
-                  </Form>*/}
                 </CardBody>
                 <CardBody>
                   <Button.Ripple 
