@@ -21,9 +21,7 @@ import { AuthenticationContext } from "App";
 import loginImg from "../../../../assets/img/pages/login.png"
 import "../../../../assets/scss/pages/authentication.scss"
 
-import { login } from "redux/reducers/auth/loginReducer"
 import { setAuth } from "redux/actions/auth/authAction";
-import { store } from "redux/storeConfig/store";
 import { connect } from "react-redux";
 
 
@@ -87,7 +85,8 @@ export function Login(props) {
       body: JSON.stringify({ 
         user_id:userDataRes.user.uid, 
         display_name:userDataRes.user.displayName, 
-        email:userDataRes.user.email
+        email:userDataRes.user.email,
+        image:userDataRes.additionalUserInfo.profile.picture
       })
     };
 
@@ -97,10 +96,11 @@ export function Login(props) {
         res.ok ? 
         res : 
         fetch(`http://127.0.0.1:5000/create_user`, postPayload).then(res => res.json())
-        // localStorage.setItem('token', userDataRes.credential.accessToken);
       )
       .then(json => props.setAuth({type: "LOGIN", json}))
       .catch(e => console.log(e));
+
+    localStorage.setItem('token', userDataRes.credential.accessToken);
   };
 
   // postUserData()
@@ -110,11 +110,13 @@ export function Login(props) {
       console.log(`EMAIL: ${ res.user.email }`);
       console.log(`UID: ${res.user.uid}`);
       console.log(`ACCESS TOKEN: ${res.credential.accessToken}`);
+      console.log(`IMAGE LINK: ${res.additionalUserInfo.profile.picture}`)
       setUserData({ 
         user_id:res.user.uid, 
         display_name:res.user.displayName, 
         email:res.user.email,
-        accessToken:res.credential.accessToken
+        accessToken:res.credential.accessToken,
+        image:res.additionalUserInfo.profile.picture
       });
       fetchUserData(res);
     })

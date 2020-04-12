@@ -3,8 +3,18 @@ import StatisticsCard from "components/@vuexy/statisticsCard/StatisticsCard";
 import { UserProfile } from "./components/UserProfile";
 import  ProfileTitleSection from "./components/TitleSection";
 import ImageCard from "components/imageCard/imageCard.js"
-export default function Profile() {
+
+import { setAuth } from "redux/actions/auth/authAction";
+import { connect } from "react-redux";
+
+
+const mapStateToProps = state => ({ auth: state.auth });
+export default connect(mapStateToProps, { setAuth })(Profile);
+
+export function Profile(props) {
   const [userData, setUserData] = useState(null)
+  const payload = props.auth.login.payload.payload[0]
+  const defaultProfileImage = require("./images/placeholder.png")
 
   // useEffect(() => {
   //   fetch()
@@ -18,13 +28,20 @@ export default function Profile() {
     and Image = Profile Image URL */}
 
       <ProfileTitleSection
-      name = "John Doe"
-      joinDate = "Joined April 8, 2020"
-      Image = {require("./images/placeholder.png")} 
+      name = { payload.display_name }
+      joinDate = { payload.date_join }
+      Image = { defaultProfileImage } 
       />
 
       <div className="cards">
-        <div className="CardGroup">
+        {
+          Object.keys(payload).map(k => 
+            <div>
+              {k}: {payload[k]}
+            </div>
+          )
+        }
+        {/*<div className="CardGroup">
           <ImageCard
           link = "../"
           title="Donate to the cause"
@@ -49,8 +66,7 @@ export default function Profile() {
           text="Every Penny Counts"
           Image = {require("./images/coronavirus.jpg")}
           />
-        </div>
-
+        </div>*/}
       </div>
     </>
   )
