@@ -42,7 +42,7 @@ export default function HeatMap(props) {
         }
       };
 
-      await fetch(`http://127.0.0.1:5000/get_all_states_positive`, getPayload)
+      await fetch(`https://covidx-dev.eba-mayqvyww.us-west-2.elasticbeanstalk.com//get_all_states_positive`, getPayload)
         .then(res => res.json())
         .then(json => setStateData(json))
         .catch(e => console.log(e))

@@ -89,14 +89,14 @@ export function Login(props) {
       })
     };
 
-    await fetch(`https://covidx-dev.eba-mayqvyww.us-west-2.elasticbeanstalk.com/?user_id=${userDataRes.user.uid}`, getPayload)
+    await fetch(`https://covidx-dev.eba-mayqvyww.us-west-2.elasticbeanstalk.com/login_user?user_id=${userDataRes.user.uid}`, getPayload)
       .then(res => res.json())
       .then(res => 
         res.ok ? 
         res : 
-        fetch(`https://covidx-dev.eba-mayqvyww.us-west-2.elasticbeanstalk.com//create_user`, postPayload).then(res => res.json())
+        fetch(`https://covidx-dev.eba-mayqvyww.us-west-2.elasticbeanstalk.com/create_user`, postPayload).then(res => res.json())
       )
-      .then(json => props.setAuth({type: "LOGIN", json}))
+      .then(json => {props.setAuth({type: "LOGIN", json})})
       .catch(e => console.log(e));
 
     localStorage.setItem('token', userDataRes.credential.accessToken);
