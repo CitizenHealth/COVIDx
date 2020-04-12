@@ -16,18 +16,19 @@ export default function HeatMap() {
   useEffect(() => {
     const map = L.map('mapId', {
       center:[0,0],
-      zoom:13
+      zoom:10
     });
     L.tileLayer("http://{s}.tile.osm.org/{z}/{x}/{y}.png", {
-      maxZoom:5,
-      tileSize:512,
+      maxZoom:15,
+      tileSize:200,
       zoomOffset:-1,
     }).addTo(map);
     // find user location
     map.locate({ setView:true })
       .on('locationfound', e => {
         let marker = L.marker([e.latitude, e.longitude]).bindPopup("HERE").addTo(map);
-      }).on("locationerror", e => {
+      })
+      .on("locationerror", e => {
         console.log('user not found')
       });
     // add heatmap layer

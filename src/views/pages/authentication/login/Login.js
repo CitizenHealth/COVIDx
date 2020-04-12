@@ -27,7 +27,7 @@ import { store } from "redux/storeConfig/store";
 import { connect } from "react-redux";
 
 
-const mapStateToProps = state => ({ isAuthenticated: state.auth });
+const mapStateToProps = state => ({ auth: state.auth });
 export default connect(mapStateToProps, { setAuth })(Login);
 
 export function Login(props) {
@@ -35,37 +35,6 @@ export function Login(props) {
   // const [email, setEmail] = useState(null);
   // const [password, setPassword] = useState(null);
 
-  const signInWith = provider => {
-    auth.signInWithPopup(provider).then(res => {
-      console.log(`DISPLAY NAME: ${ res.user.displayName }`);
-      console.log(`EMAIL: ${ res.user.email }`);
-      console.log(`UID: ${res.user.uid}`);
-      console.log(`ACCESS TOKEN: ${res.credential.accessToken}`);
-      setUserData({ 
-        user_id:res.user.uid, 
-        display_name:res.user.displayName, 
-        email:res.user.email 
-      });
-
-      const getPayload = {
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        }
-      };
-      const fetchUserData = async () => {
-        fetch(`http://covidx-dev.eba-mayqvyww.us-west-2.elasticbeanstalk.com/login_user?user_id=${res.user.uid}`, getPayload)
-          .then(res => res.json())
-          .then(json => {
-            props.setAuth({type: "LOGIN"})
-            // save access token in localStorage
-            localStorage.setItem('token', res.credential.accessToken);
-          })
-          .catch(e => console.log(e));
-      };
-      fetchUserData();
-    })
-  };
 
   // const signInWithEmail = () => {
   //   auth.signInWithEmailAndPassword(email, password)
@@ -76,33 +45,81 @@ export function Login(props) {
   //   auth.createUserWithEmailAndPassword(email, password)
   //     .catch()
   // };
-
-  useEffect(() => {
-    if (props.isAuthenticated.isAuthenticated && props.isAuthenticated.isAuthenticated.login===false && userData) {
-      const postUserData = async () => {
-        try {
-          const postPayload = {
-            method: "POST",
-            headers: { 
-              'Accept': 'application/json', 
-              'Content-Type': 'application/json' 
-            },
-            body: JSON.stringify({ 
-              user_id:userData.user_id, 
-              display_name:userData.display_name, 
-              email:userData.email})
-          };
-          await fetch(`http://covidx-dev.eba-mayqvyww.us-west-2.elasticbeanstalk.com/create_user`, postPayload)
-            .then(res => console.log(`USER CREATED @ ${userData.user_id}`))
-            .then(foo => props.setAuth({type: "LOGIN"}))
-            .catch(e => console.log(e));
-        } catch (err) {
-          console.log("fetching failed", err);
-        }
-      };
-      postUserData()
+  const postUserData = async (userDataRes) => {
+    const postPayload = {
+      method: "POST",
+      headers: { 
+        'Accept': 'application/json', 
+        'Content-Type': 'application/json' 
+      },
+      body: JSON.stringify({ 
+        user_id:userDataRes.user.uid, 
+        display_name:userDataRes.user.displayName, 
+        email:userDataRes.user.email
+      })
     };
-  }, [props.isAuthenticated]);
+    // http://covidx-dev.eba-mayqvyww.us-west-2.elasticbeanstalk.com
+    await fetch(`http://127.0.0.1:5000/create_user`, postPayload)
+      .then(res => {
+        console.log(`USER CREATED @ ${userData.user_id}`)
+        console.log(res.json())
+        return res.json()
+        // localStorage.setItem('token', userData.accessToken)
+      })
+      .then(json => props.setAuth({type: "LOGIN", json}))
+      .catch(e => `fetching failed ${e}`);
+  };
+
+  const fetchUserData = async (userDataRes) => {
+    const getPayload = {
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      }
+    };
+
+    const postPayload = {
+      method: "POST",
+      headers: { 
+        'Accept': 'application/json', 
+        'Content-Type': 'application/json' 
+      },
+      body: JSON.stringify({ 
+        user_id:userDataRes.user.uid, 
+        display_name:userDataRes.user.displayName, 
+        email:userDataRes.user.email
+      })
+    };
+
+    await fetch(`http://127.0.0.1:5000/login_user?user_id=${userDataRes.user.uid}`, getPayload)
+      .then(res => res.json())
+      .then(res => 
+        res.ok ? 
+        res : 
+        fetch(`http://127.0.0.1:5000/create_user`, postPayload).then(res => res.json())
+        // localStorage.setItem('token', userDataRes.credential.accessToken);
+      )
+      .then(json => props.setAuth({type: "LOGIN", json}))
+      .catch(e => console.log(e));
+  };
+
+  // postUserData()
+  const signInWith = provider => {
+    auth.signInWithPopup(provider).then(res => {
+      console.log(`DISPLAY NAME: ${ res.user.displayName }`);
+      console.log(`EMAIL: ${ res.user.email }`);
+      console.log(`UID: ${res.user.uid}`);
+      console.log(`ACCESS TOKEN: ${res.credential.accessToken}`);
+      setUserData({ 
+        user_id:res.user.uid, 
+        display_name:res.user.displayName, 
+        email:res.user.email,
+        accessToken:res.credential.accessToken
+      });
+      fetchUserData(res);
+    })
+  };
+
 
   return (
     <Row className="m-0 justify-content-center">

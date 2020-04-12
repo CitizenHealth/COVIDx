@@ -24,16 +24,8 @@ import { store } from "redux/storeConfig/store";
 import { connect } from "react-redux";
 
 
-// export const AuthenticationContext = React.createContext();
-
-// const initialState = {
-//   isAuthenticated:false,
-// };
-
-// console.log(store.getState());
-
 const ProtectedRoute = ({ auth, token, render, fail }) => {
-  if (!token) {
+  if (!auth) {
     if (fail) {
       return fail();
     }
@@ -42,10 +34,9 @@ const ProtectedRoute = ({ auth, token, render, fail }) => {
   return render();
 };
 
-const mapStateToProps = state => ({ isAuthenticated: state.auth });
+const mapStateToProps = state => ({ auth: state.auth });
 export function App(props) {
   const token = localStorage.getItem('token');
-
   return (
     <>
     <Router>
@@ -54,7 +45,7 @@ export function App(props) {
       </Switch>
     </Router>
     <ProtectedRoute 
-      auth={ props.isAuthenticated.login.isAuthenticated }
+      auth={ props.auth.login }
       token={ token }
       render={ () => <ViewRouter /> }
       fail={() => <FullPageLayout><Login /></FullPageLayout>}

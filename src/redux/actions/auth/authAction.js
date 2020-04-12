@@ -2,7 +2,7 @@
 //   return dispatch => dispatch({ type: "CHANGE_ROLE", userRole: role })
 // }
 
-export const setAuth = (isAuthenticated) => ({ 
-  type:"LOGIN", 
-  isAuthenticated 
+export const setAuth = payload => ({ 
+  type:"LOGIN",
+  payload
 });

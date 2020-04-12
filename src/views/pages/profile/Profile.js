@@ -6,6 +6,9 @@ import ImageCard from "components/imageCard/imageCard.js"
 export default function Profile() {
   const [userData, setUserData] = useState(null)
 
+  // useEffect(() => {
+  //   fetch()
+  // }, []);
   
   return (
     <>
