@@ -63,16 +63,16 @@ export default function ViewRouter(props) {
 
   return (
     <Router history={history}>
-      <Redirect from="/" to="/profile" />
+      <Redirect from="/" to="/heatmap" />
       <Switch>
         <RouteConfig
           path="/heatmap"
           component={ HeatMap }
         />
-        <RouteConfig 
-          path="/profile"
-          component={ Profile }
-        />
+        {/* <RouteConfig  */}
+          {/* path="/profile" */}
+          {/* component={ Profile } */}
+        {/* /> */}
       </Switch>
     </Router>
   )
