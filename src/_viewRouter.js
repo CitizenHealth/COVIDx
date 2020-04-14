@@ -11,6 +11,7 @@ import Spinner from "./components/@vuexy/spinner/Loading-spinner"
 import { ContextLayout } from "./utility/context/Layout"
 import HeatMap from "./views/pages/heatMap/heatMap";
 import Profile from "./views/pages/profile/Profile"
+import Home from "./views/pages/Home"
 
 // Route-based code splitting
 // const Home = lazy(() =>
@@ -63,8 +64,13 @@ export default function ViewRouter(props) {
 
   return (
     <Router history={history}>
-      <Redirect from="/" to="/profile" />
+      {/* <Redirect from="/" to="/profile" /> */}
       <Switch>
+        <RouteConfig
+          exact
+          path="/"
+          component={ Home }
+        />
         <RouteConfig
           path="/heatmap"
           component={ HeatMap }

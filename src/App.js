@@ -26,10 +26,7 @@ import { connect } from "react-redux";
 
 const ProtectedRoute = ({ auth, token, render, fail }) => {
   if (!auth) {
-    if (fail) {
-      return fail();
-    }
-    return null;
+    return fail ? fail() : null;
   }
   return render();
 };
