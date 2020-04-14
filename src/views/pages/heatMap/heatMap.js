@@ -17,7 +17,6 @@ export default function HeatMap(props) {
     return (Math.random() * (180+180)-180).toFixed(3) * 1;
   };
 
-
   useEffect(() => {
     const map = L.map('mapId', {
       center:[0,0],
@@ -37,7 +36,7 @@ export default function HeatMap(props) {
     map.locate({ setView:true })
       .on('locationfound', e => {
         const radius = e.accuracy/2;
-        L.marker([e.latitude, e.longitude]).bindPopup("HERE").openPopup().addTo(map);
+        // L.marker([e.latitude, e.longitude]).bindPopup("HERE").openPopup().addTo(map);
         L.circle(e.latlng, radius).addTo(map);
       })
       .on("locationerror", e => {
@@ -59,6 +58,8 @@ export default function HeatMap(props) {
     }; 
     fetchStatePositives();
     setStoreMap(map);
+    // create state outlines
+
     // add heatmap layer
     // for (let i=0; i < 100; i++) {
     //   let coords = {
@@ -84,6 +85,7 @@ export default function HeatMap(props) {
   useEffect(() => {
     // stateData.payload
     if (stateData) {
+      // create the color gradients...
       const gradient = {
         low: {
           color:"#14ff00"
@@ -98,7 +100,7 @@ export default function HeatMap(props) {
           color: "#ff0000"
         },
       }
-      const positives = stateData.map(state => state.positive);
+      const positives = stateData.features.map(state => state.properties.positive);
       positives.sort((a, b) => a - b);
       const quartiles = [0, 0.25, 0.50, 1].map(p => {
         let q = d3.quantile(positives, p);
@@ -110,17 +112,66 @@ export default function HeatMap(props) {
           d <= quartiles[2] ? gradient.high.color :
           gradient.super_high.color
       };
-      stateData.forEach(state => {
-        (state['latitude'] || state['longitude']) && 
-          L.circle([state['latitude'], state['longitude']], 10000, {
-            color:getColor(state.positive), 
-            fillColor: getColor(state.positive),
-            fillOpacity: 0.5
-          }).addTo(storeMap);
-      });
+      const style = feature => {
+        return {
+          fillColor: getColor(feature.properties.positive),
+          weight: 1,
+          color: 'white',
+          fillOpacity:0.5,
+        }
+      }
+      // add info box
+      var info = L.control();
 
+      info.onAdd = function(map) {
+        this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
+        this.update();
+        return this._div;
+      };
+
+      // method that we will use to update the control based on feature properties passed
+      info.update = function(props) {
+        this._div.innerHTML = 
+          `<h3>COVID-19 Stats in ${ props ? props.NAME : "THE USA" }</h3>` + 
+          (props ? 
+            `<h4>Positive Results: ${props.positive}</h4>` : 
+            "<h4>Hover over a state</h4>")
+        // this._div.innerHTML = '<h4>Positive results in </h4>' +  (props ?
+        //   '<b>' + props.positive + '</b><br />' : 'Hover over a state');
+      };
+      info.addTo(storeMap);
+
+
+      // add hover states
+      const highlightFeature = e => {
+        const layer = e.target;
+        layer.setStyle({
+          fillOpacity:0.8
+        });
+        info.update(layer.feature.properties)
+      };
+
+      const resetHighlight = e => {
+        // geojson.resetStyle(e.target)
+        const layer = e.target;
+        layer.setStyle({
+          fillOpacity:0.5
+        });
+        info.update();
+      };
+
+      const hoverState = (feature, layer) => {
+        layer.on({
+          mouseover:highlightFeature,
+          mouseout:resetHighlight
+        });
+      };      
+
+      L.geoJson(stateData, {
+        style: style, 
+        onEachFeature:hoverState
+      }).addTo(storeMap);
     };
-
   }, [stateData])
 
   return (
