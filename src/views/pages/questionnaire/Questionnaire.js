@@ -1,73 +1,75 @@
-import React from "react"
-import StepsContainer from "./StepsContainer";
+import React, { useState, useEffect } from "react"
+import StepsContainer from "./StepsContainer"
 
-class Questionnaire extends React.Component {
+const TEST_TAKEN = "covid_19"
 
-  state = {
-    activeStep: 0,
-    emotion: null,
-    stepsTaken: [0],
-    feverInput: null,
-    feverSelection: null,
-    symptoms: [],
-    testTaken: null,
-    numPeoplePositive: null,
-  };
+const Questionnaire = ({}) => {
+  const [activeStep, setActiveStep] = useState(0)
+  const [emotion, setEmotion] = useState(null)
+  const [stepsTaken, setStepsTaken] = useState([0])
+  const [feverInput, setFeverInput] = useState(null)
+  const [feverSelection, setFeverSelection] = useState(null)
+  const [symptoms, setSymptoms] = useState([])
+  const [testTaken, setTestTaken] = useState(null)
+  const [numPeoplePositive, setNumPeoplePositive] = useState(null)
 
-  selectEmotion = (emotion) => {
-    if (emotion === 'Happy') {
-      this.setState({activeStep: 1, stepsTaken: [...this.state.stepsTaken, 1]})
-    } else {
-      this.setState({activeStep: 2, stepsTaken: [...this.state.stepsTaken, 2]})
+  useEffect(() => {
+    if (activeStep === 6) {
+      submitQuestionnaire()
     }
-    this.setState({
-      emotion: emotion
-    });
-  };
-
-  selectSameRoomAsPositiveTest = (answer) => {
-    if (answer === true && this.state.emotion === 'Happy') {
-      this.setState({activeStep: 6, stepsTaken: [...this.state.stepsTaken, 6]})
-    } else {
-      this.setState({activeStep: 6, stepsTaken: [...this.state.stepsTaken, 6]})
-    }
-  };
-
-  selectSymptomsAndFever = (answers) => {
-    this.setState({
-      activeStep: 5,
-      stepsTaken: [...this.state.stepsTaken, 5],
-      feverInput: answers.feverSelection,
-      feverSelection: answers.feverSelection,
-      symptoms: answers.symptoms
-    });
-  };
-
-  haveYouBeenTestedAnswers = (e) => {
-    if(e.testTaken === 'covid_19'){
-      this.setState({activeStep: 3, stepsTaken: [...this.state.stepsTaken, 3]})
-    } else {
-      this.setState({
-        activeStep: 6,
-        stepsTaken: [...this.state.stepsTaken, 6],
-        testTaken: e.testTaken,
-        numPeoplePositive: e.numPeoplePositive
-      })
-    }
-  };
-
-  submitQuestionnaire = () => {
-    alert('Submitted!');
-  };
-
-  render() {
-    return <StepsContainer activeStep={this.state.activeStep}
-                           selectEmotion={this.selectEmotion}
-                           selectSameRoomAsPositiveTest={this.selectSameRoomAsPositiveTest}
-                           selectSymptomsAndFever={this.selectSymptomsAndFever}
-                           haveYouBeenTestedAnswers={this.haveYouBeenTestedAnswers}
-                           submit={this.submitQuestionnaire}/>
+  }, [activeStep])
+  const setStep = (step) => {
+    setActiveStep(step)
+    setStepsTaken([...stepsTaken, step])
   }
+
+  const selectEmotion = (emotion) => {
+    emotion === "Happy" ? setStep(1) : setStep(2)
+    setEmotion(emotion)
+  }
+
+  const selectSameRoomAsPositiveTest = (answer) => {
+    answer === true && emotion === "Happy" ? setStep(5) : setStep(2)
+  }
+
+  const selectSymptomsAndFever = (answers) => {
+    setStep(5)
+    setFeverInput(answers.feverSelection)
+    setFeverSelection(answers.feverSelection)
+    setSymptoms(answers.symptoms)
+  }
+
+  const haveYouBeenTestedAnswers = (e) => {
+    const isCovidTest = e.testTaken === TEST_TAKEN
+    isCovidTest ? setStep(3) : setStep(6)
+    if (!isCovidTest) {
+      setTestTaken(e.testTaken)
+      setNumPeoplePositive(e.numPeoplePositive)
+    }
+  }
+
+  const submitQuestionnaire = () => {
+    let data = `activeStep: ${activeStep}\n`
+    data += `emotion: ${emotion}\n`
+    data += `stepsTaken: ${stepsTaken}\n`
+    data += `feverInput: ${feverInput}\n`
+    data += `feverSelection: ${feverSelection}\n`
+    data += `symptoms: ${symptoms}\n`
+    data += `testTaken: ${testTaken}\n`
+    data += `numPeoplePositive: ${numPeoplePositive}\n`
+    alert(`${data}\n\nSubmitted!`)
+  }
+
+  return (
+    <StepsContainer
+      activeStep={activeStep}
+      setStep={setStep}
+      selectEmotion={selectEmotion}
+      selectSameRoomAsPositiveTest={selectSameRoomAsPositiveTest}
+      selectSymptomsAndFever={selectSymptomsAndFever}
+      haveYouBeenTestedAnswers={haveYouBeenTestedAnswers}
+    />
+  )
 }
 
 export default Questionnaire

@@ -1,42 +1,48 @@
-import React from 'react'
-import {
-  Card, CardImg, CardText, CardBody,
-  CardTitle, CardSubtitle, Button, Row, Col
-} from 'reactstrap';
-import HappyIcon from '../../../assets/img/icons/happy.png';
-import SadIcon from '../../../assets/img/icons/sad.png';
+import React from "react"
+import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Button, Row, Col } from "reactstrap"
+import HappyIcon from "../../../assets/img/icons/happy.png"
+import SadIcon from "../../../assets/img/icons/sad.png"
 
-class HowAreYouFeeling extends React.Component {
-
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      emotion: null
-    };
-  }
-
-
-
-  render() {
-    return (
-      <div>
-        <h4 style={{paddingTop: '20px', paddingBottom: '20px'}}>How are you feeling?</h4>
-        <Row>
-          <Col>
-            <Card onClick={() => this.props.selectEmotion('Happy')}>
-              <CardImg style={{width: "25%"}} src={HappyIcon} alt="happy icon"/>
-            </Card>
-          </Col>
-          <Col>
-            <Card onClick={() => this.props.selectEmotion('Sad')}>
-              <CardImg style={{width: "25%"}} src={SadIcon} alt="sad icon"/>
-            </Card>
-          </Col>
-        </Row>
-      </div>
-    )
-  }
+const HowAreYouFeeling = ({ selectEmotion }) => {
+  return (
+    <div style={styles.container}>
+      <h2 style={styles.title}> How are you feeling ? </h2>
+      <Row>
+        <Col>
+          <Card style={styles.card} onClick={() => selectEmotion("Happy")}>
+            <CardImg style={styles.cardImg} src={HappyIcon} alt="happy icon" />
+          </Card>
+        </Col>
+        <Col>
+          <Card style={styles.card} onClick={() => selectEmotion("Sad")}>
+            <CardImg style={styles.cardImg} src={SadIcon} alt="sad icon" />
+          </Card>
+        </Col>
+      </Row>
+    </div>
+  )
 }
 
-export default HowAreYouFeeling;
+const styles = {
+  container: {
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  title: {
+    justifyContent: "center",
+    paddingTop: "20px",
+    paddingBottom: "20px",
+    textAlign: "center",
+  },
+  card: {
+    justifyContent: "center",
+    alignItems: "center",
+    paddingTop: "10%",
+    paddingBottom: "10%",
+  },
+  cardImg: {
+    width: "25%",
+  },
+}
+
+export default HowAreYouFeeling
