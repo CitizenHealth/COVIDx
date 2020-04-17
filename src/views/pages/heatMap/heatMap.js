@@ -13,6 +13,7 @@ export default function HeatMap(props) {
   const [stateData, setStateData] = useState(null);
   const [countyData, setCountyData] = useState(null);
   const [storeMap, setStoreMap] = useState(null);
+  const [countySelected, setCountySelected] = useState(false)
 
   function createDefaultMap() {
     const map = L.map('mapId', {
@@ -168,7 +169,7 @@ export default function HeatMap(props) {
       };
 
       const showCountyData = e => {
-        if (e.target.feature.properties.positive) {
+        if (e.target.feature.properties.positive && !countySelected) {
           storeMap.fitBounds(e.target.getBounds());
           storeMap.removeLayer(e.target)
           const stateName = e.target.feature.properties.NAME;
@@ -179,6 +180,7 @@ export default function HeatMap(props) {
             onEachFeature:hoverState
           });
           gjCounty.addTo(storeMap);
+          
         }
       };
 
@@ -217,7 +219,7 @@ export default function HeatMap(props) {
           container.onclick = () => {
             map.fitBounds(L.geoJson(countyData).getBounds());
             map.eachLayer(layer => {
-              !layer._url && map.removeLayer(layer);
+              layer instanceof L.GeoJSON && map.removeLayer(layer);
             })
             gj.addTo(storeMap);
           };
