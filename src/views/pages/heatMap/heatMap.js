@@ -14,11 +14,7 @@ export default function HeatMap(props) {
   const [countyData, setCountyData] = useState(null);
   const [storeMap, setStoreMap] = useState(null);
 
-  // const genFakeData = () => {
-  //   return (Math.random() * (180+180)-180).toFixed(3) * 1;
-  // };
-
-  useEffect(() => {
+  function createDefaultMap() {
     const map = L.map('mapId', {
       center:[0,0],
       zoom:3
@@ -29,50 +25,52 @@ export default function HeatMap(props) {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
     }).addTo(map);
     // find user location
-    // const onLocationFound(e) => {
-    //   const radius = e.accuracy/2;
-    //   L.marker(e.latlng).addTo(map).bindPopup("HERE").openPopup();
-    //   L.circle(e.latlng, radius).addTo(map);
-    // };
     map.locate({  })
       .on('locationfound', e => {
         const radius = e.accuracy/2;
-        // L.marker([e.latitude, e.longitude]).bindPopup("HERE").openPopup().addTo(map);
         L.circle(e.latlng, radius).addTo(map);
       })
       .on("locationerror", e => {
         console.log('user not found')
       });
-    // fetch data from server to serve up state data
-    const fetchStatePositives = async () => {
-      const getPayload = {
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        }
-      };
-      await fetch(`https://www.covidx.app/get_state_results`, getPayload)
-        .then(res => res.json())
-        .then(json => setStateData(json.payload))
-        .catch(e => console.log(e))
-    }; 
-    // fetch county data for filtered view
-    const fetchCountyData = async () => {
-      const getPayload = {
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        }
-      };
-      await fetch(`https://www.covidx.app/get_county_results`, getPayload)
-        .then(res => res.json())
-        .then(json => setCountyData(json.payload))
-        .catch(e => console.log(e))
-    }; 
+    return map
+  };
 
-    fetchStatePositives();
+  const fetchStateData = async () => {
+    const getPayload = {
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      }
+    };
+    await fetch(`https://www.covidx.app/get_state_results`, getPayload)
+      .then(res => res.json())
+      .then(json => setStateData(json.payload))
+      .catch(e => console.log(e))
+  }; 
+
+  const fetchCountyData = async () => {
+    const getPayload = {
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      }
+    };
+    await fetch(`https://www.covidx.app/get_county_results`, getPayload)
+      .then(res => res.json())
+      .then(json => setCountyData(json.payload))
+      .catch(e => console.log(e))
+  }; 
+
+
+  useEffect(() => {
+    const map = createDefaultMap();
+    fetchStateData();
     fetchCountyData();
     setStoreMap(map);
+
+    // create reset button
+
   }, []);
 
   useEffect(() => {
@@ -151,7 +149,6 @@ export default function HeatMap(props) {
       };
       info.addTo(storeMap);
 
-
       // add hover states
       const highlightFeature = e => {
         const layer = e.target;
@@ -200,9 +197,39 @@ export default function HeatMap(props) {
       gj.addTo(storeMap);
       storeMap.fitBounds(L.geoJson(countyData).getBounds());
 
-      // add county filter
+      // add reset button
+      var customControl =  L.Control.extend({
+        options: {
+          position: 'topleft'
+        },
+
+        onAdd: function (map) {
+          var container = L.DomUtil.create('input');
+          container.type="button";
+          container.title="ResetButton";
+          container.value = "Reset";
+
+          container.style.backgroundColor = 'white';     
+          container.style.backgroundSize = "30px 30px";
+          container.style.width = '100%';
+          container.style.height = '100%';
+          
+          container.onclick = () => {
+            map.fitBounds(L.geoJson(countyData).getBounds());
+            map.eachLayer(layer => {
+              !layer._url && map.removeLayer(layer);
+            })
+            gj.addTo(storeMap);
+          };
+
+          return container;
+        }
+      });
+      storeMap.addControl(new customControl())
+
     };
   }, [stateData, countyData])
+
 
   return (
     <div id={ 'mapId' } style={{ height:"80vh" }} />
