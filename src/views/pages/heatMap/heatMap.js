@@ -13,7 +13,9 @@ export default function HeatMap(props) {
   const [stateData, setStateData] = useState(null);
   const [countyData, setCountyData] = useState(null);
   const [storeMap, setStoreMap] = useState(null);
-  const [countySelected, setCountySelected] = useState(false)
+  const [userLocation, setUserLocation] = useState(null);
+  const [containingCounty, setContainingCounty] = useState(null);
+  const [hideInstruction, setHideInstruction] = useState(false);
 
   function createDefaultMap() {
     const map = L.map('mapId', {
@@ -26,15 +28,16 @@ export default function HeatMap(props) {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
     }).addTo(map);
     // find user location
-    map.locate({  })
+    map.locate({ setView:true })
       .on('locationfound', e => {
         const radius = e.accuracy/2;
         L.circle(e.latlng, radius).addTo(map);
+        setUserLocation(e.latlng);
       })
       .on("locationerror", e => {
         console.log('user not found')
       });
-    return map
+    return map;
   };
 
   const fetchStateData = async () => {
@@ -63,19 +66,15 @@ export default function HeatMap(props) {
       .catch(e => console.log(e))
   }; 
 
-
   useEffect(() => {
     const map = createDefaultMap();
     fetchStateData();
     fetchCountyData();
     setStoreMap(map);
-
-    // create reset button
-
   }, []);
 
   useEffect(() => {
-    if (stateData && countyData) {
+    if (stateData && countyData && containingCounty) {
       // create the color gradients...
       const gradient = {
         low: {
@@ -140,11 +139,16 @@ export default function HeatMap(props) {
 
       // method that we will use to update the control based on feature properties passed
       info.update = function(props) {
+        console.log(props)
         this._div.innerHTML = 
-          `<h3>COVID-19 Stats ${ props ? `in <br />${props.NAME}` : "" }</h3>` + 
+          // `<h3>COVID-19 Stats ${ props ? `in <br />${props.NAME}` : "" }</h3>` + 
+          `<div class="info-child"><h4>Your County: ${containingCounty.properties.NAME}</h4>` + 
+          `<h4>Positive Cases in ${containingCounty.properties.NAME}: ${containingCounty.properties.cases}</h4></div>` + 
+          `<div class="info-child"><h6>*hovered*<h6>` + 
           (props ? 
-            `<h4>Positive Cases: ${props.positive ? props.positive : props.cases}</h4>` : 
-            "<h4>Hover over a state</h4>")
+            `<h5>Positive Cases in ${props.NAME} : ${props.positive ? props.positive : props.cases}</h5>` : 
+            "<h5>Hover over a state</h5>") + 
+          `</div>`
         // this._div.innerHTML = '<h4>Positive results in </h4>' +  (props ?
         //   '<b>' + props.positive + '</b><br />' : 'Hover over a state');
       };
@@ -160,7 +164,6 @@ export default function HeatMap(props) {
       };
 
       const resetHighlight = e => {
-        // geojson.resetStyle(e.target)
         const layer = e.target;
         layer.setStyle({
           fillOpacity:0.5
@@ -169,7 +172,7 @@ export default function HeatMap(props) {
       };
 
       const showCountyData = e => {
-        if (e.target.feature.properties.positive && !countySelected) {
+        if (e.target.feature.properties.positive) {
           storeMap.fitBounds(e.target.getBounds());
           storeMap.removeLayer(e.target)
           const stateName = e.target.feature.properties.NAME;
@@ -180,7 +183,6 @@ export default function HeatMap(props) {
             onEachFeature:hoverState
           });
           gjCounty.addTo(storeMap);
-          
         }
       };
 
@@ -197,7 +199,7 @@ export default function HeatMap(props) {
         onEachFeature:hoverState
       });
       gj.addTo(storeMap);
-      storeMap.fitBounds(L.geoJson(countyData).getBounds());
+      // storeMap.fitBounds(L.geoJson(countyData).getBounds());
 
       // add reset button
       var customControl =  L.Control.extend({
@@ -209,13 +211,8 @@ export default function HeatMap(props) {
           var container = L.DomUtil.create('input');
           container.type="button";
           container.title="ResetButton";
-          container.value = "Reset";
+          container.value = "Fit to USA";
 
-          container.style.backgroundColor = 'white';     
-          container.style.backgroundSize = "30px 30px";
-          container.style.width = '100%';
-          container.style.height = '100%';
-          
           container.onclick = () => {
             map.fitBounds(L.geoJson(countyData).getBounds());
             map.eachLayer(layer => {
@@ -227,13 +224,49 @@ export default function HeatMap(props) {
           return container;
         }
       });
-      storeMap.addControl(new customControl())
+    storeMap.addControl(new customControl());
 
+    // zoom into current location and show the county view here
     };
-  }, [stateData, countyData])
+  }, [stateData, countyData, containingCounty])
 
+  useEffect(() => {
+    if (countyData) {
+      countyData.features.forEach(county => {
+        let location = [userLocation.lng, userLocation.lat];
+        d3.geoContains(county, location) && setContainingCounty(county);
+      })
+    }
+  }, [countyData])
+
+  const onClickInstruction = () => {
+    setHideInstruction(true);
+  };
 
   return (
-    <div id={ 'mapId' } style={{ height:"80vh" }} />
+    <div className="map-wrapper">
+      <div id={ 'mapId' } />
+      <div className={ hideInstruction ? "popup hide" : "popup" } id="instruction-box">
+        {/* <div className="exit">x</div> */}
+        <h2>Instructions:</h2>
+        <p>
+          This map will show COVID-19 cases by state and county. 
+          To view county results, please select a state! 
+          The map will then zoom into that state's county's results.
+        </p>
+        <p>
+          We like to think that the colors here are intuitive: green is good, and red is bad. 
+          These results are split by quartile - state results are measured against states, 
+          and county results are measured against counties.
+        </p>
+        <p>
+          You'll also notice a little blue dot. 
+          That's where you are (or, at least, our best guess)!
+          We plan to do big things with this map, but for now bear with us. 
+          This is just the start.
+        </p>
+        <h2 className="start" onClick={ onClickInstruction }>Start now</h2>
+      </div>
+    </div>
   )
 }
