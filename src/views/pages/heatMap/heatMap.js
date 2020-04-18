@@ -1,4 +1,4 @@
-import React, { useEffect, useState, createRef } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import L from "leaflet";
 import HeatmapOverlay from "leaflet-heatmap";
 
@@ -73,7 +73,7 @@ export default function HeatMap(props) {
     setStoreMap(map);
   }, []);
 
-  useEffect(() => {
+  useMemo(() => {
     if (stateData && countyData && containingCounty) {
       // create the color gradients...
       const gradient = {
@@ -139,16 +139,18 @@ export default function HeatMap(props) {
 
       // method that we will use to update the control based on feature properties passed
       info.update = function(props) {
-        console.log(props)
         this._div.innerHTML = 
           // `<h3>COVID-19 Stats ${ props ? `in <br />${props.NAME}` : "" }</h3>` + 
-          `<div class="info-child"><h4>Your County: ${containingCounty.properties.NAME}</h4>` + 
-          `<h4>Positive Cases in ${containingCounty.properties.NAME}: ${containingCounty.properties.cases}</h4></div>` + 
+          `<div class="info-child"><h6>*you*</h6>` + 
+          `<h5>Your County: ${containingCounty.properties.NAME}</h5>` + 
+          `<h5>Positive Cases in ${containingCounty.properties.NAME}: ${containingCounty.properties.cases}</h5></div>` + 
           `<div class="info-child"><h6>*hovered*<h6>` + 
           (props ? 
             `<h5>Positive Cases in ${props.NAME} : ${props.positive ? props.positive : props.cases}</h5>` : 
             "<h5>Hover over a state</h5>") + 
-          `</div>`
+          `</div>`+
+          `<div class="info-child"><h6>*tip*</h6>` + 
+          `<h5>Click a state to view its counties</h5>`
         // this._div.innerHTML = '<h4>Positive results in </h4>' +  (props ?
         //   '<b>' + props.positive + '</b><br />' : 'Hover over a state');
       };
@@ -204,14 +206,14 @@ export default function HeatMap(props) {
       // add reset button
       var customControl =  L.Control.extend({
         options: {
-          position: 'topleft'
+          position: 'topright'
         },
 
         onAdd: function (map) {
           var container = L.DomUtil.create('input');
           container.type="button";
-          container.title="ResetButton";
-          container.value = "Fit to USA";
+          // container.title="ResetButton";
+          container.value = "Fit to USA and reset state view";
 
           container.onclick = () => {
             map.fitBounds(L.geoJson(countyData).getBounds());
@@ -225,19 +227,18 @@ export default function HeatMap(props) {
         }
       });
     storeMap.addControl(new customControl());
-
-    // zoom into current location and show the county view here
     };
   }, [stateData, countyData, containingCounty])
 
   useEffect(() => {
-    if (countyData) {
+    // find intersecting countydata and userlocation
+    if (countyData && userLocation) {
       countyData.features.forEach(county => {
         let location = [userLocation.lng, userLocation.lat];
         d3.geoContains(county, location) && setContainingCounty(county);
       })
     }
-  }, [countyData])
+  }, [countyData, userLocation])
 
   const onClickInstruction = () => {
     setHideInstruction(true);
@@ -251,19 +252,17 @@ export default function HeatMap(props) {
         <h2>Instructions:</h2>
         <p>
           This map will show COVID-19 cases by state and county. 
-          To view county results, please select a state! 
+          <strong> To view county results, please click on a state! </strong>
           The map will then zoom into that state's county's results.
         </p>
         <p>
-          We like to think that the colors here are intuitive: green is good, and red is bad. 
-          These results are split by quartile - state results are measured against states, 
+          We like to think that the colors here are intuitive: green is <strong style={{ color:"#14ff00" }}>good</strong>, and red is <strong style={{ color:"#ff0000" }}>bad</strong>. 
+          These results are split by quartile: state results are measured against states, 
           and county results are measured against counties.
         </p>
         <p>
           You'll also notice a little blue dot. 
           That's where you are (or, at least, our best guess)!
-          We plan to do big things with this map, but for now bear with us. 
-          This is just the start.
         </p>
         <h2 className="start" onClick={ onClickInstruction }>Start now</h2>
       </div>
