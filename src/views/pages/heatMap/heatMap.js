@@ -5,11 +5,14 @@ import HeatmapOverlay from "leaflet-heatmap";
 import * as d3 from "d3";
 
 import "./heatMap.scss";
-import "leaflet/dist/leaflet.css"
+import "leaflet/dist/leaflet.css";
+
+const formatNumber = num => {
+  return num ? num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,') : 0
+}
 
 
 export default function HeatMap(props) {
-  const fakeHeatData = { data: [] };
   const [stateData, setStateData] = useState(null);
   const [countyData, setCountyData] = useState(null);
   const [storeMap, setStoreMap] = useState(null);
@@ -91,6 +94,7 @@ export default function HeatMap(props) {
         },
       }
       const getColor = ({ features, level }) => {
+        if (!features) { features=0 }
         const positives = level==='state' ? 
         (
           stateData.features
@@ -143,10 +147,10 @@ export default function HeatMap(props) {
           // `<h3>COVID-19 Stats ${ props ? `in <br />${props.NAME}` : "" }</h3>` + 
           `<div class="info-child"><h6>*you*</h6>` + 
           `<h5>Your County: ${containingCounty && containingCounty.properties.NAME}</h5>` + 
-          `<h5>Positive Cases in ${containingCounty && containingCounty.properties.NAME}: ${containingCounty && containingCounty.properties.cases}</h5></div>` + 
+          `<h5>Positive Cases in ${containingCounty && containingCounty.properties.NAME}: ${containingCounty && formatNumber(containingCounty.properties.cases)}</h5></div>` + 
           `<div class="info-child"><h6>*hovered*<h6>` + 
           (props ? 
-            `<h5>Positive Cases in ${props.NAME} : ${props.positive ? props.positive : props.cases}</h5>` : 
+            `<h5>Positive Cases in ${props.NAME} : ${props.positive ? formatNumber(props.positive) : formatNumber(props.cases)}</h5>` : 
             "<h5>Hover over a state</h5>") + 
           `</div>`+
           `<div class="info-child"><h6>*tip*</h6>` + 
