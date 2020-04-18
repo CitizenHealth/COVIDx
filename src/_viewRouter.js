@@ -72,7 +72,7 @@ export default function ViewRouter(props) {
           component={ Home }
         />
         <RouteConfig
-          path="/heatmap"
+          path="/map"
           component={ HeatMap }
         />
         <RouteConfig 
