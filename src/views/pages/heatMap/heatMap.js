@@ -74,7 +74,7 @@ export default function HeatMap(props) {
   }, []);
 
   useMemo(() => {
-    if (stateData && countyData && containingCounty) {
+    if (stateData && countyData) {
       // create the color gradients...
       const gradient = {
         low: {
@@ -142,8 +142,8 @@ export default function HeatMap(props) {
         this._div.innerHTML = 
           // `<h3>COVID-19 Stats ${ props ? `in <br />${props.NAME}` : "" }</h3>` + 
           `<div class="info-child"><h6>*you*</h6>` + 
-          `<h5>Your County: ${containingCounty.properties.NAME}</h5>` + 
-          `<h5>Positive Cases in ${containingCounty.properties.NAME}: ${containingCounty.properties.cases}</h5></div>` + 
+          `<h5>Your County: ${containingCounty && containingCounty.properties.NAME}</h5>` + 
+          `<h5>Positive Cases in ${containingCounty && containingCounty.properties.NAME}: ${containingCounty && containingCounty.properties.cases}</h5></div>` + 
           `<div class="info-child"><h6>*hovered*<h6>` + 
           (props ? 
             `<h5>Positive Cases in ${props.NAME} : ${props.positive ? props.positive : props.cases}</h5>` : 
