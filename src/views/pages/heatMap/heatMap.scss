@@ -26,7 +26,7 @@
     .info {
       display:grid;
       grid-gap:1rem;
-      
+
       .info-child {
         background-color: rgba(255,255,255, 0.5);
         border:1px solid black;
@@ -40,10 +40,29 @@
     }
   }
 
+  .loading {
+    position:absolute;
+    margin:auto;
+    // font-size:50px;
+    z-index:2;
+    border: 16px solid rgba(255,255,255,0.5); /* Light grey */
+    border-top: 16px solid #7367f0; /* Blue */
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+  }
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+
   .popup {
     position:absolute;
     bottom:0;
-    z-index:2;
+    z-index:3;
     height:100%;
     width:100%;
     padding:5% 20%;

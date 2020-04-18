@@ -74,6 +74,12 @@ export default function HeatMap(props) {
     fetchStateData();
     fetchCountyData();
     setStoreMap(map);
+
+    const newDiv = document.createElement("div");
+    newDiv.setAttribute("class", "loading")
+    newDiv.setAttribute("id", "loading")
+    document.getElementById("map-wrapper").appendChild(newDiv);
+
   }, []);
 
   useMemo(() => {
@@ -204,6 +210,11 @@ export default function HeatMap(props) {
         style: style, 
         onEachFeature:hoverState
       });
+      gj.once("add", () => {
+        const parentElem = document.getElementById("map-wrapper");
+        const childElem = document.getElementById("loading");
+        parentElem.removeChild(childElem);
+      });
       gj.addTo(storeMap);
       // storeMap.fitBounds(L.geoJson(countyData).getBounds());
 
@@ -249,7 +260,7 @@ export default function HeatMap(props) {
   };
 
   return (
-    <div className="map-wrapper">
+    <div className="map-wrapper" id="map-wrapper">
       <div id={ 'mapId' } />
       <div className={ hideInstruction ? "popup hide" : "popup" } id="instruction-box">
         {/* <div className="exit">x</div> */}
