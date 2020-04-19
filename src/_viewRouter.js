@@ -11,7 +11,9 @@ import Spinner from "./components/@vuexy/spinner/Loading-spinner"
 import { ContextLayout } from "./utility/context/Layout"
 import HeatMap from "./views/pages/heatMap/heatMap";
 import Profile from "./views/pages/profile/Profile"
-import Home from "./views/pages/Home"
+import Home from "./views/pages/Home";
+import { PrivacyPolicy } from "./views/pages/privacyPolicy/privacyPolicy"
+import LocationFinder from "./views/pages/questionnaire/LocationFinder";
 
 // Route-based code splitting
 // const Home = lazy(() =>
@@ -78,6 +80,14 @@ export default function ViewRouter(props) {
         <RouteConfig 
           path="/profile"
           component={ Profile }
+        />
+        <RouteConfig 
+          path="/health-report"
+          component={ LocationFinder }
+        />
+        <Route 
+          path="/privacy-policy"
+          component={ PrivacyPolicy } 
         />
       </Switch>
     </Router>

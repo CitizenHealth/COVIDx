@@ -17,7 +17,7 @@ const horizontalMenuConfig = [
     icon: <Icon.File size={20} />,
     permissions: ["admin", "editor"],
     navLink: "/page2",
-  }  
+  } 
 ]
 
 export default horizontalMenuConfig

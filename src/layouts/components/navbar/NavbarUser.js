@@ -19,7 +19,7 @@ import { history } from "../../../history"
 import { setAuth } from "redux/actions/auth/authAction";
 import { connect } from "react-redux";
 
-import { auth, googleProvider, facebookProvider } from "views/pages/authentication/auth";
+import { auth, googleProvider, facebookProvider } from "authentication/auth";
 
 const UserDropdown = props => {
   return (
