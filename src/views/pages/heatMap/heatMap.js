@@ -211,7 +211,7 @@ export default function HeatMap(props) {
       gj.once("add", () => {
         const parentElem = document.getElementById("map-wrapper");
         const childElem = document.getElementById("loading");
-        childElem && parentElem.removeChild(childElem);
+        parentElem.removeChild(childElem);
       });
       gj.addTo(storeMap);
       // storeMap.fitBounds(L.geoJson(countyData).getBounds());
@@ -241,7 +241,7 @@ export default function HeatMap(props) {
       });
     storeMap.addControl(new customControl());
     };
-  }, [stateData, countyData, containingCounty])
+  }, [stateData, countyData])
 
   useEffect(() => {
     // find intersecting countydata and userlocation
