@@ -89,7 +89,10 @@
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
-    "eject": "react-app-rewired eject"
+    "eject": "react-app-rewired eject",
+    "deploy": "react-app-rewired build && firebase deploy",
+    "deploy-prod": "react-app-rewired build && firebase deploy --only hosting:prod",
+    "deploy-dev": "react-app-rewired build && firebase deploy --only hosting:dev"
   },
   "eslintConfig": {
     "extends": "react-app"
