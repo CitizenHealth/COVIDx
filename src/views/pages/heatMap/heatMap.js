@@ -1,7 +1,5 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import L from "leaflet";
-import HeatmapOverlay from "leaflet-heatmap";
-
 import * as d3 from "d3";
 
 import "./heatMap.scss";
