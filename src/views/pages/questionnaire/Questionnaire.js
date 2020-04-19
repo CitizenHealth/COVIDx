@@ -102,7 +102,7 @@ const FeelingWellWizard = props => {
       />
     },
     {
-      title: 4, content: <WizardStep
+      title: 3, content: <WizardStep
         component={MedicalHistoryPage}
         onPrev={() => setActiveStep(activeStep - 1)}
         onNext={props.onSubmit}
