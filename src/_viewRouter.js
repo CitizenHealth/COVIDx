@@ -11,12 +11,16 @@ import Spinner from "./components/@vuexy/spinner/Loading-spinner"
 import { ContextLayout } from "./utility/context/Layout"
 import HeatMap from "./views/pages/heatMap/heatMap";
 import Profile from "./views/pages/profile/Profile"
+import Home from "./views/pages/Home";
+import { PrivacyPolicy } from "./views/pages/privacyPolicy/privacyPolicy"
+import LocationFinder from "./views/pages/questionnaire/LocationFinder";
 
 // Route-based code splitting
 // const Home = lazy(() =>
 //   import("./views/pages/Home")
 // );
 // 
+
 
 const RouteConfig = ({
   component: Component,
@@ -63,16 +67,29 @@ export default function ViewRouter(props) {
 
   return (
     <Router history={history}>
-      <Redirect from="/" to="/heatmap" />
+      {/* <Redirect from="/" to="/profile" /> */}
       <Switch>
         <RouteConfig
-          path="/heatmap"
+          exact
+          path="/"
+          component={ Home }
+        />
+        <RouteConfig
+          path="/map"
           component={ HeatMap }
         />
-        {/* <RouteConfig  */}
-          {/* path="/profile" */}
-          {/* component={ Profile } */}
-        {/* /> */}
+        <RouteConfig 
+          path="/profile"
+          component={ Profile }
+        />
+        <RouteConfig 
+          path="/health-report"
+          component={ LocationFinder }
+        />
+        <Route 
+          path="/privacy-policy"
+          component={ PrivacyPolicy } 
+        />
       </Switch>
     </Router>
   )

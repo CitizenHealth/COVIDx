@@ -200,10 +200,10 @@ updateScroll = () => {
           <div className="content-wrapper">{this.props.children}</div>
         </div>
 
-        <Footer
-          footerType={customizerProps.footerType}
-          hideScrollToTop={customizerProps.hideScrollToTop}
-        />
+        {/* <Footer */}
+        {/*   footerType={customizerProps.footerType} */}
+        {/*   hideScrollToTop={customizerProps.hideScrollToTop} */}
+        {/* /> */}
         {customizerProps.disableCustomizer !== true ? (
           <Customizer
             scrollToTop={customizerProps.hideScrollToTop}

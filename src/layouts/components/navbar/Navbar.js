@@ -8,24 +8,7 @@ import userImg from "../../../assets/img/portrait/small/avatar-s-11.jpg"
 
 const ThemeNavbar = props => {
   const colorsArr = [ "primary", "danger", "success", "info", "warning", "dark"]
-  const navbarTypes = ["floating" , "static" , "sticky" , "hidden"]
-
-  // const linkShare = () => {
-  //   let newLink
-  //   fetch("https://firebasedynamiclinks.googleapis.com/v1/shortLinks?key=AIzaSyB5Pi7YveAC7biXFWZXjxU_z6aI1LLi-eY", {
-  //     method:"POST",
-  //     headers: {
-  //       "Accept": "application/json",
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify({
-  //       longDynamicLink: "https://covidx.page.link/?link=http://covidx.app"
-  //     })
-  //   })
-  //     .then(res => res.json())
-  //     .then(json => newLink = json)
-  //     .then(() => console.log(newLink));
-  // };
+  const navbarTypes = ["floating" , "static" , "sticky" , "hidden"]  
 
   return (
     <React.Fragment>
@@ -67,10 +50,10 @@ const ThemeNavbar = props => {
               id="navbar-mobile"
             >
               <div className="bookmark-wrapper">
-                <NavbarBookmarks
-                  sidebarVisibility={props.sidebarVisibility}
-                  handleAppOverlay={props.handleAppOverlay}
-                />
+                {/* <NavbarBookmarks */}
+                {/*   sidebarVisibility={props.sidebarVisibility} */}
+                {/*   handleAppOverlay={props.handleAppOverlay} */}
+                {/* /> */}
               </div>
               {props.horizontal ? (
                 <div className="logo d-flex align-items-center">

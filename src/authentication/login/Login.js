@@ -30,43 +30,6 @@ export default connect(mapStateToProps, { setAuth })(Login);
 
 export function Login(props) {
   const [userData, setUserData] = useState(null);
-  // const [email, setEmail] = useState(null);
-  // const [password, setPassword] = useState(null);
-
-
-  // const signInWithEmail = () => {
-  //   auth.signInWithEmailAndPassword(email, password)
-  //     .catch(e => console.log(e));
-  // };
-
-  // const createAccountWithEmail = () => {
-  //   auth.createUserWithEmailAndPassword(email, password)
-  //     .catch()
-  // };
-  // const postUserData = async (userDataRes) => {
-  //   const postPayload = {
-  //     method: "POST",
-  //     headers: { 
-  //       'Accept': 'application/json', 
-  //       'Content-Type': 'application/json' 
-  //     },
-  //     body: JSON.stringify({ 
-  //       user_id:userDataRes.user.uid, 
-  //       display_name:userDataRes.user.displayName, 
-  //       email:userDataRes.user.email
-  //     })
-  //   };
-  //   // http://covidx-dev.eba-mayqvyww.us-west-2.elasticbeanstalk.com
-  //   await fetch(`http://127.0.0.1:5000/create_user`, postPayload)
-  //     .then(res => {
-  //       console.log(`USER CREATED @ ${userData.user_id}`)
-  //       console.log(res.json())
-  //       return res.json()
-  //       // localStorage.setItem('token', userData.accessToken)
-  //     })
-  //     .then(json => props.setAuth({type: "LOGIN", json}))
-  //     .catch(e => `fetching failed ${e}`);
-  // };
 
   const fetchUserData = async (userDataRes) => {
     const getPayload = {
@@ -89,12 +52,12 @@ export function Login(props) {
       })
     };
 
-    await fetch(`https://covidx-dev.eba-mayqvyww.us-west-2.elasticbeanstalk.com/login_user?user_id=${userDataRes.user.uid}`, getPayload)
+    await fetch(`https://www.covidx.app/login_user?user_id=${userDataRes.user.uid}`, getPayload)
       .then(res => res.json())
       .then(res => 
         res.ok ? 
         res : 
-        fetch(`https://covidx-dev.eba-mayqvyww.us-west-2.elasticbeanstalk.com/create_user`, postPayload).then(res => res.json())
+        fetch(`https://www.covidx.app/create_user`, postPayload).then(res => res.json())
       )
       .then(json => {props.setAuth({type: "LOGIN", json})})
       .catch(e => console.log(e));

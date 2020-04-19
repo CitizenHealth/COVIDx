@@ -19,18 +19,24 @@ const navigationConfig = [
   },
   {
     id: "map",
-    title: "Heat Map",
+    title: "Map",
     type: "item",
     // permissions: [] // TODO: what are the options here?
-    navLink: "/heatmap"
+    navLink: "/map"
   },
   {
-    id: "profile",
-    title: "My Profile",
-    type: "item",
-    // permissions: [] // TODO: what are the options here?
-    navLink: "/profile"
+    id:"questionnaire",
+    title:"Health Report",
+    type:"item",
+    navLink:"/health-report"
   }
+  // {
+  //   id: "profile",
+  //   title: "My Profile",
+  //   type: "item",
+  //   // permissions: [] // TODO: what are the options here?
+  //   navLink: "/profile"
+  // }
 ]
 
 export default navigationConfig
