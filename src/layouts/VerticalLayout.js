@@ -274,7 +274,7 @@ class VerticalLayout extends PureComponent {
           <div className="content-wrapper">{this.props.children}</div>
         </div>
 
-        <Footer {...footerProps} />
+        {/* <Footer {...footerProps} /> */}
         {appProps.disableCustomizer !== true ? (
           <Customizer {...customizerProps} />
         ) : null}

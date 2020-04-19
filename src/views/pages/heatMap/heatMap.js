@@ -208,7 +208,7 @@ export default function HeatMap(props) {
 
       let gj = L.geoJson(stateData, {
         style: style, 
-        onEachFeature:hoverState
+        onEachFeature: hoverState,
       });
       gj.once("add", () => {
         const parentElem = document.getElementById("map-wrapper");
