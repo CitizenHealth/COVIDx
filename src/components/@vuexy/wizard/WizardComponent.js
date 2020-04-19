@@ -14,7 +14,7 @@ import { AvForm } from "availity-reactstrap-validation"
 
 class VuexyWizard extends React.Component {
   static getDerivedStateFromProps(props, state) {
-    if (props.activeStep) {
+    if (props.activeStep !== null) {  // Changed from: if (props.activeStep) {
       if (props.activeStep !== state.activeStep) {
         if (props.validate) {
           if (state.errors.length === 0 && state.submitted)

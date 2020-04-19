@@ -1,177 +1,122 @@
-import React from 'react';
-import { Button, Form, FormGroup, Label, Input, CustomInput, Card, CardBody, CardText } from 'reactstrap';
+import React, { useState } from 'react';
+import { Container, Row, Col, Button } from "reactstrap";
+import { temp_guess_names_and_labels, symptom_names_and_labels } from './QuestionSpecs';
+import { RadioGroup, CheckBoxGroup } from './Components';
+import { Field } from 'formik';
+import Slider from 'rc-slider';
+import "rc-slider/assets/index.css"
+import "../../../assets/scss/plugins/extensions/slider.scss"
 
-class HeaderCard extends React.Component {
-  render() {
-    return <Card>
-      <CardBody>
-        <CardText>
-          Oh no! Let's figure out if you might have COVID-19 based on some simple questions.
-        </CardText>
-      </CardBody>
-    </Card>
-  }
+const c_to_f = degrees_c => {
+  return degrees_c * 9 / 5 + 32;
 }
 
-class TemperatrueCard extends React.Component {
-  constructor(props) {
-    super(props);
-    this.props.handler({
-      thermometer_temp: null
-    })
-  }
-  render() {
-    return <Card>
-      <CardBody>
-        <Form>
-          <FormGroup>
-            <legend >If you have a thermometer, what's your temperature?</legend>
-            <Input plaintext value="89% of all people testing positive for COVID-19 have a fever" />
-          </FormGroup>
-        </Form>
-        <Input type="number" placeholder="Enter temperature..." step={0.1}
-          onChange={e => this.props.handler({ thermometer_temp: e.target.value })} />
-      </CardBody>
-    </Card>
-  }
+const slider_pos_to_C = pos => {
+  let along = pos / 100;
+  return 34 + (42 - 34) * along;
 }
 
-class BestGuessCard extends React.Component {
-  constructor(props) {
-    super(props);
-    this.props.handler({
-      temp_guess: null
-    })
-  }
-  handleFeverGuess = e => {
-    this.props.handler({ temp_guess: e.target.value });
-  }
-  render() {
-    return <Card>
-      <CardBody>
-        <Form>
-          <FormGroup>
-            <legend >If you don't have a thermometer, what's your best guess?</legend>
-            <FormGroup check>
-              <Label check>
-                <Input type="radio"
-                  name="radio1"
-                  value={'no_fever'}
-                  onChange={e => this.handleFeverGuess(e)} /> {' '}
-              No Fever
-            </Label>
-            </FormGroup>
-            <FormGroup check>
-              <Label check>
-                <Input type="radio" name="radio1" value={'maybe_feverish'}
-                  onChange={e => this.handleFeverGuess(e)} /> {' '}
-              Maybe feverish
-            </Label>
-            </FormGroup>
-            <FormGroup check>
-              <Label check>
-                <Input type="radio" name="radio1" value={'definitely_fever'}
-                  onChange={e => this.handleFeverGuess(e)} /> {' '}
-              Definitely a fever
-            </Label>
-            </FormGroup>
-            <FormGroup check>
-              <Label check>
-                <Input type="radio" name="radio1" value={'worst_fever'}
-                  onChange={e => this.handleFeverGuess(e)} /> {' '}
-              Worst fever ever
-            </Label>
-            </FormGroup>
-          </FormGroup>
-        </Form>
-      </CardBody>
-    </Card>
-  }
+const temp_marks_C = {};
+const temp_marks_F = {};
+
+for (const [idx, el] of [...Array(9).keys()].map(x => x + 34).entries()) {
+
+  temp_marks_C[idx * 100 / 8] = el.toString() + "°C";
+  temp_marks_F[idx * 100 / 8] = c_to_f(el).toString() + "°F";
+
 }
 
-class SymptomsCard extends React.Component {
-  constructor(props) {
-    super(props);
-    this.selected = [];
-  }
-  handleSymptomsSelection = e => {
-    debugger;
-    if (e.target.checked) {
-      this.selected.push(e.target.value);
-    }
-    else {
-      this.selected = this.selected.filter(x => x !== e.target.value);
-    }
-    this.props.handler({ symptom_list: this.selected })
-  }
+const THERM_DEFAULT = 30;
 
-  handlePrevClick = () => {
-    this.props.handler({ activeStep: 0 })
-  }
+const HasThermometerInput = props => {
+  const [sliderValue, setSliderValue] = useState(30);
+  const [tempInC, setTempInC] = useState(true);
+  return (
+    <Container >
+      <Row>
+        <h4 style={{ marginBottom: 30 }}>{"What's your temperature?"}</h4>
+      </Row>
+      <Row style={{ marginBottom: 30 }}>
+        <Col calssName="justify-content-center">
+          {tempInC ? slider_pos_to_C(sliderValue).toFixed(2).toString() + "°C" :
+            c_to_f(slider_pos_to_C(sliderValue)).toFixed(2).toString() + "°F"}
+        </Col>
+        <Col xs={8}>
+          <Slider defaultValue={THERM_DEFAULT}
+            marks={tempInC ? temp_marks_C : temp_marks_F}
+            onChange={(value) => { props.form.setFieldValue(props.field.name, slider_pos_to_C(value)); setSliderValue(value) }} />
+        </Col >
+        <Col calssName="justify-content-center">
+          <Button color="primary" onClick={() => setTempInC(!tempInC)}>{tempInC ? "°F" : "°C"}</Button>
+        </Col>
+      </Row>
+      <Row><Button color={"primary"}
+        onClick={() => {
+          props.form.setFieldValue("has_thermometer", false);
+          props.setHasThermometer(false);
+          if (props.form.values.temp_guess === null) {
+            props.setNextDisabled(true);
+          }
+        }}>
+        I don't have a thermometer</Button></Row>
+    </Container>
+  )
+}
 
-  handleNextClick = () => {
-    this.props.handler({ activeStep: 4 })
+const NoThermometerInput = props => {
+  var names_and_labels = [...temp_guess_names_and_labels];
+  for (var nl of names_and_labels) {
+    nl["onChange"] = () => { props.setNextDisabled(false); }
   }
+  return (
+    <Container >
+      <Row >
+        <h4 style={{ marginBottom: 30 }}>How feverish do you feel?</h4>
+      </Row>
+      <Row style={{ marginBottom: 30 }}>
+        <RadioGroup
+          names_and_labels={temp_guess_names_and_labels}
+          form={props.form}
+          field={props.field}
+        />
+      </Row>
+      <Row>
+        <Button color={"primary"}
+          onClick={() => {
+            props.form.setFieldValue("has_thermometer", true);
+            props.setHasThermometer(true);
 
-  render() {
-    return (
-      <Card>
-        <CardBody>
-          <Form>
-            <FormGroup>
-              <legend>Are you feeling any of these symptoms?</legend>
-              <div>
-                <CustomInput type="checkbox" id="exampleCustomCheckbox" label="Dry cough" value={'dry_cough'}
-                  onChange={(e) => this.handleSymptomsSelection(e)} />
-                <CustomInput type="checkbox" id="exampleCustomCheckbox2" label="Loss of taste and/or smell"
-                  value={'no_smell_taste'}
-                  onChange={(e) => this.handleSymptomsSelection(e)} />
-                <CustomInput type="checkbox" id="exampleCustomCheckbox3" label="Extreme fatigue" value={'extreme_fatigue'}
-                  onChange={(e) => this.handleSymptomsSelection(e)} />
-                <CustomInput type="checkbox" id="exampleCustomCheckbox4" label="Wet cough" value={'wet_cough'}
-                  onChange={(e) => this.handleSymptomsSelection(e)} />
-                <CustomInput type="checkbox" id="exampleCustomCheckbox5" label="Shortness of breath" value={'dry_cough'}
-                  onChange={(e) => this.handleSymptomsSelection(e)} />
-                <CustomInput type="checkbox" id="exampleCustomCheckbox6" label="Abdominal pain" value={'abdominal_pain'}
-                  onChange={(e) => this.handleSymptomsSelection(e)} />
-                <CustomInput type="checkbox" id="exampleCustomCheckbox7" label="Diarrhea" value={'diarrhea'}
-                  onChange={(e) => this.handleSymptomsSelection(e)} />
-                <CustomInput type="checkbox" id="exampleCustomCheckbox8" label="Sore throat" value={'sore_throat'}
-                  onChange={(e) => this.handleSymptomsSelection(e)} />
-                <CustomInput type="checkbox" id="exampleCustomCheckbox9" label="Chills" value={'chills'}
-                  onChange={(e) => this.handleSymptomsSelection(e)} />
-                <CustomInput type="checkbox" id="exampleCustomCheckbox10" label="Nausea and/or vomiting" value={'nausea_vomiting'}
-                  onChange={(e) => this.handleSymptomsSelection(e)} />
-                <CustomInput type="checkbox" id="exampleCustomCheckbox11" label="Pressure feeling in chest" value={'pressure_chest'}
-                  onChange={(e) => this.handleSymptomsSelection(e)} />
-                <CustomInput type="checkbox" id="exampleCustomCheckbox12" label="Pink eye" value={'pink_eye'}
-                  onChange={(e) => this.handleSymptomsSelection(e)} />
-                <CustomInput type="checkbox" id="exampleCustomCheckbox13" label="Other" value={'other'}
-                  onChange={(e) => this.handleSymptomsSelection(e)} />
-              </div>
-            </FormGroup>
-          </Form>
-          <Button onClick={this.handlePrevClick}>Prev</Button>
-          <Button onClick={this.handleNextClick}>Next</Button>
-        </CardBody>
-      </Card>
-    )
-  }
+          }}>I have a thermometer</Button></Row>
+    </Container>
+  )
 }
 
 
-class NotWell extends React.Component {
-
-  render() {
-    return (
-      <div>
-        <HeaderCard handler={this.props.handler} />
-        <TemperatrueCard handler={this.props.handler} />
-        <BestGuessCard handler={this.props.handler} />
-        <SymptomsCard handler={this.props.handler} />
-      </div>
-    )
+const NotWellPage = props => {
+  const [hasThermometer, setHasThermometer] = useState(true);
+  if (props.nextDisabled && (props.form.values.temp_guess != null)) {
+    props.setNextDisabled(false);
   }
+  return (
+    <div style={{ marginBottom: 40 }}>
+      {hasThermometer ? <Field
+        component={HasThermometerInput}
+        type="range"
+        name="therm_temp"
+        setHasThermometer={setHasThermometer}
+        setNextDisabled={props.setNextDisabled}
+      /> :
+        <Field
+          component={NoThermometerInput}
+          type="radio"
+          name="temp_guess"
+          setHasThermometer={setHasThermometer}
+          setNextDisabled={props.setNextDisabled}
+        />}
+      <h4 style={{ marginTop: 40 }}>Are you feeling any of these symptoms?</h4>
+      <CheckBoxGroup values={props.values} names_and_labels={symptom_names_and_labels} />
+    </div >
+  )
 }
 
-export default NotWell;
+export { NotWellPage, slider_pos_to_C, THERM_DEFAULT };
