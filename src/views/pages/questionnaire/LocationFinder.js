@@ -8,12 +8,12 @@ import "./questionnaire.scss"
 export default function LocationFinder() {
   const [stateData, setStateData] = useState(null);
   const [countyData, setCountyData] = useState(null);
-  const [userLocation, setUserLocation] = useState(null);
+  const [userLocation, setUserLocation] = useState(null); // this should hold coords
   const [containingCounty, setContainingCounty] = useState(null);
   const [countyNames, setCountyNames] = useState(null);
   const [searchInput, setSearchInput] = useState(null);
   const [searchOutput, setSearchOutput] = useState(null);
-  const [selectedCounty, setSelectedCounty] = useState(null); // this is the value we want... will also need to get coords
+  const [selectedCounty, setSelectedCounty] = useState(null); // this is the value we want... will also need to get coords if available
 
   const success = position => {
     const latitude = position.coords.latitude;

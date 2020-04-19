@@ -211,7 +211,7 @@ export default function HeatMap(props) {
       gj.once("add", () => {
         const parentElem = document.getElementById("map-wrapper");
         const childElem = document.getElementById("loading");
-        parentElem.removeChild(childElem);
+        childElem && parentElem.removeChild(childElem);
       });
       gj.addTo(storeMap);
       // storeMap.fitBounds(L.geoJson(countyData).getBounds());
