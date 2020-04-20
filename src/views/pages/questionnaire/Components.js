@@ -119,6 +119,7 @@ const InputField = props => {
       list="search-suggest"
       value={ searchInput }
       onChange={ e => setSearchInput(e.target.value) }
+      readonly={ searchInput ? false : "readonly" }
     />
     <datalist id="search-suggest">
     {
