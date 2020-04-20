@@ -335,12 +335,8 @@
             .nav-item {
               &.active {
                 a {
-                  background: linear-gradient(
-                    118deg,
-                    rgba($color_value, 1),
-                    rgba($color_value, 0.7)
-                  );
-                  box-shadow: 0 0 10px 1px rgba($color_value, 0.7) !important;
+                  background: #E6E9FF !important;
+                  // box-shadow: 0 0 10px 1px rgba($color_value, 0.7) !important;
                 }
               }
               .menu-content {

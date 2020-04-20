@@ -81,7 +81,7 @@ export default function HeatMap(props) {
   }, []);
 
   useMemo(() => {
-    if (stateData && countyData) {
+    if (stateData && countyData && containingCounty) {
       // create the color gradients...
       const gradient = {
         low: {
@@ -145,6 +145,7 @@ export default function HeatMap(props) {
         return this._div;
       };
 
+      // console.log(containingCounty)
       // method that we will use to update the control based on feature properties passed
       info.update = function(props) {
         this._div.innerHTML = 
@@ -241,17 +242,21 @@ export default function HeatMap(props) {
       });
     storeMap.addControl(new customControl());
     };
-  }, [stateData, countyData])
+  }, [stateData, countyData, containingCounty])
 
   useEffect(() => {
     // find intersecting countydata and userlocation
     if (countyData && userLocation) {
       countyData.features.forEach(county => {
         let location = [userLocation.lng, userLocation.lat];
+        // console.log(location)
         d3.geoContains(county, location) && setContainingCounty(county);
       })
     }
   }, [countyData, userLocation])
+
+  // console.log(containingCounty)
+
 
   const onClickInstruction = () => {
     setHideInstruction(true);

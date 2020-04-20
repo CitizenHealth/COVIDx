@@ -5,29 +5,29 @@ import { Field } from 'formik';
 import { household_tested_names_and_labels, self_tested_names_and_labels } from './QuestionSpecs';
 
 const TestedSection = props => {
-    const [testTaken, setTestTaken] = useState(null);
-    let names_and_labels = [...props.names_and_labels];
-    names_and_labels[0]["onChange"] = () => { setTestTaken(false); };
-    for (let i of [1, 2, 3]) {
-        names_and_labels[i]["onChange"] = () => setTestTaken(true);
-    }
-    return (
+  const [testTaken, setTestTaken] = useState(null);
+  let names_and_labels = [...props.names_and_labels];
+  names_and_labels[0]["onChange"] = () => { setTestTaken(false); };
+  for (let i of [1, 2, 3]) {
+    names_and_labels[i]["onChange"] = () => setTestTaken(true);
+  }
+  return (
+    <div>
+      <RadioGroup names_and_labels={names_and_labels} form={props.form} field={props.field} />
+      {testTaken &&
         <div>
-            <RadioGroup names_and_labels={names_and_labels} form={props.form} field={props.field} />
-            {testTaken &&
-                <div>
-                    <Label>Date of test:</Label>
-                    <Input
-                        type="date"
-                        name="date"
-                        color="primary"
-                        onChange={
-                            e => props.form.setFieldValue(
-                                props.field.name + "_date", e.target.value)}
-                        value={props.form.values[props.field.name + "_date"]} />
-                </div>}
-        </div>
-    )
+          <Label>Date of test:</Label>
+          <Input
+            type="date"
+            name="date"
+            color="primary"
+            onChange={
+              e => props.form.setFieldValue(
+                props.field.name + "_date", e.target.value)}
+            value={props.form.values[props.field.name + "_date"]} />
+        </div>}
+    </div>
+  )
 }
 
 const validateTestedPage = values => {
@@ -98,23 +98,23 @@ const validateHouseholdTestedPage = values => {
 }
 
 const HouseholdTestedPage = props => {
-    if (validateHouseholdTestedPage(props.values)) {
-        props.setNextDisabled(false);
-    }
-    else {
-        props.setNextDisabled(true);
-    }
-    return (<Container style={{ marginBottom: 40 }}>
-        <Row>
-            <h4>Has anyone in your household been tested for COVID-19?</h4>
-        </Row>
-        <Row>
-            <Field
-                component={TestedSection}
-                names_and_labels={household_tested_names_and_labels}
-                name="household_tested" />
-        </Row>
-    </Container>)
+  if (validateHouseholdTestedPage(props.values)) {
+    props.setNextDisabled(false);
+  }
+  else {
+    props.setNextDisabled(true);
+  }
+  return (<Container style={{ marginBottom: 40 }}>
+    <Row>
+      <h4>Has anyone in your household been tested for COVID-19?</h4>
+    </Row>
+    <Row>
+      <Field
+        component={TestedSection}
+        names_and_labels={household_tested_names_and_labels}
+        name="household_tested" />
+    </Row>
+  </Container>)
 
 }
 

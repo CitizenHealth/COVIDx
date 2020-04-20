@@ -22,8 +22,9 @@ import { connect } from "react-redux";
 import { auth, googleProvider, facebookProvider } from "authentication/auth";
 
 const UserDropdown = props => {
-  return (
-    <DropdownMenu right style={{ width:"min-content" }}>
+  console.log(props)
+  const loggedOut = 
+    (<DropdownMenu right style={{ width:"min-content" }}>
       <DropdownItem tag="a" onClick = { () => props.signInWith(facebookProvider) }>
         <Icon.Facebook size={14} className="mr-50" />
         <span className="align-middle">Facebook</span>
@@ -32,14 +33,27 @@ const UserDropdown = props => {
         <img src={ googleSvg } className="mr-50" style={{ height:"1rem", fill:"black !important" }}/>
         <span className="align-middle">Google</span>
       </DropdownItem>
-    </DropdownMenu>
+    </DropdownMenu>)
+
+  const loggedIn = 
+    (<DropdownMenu right style={{ width:"min-content" }}>
+      <DropdownItem 
+        tag="a" 
+        href=""
+        onClick = { () => localStorage.clear() }
+      >
+        <span className="align-middle">Log Out</span>
+      </DropdownItem>
+    </DropdownMenu>)
+
+  return (
+    localStorage.getItem("user_info") ? loggedIn : loggedOut
   )
 }
 
 const mapStateToProps = state => ({ auth: state.auth });
 export default connect(mapStateToProps, { setAuth })(NavbarUser);
 export function NavbarUser(props) {
-
   const [userData, setUserData] = useState(null);
 
   const fetchUserData = async (userDataRes) => {
@@ -49,18 +63,22 @@ export function NavbarUser(props) {
         'Accept': 'application/json'
       }
     };
+
+    const user_obj = {
+      user_id:userDataRes.user.uid, 
+      display_name:userDataRes.user.displayName, 
+      email:userDataRes.user.email,
+      img_link:userDataRes.additionalUserInfo.profile.picture,
+      token: userDataRes.credential.accessToken,
+    };
+
     const postPayload = {
       method: "POST",
       headers: { 
         'Accept': 'application/json', 
         'Content-Type': 'application/json' 
       },
-      body: JSON.stringify({ 
-        user_id:userDataRes.user.uid, 
-        display_name:userDataRes.user.displayName, 
-        email:userDataRes.user.email,
-        img_link:userDataRes.additionalUserInfo.profile.picture,
-      })
+      body: JSON.stringify(user_obj),
     };
 
     await fetch(`https://www.covidx.app/login_user?user_id=${userDataRes.user.uid}`, getPayload)
@@ -71,10 +89,12 @@ export function NavbarUser(props) {
         fetch(`https://www.covidx.app/create_user`, postPayload)
           .then(res => res.json())
       )
-      .then(json => {props.setAuth({type: "LOGIN", json})})
+      .then(json => {
+        props.setAuth({type: "LOGIN", json})
+      })
       .catch(e => console.log(e));
 
-    localStorage.setItem('token', userDataRes.credential.accessToken);
+    localStorage.setItem('user_info', JSON.stringify(user_obj));
   };
 
   const signInWith = provider => {
@@ -95,7 +115,7 @@ export function NavbarUser(props) {
     })
   };
 
-
+  const checkLocal = JSON.parse(localStorage.getItem("user_info"));
 
   return (
     <ul className="nav navbar-nav navbar-nav-user float-right">
@@ -103,22 +123,35 @@ export function NavbarUser(props) {
         <DropdownToggle tag="a" className="nav-link dropdown-user-link">
           <div className="user-nav d-sm-flex d-none">
             <span className="user-name text-bold-600">
-              { props.auth.login ? userData.display_name : "Log In" }
+              { 
+                checkLocal ? 
+                checkLocal.display_name : 
+                props.auth.login ? 
+                userData.display_name : 
+                "Log In" 
+              }
             </span>
           </div>
           <span data-tour="user">
             {
-              !props.auth.login ? 
-                <Icon.User /> :
-                <img
-                  src={ userData.img_link }
-                  className="round"
-                  height="40"
-                  width="40"
-                  alt="avatar"
-                />
+              checkLocal ? 
+              <img
+                src={ checkLocal.img_link }
+                className="round"
+                height="40"
+                width="40"
+                alt="avatar"
+              /> : 
+              props.auth.login ? 
+              <img
+                src={ userData.img_link }
+                className="round"
+                height="40"
+                width="40"
+                alt="avatar"
+              /> : 
+              <Icon.User /> 
             }
-
           </span>
         </DropdownToggle>
         <UserDropdown {...props} signInWith={ signInWith } />

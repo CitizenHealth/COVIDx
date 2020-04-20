@@ -33,7 +33,7 @@ import {
 
 // const mapStateToProps = state => ({ auth: state.auth });
 export default function App(props) {
-  const token = localStorage.getItem('token');
+  // const token = localStorage.getItem('token');
   return (
     <>
     <ViewRouter />

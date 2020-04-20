@@ -194,17 +194,17 @@ class Sidebar extends Component {
                     <ul className="navigation navigation-main">
                       <SideMenuContent
                         setActiveIndex={this.changeActiveIndex}
-                        activeIndex={activeIndex}
-                        hoverIndex={hoveredMenuItem}
+                        // activeIndex={activeIndex}
+                        // hoverIndex={hoveredMenuItem}
                         handleSidebarMouseEnter={this.handleSidebarMouseEnter}
                         activeItemState={activeItem}
                         handleActiveItem={this.handleActiveItem}
-                        activePath={activePath}
+                        // activePath={activePath}
                         lang={currentLang}
                         permission={permission}
-                        currentUser={currentUser}
-                        collapsedMenuPaths={collapsedMenuPaths}
-                        toggleMenu={sidebarVisibility}
+                        // currentUser={currentUser}
+                        // collapsedMenuPaths={collapsedMenuPaths}
+                        // toggleMenu={sidebarVisibility}
                         deviceWidth={this.props.deviceWidth}
                       />
                     </ul>

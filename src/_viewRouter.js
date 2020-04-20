@@ -13,13 +13,8 @@ import HeatMap from "./views/pages/heatMap/heatMap";
 import Profile from "./views/pages/profile/Profile"
 import Home from "./views/pages/Home";
 import { PrivacyPolicy } from "./views/pages/privacyPolicy/privacyPolicy"
-import LocationFinder from "./views/pages/questionnaire/LocationFinder";
+import Questionnaire from "./views/pages/questionnaire/Questionnaire"
 
-// Route-based code splitting
-// const Home = lazy(() =>
-//   import("./views/pages/Home")
-// );
-// 
 
 
 const RouteConfig = ({
@@ -54,26 +49,19 @@ const RouteConfig = ({
     }}
   />
 )
-// const mapStateToProps = state => {
-//   return {
-//     user: state.auth.login.userRole
-//   }
-// }
-
-// const AppRoute = connect(mapStateToProps)(RouteConfig);
 
 
 export default function ViewRouter(props) {
 
   return (
     <Router history={history}>
-      {/* <Redirect from="/" to="/profile" /> */}
+      <Redirect from="/" to="/map" />
       <Switch>
-        <RouteConfig
-          exact
-          path="/"
-          component={ Home }
-        />
+        {/* <RouteConfig */}
+        {/*   exact */}
+        {/*   path="/" */}
+        {/*   component={ Home } */}
+        {/* /> */}
         <RouteConfig
           path="/map"
           component={ HeatMap }
@@ -84,7 +72,7 @@ export default function ViewRouter(props) {
         />
         <RouteConfig 
           path="/health-report"
-          component={ LocationFinder }
+          component={ Questionnaire }
         />
         <Route 
           path="/privacy-policy"

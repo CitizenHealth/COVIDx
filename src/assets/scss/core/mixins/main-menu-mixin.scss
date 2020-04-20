@@ -119,6 +119,7 @@
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
+        color:#2C2C2C;
         &:last-child {
           width: 180px;
         }
@@ -140,7 +141,7 @@
           color: lighten($theme-color, 30%);
         }
         .badge {
-          box-shadow: 0 0 7px 3px rgba(0, 0, 0, 0.1);
+          // box-shadow: 0 0 7px 3px rgba(0, 0, 0, 0.1);
         }
       }
       &.hover {
@@ -261,7 +262,7 @@
             rgba($primary, 1),
             rgba($primary, 0.7)
           );
-          box-shadow: 0 0 10px 1px rgba($primary, 0.7);
+          // box-shadow: 0 0 10px 1px rgba($primary, 0.7);
           border-radius: 4px;
           > a {
             color: $white;
@@ -373,7 +374,7 @@
       left: $menu-collapsed-width;
       width: $menu-expanded-width;
       transition: visibility 0.25s, opacity 0.25s;
-      box-shadow: 1px 0px 2px rgba(0, 0, 0, 0.1);
+      // box-shadow: 1px 0px 2px rgba(0, 0, 0, 0.1);
       border-bottom: 2px solid rgba(0, 0, 0, 0.2);
       border-left: 1px solid rgba(0, 0, 0, 0.02);
 
