@@ -18,18 +18,18 @@ import Autocomplete from "../../../components/@vuexy/autoComplete/AutoCompleteCo
 import { history } from "../../../history"
 import { setAuth } from "redux/actions/auth/authAction";
 import { connect } from "react-redux";
+import { fetchUserData, checkToken } from "authentication/login/Login"
 
 import { auth, googleProvider, facebookProvider } from "authentication/auth";
 
-const UserDropdown = props => {
-  console.log(props)
+const UserDropdown = ({ userData, signInWith }) => {
   const loggedOut = 
     (<DropdownMenu right style={{ width:"min-content" }}>
-      <DropdownItem tag="a" onClick = { () => props.signInWith(facebookProvider) }>
+      <DropdownItem tag="a" onClick = { () => signInWith(facebookProvider) }>
         <Icon.Facebook size={14} className="mr-50" />
         <span className="align-middle">Facebook</span>
       </DropdownItem>
-      <DropdownItem tag="a" onClick={ () => props.signInWith(googleProvider) }>
+      <DropdownItem tag="a" onClick={ () => signInWith(googleProvider) }>
         <img src={ googleSvg } className="mr-50" style={{ height:"1rem", fill:"black !important" }}/>
         <span className="align-middle">Google</span>
       </DropdownItem>
@@ -47,7 +47,7 @@ const UserDropdown = props => {
     </DropdownMenu>)
 
   return (
-    localStorage.getItem("user_info") ? loggedIn : loggedOut
+    userData ? loggedIn : loggedOut
   )
 }
 
@@ -56,47 +56,6 @@ export default connect(mapStateToProps, { setAuth })(NavbarUser);
 export function NavbarUser(props) {
   const [userData, setUserData] = useState(null);
 
-  const fetchUserData = async (userDataRes) => {
-    const getPayload = {
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      }
-    };
-
-    const user_obj = {
-      user_id:userDataRes.user.uid, 
-      display_name:userDataRes.user.displayName, 
-      email:userDataRes.user.email,
-      img_link:userDataRes.additionalUserInfo.profile.picture,
-      token: userDataRes.credential.accessToken,
-    };
-
-    const postPayload = {
-      method: "POST",
-      headers: { 
-        'Accept': 'application/json', 
-        'Content-Type': 'application/json' 
-      },
-      body: JSON.stringify(user_obj),
-    };
-
-    await fetch(`https://www.covidx.app/login_user?user_id=${userDataRes.user.uid}`, getPayload)
-      .then(res => res.json())
-      .then(res => 
-        res.ok ? 
-        res : 
-        fetch(`https://www.covidx.app/create_user`, postPayload)
-          .then(res => res.json())
-      )
-      .then(json => {
-        props.setAuth({type: "LOGIN", json})
-      })
-      .catch(e => console.log(e));
-
-    localStorage.setItem('user_info', JSON.stringify(user_obj));
-  };
-
   const signInWith = provider => {
     auth.signInWithPopup(provider).then(res => {
       console.log(`DISPLAY NAME: ${ res.user.displayName }`);
@@ -104,18 +63,27 @@ export function NavbarUser(props) {
       console.log(`UID: ${res.user.uid}`);
       console.log(`ACCESS TOKEN: ${res.credential.accessToken}`);
       console.log(`IMAGE LINK: ${res.additionalUserInfo.profile.picture}`)
-      setUserData({ 
+      const payload = { 
         user_id:res.user.uid, 
         display_name:res.user.displayName, 
         email:res.user.email,
-        accessToken:res.credential.accessToken,
+        access_token:res.credential.accessToken,
         img_link:res.additionalUserInfo.profile.picture
-      });
-      fetchUserData(res);
+      };
+
+      const userData = (async () => { 
+        const res = await fetchUserData(payload);
+        localStorage.setItem("token", res.payload.access_token);
+        props.setAuth({ type:"LOGIN", res });
+      })();
     })
   };
 
-  const checkLocal = JSON.parse(localStorage.getItem("user_info"));
+  const checkLocal = localStorage.getItem("token");
+  const checkLocalRes = checkLocal && (async () => { 
+    const res = await checkToken(checkLocal);
+    setUserData(res.payload[0])
+  })()
 
   return (
     <ul className="nav navbar-nav navbar-nav-user float-right">
@@ -124,9 +92,7 @@ export function NavbarUser(props) {
           <div className="user-nav d-sm-flex d-none">
             <span className="user-name text-bold-600">
               { 
-                checkLocal ? 
-                checkLocal.display_name : 
-                props.auth.login ? 
+                userData ? 
                 userData.display_name : 
                 "Log In" 
               }
@@ -134,27 +100,19 @@ export function NavbarUser(props) {
           </div>
           <span data-tour="user">
             {
-              checkLocal ? 
-              <img
-                src={ checkLocal.img_link }
-                className="round"
-                height="40"
-                width="40"
-                alt="avatar"
-              /> : 
-              props.auth.login ? 
+              userData ? 
               <img
                 src={ userData.img_link }
                 className="round"
                 height="40"
                 width="40"
                 alt="avatar"
-              /> : 
+              /> :
               <Icon.User /> 
             }
           </span>
         </DropdownToggle>
-        <UserDropdown {...props} signInWith={ signInWith } />
+        <UserDropdown userData={ userData } signInWith={ signInWith } />
       </UncontrolledDropdown>
     </ul>
   )
