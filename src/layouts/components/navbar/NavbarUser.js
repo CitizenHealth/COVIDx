@@ -80,18 +80,13 @@ export function NavbarUser(props) {
   };
 
   
-  // const checkLocalRes = checkLocal && (async () => { 
-  //   const res = await checkToken(checkLocal);
-  //   setUserData(res.payload[0])
-  // })()
   useEffect(() => {
-    console.log('firing')
     const checkLocal = localStorage.getItem("token");
     checkLocal && (async () => { 
       const res = await checkToken(checkLocal);
       setUserData(res.payload[0])
     })()
-  }, [localStorage])
+  }, [localStorage]);
 
   return (
     <ul className="nav navbar-nav navbar-nav-user float-right">
@@ -125,52 +120,3 @@ export function NavbarUser(props) {
     </ul>
   )
 }
-
-// export class NavbarUser extends React.PureComponent {
-//   state = {
-//     navbarSearch: false,
-//     suggestions: []
-//   }
-// 
-//   componentDidMount() {
-//     axios.get("/api/main-search/data").then(({ data }) => {
-//       this.setState({ suggestions: data.searchResult })
-//     })
-//   }
-
-  // handleNavbarSearch = () => {
-  //   this.setState({
-  //     navbarSearch: !this.state.navbarSearch
-  //   })
-  // }
-  // get the user details here
-
-
-//   render() {
-//     // console.log(props)
-//     return (
-//       <ul className="nav navbar-nav navbar-nav-user float-right">
-//         <UncontrolledDropdown tag="li" className="dropdown-user nav-item">
-//           <DropdownToggle tag="a" className="nav-link dropdown-user-link">
-//             <div className="user-nav d-sm-flex d-none">
-//               <span className="user-name text-bold-600">
-//                 {this.props.userName}
-//               </span>
-//             </div>
-//             <span data-tour="user">
-//               <img
-//                 src={this.props.userImg}
-//                 className="round"
-//                 height="40"
-//                 width="40"
-//                 alt="avatar"
-//               />
-//             </span>
-//           </DropdownToggle>
-//           <UserDropdown {...this.props} />
-//         </UncontrolledDropdown>
-//       </ul>
-//     )
-//   }
-// }
-
