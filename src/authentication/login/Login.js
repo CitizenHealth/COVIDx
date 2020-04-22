@@ -3,7 +3,8 @@ import { AuthenticationContext } from "App";
 
 
 export const fetchUserData = async userDataPayload => {
-  const endpoint = `http://127.0.0.1:5000`;
+  // there may be a better way to do this... 
+  const endpoint = `http://www.covidx.app/`;
   const newLoginPayload = {
     method: "PUT",
     headers: { 
