@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import {
   NavItem,
   NavLink,
@@ -79,11 +79,19 @@ export function NavbarUser(props) {
     })
   };
 
-  const checkLocal = localStorage.getItem("token");
-  const checkLocalRes = checkLocal && (async () => { 
-    const res = await checkToken(checkLocal);
-    setUserData(res.payload[0])
-  })()
+  
+  // const checkLocalRes = checkLocal && (async () => { 
+  //   const res = await checkToken(checkLocal);
+  //   setUserData(res.payload[0])
+  // })()
+  useEffect(() => {
+    console.log('firing')
+    const checkLocal = localStorage.getItem("token");
+    checkLocal && (async () => { 
+      const res = await checkToken(checkLocal);
+      setUserData(res.payload[0])
+    })()
+  }, [localStorage])
 
   return (
     <ul className="nav navbar-nav navbar-nav-user float-right">
