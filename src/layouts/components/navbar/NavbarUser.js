@@ -53,8 +53,7 @@ const UserDropdown = ({ userData, signInWith }) => {
 
 const mapStateToProps = state => ({ auth: state.auth });
 export default connect(mapStateToProps, { setAuth })(NavbarUser);
-export function NavbarUser(props) {
-  const [userData, setUserData] = useState(null);
+function NavbarUser(props) {
 
   const signInWith = provider => {
     auth.signInWithPopup(provider).then(res => {
@@ -70,23 +69,24 @@ export function NavbarUser(props) {
         access_token:res.credential.accessToken,
         img_link:res.additionalUserInfo.profile.picture
       };
-
       const userData = (async () => { 
         const res = await fetchUserData(payload);
+        // const resPayload = res.payload
         localStorage.setItem("token", res.payload.access_token);
-        props.setAuth({ type:"LOGIN", res });
+        props.setAuth({ type:"LOGIN", payload:res.payload });
       })();
     })
   };
 
-  
   useEffect(() => {
     const checkLocal = localStorage.getItem("token");
     checkLocal && (async () => { 
       const res = await checkToken(checkLocal);
-      setUserData(res.payload[0])
+      res && props.setAuth({ type:"LOGIN", payload:res.payload });
+      // setUserData(res.payload[0])
     })()
   }, [localStorage]);
+
 
   return (
     <ul className="nav navbar-nav navbar-nav-user float-right">
@@ -95,17 +95,17 @@ export function NavbarUser(props) {
           <div className="user-nav d-sm-flex d-none">
             <span className="user-name text-bold-600">
               { 
-                userData ? 
-                userData.display_name : 
+                props.auth.login.isAuthenticated ? 
+                props.auth.login.payload.payload.display_name : 
                 "Log In" 
               }
             </span>
           </div>
           <span data-tour="user">
             {
-              userData ? 
+              props.auth.login.isAuthenticated ? 
               <img
-                src={ userData.img_link }
+                src={ props.auth.login.payload.payload.img_link }
                 className="round"
                 height="40"
                 width="40"
@@ -115,7 +115,7 @@ export function NavbarUser(props) {
             }
           </span>
         </DropdownToggle>
-        <UserDropdown userData={ userData } signInWith={ signInWith } />
+        <UserDropdown userData={ props.auth.login.payload } signInWith={ signInWith } />
       </UncontrolledDropdown>
     </ul>
   )

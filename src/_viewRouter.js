@@ -57,11 +57,6 @@ export default function ViewRouter(props) {
     <Router history={history}>
       <Redirect from="/" to="/map" />
       <Switch>
-        {/* <RouteConfig */}
-        {/*   exact */}
-        {/*   path="/" */}
-        {/*   component={ Home } */}
-        {/* /> */}
         <RouteConfig
           path="/map"
           component={ HeatMap }

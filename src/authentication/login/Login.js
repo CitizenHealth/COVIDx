@@ -39,7 +39,6 @@ export const fetchUserData = async userDataPayload => {
     res : 
     fetch(`${endpoint}/create_user`, registerPayload)
   ).then(res => res.json()).catch(e => console.log(e));
-  console.log(response)
 
   return response;
 };

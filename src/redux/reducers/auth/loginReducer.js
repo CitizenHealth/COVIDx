@@ -38,13 +38,13 @@ export function login(state=false, action) {
     case "LOGIN" : 
       return {
         ...state,
-        payload: action.payload.json,
+        payload: action.payload,
         isAuthenticated:true
       };
     case "LOGOUT":
       return {
         ...state,
-        payload:action.payload.json,
+        payload:action.payload,
         isAuthenticated:false
       };
     default:

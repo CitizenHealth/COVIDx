@@ -16,6 +16,9 @@ import {
   BrowserHistory
 } from "react-router-dom";
 
+import { fetchUserData, checkToken } from "authentication/login/Login"
+import { auth, googleProvider, facebookProvider } from "authentication/auth";
+
 
 // import { login } from "redux/reducers/auth/loginReducer"
 // import { setAuth } from "redux/actions/auth/authAction";
@@ -33,16 +36,9 @@ import {
 
 // const mapStateToProps = state => ({ auth: state.auth });
 export default function App(props) {
-  // const token = localStorage.getItem('token');
   return (
     <>
-    <ViewRouter />
-    {/* <ProtectedRoute  */}
-    {/*   auth={ props.auth.login } */}
-    {/*   token={ token } */}
-    {/*   render={ () => <ViewRouter /> } */}
-    {/*   fail={() => <FullPageLayout><Login /></FullPageLayout>} */}
-    {/* /> */}
+      <ViewRouter />
     </>
   )
 }
