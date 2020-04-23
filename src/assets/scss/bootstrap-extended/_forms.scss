@@ -665,31 +665,31 @@ select.form-control {
 }
 
 /***** React Numeric Input *****/
-// .react-numeric-input {
-//   input {
-//     background-color: $body-bg;
-//     padding: 0 !important;
-//     border: none !important;
-//     // width: 100px;
-//     height: 26px;
-//     font-size: 1rem !important;
-//     font-weight: 400;
-//     &:focus {
-//       outline: 0;
-//     }
-//   }
-//   b {
-//     width: 22px;
-//     height: 22px;
-//     border-radius: 5px !important;
-//     bottom: auto !important;
-//     background-color: $primary !important;
-//     cursor: pointer !important;
-//     i {
-//       background: $white !important;
-//     }
-//   }
-// }
+ .react-numeric-input {
+   input {
+     background-color: $body-bg;
+     padding: 0 !important;
+     border: none !important;
+     //width: 100px;
+     height: 26px;
+     font-size: 1rem !important;
+     font-weight: 400;
+     &:focus {
+       outline: 0;
+     }
+   }
+   b {
+     width: 22px;
+     height: 22px;
+     border-radius: 5px !important;
+     bottom: auto !important;
+     background-color: $primary !important;
+     cursor: pointer !important;
+     i {
+       background: $white !important;
+     }
+   }
+ }
 
 /* Number Type Input Box Scss for - Remove arrow on hover */
 input[type="number"]::-webkit-inner-spin-button,

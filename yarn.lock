@@ -5872,7 +5872,7 @@ flat-cache@^2.0.1:
     rimraf "2.6.3"
     write "1.0.3"
 
-flatpickr@^4.5.7, flatpickr@^4.6.3:
+flatpickr@^4.5.7:
   version "4.6.3"
   resolved "https://registry.yarnpkg.com/flatpickr/-/flatpickr-4.6.3.tgz#15a8b76b6e34e3a072861250503a5995b9d3bc60"
   integrity sha512-007VucCkqNOMMb9ggRLNuJowwaJcyOh4sKAFcdGfahfGc7JQbf94zSzjdBq/wVyHWUEs5o3+idhFZ0wbZMRmVQ==
@@ -10926,7 +10926,7 @@ react-feather@~2.0.3:
   dependencies:
     prop-types "^15.7.2"
 
-react-flatpickr@^3.9.1:
+react-flatpickr@^3.10.0:
   version "3.10.0"
   resolved "https://registry.yarnpkg.com/react-flatpickr/-/react-flatpickr-3.10.0.tgz#a14c15e2f8c8badebfe652510db7f7a4203cb8e4"
   integrity sha512-eeU5OlUZgWDyp2XvIeZ4+rI4T4VkqU1MdZUb+cXtTHfHYfLV+gpP0lAhRrij+QXlbPXTJFAbPerihohlOeTJ0A==
@@ -11019,7 +11019,7 @@ react-lifecycles-compat@^3.0.4:
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
   integrity sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==
 
-react-numeric-input@~2.2.3:
+react-numeric-input@^2.2.3:
   version "2.2.3"
   resolved "https://registry.yarnpkg.com/react-numeric-input/-/react-numeric-input-2.2.3.tgz#4bf5918c3eafed851a80df1eb992d941002bb552"
   integrity sha1-S/WRjD6v7YUagN8euZLZQQArtVI=
