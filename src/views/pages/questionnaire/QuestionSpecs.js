@@ -13,7 +13,6 @@ const symptom_names_and_labels = [
     { label: "Nausea and/or vomiting", name: 'nausea_vomiting' },
     { label: "Pressure feeling in chest", name: 'pressure_chest' },
     { label: "Pink eye", name: 'pink_eye' },
-    { label: "Other", name: 'other' },
 ]
 
 const temp_guess_names_and_labels = [

@@ -12,11 +12,11 @@ export default function LocationFinder(props) {
   };
 
   return (
-      <div className="location-finder">
-        <h2 style={{ color:"#525252" }}>We'll try to guess your county, but if we're wrong, please type it in below!</h2>
-        <Field 
-          component={ InputField }
-        />
-      </div>
+    <div className="location-finder">
+      <h2 style={{ color: "#525252" }}>We'll try to guess your county, but if we're wrong, please type it in below!</h2>
+      <Field
+        component={InputField}
+      />
+    </div>
   )
 };

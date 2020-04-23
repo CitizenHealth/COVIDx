@@ -28,10 +28,10 @@ const WizardStep = props => {
         setNextDisabled={setNextDisabled}
       />
       {
-        ("final" in props) && 
+        ("final" in props) &&
         !props.auth.login.isAuthenticated &&
         !localStorage.getItem("user_info") &&
-        <div style={{ textAlign:"right", padding:"1rem 0" }}>
+        <div style={{ textAlign: "right", padding: "1rem 0" }}>
           <i>Please log in to save your results</i>
         </div>
       }
@@ -61,10 +61,11 @@ const NotWellWizard = props => {
         onPrev={props.backToStart}
         onNext={() => setActiveStep(activeStep + 1)}
         values={props.values}
+      //   nextDisabled
       />
     },
     {
-      title: 1, content: <ConnectedWizardStep
+      title: 2, content: <ConnectedWizardStep
         component={NotWellPage}
         onPrev={() => setActiveStep(activeStep - 1)}
         onNext={() => { setActiveStep(activeStep + 1) }}
@@ -106,7 +107,7 @@ const FeelingWellWizard = props => {
         onPrev={props.backToStart}
         onNext={() => setActiveStep(activeStep + 1)}
         values={props.values}
-        nextDisabled
+      //   nextDisabled
       />
     },
     {
@@ -187,16 +188,16 @@ initialValues.household_tested_date = null
 initialValues.sex = null
 initialValues.age = null
 initialValues.temp_guess = null
-initialValues.therm_temp = slider_pos_to_C(THERM_DEFAULT)
+initialValues.therm_temp = THERM_DEFAULT
 
 const handleSubmit = values => {
   const submittedData = JSON.stringify(values);
   // console.log(submittedData)
   const postPayload = {
     method: "POST",
-    headers: { 
-      'Accept': 'application/json', 
-      'Content-Type': 'application/json' 
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
     },
     body: submittedData
   };
@@ -212,7 +213,7 @@ const handleSubmit = values => {
 const Questionnaire = (props) => {
   return <Formik
     initialValues={initialValues}
-    onSubmit={ handleSubmit }>
+    onSubmit={handleSubmit}>
     {(props) => (
       <Container >
         <Row className='justify-content-center'>
