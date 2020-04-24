@@ -13,6 +13,12 @@ const navigationConfig = [
     title:"Health Report",
     type:"item",
     navLink:"/health-report"
+  },
+  {
+    id: "invite",
+    title: "Invite Friends",
+    type: "item",
+    navLink : "/invite-friends"
   }
 ]
 
