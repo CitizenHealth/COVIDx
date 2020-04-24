@@ -3,7 +3,6 @@ import { AuthenticationContext } from "App";
 
 
 export const fetchUserData = async userDataPayload => {
-  // there may be a better way to do this through firebase...
   const endpoint = `https://www.covidx.app/`;
   const newLoginPayload = {
     method: "PUT",
@@ -56,7 +55,7 @@ export const checkToken = async token => {
   const response = await fetch(
     `${endpoint}/check_token?access_token=${token}`, 
     getPayload
-  ).then(res => res.json()).catch(e => console.log(e))
+  ).then(res => res.json()).catch(e => e)
 
   return response;
 };

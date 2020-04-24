@@ -57,11 +57,11 @@ function NavbarUser(props) {
 
   const signInWith = provider => {
     auth.signInWithPopup(provider).then(res => {
-      console.log(`DISPLAY NAME: ${ res.user.displayName }`);
-      console.log(`EMAIL: ${ res.user.email }`);
-      console.log(`UID: ${res.user.uid}`);
-      console.log(`ACCESS TOKEN: ${res.credential.accessToken}`);
-      console.log(`IMAGE LINK: ${res.additionalUserInfo.profile.picture}`)
+      // console.log(`DISPLAY NAME: ${ res.user.displayName }`);
+      // console.log(`EMAIL: ${ res.user.email }`);
+      // console.log(`UID: ${res.user.uid}`);
+      // console.log(`ACCESS TOKEN: ${res.credential.accessToken}`);
+      // console.log(`IMAGE LINK: ${res.additionalUserInfo.profile.picture}`)
       const payload = { 
         user_id:res.user.uid, 
         display_name:res.user.displayName, 
@@ -83,10 +83,8 @@ function NavbarUser(props) {
     checkLocal && (async () => { 
       const res = await checkToken(checkLocal);
       res && props.setAuth({ type:"LOGIN", payload:res.payload });
-      // setUserData(res.payload[0])
     })()
   }, [localStorage]);
-
 
   return (
     <ul className="nav navbar-nav navbar-nav-user float-right">
@@ -103,7 +101,7 @@ function NavbarUser(props) {
           </div>
           <span data-tour="user">
             {
-              props.auth.login.isAuthenticated ? 
+              props.auth.login ? 
               <img
                 src={ props.auth.login.payload.payload.img_link }
                 className="round"
