@@ -4,9 +4,9 @@ import { Row, Container } from 'reactstrap';
 import { CheckBoxGroup, RadioGroup } from './Components';
 import { Field } from 'formik';
 import {
-    age_names_and_labels,
-    underlying_condition_names_and_labels,
-    sex_names_and_labels,
+  age_names_and_labels,
+  underlying_condition_names_and_labels,
+  sex_names_and_labels,
 } from './QuestionSpecs';
 
 import { connect } from "react-redux";
@@ -18,7 +18,7 @@ export const MedicalHistoryPage = props => {
   if (
     (props.values.age && props.values.sex) &&
     (props.auth.login.isAuthenticated || localStorage.getItem("user_info"))
-    ) {
+  ) {
     props.setNextDisabled(false)
   }
   return (
@@ -27,10 +27,10 @@ export const MedicalHistoryPage = props => {
         <h4>How old are you?</h4>
       </Row>
       <Row style={{ marginBottom: 30 }}>
-      <Field
-        component={RadioGroup}
-        names_and_labels={age_names_and_labels}
-        name="age" />
+        <Field
+          component={RadioGroup}
+          names_and_labels={age_names_and_labels}
+          name="age" />
       </Row>
       <Row>
         <h4>Are you male or female?</h4>
@@ -42,7 +42,7 @@ export const MedicalHistoryPage = props => {
           name="sex" />
       </Row>
       <Row>
-        <h4>Do you have any of these medical conditions?</h4>
+        <h4>Please select any medical conditions you have.</h4>
       </Row>
       <Row style={{ marginBottom: 30 }}>
         <CheckBoxGroup
