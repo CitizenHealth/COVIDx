@@ -81,7 +81,7 @@
     "styled-components": "^5.0.1",
     "swiper": "^5.3.0",
     "xlsx": "^0.15.5",
-    "yarn": "^1.21.1",
+    "yarn": "^1.22.4",
     "yup": "^0.28.1"
   },
   "scripts": {
