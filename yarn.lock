@@ -963,7 +963,7 @@
     "@babel/helper-plugin-utils" "^7.8.3"
     "@babel/plugin-transform-typescript" "^7.9.0"
 
-"@babel/runtime-corejs3@^7.8.3":
+"@babel/runtime-corejs3@^7.8.3", "@babel/runtime-corejs3@^7.8.4":
   version "7.9.2"
   resolved "https://registry.yarnpkg.com/@babel/runtime-corejs3/-/runtime-corejs3-7.9.2.tgz#26fe4aa77e9f1ecef9b776559bbb8e84d34284b7"
   integrity sha512-HHxmgxbIzOfFlZ+tdeRKtaxWOMUoCG5Mu3wKeUmOxjYrwb3AAHgnmtCUbPPK11/raIWLIBK250t8E2BPO0p7jA==
@@ -6636,6 +6636,13 @@ https-browserify@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/https-browserify/-/https-browserify-1.0.0.tgz#ec06c10e0a34c0f2faf199f7fd7fc78fffd03c73"
   integrity sha1-7AbBDgo0wPL68Zn3/X/Hj//QPHM=
+
+humanapi-connect-client@^2.0.4:
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/humanapi-connect-client/-/humanapi-connect-client-2.0.4.tgz#b52bd81599850798d8445075449e1ec57d82e14d"
+  integrity sha512-8sEa6BxSJrlVjITOaJ241VLhWWYArMFtpwAsfakW8qFlvUZPKWD9aOg1iD+PYcA/FU+/jNf+MUWGKTKSocPD0Q==
+  dependencies:
+    "@babel/runtime-corejs3" "^7.8.4"
 
 iconv-lite@0.4, iconv-lite@0.4.24, iconv-lite@^0.4.24, iconv-lite@^0.4.4, iconv-lite@~0.4.13:
   version "0.4.24"

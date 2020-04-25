@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import HowAreYouFeeling from "./HowAreYouFeeling";
+import Stats from '../stats/Stats'
 import { Field, Formik } from "formik";
 import {
-  Card, CardBody, Container, Row, Button,
+  Card, CardBody, Row, Button,
 } from "reactstrap";
 import Wizard from "../../../components/@vuexy/wizard/WizardComponent"
 import "rc-slider/assets/index.css"
@@ -18,6 +19,7 @@ import LocationFinder from './LocationFinder';
 import { connect } from "react-redux";
 import { setAuth } from "redux/actions/auth/authAction";
 
+const CONTAINER_MARGIN = '2px';
 
 // Override default Wizard behaviour so we can go back to HowAreYouFeeling
 const WizardStep = props => {
@@ -149,7 +151,7 @@ class SelectQuestionnaire extends React.Component {
     this.setState(update);
   };
 
-  render() {
+  renderQuestionnaire() {
     switch (this.state.activeStep) {
       case 0: return <Field component={HowAreYouFeeling} handler={this.handleUpdate} />;
       case 1: return <FeelingWellWizard
@@ -166,6 +168,15 @@ class SelectQuestionnaire extends React.Component {
       default: throw new Error(`Invalid activeStep ${this.props.activeStep}`)
     }
   }
+
+  render() {
+    return (
+      <>
+      {
+        this.renderQuestionnaire()
+      }
+    </>
+  )}
 }
 
 var initialValues = {};
@@ -210,22 +221,39 @@ const handleSubmit = values => {
 }
 
 const Questionnaire = (props) => {
-  return <Formik
-    initialValues={initialValues}
-    onSubmit={ handleSubmit }>
-    {(props) => (
-      <Container >
-        <Row className='justify-content-center'>
-          <Card style={{ width: '66%' }}>
+  return (
+    <Row style={styles.container}>
+      <Formik
+        initialValues={initialValues}
+        onSubmit={ handleSubmit }>
+        {(props) => (
+          <Card style={styles.card}>
             <CardBody>
               <SelectQuestionnaire values={props.values} submitForm={props.submitForm}
                 validateField={props.validateField} />
             </CardBody>
           </Card>
-        </Row>
-      </Container >
-    )}
-  </Formik >
+        )}
+      </Formik >
+      <Card style={{ width: '45%' }} >
+        <CardBody>
+          <Stats/>
+        </CardBody>
+      </Card>
+    </Row>
+    )
 }
 
+const styles = {
+  container: {
+    justifyContent: 'space-between',
+    alignItems: 'flex-start',
+    marginLeft: CONTAINER_MARGIN,
+    marginRight: CONTAINER_MARGIN
+  },
+  card: { 
+    height: '100%', 
+    width: '45%' 
+  }
+}
 export default Questionnaire;
