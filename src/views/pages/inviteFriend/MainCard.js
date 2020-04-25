@@ -27,18 +27,19 @@ export const MainCard = () => {
               paddingTop: "50px",
               display: "flex",
               flexDirection: "column",
-              
+
               width: "60%",
             }}
           >
-            <input
+            <textarea
+              type="text"
               value="I did my part to stop the COVID-19 spread ! Join me on COVIDx to help science beat this virus! #BeatCovid
                   Link coming soon"
               style={{
                 marginBottom: "20px",
                 height: "100px",
-                  textAlign: "left",
-                width : "100%"
+                textAlign: "left",
+                width: "100%",
               }}
             />
             <div
