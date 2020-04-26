@@ -81,7 +81,10 @@ const InputField = props => {
 
   useEffect(() => {
     fetchCountyData();
-    navigator.geolocation.getCurrentPosition(success, () => console.log("Location not retrieved!"));
+    navigator.geolocation.getCurrentPosition(success, () => {
+        console.log("Location not retrieved!");
+        setSearchInput('Manhattan, New York');
+    })
   }, []);
 
   useEffect(() => {
