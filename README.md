@@ -29,3 +29,5 @@ The end goal is to get ahead of the coronavirus infection and flatten the curve 
 **DEVELOPERS**:
 
 If you're new here, please use `yarn` as your package manager *instead* of `npm`, and use `yarn install` or `yarn` to install all dependencies.
+
+Please branch off of `develop` if you're working on new features.
