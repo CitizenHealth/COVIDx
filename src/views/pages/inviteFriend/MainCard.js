@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, CardImg, Row, Col, CardText } from "reactstrap";
+import { Card, CardImg, Row, Col, CardText, Button } from "reactstrap";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
 import { StyledMainCard } from "./Styles/StyledMainCard";
@@ -19,7 +19,9 @@ export const MainCard = () => {
         >
           <div>
             <input value="Link coming soon" />
-            <button style={{ marginLeft: "20px" }}>Copy Link</button>
+            <Button color="primary" style={{ marginLeft: "20px" }}>
+              Copy Link
+            </Button>
           </div>
 
           <div
@@ -50,8 +52,10 @@ export const MainCard = () => {
                 justifyContent: "center",
               }}
             >
-              <button style={{ marginRight: "20px" }}>Facebook</button>
-              <button>Twitter</button>
+              <Button color="primary" style={{ marginRight: "20px" }}>
+                Facebook
+              </Button>
+              <Button color="primary">Twitter</Button>
             </div>
           </div>
         </form>
