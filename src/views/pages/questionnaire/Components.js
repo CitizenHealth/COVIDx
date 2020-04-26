@@ -81,10 +81,7 @@ const InputField = props => {
 
   useEffect(() => {
     fetchCountyData();
-    navigator.geolocation.getCurrentPosition(success, () => {
-        console.log("Location not retrieved!");
-        setSearchInput('Manhattan, New York');
-    })
+    navigator.geolocation.getCurrentPosition(success, () => console.log("Location not retrieved!"));
   }, []);
 
   useEffect(() => {
@@ -127,8 +124,9 @@ const InputField = props => {
         placeholder="Start typing in your county..."
         // onChange = { event => setSearchInput(event.target.value) }
         list="search-suggest"
-        //value={searchInput}
+        value={searchInput}
         onChange={e => setSearchInput(e.target.value)}
+        readonly={searchInput ? false : "readonly"}
       />
       <datalist id="search-suggest">
         {
