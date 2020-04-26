@@ -1,5 +1,14 @@
 import React from "react";
-import { Card, CardImg, Row, Col, CardText, Button } from "reactstrap";
+import {
+  Card,
+  Form,
+  CardImg,
+  Row,
+  Col,
+  CardText,
+  Input,
+  Button,
+} from "reactstrap";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
 import { StyledMainCard } from "./Styles/StyledMainCard";
@@ -9,7 +18,7 @@ export const MainCard = () => {
     <StyledMainCard>
       <Card>
         <Header />
-        <form
+        <Form
           style={{
             padding: "20px 40px",
             display: "flex",
@@ -18,7 +27,10 @@ export const MainCard = () => {
           }}
         >
           <div>
-            <input value="Link coming soon" />
+            <Input
+              value="Link coming soon"
+              style={{ width: "60%", display: "inline-block" }}
+            />
             <Button color="primary" style={{ marginLeft: "20px" }}>
               Copy Link
             </Button>
@@ -33,8 +45,8 @@ export const MainCard = () => {
               width: "60%",
             }}
           >
-            <textarea
-              type="text"
+            <Input
+              type="textarea"
               value="I did my part to stop the COVID-19 spread ! Join me on COVIDx to help science beat this virus! #BeatCovid
                   Link coming soon"
               style={{
@@ -58,7 +70,7 @@ export const MainCard = () => {
               <Button color="primary">Twitter</Button>
             </div>
           </div>
-        </form>
+        </Form>
         <Footer />
       </Card>
     </StyledMainCard>
