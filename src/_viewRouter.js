@@ -1,4 +1,8 @@
 import React, { Suspense, lazy, useContext, useState } from "react"
+import {
+  Card, CardBody, Container, Row, Button,
+} from "reactstrap";
+
 import { 
   BrowserRouter as Router, 
   Switch, 
@@ -14,7 +18,7 @@ import Profile from "./views/pages/profile/Profile"
 import Home from "./views/pages/Home";
 import { PrivacyPolicy } from "./views/pages/privacyPolicy/privacyPolicy"
 import Questionnaire from "./views/pages/questionnaire/Questionnaire"
-
+import Dashboard from "./views/pages/dashboard/Dashboard"
 
 
 const RouteConfig = ({
@@ -55,8 +59,12 @@ export default function ViewRouter(props) {
 
   return (
     <Router history={history}>
-      <Redirect from="/" to="/map" />
+      <Redirect from="/" to="/dashboard" />
       <Switch>
+        <RouteConfig
+            path="/dashboard"
+            component= {Dashboard}
+        />
         <RouteConfig
           path="/map"
           component={ HeatMap }
@@ -67,7 +75,15 @@ export default function ViewRouter(props) {
         />
         <RouteConfig 
           path="/health-report"
-          component={ Questionnaire }
+          component={ props => ( 
+              <Row className="mx-auto h-100">
+              <Card className="col-12 col-lg-5 mx-auto">
+                <CardBody>
+                    <Questionnaire />
+                </CardBody>
+              </Card> 
+              </Row>)
+          }
         />
         <Route 
           path="/privacy-policy"

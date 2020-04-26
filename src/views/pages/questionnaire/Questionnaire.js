@@ -84,7 +84,10 @@ const NotWellWizard = props => {
       title: 4, content: <ConnectedWizardStep
         component={MedicalHistoryPage}
         onPrev={() => setActiveStep(activeStep - 1)}
-        onNext={props.onSubmit}
+        onNext={() => { 
+            props.onSubmit();
+            setActiveStep(0);
+        }}
         values={props.values}
         final
         nextDisabled
@@ -192,7 +195,7 @@ initialValues.therm_temp = THERM_DEFAULT
 
 const handleSubmit = values => {
   const submittedData = JSON.stringify(values);
-  // console.log(submittedData)
+  //console.log(submittedData)
   const postPayload = {
     method: "POST",
     headers: {
@@ -207,26 +210,20 @@ const handleSubmit = values => {
       .then(json => console.log(json))
       .catch(e => console.log(e));
   }
+    
   postData();
 }
 
 const Questionnaire = (props) => {
-  return <Formik
-    initialValues={initialValues}
-    onSubmit={handleSubmit}>
-    {(props) => (
-      <Container >
-        <Row className='justify-content-center'>
-          <Card style={{ width: '66%' }}>
-            <CardBody>
-              <SelectQuestionnaire values={props.values} submitForm={props.submitForm}
-                validateField={props.validateField} />
-            </CardBody>
-          </Card>
-        </Row>
-      </Container >
-    )}
-  </Formik >
+  return (<Formik
+            initialValues={initialValues}
+            onSubmit={handleSubmit}>
+                {(props) => (
+                  <SelectQuestionnaire values={props.values} submitForm={props.submitForm}
+                    validateField={props.validateField} />
+                )}
+          </Formik >
+  );
 }
 
 export default Questionnaire;

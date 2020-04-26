@@ -52,7 +52,6 @@ const TestedSection = props => {
         <div>
           <Label>Date of test:</Label>
           <Flatpickr
-            options={{ inline: true }}
             value={date}
             onChange={
               value => {
