@@ -1,5 +1,6 @@
 import React from "react";
 import { Table } from "reactstrap";
+import { IntlProvider, FormattedNumber } from "react-intl";
 
 const testData = [
   {
@@ -70,7 +71,11 @@ export class Leaderboard extends React.Component {
           {this.state.leaderboard.map((row) => (
             <tr key={row.rank}>
               <td style={fontStyle}>{row.username}</td>
-              <td style={fontStyle}>{row.covids}</td>
+              <td style={fontStyle}>
+                <IntlProvider>
+                  <FormattedNumber value={row.covids} />
+                </IntlProvider>
+              </td>
             </tr>
           ))}
         </tbody>
