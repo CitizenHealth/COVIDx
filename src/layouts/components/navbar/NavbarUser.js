@@ -85,6 +85,9 @@ function NavbarUser(props) {
       res && props.setAuth({ type:"LOGIN", payload:res.payload });
     })()
   }, [localStorage]);
+  if (!props.auth.login.payload) {
+    localStorage.clear()
+  }
 
   return (
     <ul className="nav navbar-nav navbar-nav-user float-right">

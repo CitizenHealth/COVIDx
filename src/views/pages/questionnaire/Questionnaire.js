@@ -191,42 +191,45 @@ initialValues.temp_guess = null
 initialValues.therm_temp = THERM_DEFAULT
 
 const handleSubmit = values => {
-  const submittedData = JSON.stringify(values);
-  // console.log(submittedData)
+  if (values.self_tested_date instanceof Date) {
+    values.self_tested_date = (values.self_tested_date.getYear() + 1900) + "-" + values.self_tested_date.getMonth() + "-" + values.self_tested_date.getDate();
+  }
+  if (values.household_tested_date instanceof Date) {
+    values.household_tested_date = (values.household_tested_date.getYear() + 1900) + "-" + values.household_tested_date.getMonth() + "-" + values.household_tested_date.getDate();
+  }
+  console.log(values);
+  delete  values.location
   const postPayload = {
     method: "POST",
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     },
-    body: submittedData
-  };
+    body: JSON.stringify(values)
+  }
   const postData = async () => {
     await fetch(`https://www.covidx.app/create_survey_response`, postPayload)
-      .then(res => res.json())
+      .then(res => {
+          console.log(res);
+          return res.text();
+      })
       .then(json => console.log(json))
       .catch(e => console.log(e));
   }
+    
   postData();
 }
 
 const Questionnaire = (props) => {
-  return <Formik
-    initialValues={initialValues}
-    onSubmit={handleSubmit}>
-    {(props) => (
-      <Container >
-        <Row className='justify-content-center'>
-          <Card style={{ width: '66%' }}>
-            <CardBody>
-              <SelectQuestionnaire values={props.values} submitForm={props.submitForm}
-                validateField={props.validateField} />
-            </CardBody>
-          </Card>
-        </Row>
-      </Container >
-    )}
-  </Formik >
+  return (<Formik
+            initialValues={initialValues}
+            onSubmit={handleSubmit}>
+                {(props) => (
+                  <SelectQuestionnaire values={props.values} submitForm={props.submitForm}
+                    validateField={props.validateField} />
+                )}
+          </Formik >
+  );
 }
 
 export default Questionnaire;
