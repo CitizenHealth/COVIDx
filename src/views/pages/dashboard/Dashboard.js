@@ -1,0 +1,28 @@
+import React, { useState } from 'react';
+import {
+  Card, CardBody, Container, Row, Button,
+} from "reactstrap";
+import { connect } from "react-redux";
+import { setAuth } from "redux/actions/auth/authAction";
+import Questionnaire from "../questionnaire/Questionnaire"
+
+const Dashboard = (props) => {
+
+    return (
+        <Row className="mx-auto h-100">
+          <Card className="col-12 col-lg-5 mx-auto">
+            <CardBody>
+                <Questionnaire />
+            </CardBody>
+          </Card>
+          <Card className="col-12 col-lg-5 mx-auto h-100" >
+            <CardBody>
+                <h2>Wearable Data</h2>
+                <p>Connecting your Fitbit, Apple Watch, or other wearable device will allow us to show you more personalized insights.</p>
+                <Button className="text-white mx-auto font-weight-bold align-self-center mt-2" block={true} color="primary">Connect to HumanAPI</Button>
+            </CardBody>
+          </Card>
+        </Row>
+    );
+}
+export default Dashboard;

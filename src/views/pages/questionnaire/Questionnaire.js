@@ -211,22 +211,15 @@ const handleSubmit = values => {
 }
 
 const Questionnaire = (props) => {
-  return <Formik
-    initialValues={initialValues}
-    onSubmit={handleSubmit}>
-    {(props) => (
-      <Container >
-        <Row className='justify-content-center'>
-          <Card style={{ width: '66%' }}>
-            <CardBody>
-              <SelectQuestionnaire values={props.values} submitForm={props.submitForm}
-                validateField={props.validateField} />
-            </CardBody>
-          </Card>
-        </Row>
-      </Container >
-    )}
-  </Formik >
+  return (<Formik
+            initialValues={initialValues}
+            onSubmit={handleSubmit}>
+                {(props) => (
+                  <SelectQuestionnaire values={props.values} submitForm={props.submitForm}
+                    validateField={props.validateField} />
+                )}
+          </Formik >
+  );
 }
 
 export default Questionnaire;
