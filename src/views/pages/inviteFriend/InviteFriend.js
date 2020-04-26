@@ -1,6 +1,7 @@
 import React from "react";
 import { Card, CardImg, Row, Col, CardText } from "reactstrap";
 import { MainCard } from "./MainCard";
+import { Leaderboard } from "./Leaderboard";
 
 export const InviteFriend = () => {
   return (
@@ -20,8 +21,7 @@ export const InviteFriend = () => {
           padding: "20px 40px",
         }}
       >
-        <h3>Leaderboard</h3>
-        <h3>Covids</h3>
+        <Leaderboard />
       </Card>
     </div>
   );
