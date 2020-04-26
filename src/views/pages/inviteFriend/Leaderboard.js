@@ -38,6 +38,11 @@ const testData = [
     covids: 14112,
   },
 ];
+const fontStyle = {
+  fontSize: "1.2rem",
+  fontWeight: "bold",
+  color: "#444",
+};
 
 export class Leaderboard extends React.Component {
   state = {
@@ -64,8 +69,8 @@ export class Leaderboard extends React.Component {
         <tbody>
           {this.state.leaderboard.map((row) => (
             <tr key={row.rank}>
-              <td>{row.username}</td>
-              <td>{row.covids}</td>
+              <td style={fontStyle}>{row.username}</td>
+              <td style={fontStyle}>{row.covids}</td>
             </tr>
           ))}
         </tbody>
