@@ -23,3 +23,9 @@ Let's apply behavioral economics & gamification techniques that incentivize peop
 ---
 
 The end goal is to get ahead of the coronavirus infection and flatten the curve before our healthcare system collapses even more.
+
+---
+
+**DEVELOPERS**:
+
+If you're new here, please use `yarn` as your package manager *instead* of `npm`, and use `yarn install` or `yarn` to install all dependencies.
