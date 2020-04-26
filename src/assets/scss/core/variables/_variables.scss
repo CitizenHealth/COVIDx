@@ -27,7 +27,7 @@ $blue: #00cfe8; //$info
 $red: #ea5455; //$danger
 $orange: #ff9f43; //$warning
 $green: #28c76f; //$success
-$primary-blue: #0101FF; //$primary
+$primary-blue: #6f64f6; //$primary
 
 $primary: $primary-blue;
 $info: $blue;
@@ -47,29 +47,29 @@ $spacers: map-merge(
   (
     0: 0,
     25: (
-      $spacer * 0.25
+      $spacer * 0.25,
     ),
     50: (
-      $spacer * 0.5
+      $spacer * 0.5,
     ),
     75: (
-      $spacer * 0.75
+      $spacer * 0.75,
     ),
     1: (
-      $spacer
+      $spacer,
     ),
     2: (
-      $spacer * 1.5
+      $spacer * 1.5,
     ),
     3: (
-      $spacer * 3
+      $spacer * 3,
     ),
     4: (
-      $spacer * 3.5
+      $spacer * 3.5,
     ),
     5: (
-      $spacer * 4
-    )
+      $spacer * 4,
+    ),
   ),
   $spacers
 );
