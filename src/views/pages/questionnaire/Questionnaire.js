@@ -54,6 +54,7 @@ const ConnectedWizardStep = connect(mapStateToProps, { setAuth })(WizardStep);
 
 const NotWellWizard = props => {
   const [activeStep, setActiveStep] = useState(0);
+  const [formSubmitted, setFormSubmitted] = useState(false);
   let steps = [
     {
       title: 1, content: <ConnectedWizardStep
@@ -91,15 +92,28 @@ const NotWellWizard = props => {
       />
     },
   ]
-  return <Wizard
-    steps={steps}
-    onFinish={props.submitForm}
-    activeStep={activeStep}
-    pagination={false} />
-}
+  return <>
+        { 
+            !formSubmitted 
+            ? (<Wizard
+                steps={steps}
+                onFinish={() => {
+                        props.submitForm();
+                        setFormSubmitted(true);
+                    }
+                }
+                activeStep={activeStep}
+                pagination={false} />)
+            : (<div>
+                <h4>Thank you for your help!</h4>
+                <h6>Report successfully submitted.</h6>
+             </div>)
+        }
+        </>}
 
 const FeelingWellWizard = props => {
   const [activeStep, setActiveStep] = useState(0);
+  const [formSubmitted, setFormSubmitted] = useState(false);
   let steps = [
     {
       title: 1, content: <ConnectedWizardStep
@@ -130,11 +144,24 @@ const FeelingWellWizard = props => {
       />
     },
   ]
-  return <Wizard
-    steps={steps}
-    onFinish={props.submitForm}
-    activeStep={activeStep}
-    pagination={false} />
+  return <>
+        { 
+            !formSubmitted 
+            ? (<Wizard
+                steps={steps}
+                onFinish={() => {
+                        props.submitForm();
+                        setFormSubmitted(true);
+                    }
+                }
+                activeStep={activeStep}
+                pagination={false} />)
+            : (<div>
+                <h4>Thank you for your help!</h4>
+                <h6>Report successfully submitted.</h6>
+             </div>)
+        }
+        </>
 }
 
 

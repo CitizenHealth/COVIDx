@@ -123,15 +123,6 @@ const InputField = props => {
 
   return (
     <>
-      {
-          !countyValues 
-            ? (<div className="guess">
-                <i className="loading-guess">
-                    Getting location data
-                </i>
-            </div>)
-          : null
-      }
       <Input className="mt-2"
         placeholder="Start typing in your county..."
         // onChange = { event => setSearchInput(event.target.value) }
@@ -156,7 +147,16 @@ const InputField = props => {
           )
         }
       </datalist>
-    </>
+       {
+          !countyValues 
+            ? (<div className="guess">
+                <i className="loading-guess">
+                    One moment. Getting location data
+                </i>
+            </div>)
+          : null
+      }
+   </>
   )
 }
 
