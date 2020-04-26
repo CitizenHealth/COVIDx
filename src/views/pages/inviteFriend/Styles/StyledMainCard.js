@@ -30,5 +30,6 @@ export const StyledMainCard = styled.div`
     border: 1px solid grey;
     vertical-align : center;
     padding : 5px 5px;
+    color : #5c6169
   }
 `;
