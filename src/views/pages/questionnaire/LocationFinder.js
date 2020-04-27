@@ -13,7 +13,8 @@ export default function LocationFinder(props) {
 
   return (
     <div className="location-finder">
-      <h2 style={{ color: "#525252" }}>We'll try to guess your county, but if we're wrong, please type it in below!</h2>
+      <h4 style={{ color: "#525252" }}>Please enter your county</h4>
+      <h6 style={{ color: "#525252" }}>Note: We're asking for your county (ex. San Diego, USA), not country (ex. USA)</h6>
       <Field
         component={InputField}
       />

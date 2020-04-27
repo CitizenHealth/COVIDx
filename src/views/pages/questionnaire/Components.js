@@ -58,6 +58,7 @@ const InputField = props => {
   const [countyNames, setCountyNames] = useState(null);
   const [searchInput, setSearchInput] = useState(null);
   const [selectedCounty, setSelectedCounty] = useState(null); // this is the value we want... will also need to get coords if available
+  const [countyValues, setCountyValues] = useState(null);
 
 
   const success = position => {
@@ -103,6 +104,16 @@ const InputField = props => {
         countyData.features.map(
           feature => `${feature.properties.NAME}, ${feature.properties.STATE_NAME}`)
       );
+      var tempVals = {}
+      countyData.features.forEach(
+          feature => { 
+              tempVals[`${feature.properties.NAME}, ${feature.properties.STATE_NAME}`] = {
+                latitude: feature.geometry.coordinates[0][0][0][1],
+                longitude: feature.geometry.coordinates[0][0][0][0]
+              }
+          }
+      );
+      setCountyValues(tempVals);
     }
   }, [countyData]);
 
@@ -112,30 +123,40 @@ const InputField = props => {
 
   return (
     <>
-      <div className="guess">
-        {
-          !searchInput ?
-            <i className="loading-guess">
-              Guessing your location
-        </i> : null
-        }
-      </div>
-      <Input
+      <Input className="mt-2"
         placeholder="Start typing in your county..."
         // onChange = { event => setSearchInput(event.target.value) }
         list="search-suggest"
-        value={searchInput}
-        onChange={e => setSearchInput(e.target.value)}
-        readonly={searchInput ? false : "readonly"}
+        //value={userLocation ? '' : searchInput}
+        onChange={e => {
+            if (e.target.value in countyValues) {
+                var longitude = countyValues[e.target.value].longitude;
+                var latitude = countyValues[e.target.value].latitude;
+                props.form.setFieldValue("longitude", longitude);
+                props.form.setFieldValue("latitude", latitude);
+            }
+            setSearchInput(e.target.value)
+
+        }}
+        readonly={countyData ? false : "readonly"}
       />
       <datalist id="search-suggest">
         {
-          countyNames && countyNames.map(
-            name => <option value={name}>{name}</option>
+          countyValues && Object.keys(countyValues).map(
+            key => <option value={key}>{key}</option>
           )
         }
       </datalist>
-    </>
+       {
+          !countyValues 
+            ? (<div className="guess">
+                <i className="loading-guess">
+                    One moment. Getting location data
+                </i>
+            </div>)
+          : null
+      }
+   </>
   )
 }
 

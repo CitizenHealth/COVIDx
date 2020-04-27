@@ -18,6 +18,13 @@ import LocationFinder from './LocationFinder';
 import { connect } from "react-redux";
 import { setAuth } from "redux/actions/auth/authAction";
 
+const FormSubmitted = props => {
+    return   (<div>
+                <h2 className="pb-1">Thank you for your help!</h2>
+                <h4 className="py-1">Report successfully submitted.</h4>
+                <h4 className="py-1">Check back in tomorrow to continue the fight against COVID-19!</h4>
+             </div>)
+}
 
 // Override default Wizard behaviour so we can go back to HowAreYouFeeling
 const WizardStep = props => {
@@ -54,6 +61,7 @@ const ConnectedWizardStep = connect(mapStateToProps, { setAuth })(WizardStep);
 
 const NotWellWizard = props => {
   const [activeStep, setActiveStep] = useState(0);
+  const [formSubmitted, setFormSubmitted] = useState(false);
   let steps = [
     {
       title: 1, content: <ConnectedWizardStep
@@ -91,15 +99,25 @@ const NotWellWizard = props => {
       />
     },
   ]
-  return <Wizard
-    steps={steps}
-    onFinish={props.submitForm}
-    activeStep={activeStep}
-    pagination={false} />
-}
+  return <>
+        { 
+            !formSubmitted 
+            ? (<Wizard
+                steps={steps}
+                onFinish={() => {
+                        props.submitForm();
+                        setFormSubmitted(true);
+                    }
+                }
+                activeStep={activeStep}
+                pagination={false} />)
+            : (<FormSubmitted />)
+        }
+        </>}
 
 const FeelingWellWizard = props => {
   const [activeStep, setActiveStep] = useState(0);
+  const [formSubmitted, setFormSubmitted] = useState(false);
   let steps = [
     {
       title: 1, content: <ConnectedWizardStep
@@ -130,11 +148,21 @@ const FeelingWellWizard = props => {
       />
     },
   ]
-  return <Wizard
-    steps={steps}
-    onFinish={props.submitForm}
-    activeStep={activeStep}
-    pagination={false} />
+  return <>
+        { 
+            !formSubmitted 
+            ? (<Wizard
+                steps={steps}
+                onFinish={() => {
+                        props.submitForm();
+                        setFormSubmitted(true);
+                    }
+                }
+                activeStep={activeStep}
+                pagination={false} />)
+            : (<FormSubmitted />)
+        }
+        </>
 }
 
 
@@ -198,7 +226,13 @@ const handleSubmit = values => {
     values.household_tested_date = (values.household_tested_date.getYear() + 1900) + "-" + values.household_tested_date.getMonth() + "-" + values.household_tested_date.getDate();
   }
   console.log(values);
-  delete  values.location
+  if (values.has_thermometer) {
+      delete values.temp_guess;
+  } else if (values.has_thermometer === false) {
+      delete values.therm_temp
+  }
+  delete values.has_thermometer
+  delete values.location
   const postPayload = {
     method: "POST",
     headers: {
