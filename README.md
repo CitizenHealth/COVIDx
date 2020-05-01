@@ -102,7 +102,7 @@ And of course COVIDx itself is open source under a MIT license.
 
 ## Installation
 
-## COVIDX API
+## COVIDx API
 We also have a backend server that you can make API calls to if you are building features here. Right now, it's pretty barebones - user data, survey data, and location data are what's available. If there are any requests, please feel free to ask!
 
 More details will be coming soon.
