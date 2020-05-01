@@ -95,14 +95,17 @@ COVIDx uses a number of open source projects to work properly:
 
 * [React](https://reactjs.org/) - for our frontend
 * [Formik](https://jaredpalmer.com/formik) - for building our forms
-* [Python](https://www.python.org/) - for our backend
+* [Flask](https://flask.palletsprojects.com/) - for our backend
 * [Leaflet](https://leafletjs.com/) - for our mobile-friendly interactive maps
 
 And of course COVIDx itself is open source under a MIT license.
 
 ## Installation
 
+## COVIDX API
+We also have a backend server that you can make API calls to if you are building features here. Right now, it's pretty barebones - user data, survey data, and location data are what's available. If there are any requests, please feel free to ask!
 
+More details will be coming soon.
 
 
 
