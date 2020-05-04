@@ -12,7 +12,15 @@ import {
 import { connect } from "react-redux";
 import { setAuth } from "redux/actions/auth/authAction";
 
+import NumericInput from 'react-numeric-input';
 
+const AgeField = props => {
+  return <NumericInput mobile
+    value={props.form.values["age"]}
+    onChange={(value) => {
+      props.form.setFieldValue("age", value);
+    }} />
+}
 
 export const MedicalHistoryPage = props => {
   if (
@@ -27,13 +35,10 @@ export const MedicalHistoryPage = props => {
         <h4>How old are you?</h4>
       </Row>
       <Row style={{ marginBottom: 30 }}>
-        <Field
-          component={RadioGroup}
-          names_and_labels={age_names_and_labels}
-          name="age" />
+        <Field component={AgeField} />
       </Row>
       <Row>
-        <h4>Are you male or female?</h4>
+        <h4>What was your sex at birth?</h4>
       </Row>
       <Row style={{ marginBottom: 30 }}>
         <Field

@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import HowAreYouFeeling from "./HowAreYouFeeling";
 import { Field, Formik } from "formik";
-import {
-  Card, CardBody, Container, Row, Button,
-} from "reactstrap";
+import { Button } from "reactstrap";
 import Wizard from "../../../components/@vuexy/wizard/WizardComponent"
 import "rc-slider/assets/index.css"
 import "../../../assets/scss/plugins/extensions/slider.scss"
@@ -11,7 +9,7 @@ import {
   symptom_names_and_labels,
   underlying_condition_names_and_labels,
 } from './QuestionSpecs'
-import { NotWellPage, slider_pos_to_C, THERM_DEFAULT } from './NotWell';
+import { NotWellPage, THERM_DEFAULT } from './NotWell';
 import { TestedPage, HouseholdTestedPage } from './Tested';
 import MedicalHistoryPage from './MedicalHistory';
 import LocationFinder from './LocationFinder';
@@ -19,11 +17,11 @@ import { connect } from "react-redux";
 import { setAuth } from "redux/actions/auth/authAction";
 
 const FormSubmitted = props => {
-    return   (<div>
-                <h2 className="pb-1">Thank you for your help!</h2>
-                <h4 className="py-1">Report successfully submitted.</h4>
-                <h4 className="py-1">Check back in tomorrow to continue the fight against COVID-19!</h4>
-             </div>)
+  return (<div>
+    <h2 className="pb-1">Thank you for your help!</h2>
+    <h4 className="py-1">Report successfully submitted.</h4>
+    <h4 className="py-1">Check back in tomorrow to continue the fight against COVID-19!</h4>
+  </div>)
 }
 
 // Override default Wizard behaviour so we can go back to HowAreYouFeeling
@@ -100,20 +98,21 @@ const NotWellWizard = props => {
     },
   ]
   return <>
-        { 
-            !formSubmitted 
-            ? (<Wizard
-                steps={steps}
-                onFinish={() => {
-                        props.submitForm();
-                        setFormSubmitted(true);
-                    }
-                }
-                activeStep={activeStep}
-                pagination={false} />)
-            : (<FormSubmitted />)
-        }
-        </>}
+    {
+      !formSubmitted
+        ? (<Wizard
+          steps={steps}
+          onFinish={() => {
+            props.submitForm();
+            setFormSubmitted(true);
+          }
+          }
+          activeStep={activeStep}
+          pagination={false} />)
+        : (<FormSubmitted />)
+    }
+  </>
+}
 
 const FeelingWellWizard = props => {
   const [activeStep, setActiveStep] = useState(0);
@@ -149,20 +148,20 @@ const FeelingWellWizard = props => {
     },
   ]
   return <>
-        { 
-            !formSubmitted 
-            ? (<Wizard
-                steps={steps}
-                onFinish={() => {
-                        props.submitForm();
-                        setFormSubmitted(true);
-                    }
-                }
-                activeStep={activeStep}
-                pagination={false} />)
-            : (<FormSubmitted />)
-        }
-        </>
+    {
+      !formSubmitted
+        ? (<Wizard
+          steps={steps}
+          onFinish={() => {
+            props.submitForm();
+            setFormSubmitted(true);
+          }
+          }
+          activeStep={activeStep}
+          pagination={false} />)
+        : (<FormSubmitted />)
+    }
+  </>
 }
 
 
@@ -214,7 +213,7 @@ initialValues.self_tested_date = null
 initialValues.household_tested = null
 initialValues.household_tested_date = null
 initialValues.sex = null
-initialValues.age = null
+initialValues.age = 33
 initialValues.temp_guess = null
 initialValues.therm_temp = THERM_DEFAULT
 
@@ -227,9 +226,9 @@ const handleSubmit = values => {
   }
   console.log(values);
   if (values.has_thermometer) {
-      delete values.temp_guess;
+    delete values.temp_guess;
   } else if (values.has_thermometer === false) {
-      delete values.therm_temp
+    delete values.therm_temp
   }
   delete values.has_thermometer
   delete values.location
@@ -244,25 +243,25 @@ const handleSubmit = values => {
   const postData = async () => {
     await fetch(`https://www.covidx.app/create_survey_response`, postPayload)
       .then(res => {
-          console.log(res);
-          return res.text();
+        console.log(res);
+        return res.text();
       })
       .then(json => console.log(json))
       .catch(e => console.log(e));
   }
-    
+
   postData();
 }
 
 const Questionnaire = (props) => {
   return (<Formik
-            initialValues={initialValues}
-            onSubmit={handleSubmit}>
-                {(props) => (
-                  <SelectQuestionnaire values={props.values} submitForm={props.submitForm}
-                    validateField={props.validateField} />
-                )}
-          </Formik >
+    initialValues={initialValues}
+    onSubmit={handleSubmit}>
+    {(props) => (
+      <SelectQuestionnaire values={props.values} submitForm={props.submitForm}
+        validateField={props.validateField} />
+    )}
+  </Formik >
   );
 }
 

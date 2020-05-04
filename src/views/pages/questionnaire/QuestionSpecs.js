@@ -2,17 +2,22 @@
 
 const symptom_names_and_labels = [
     { label: "Dry cough", name: 'dry_cough' },
-    { label: "Loss of taste and/or smell", name: 'no_smell_taste' },
-    { label: "Extreme fatigue", name: 'extreme_fatigue' },
-    { label: "Wet cough", name: 'wet_cough' },
+    { label: "Wet cough (sputum)", name: 'wet_cough' },
+    { label: "Loss of taste", name: 'loss_of_taste' },
+    { label: "Loss of smell", name: 'loss_of_smell' },
     { label: "Shortness of breath", name: 'dry_cough' },
+    { label: "Fatigue", name: 'extreme_fatigue' },
     { label: "Abdominal pain", name: 'abdominal_pain' },
+    { label: "Chest pain", name: 'chest_pain' },
     { label: "Diarrhea", name: 'diarrhea' },
+    { label: "Vomiting", name: 'vomiting' },
+    { label: "Nausea", name: 'nausea' },
     { label: "Sore throat", name: 'sore_throat' },
     { label: "Chills", name: 'chills' },
-    { label: "Nausea and/or vomiting", name: 'nausea_vomiting' },
-    { label: "Pressure feeling in chest", name: 'pressure_chest' },
-    { label: "Pink eye", name: 'pink_eye' },
+    { label: "Tightness in chest", name: 'tightness_chest' },
+    { label: "Rash on feet", name: 'rash_on_feet' },
+    { label: "Headache", name: 'headache' },
+    { label: "Other", name: 'other' },
 ]
 
 const temp_guess_names_and_labels = [

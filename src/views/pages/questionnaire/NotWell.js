@@ -3,7 +3,6 @@ import { Container, Row, Col, Button, ButtonGroup } from "reactstrap";
 import { temp_guess_names_and_labels, symptom_names_and_labels } from './QuestionSpecs';
 import { RadioGroup, CheckBoxGroup } from './Components';
 import { Field } from 'formik';
-import Slider from 'rc-slider';
 import NumericInput from 'react-numeric-input';
 import "rc-slider/assets/index.css"
 import "../../../assets/scss/plugins/extensions/slider.scss"
@@ -17,11 +16,6 @@ const f_to_c = degrees_f => {
   return (degrees_f - 32) * 5 / 9;
 }
 
-const slider_pos_to_C = pos => {
-  let along = pos / 1000;
-  return 34 + (42 - 34) * along;
-}
-
 const temp_marks_C = {};
 const temp_marks_F = {};
 
@@ -33,41 +27,6 @@ for (const [idx, el] of [...Array(9).keys()].map(x => x + 34).entries()) {
 }
 
 const THERM_DEFAULT = 36.5;
-
-const HasThermometerInput_ = props => {
-  const [sliderValue, setSliderValue] = useState(30);
-  const [tempInC, setTempInC] = useState(true);
-  return (
-    <Container >
-      <Row>
-        <h4 style={{ marginBottom: 30 }}>{"What's your temperature?"}</h4>
-      </Row>
-      <Row style={{ marginBottom: 30 }}>
-        <Col calssName="justify-content-center">
-          {tempInC ? slider_pos_to_C(sliderValue).toFixed(2).toString() + "°C" :
-            c_to_f(slider_pos_to_C(sliderValue)).toFixed(2).toString() + "°F"}
-        </Col>
-        <Col xs={8}>
-          <Slider defaultValue={THERM_DEFAULT}
-            marks={tempInC ? temp_marks_C : temp_marks_F}
-            onChange={(value) => { props.form.setFieldValue(props.field.name, slider_pos_to_C(value)); setSliderValue(value) }} />
-        </Col >
-        <Col calssName="justify-content-center">
-        </Col>
-      </Row>
-      <Row><Button color={"primary"}
-        onClick={() => {
-          props.form.setFieldValue("has_thermometer", false);
-          props.setHasThermometer(false);
-          if (props.form.values.temp_guess === null) {
-            props.setNextDisabled(true);
-          }
-        }}>
-        I don't have a thermometer</Button></Row>
-    </Container>
-  )
-}
-
 
 const DegreesCInput = props => {
   return (
@@ -185,4 +144,4 @@ const NotWellPage = props => {
   )
 }
 
-export { NotWellPage, slider_pos_to_C, THERM_DEFAULT };
+export { NotWellPage, THERM_DEFAULT };
