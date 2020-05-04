@@ -13,11 +13,11 @@ const EmojiButton = props => {
     <Button className="mx-auto text-center font-weight-bold" style={{ width: '66%' }} onClick={props.onClick}>
       <Container>
         <Row>
-          <Col>
-            <img src={props.src} alt="" style={{ width: '60%' }} />
+          <Col xs={3}>
+            <img src={props.src} alt="" />
           </Col>
           <Col >
-            <div style={{ width: '100%', paddingTop: 15, fontSize: 17 }} >
+            <div style={{ width: '100%', paddingTop: 20, fontSize: 17 }} >
               {props.text}
             </div>
           </Col>
