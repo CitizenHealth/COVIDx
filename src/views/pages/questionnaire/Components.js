@@ -13,6 +13,15 @@ const MyCheckBox = props => {
   )
 }
 
+
+const OtherCheckBox = props => {
+  var [checked, setChecked] = useState(false)
+  return <div>
+    <CheckBox onChange={() => { if (checked) { props.form.setFieldValue(props.field.name, null) }; setChecked(!checked); }} label={props.label} size="lg" />
+    {checked && <Input type="text" onChange={(e) => { props.form.setFieldValue(props.field.name, e.target.value) }} />}
+  </div>
+}
+
 const RadioGroup = props => {
   return (
     <Container>
@@ -41,7 +50,7 @@ const CheckBoxGroup = props => {
       {props.names_and_labels.map(x => (
         <Row style={{ marginBottom: 7 }} >
           <Field
-            component={MyCheckBox}
+            component={x.name !== "other" ? MyCheckBox : OtherCheckBox}
             type="checkbox"
             label={x.label}
             name={x.name}
@@ -106,12 +115,12 @@ const InputField = props => {
       );
       var tempVals = {}
       countyData.features.forEach(
-          feature => { 
-              tempVals[`${feature.properties.NAME}, ${feature.properties.STATE_NAME}`] = {
-                latitude: feature.geometry.coordinates[0][0][0][1],
-                longitude: feature.geometry.coordinates[0][0][0][0]
-              }
+        feature => {
+          tempVals[`${feature.properties.NAME}, ${feature.properties.STATE_NAME}`] = {
+            latitude: feature.geometry.coordinates[0][0][0][1],
+            longitude: feature.geometry.coordinates[0][0][0][0]
           }
+        }
       );
       setCountyValues(tempVals);
     }
@@ -129,13 +138,13 @@ const InputField = props => {
         list="search-suggest"
         //value={userLocation ? '' : searchInput}
         onChange={e => {
-            if (e.target.value in countyValues) {
-                var longitude = countyValues[e.target.value].longitude;
-                var latitude = countyValues[e.target.value].latitude;
-                props.form.setFieldValue("longitude", longitude);
-                props.form.setFieldValue("latitude", latitude);
-            }
-            setSearchInput(e.target.value)
+          if (e.target.value in countyValues) {
+            var longitude = countyValues[e.target.value].longitude;
+            var latitude = countyValues[e.target.value].latitude;
+            props.form.setFieldValue("longitude", longitude);
+            props.form.setFieldValue("latitude", latitude);
+          }
+          setSearchInput(e.target.value)
 
         }}
         readonly={countyData ? false : "readonly"}
@@ -147,16 +156,16 @@ const InputField = props => {
           )
         }
       </datalist>
-       {
-          !countyValues 
-            ? (<div className="guess">
-                <i className="loading-guess">
-                    One moment. Getting location data
+      {
+        !countyValues
+          ? (<div className="guess">
+            <i className="loading-guess">
+              One moment. Getting location data
                 </i>
-            </div>)
+          </div>)
           : null
       }
-   </>
+    </>
   )
 }
 
