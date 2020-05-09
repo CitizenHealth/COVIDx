@@ -48,7 +48,7 @@ export default function HeatMap(props) {
         'Accept': 'application/json'
       }
     };
-    await fetch(`https://www.covidx.app/get_state_results`, getPayload)
+    await fetch(`https://map.covidx.app/get_state_results`, getPayload)
       .then(res => res.json())
       .then(json => setStateData(json.payload))
       .catch(e => console.log(e))
@@ -61,7 +61,7 @@ export default function HeatMap(props) {
         'Accept': 'application/json'
       }
     };
-    await fetch(`https://www.covidx.app/get_county_results`, getPayload)
+    await fetch(`https://map.covidx.app/get_county_results`, getPayload)
       .then(res => res.json())
       .then(json => setCountyData(json.payload))
       .catch(e => console.log(e))
