@@ -36,3 +36,4 @@ yarn-error.log*
 
 # Firebase
 .firebase/*
+.auth/login/auth.js
