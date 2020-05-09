@@ -59,10 +59,11 @@ export default function ViewRouter(props) {
 
   return (
     <Router history={history}>
-      <Redirect from="/" to="/dashboard" />
+      {/* <Redirect from="/" to="/dashboard" /> */}
       <Switch>
         <RouteConfig
-            path="/dashboard"
+            exact 
+            path="/"
             component= {Dashboard}
         />
         <RouteConfig
