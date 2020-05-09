@@ -36,13 +36,11 @@ const Dashboard = (props) => {
     //   </Row>
     // </Container>
     <div className="custom-dashboard">
-      <div className="survey">
-        <Card>
+        <Card className="survey-card">
           <CardBody>
             <Questionnaire />
           </CardBody>
         </Card>
-      </div>
       <div className="widgets">
         <div className="wearable-data-container">
           <Card className="wearable-data">
@@ -61,7 +59,11 @@ const Dashboard = (props) => {
             </CardBody>
           </Card>
         </div>
-        <HeatMap/>
+        <Card>
+          <CardBody>
+            <HeatMap/>
+          </CardBody>
+        </Card>
       </div>
     </div>
   );
