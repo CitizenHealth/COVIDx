@@ -4,6 +4,7 @@ import Radio from "../../../components/@vuexy/radio/RadioVuexy"
 import { Input, Container, Row } from "reactstrap"
 import { Field } from 'formik';
 import * as d3 from "d3";
+import { baseEndpoint } from "App"
 
 const MyCheckBox = props => {
   return (
@@ -83,7 +84,7 @@ const InputField = props => {
         'Accept': 'application/json'
       }
     };
-    await fetch(`https://www.covidx.app/get_county_results`, getPayload)
+    await fetch(`${baseEndpoint}/get_county_results`, getPayload)
       .then(res => res.json())
       .then(json => setCountyData(json.payload))
       .catch(e => console.log(e));

@@ -4,6 +4,7 @@ import * as d3 from "d3";
 
 import "./heatMap.scss";
 import "leaflet/dist/leaflet.css";
+import { baseEndpoint } from "App";
 
 const formatNumber = num => {
   return num ? num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,') : 0
@@ -48,7 +49,7 @@ export default function HeatMap(props) {
         'Accept': 'application/json'
       }
     };
-    await fetch(`https://map.covidx.app/get_state_results`, getPayload)
+    await fetch(`${baseEndpoint}/get_state_results`, getPayload)
       .then(res => res.json())
       .then(json => setStateData(json.payload))
       .catch(e => console.log(e))
@@ -61,7 +62,7 @@ export default function HeatMap(props) {
         'Accept': 'application/json'
       }
     };
-    await fetch(`https://map.covidx.app/get_county_results`, getPayload)
+    await fetch(`${baseEndpoint}/get_county_results`, getPayload)
       .then(res => res.json())
       .then(json => setCountyData(json.payload))
       .catch(e => console.log(e))

@@ -1,9 +1,8 @@
 import { auth, googleProvider, facebookProvider } from "../auth";
-import { AuthenticationContext } from "App";
-
+import { AuthenticationContext, baseEndpoint } from "App";
 
 export const fetchUserData = async userDataPayload => {
-  const endpoint = `https://map.covidx.app/`;
+  // const endpoint = `https://map.covidx.app/`;
   const newLoginPayload = {
     method: "PUT",
     headers: { 
@@ -31,20 +30,18 @@ export const fetchUserData = async userDataPayload => {
   };
 
   const response = await fetch(
-    `${endpoint}/new_login_user?user_id=${userDataPayload.user_id}`, 
+    `${baseEndpoint}/new_login_user?user_id=${userDataPayload.user_id}`, 
     newLoginPayload
   ).then(res => 
     res.status===200 ? 
     res : 
-    fetch(`${endpoint}/create_user`, registerPayload)
+    fetch(`${baseEndpoint}/create_user`, registerPayload)
   ).then(res => res.json()).catch(e => console.log(e));
 
   return response;
 };
 
 export const checkToken = async token => {
-  const endpoint = `https://www.covidx.app/`;
-
   const getPayload = {
     headers: {
       'Content-Type': 'application/json',
@@ -53,7 +50,7 @@ export const checkToken = async token => {
   };
 
   const response = await fetch(
-    `${endpoint}/check_token?access_token=${token}`, 
+    `${baseEndpoint}/check_token?access_token=${token}`, 
     getPayload
   ).then(res => res.json()).catch(e => e)
 

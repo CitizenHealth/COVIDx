@@ -19,6 +19,7 @@ import {
 import { fetchUserData, checkToken } from "authentication/login/Login"
 import { auth, googleProvider, facebookProvider } from "authentication/auth";
 
+export const baseEndpoint = "https://map.covidx.app"
 
 // import { login } from "redux/reducers/auth/loginReducer"
 // import { setAuth } from "redux/actions/auth/authAction";
