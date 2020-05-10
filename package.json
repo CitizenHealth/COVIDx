@@ -11,7 +11,6 @@
     "apexcharts": "^3.15.3",
     "auth0-js": "^9.12.2",
     "availity-reactstrap-validation": "^2.6.1",
-    "axios": "^0.19.2",
     "axios-mock-adapter": "~1.17.0",
     "babel-plugin-react-intl": "^5.1.18",
     "bootstrap": "^4.4.1",
@@ -86,7 +85,7 @@
     "yup": "^0.28.1"
   },
   "scripts": {
-    "start": "cross-env REACT_APP_ENDPOINT_URI=\"http://127.0.0.1:5000\" react-app-rewired start",
+    "start": "cross-env REACT_APP_ENDPOINT_URI=\"http://localhost:5000\" react-app-rewired start",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
     "eject": "react-app-rewired eject",

@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import CheckBox from "../../../components/@vuexy/checkbox/CheckboxesVuexy"
 import Radio from "../../../components/@vuexy/radio/RadioVuexy"
 import { Input, Container, Row } from "reactstrap"
 import { Field } from 'formik';
 import * as d3 from "d3";
-import { baseEndpoint } from "App"
+import { UserContext } from "App";
+import { customGet } from "utility/customFetch";
 
 const MyCheckBox = ({ form, field, label }) => {
   return (
@@ -87,12 +88,13 @@ const CheckBoxGroup = ({ names_and_labels, values }) => {
 }
 
 const GeoInputField = ({ form }) => {
-  const [countyData, setCountyData] = useState(null);
+  // const [countyData, setCountyData] = useState(null);
   const [userLocation, setUserLocation] = useState(null); // this should hold coords
   const [countyNames, setCountyNames] = useState(null);
   const [searchInput, setSearchInput] = useState(null);
   const [selectedCounty, setSelectedCounty] = useState(null); // this is the value we want... will also need to get coords if available
   const [countyValues, setCountyValues] = useState(null);
+  const user = useContext(UserContext);
 
 
   const success = position => {
@@ -101,21 +103,9 @@ const GeoInputField = ({ form }) => {
     setUserLocation([longitude, latitude]);
   };
 
-  const fetchCountyData = async () => {
-    const getPayload = {
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      }
-    };
-    await fetch(`${baseEndpoint}/get_county_results`, getPayload)
-      .then(res => res.json())
-      .then(json => setCountyData(json.payload))
-      .catch(e => console.log(e));
-  };
-
+  const countyData = customGet("/get_county_results", user.accessToken);
   useEffect(() => {
-    fetchCountyData();
+    // fetchCountyData();
     navigator.geolocation.getCurrentPosition(success, () => console.log("Location not retrieved!"));
   }, []);
 

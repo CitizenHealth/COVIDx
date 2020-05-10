@@ -1,11 +1,19 @@
-import React, { useEffect, useState, useMemo } from 'react';
+import React, { 
+  useEffect, 
+  useState, 
+  useMemo, 
+  useContext 
+} from 'react';
+import { UserContext } from "App";
+
 import L from "leaflet";
 import * as d3 from "d3";
 
 import "./heatMap.scss";
 import "leaflet/dist/leaflet.css";
-import { baseEndpoint } from "App";
-
+// import { axiosInstance } from "App";
+// import axios from "axios"
+import { customGet } from "utility/customFetch";
 const formatNumber = num => {
   return num ? num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,') : 0
 }
@@ -18,6 +26,7 @@ export default function HeatMap(props) {
   const [userLocation, setUserLocation] = useState(null);
   const [containingCounty, setContainingCounty] = useState(null);
   const [hideInstruction, setHideInstruction] = useState(false);
+  const user = useContext(UserContext);
 
   function createDefaultMap() {
     const map = L.map('mapId', {
@@ -42,36 +51,14 @@ export default function HeatMap(props) {
     return map;
   };
 
-  const fetchStateData = async () => {
-    const getPayload = {
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      }
-    };
-    await fetch(`${baseEndpoint}/get_state_results`, getPayload)
-      .then(res => res.json())
-      .then(json => setStateData(json.payload))
-      .catch(e => console.log(e))
-  }; 
-
-  const fetchCountyData = async () => {
-    const getPayload = {
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      }
-    };
-    await fetch(`${baseEndpoint}/get_county_results`, getPayload)
-      .then(res => res.json())
-      .then(json => setCountyData(json.payload))
-      .catch(e => console.log(e))
-  }; 
-
   useEffect(() => {
     const map = createDefaultMap();
-    fetchStateData();
-    fetchCountyData();
+    if (user) {
+      customGet("/get_state_results", user.accessToken)
+        .then(res => setStateData(res));
+      customGet("/get_county_results", user.accessToken)
+        .then(res => setCountyData(res));
+    };
     setStoreMap(map);
 
     const newDiv = document.createElement("div");
@@ -81,7 +68,7 @@ export default function HeatMap(props) {
 
   }, []);
 
-  useMemo(() => {
+  useEffect(() => {
     if (stateData && countyData && containingCounty) {
       // create the color gradients...
       const gradient = {
@@ -245,10 +232,12 @@ export default function HeatMap(props) {
     };
   }, [stateData, countyData, containingCounty])
 
+  
   useEffect(() => {
     // find intersecting countydata and userlocation
+    console.log('countyData @ => ', countyData)
     if (countyData && userLocation) {
-      countyData.features.forEach(county => {
+      countyData.payload.features.forEach(county => {
         let location = [userLocation.lng, userLocation.lat];
         // console.log(location)
         d3.geoContains(county, location) && setContainingCounty(county);

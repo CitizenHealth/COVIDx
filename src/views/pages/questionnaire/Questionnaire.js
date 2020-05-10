@@ -13,9 +13,8 @@ import { NotWellPage, THERM_DEFAULT } from './NotWell';
 import { TestedPage, HouseholdTestedPage } from './Tested';
 import MedicalHistoryPage from './MedicalHistory';
 import LocationFinder from './LocationFinder';
-import { UserContext, baseEndpoint } from "App";
-import axios from "axios";
-
+import { UserContext } from "App";
+import { customPost } from "utility/customFetch"
 const FormSubmitted = () => {
   return (
     <div>
@@ -236,7 +235,8 @@ initialValues.age = 33
 initialValues.temp_guess = null
 initialValues.therm_temp = THERM_DEFAULT
 
-const handleSubmit = values => {
+const handleSubmit = (values, accessToken) => {
+  
   if (values.self_tested_date instanceof Date) {
     values.self_tested_date = (values.self_tested_date.getYear() + 1900) + "-" + values.self_tested_date.getMonth() + "-" + values.self_tested_date.getDate();
   }
@@ -252,39 +252,15 @@ const handleSubmit = values => {
   delete values.has_thermometer
   delete values.location
 
-
-  postData = () => { 
-    axios({
-      method:"post",
-      url:`${baseEndpoint}/create_survey_response`,
-      data: JSON.stringify(values)
-    })
-  };
-  // const postPayload = {
-  //   method: "POST",
-  //   headers: {
-  //     'Accept': 'application/json',
-  //     'Content-Type': 'application/json'
-  //   },
-  //   body: JSON.stringify(values)
-  // }
-  // const postData = async () => {
-  //   await fetch(`${baseEndpoint}/create_survey_response`, postPayload)
-  //     .then(res => {
-  //       console.log(res);
-  //       return res.text();
-  //     })
-  //     .then(json => console.log(json))
-  //     .catch(e => console.log(e));
-  // }
-
-  postData();
+  customPost("/create_survey_response", accessToken, values); // this needs to be tested
 }
 
 const Questionnaire = (props) => {
+  const user = useContext(UserContext);
   return (<Formik
     initialValues={initialValues}
-    onSubmit={handleSubmit}>
+    onSubmit={handleSubmit}
+    accessToken={user && user.accessToken}>
     {(props) => (
       <SelectQuestionnaire values={props.values} submitForm={props.submitForm}
         validateField={props.validateField} />
