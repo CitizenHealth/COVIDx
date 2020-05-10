@@ -6,38 +6,79 @@ import { Field } from 'formik';
 import * as d3 from "d3";
 import { baseEndpoint } from "App"
 
-const MyCheckBox = props => {
+const MyCheckBox = ({ form, field, label }) => {
   return (
-    <CheckBox onChange={
-      () => props.form.setFieldValue(props.field.name, !props.field.value)}
-      label={props.label} size="lg" />
+    <CheckBox 
+      onChange={ () => 
+        form.setFieldValue(field.name, field.value)
+      }
+      label={ label } 
+      size="lg" 
+    />
   )
 }
 
 
-const OtherCheckBox = props => {
+const OtherCheckBox = ({ form, field, label }) => {
   var [checked, setChecked] = useState(false)
-  return <div>
-    <CheckBox onChange={() => { if (checked) { props.form.setFieldValue(props.field.name, null) }; setChecked(!checked); }} label={props.label} size="lg" />
-    {checked && <Input type="text" onChange={(e) => { props.form.setFieldValue(props.field.name, e.target.value) }} />}
-  </div>
+  const checkHandler = () => {
+    return checked ? form.setFieldValue(field.name, null) : setChecked(!checked)
+  }
+  return (
+    <div>
+      <CheckBox 
+        onChange={ checkHandler }
+        label={label} 
+        size="lg" 
+      />
+      {
+        checked 
+        && <Input 
+          type="text" 
+          onChange={ e =>
+            form.setFieldValue(field.name, e.target.value)
+          }
+        />
+      }
+    </div>
+  )
 }
 
-const RadioGroup = props => {
+const RadioGroup = ({ form, field, names_and_labels }) => {
+
+
+  const content = names_and_labels.map(label => (
+    <Row style={{ marginBottom: 7 }}>
+      <Radio 
+        onChange={() => {
+          form.setFieldValue(field.name, label.name);
+          "onChange" in label && label.onChange()
+        }}
+        checked={form.values[field.name] === label.name}
+        label={label.label}
+        size="lg"
+      />
+    </Row>
+  ))
+
   return (
     <Container>
-      {props.names_and_labels.map(x => (
-        <Row style={{ marginBottom: 7 }}>
-          <Radio onChange={
-            () => {
-              props.form.setFieldValue(props.field.name, x.name);
-              if ("onChange" in x) {
-                x.onChange();
-              }
-            }}
-            checked={props.form.values[props.field.name] === x.name}
-            label={x.label}
-            size="lg"
+      { content }
+    </Container>
+  )
+}
+
+const CheckBoxGroup = ({ names_and_labels, values }) => {
+  return (
+    <Container>
+      {names_and_labels.map(label => (
+        <Row style={{ marginBottom: 7 }} >
+          <Field
+            component={ label.name !== "other" ? MyCheckBox : OtherCheckBox }
+            type="checkbox"
+            label={ label.label }
+            name={ label.name }
+            checked={ values[label.name] } 
           />
         </Row>
       ))}
@@ -45,24 +86,7 @@ const RadioGroup = props => {
   )
 }
 
-const CheckBoxGroup = props => {
-  return (
-    <Container>
-      {props.names_and_labels.map(x => (
-        <Row style={{ marginBottom: 7 }} >
-          <Field
-            component={x.name !== "other" ? MyCheckBox : OtherCheckBox}
-            type="checkbox"
-            label={x.label}
-            name={x.name}
-            checked={props.values[x.name]} />
-        </Row>
-      ))}
-    </Container>
-  )
-}
-
-const InputField = props => {
+const GeoInputField = ({ form }) => {
   const [countyData, setCountyData] = useState(null);
   const [userLocation, setUserLocation] = useState(null); // this should hold coords
   const [countyNames, setCountyNames] = useState(null);
@@ -128,7 +152,7 @@ const InputField = props => {
   }, [countyData]);
 
   useEffect(() => {
-    props.form.setFieldValue("location", searchInput)
+    form.setFieldValue("location", searchInput)
   }, [searchInput]);
 
   return (
@@ -142,8 +166,8 @@ const InputField = props => {
           if (e.target.value in countyValues) {
             var longitude = countyValues[e.target.value].longitude;
             var latitude = countyValues[e.target.value].latitude;
-            props.form.setFieldValue("longitude", longitude);
-            props.form.setFieldValue("latitude", latitude);
+            form.setFieldValue("longitude", longitude);
+            form.setFieldValue("latitude", latitude);
           }
           setSearchInput(e.target.value)
 
@@ -170,4 +194,4 @@ const InputField = props => {
   )
 }
 
-export { CheckBoxGroup, RadioGroup, InputField }
+export { CheckBoxGroup, RadioGroup, GeoInputField }

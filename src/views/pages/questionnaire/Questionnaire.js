@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import HowAreYouFeeling from "./HowAreYouFeeling";
 import { Field, Formik } from "formik";
 import { Button } from "reactstrap";
@@ -13,20 +13,24 @@ import { NotWellPage, THERM_DEFAULT } from './NotWell';
 import { TestedPage, HouseholdTestedPage } from './Tested';
 import MedicalHistoryPage from './MedicalHistory';
 import LocationFinder from './LocationFinder';
-import { connect } from "react-redux";
-import { setAuth } from "redux/actions/auth/authAction";
+import { UserContext, baseEndpoint } from "App";
+import axios from "axios";
 
-const FormSubmitted = props => {
-  return (<div>
-    <h2 className="pb-1">Thank you for your help!</h2>
-    <h4 className="py-1">Report successfully submitted.</h4>
-    <h4 className="py-1">Check back in tomorrow to continue the fight against COVID-19!</h4>
-  </div>)
+const FormSubmitted = () => {
+  return (
+    <div>
+      <h2 className="pb-1">Thank you for your help!</h2>
+      <h4 className="py-1">Report successfully submitted.</h4>
+      <h4 className="py-1">Check back in tomorrow to continue the fight against COVID-19!</h4>
+    </div>
+  )
 }
 
 // Override default Wizard behaviour so we can go back to HowAreYouFeeling
 const WizardStep = props => {
+  const user = useContext(UserContext);
   const [nextDisabled, setNextDisabled] = useState(("nextDisabled" in props));
+
   return (
     <div>
       <props.component {...props}
@@ -34,8 +38,7 @@ const WizardStep = props => {
       />
       {
         ("final" in props) &&
-        !props.auth.login.isAuthenticated &&
-        !localStorage.getItem("user_info") &&
+        user &&
         <div style={{ textAlign: "right", padding: "1rem 0" }}>
           <i>Please log in to save your results</i>
         </div>
@@ -50,48 +53,45 @@ const WizardStep = props => {
           }
         </Button>
       </div>
-    </div >
+    </div>
   )
 }
-const mapStateToProps = state => ({ auth: state.auth });
-const ConnectedWizardStep = connect(mapStateToProps, { setAuth })(WizardStep);
 
-
-const NotWellWizard = props => {
+const NotWellWizard = ({ backToStart, values, submitForm, onSubmit }) => {
   const [activeStep, setActiveStep] = useState(0);
   const [formSubmitted, setFormSubmitted] = useState(false);
   let steps = [
     {
-      title: 1, content: <ConnectedWizardStep
+      title: 1, content: <WizardStep
         component={LocationFinder}
-        onPrev={props.backToStart}
+        onPrev={backToStart}
         onNext={() => setActiveStep(activeStep + 1)}
-        values={props.values}
+        values={values}
       //   nextDisabled
       />
     },
     {
-      title: 2, content: <ConnectedWizardStep
+      title: 2, content: <WizardStep
         component={NotWellPage}
         onPrev={() => setActiveStep(activeStep - 1)}
         onNext={() => { setActiveStep(activeStep + 1) }}
-        values={props.values}
+        values={values}
       />
     },
     {
-      title: 3, content: <ConnectedWizardStep
+      title: 3, content: <WizardStep
         component={TestedPage}
         onPrev={() => setActiveStep(activeStep - 1)}
         onNext={() => setActiveStep(activeStep + 1)}
-        values={props.values}
+        values={values}
       />
     },
     {
-      title: 4, content: <ConnectedWizardStep
+      title: 4, content: <WizardStep
         component={MedicalHistoryPage}
         onPrev={() => setActiveStep(activeStep - 1)}
-        onNext={props.onSubmit}
-        values={props.values}
+        onNext={onSubmit}
+        values={values}
         final
         nextDisabled
       />
@@ -103,7 +103,7 @@ const NotWellWizard = props => {
         ? (<Wizard
           steps={steps}
           onFinish={() => {
-            props.submitForm();
+            submitForm();
             setFormSubmitted(true);
           }
           }
@@ -114,34 +114,34 @@ const NotWellWizard = props => {
   </>
 }
 
-const FeelingWellWizard = props => {
+const FeelingWellWizard = ({ backToStart, values, onSubmit,submitForm }) => {
   const [activeStep, setActiveStep] = useState(0);
   const [formSubmitted, setFormSubmitted] = useState(false);
   let steps = [
     {
-      title: 1, content: <ConnectedWizardStep
+      title: 1, content: <WizardStep
         component={LocationFinder}
-        onPrev={props.backToStart}
+        onPrev={backToStart}
         onNext={() => setActiveStep(activeStep + 1)}
-        values={props.values}
+        values={values}
       //   nextDisabled
       />
     },
     {
-      title: 2, content: <ConnectedWizardStep
+      title: 2, content: <WizardStep
         component={HouseholdTestedPage}
         onPrev={() => setActiveStep(activeStep - 1)}
         onNext={() => setActiveStep(activeStep + 1)}
-        values={props.values}
+        values={values}
         nextDisabled
       />
     },
     {
-      title: 3, content: <ConnectedWizardStep
+      title: 3, content: <WizardStep
         component={MedicalHistoryPage}
         onPrev={() => setActiveStep(activeStep - 1)}
-        onNext={props.onSubmit}
-        values={props.values}
+        onNext={onSubmit}
+        values={values}
         nextDisabled
         final
       />
@@ -153,7 +153,7 @@ const FeelingWellWizard = props => {
         ? (<Wizard
           steps={steps}
           onFinish={() => {
-            props.submitForm();
+            submitForm();
             setFormSubmitted(true);
           }
           }
@@ -164,48 +164,67 @@ const FeelingWellWizard = props => {
   </>
 }
 
+const SelectQuestionnaire = ({ values, submitForm, validateField }) => {
+  const [activeStep, setActiveStep] = useState(0);
 
-class SelectQuestionnaire extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      activeStep: 0
-    }
-  }
-
-  handleUpdate = update => {
-    this.setState(update);
+  const handleUpdate = update => {
+    setActiveStep(update.activeStep);
   };
 
-  render() {
-    switch (this.state.activeStep) {
-      case 0: return <Field component={HowAreYouFeeling} handler={this.handleUpdate} />;
-      case 1: return <FeelingWellWizard
-        values={this.props.values}
-        submitForm={this.props.submitForm}
-        backToStart={() => this.setState({ activeStep: 0 })}
-      />;
-      case 2: return <NotWellWizard
-        validateField={this.props.validateField}
-        values={this.props.values}
-        submitForm={this.props.submitForm}
-        backToStart={() => this.setState({ activeStep: 0 })}
-      />;
-      default: throw new Error(`Invalid activeStep ${this.props.activeStep}`)
+  const stepSwitch = () => {
+    let component;
+    switch (activeStep) {
+      case 0: 
+        component = 
+          <Field 
+            component={ HowAreYouFeeling } 
+            handler={ handleUpdate } 
+          />;
+        break;
+      case 1:
+        component = 
+          <FeelingWellWizard
+            values={ values }
+            submitForm={ submitForm }
+            backToStart={() => setActiveStep({ activeStep: 0 })}
+          />;
+        break;
+      case 2:
+        component = 
+          <NotWellWizard
+            validateField={ validateField }
+            values={ values }
+            submitForm={ submitForm }
+            backToStart={() => setActiveStep({ activeStep: 0 })}
+          />;
+        break;
+      default:
+        component = <div>nah bro</div>;
     }
-  }
+    return component;
+  }; 
+  return stepSwitch();
 }
 
-var initialValues = {};
 
-for (let names_and_labels of [
-  underlying_condition_names_and_labels,
-  symptom_names_and_labels
-]) {
-  for (let spec of names_and_labels) {
-    initialValues[spec.name] = false;
-  }
-}
+// var initialValues = {};
+// for (let names_and_labels of [
+//   underlying_condition_names_and_labels,
+//   symptom_names_and_labels
+// ]) {
+//   for (let spec of names_and_labels) {
+//     initialValues[spec.name] = false;
+//   }
+// };
+// console.log(underlying_condition_names_and_labels)
+// console.log(symptom_names_and_labels)
+// console.log(initialValues)
+
+const combinedLabels = [...underlying_condition_names_and_labels, ...symptom_names_and_labels]
+const initialValues = combinedLabels.reduce((acc, cur) => {
+  acc[cur.name] = false
+  return acc
+}, {})
 
 initialValues.location = null
 initialValues.self_tested = null
@@ -232,23 +251,32 @@ const handleSubmit = values => {
   }
   delete values.has_thermometer
   delete values.location
-  const postPayload = {
-    method: "POST",
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(values)
-  }
-  const postData = async () => {
-    await fetch(`https://www.covidx.app/create_survey_response`, postPayload)
-      .then(res => {
-        console.log(res);
-        return res.text();
-      })
-      .then(json => console.log(json))
-      .catch(e => console.log(e));
-  }
+
+
+  postData = () => { 
+    axios({
+      method:"post",
+      url:`${baseEndpoint}/create_survey_response`,
+      data: JSON.stringify(values)
+    })
+  };
+  // const postPayload = {
+  //   method: "POST",
+  //   headers: {
+  //     'Accept': 'application/json',
+  //     'Content-Type': 'application/json'
+  //   },
+  //   body: JSON.stringify(values)
+  // }
+  // const postData = async () => {
+  //   await fetch(`${baseEndpoint}/create_survey_response`, postPayload)
+  //     .then(res => {
+  //       console.log(res);
+  //       return res.text();
+  //     })
+  //     .then(json => console.log(json))
+  //     .catch(e => console.log(e));
+  // }
 
   postData();
 }
@@ -261,7 +289,7 @@ const Questionnaire = (props) => {
       <SelectQuestionnaire values={props.values} submitForm={props.submitForm}
         validateField={props.validateField} />
     )}
-  </Formik >
+  </Formik>
   );
 }
 

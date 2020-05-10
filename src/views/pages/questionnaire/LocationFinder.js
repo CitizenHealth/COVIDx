@@ -1,22 +1,21 @@
 import React, { useState, useEffect } from "react";
 import { Input, Button } from "reactstrap"
 import { Field } from 'formik';
-import { InputField } from './Components';
+import { GeoInputField } from './Components';
 
 import "./questionnaire.scss"
 
-export default function LocationFinder(props) {
+export default function LocationFinder({ values, setNextDisabled }) {
 
-  if (props.values.location) {
-    props.setNextDisabled(false);
+  if (values.location) {
+    setNextDisabled(false);
   };
 
   return (
     <div className="location-finder">
-      <h4 style={{ color: "#525252" }}>Please enter your county</h4>
-      <h6 style={{ color: "#525252" }}>Note: We're asking for your county (ex. San Diego, USA), not country (ex. USA)</h6>
+      <h4 style={{ color: "#525252" }}>Please enter your <i>county</i> (i.e.: not your <i>country!</i>)</h4>
       <Field
-        component={InputField}
+        component={ GeoInputField }
       />
     </div>
   )

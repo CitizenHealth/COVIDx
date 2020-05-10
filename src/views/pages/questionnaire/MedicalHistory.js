@@ -1,5 +1,4 @@
-
-import React from 'react';
+import React, { useContext } from 'react';
 import { Row, Container } from 'reactstrap';
 import { CheckBoxGroup, RadioGroup } from './Components';
 import { Field } from 'formik';
@@ -8,27 +7,28 @@ import {
   underlying_condition_names_and_labels,
   sex_names_and_labels,
 } from './QuestionSpecs';
+import { UserContext } from "App";
 
-import { connect } from "react-redux";
-import { setAuth } from "redux/actions/auth/authAction";
 
 import NumericInput from 'react-numeric-input';
 
-const AgeField = props => {
-  return <NumericInput mobile
-    value={props.form.values["age"]}
-    onChange={(value) => {
-      props.form.setFieldValue("age", value);
-    }} />
+const AgeField = ({ form }) => {
+  return (
+    <NumericInput 
+      mobile
+      value={ form.values["age"] }
+      onChange={value => {
+        form.setFieldValue("age", value);
+      }} 
+    />
+  )
 }
 
-export const MedicalHistoryPage = props => {
-  if (
-    (props.values.age && props.values.sex) &&
-    (props.auth.login.isAuthenticated || localStorage.getItem("user_info"))
-  ) {
-    props.setNextDisabled(false)
-  }
+const MedicalHistoryPage = ({ values, setNextDisabled }) => {
+  const user = useContext(UserContext);
+
+  (values.age && values.sex) && user && setNextDisabled(false);
+
   return (
     <Container style={{ marginBottom: 40 }}>
       <Row>
@@ -52,12 +52,11 @@ export const MedicalHistoryPage = props => {
       <Row style={{ marginBottom: 30 }}>
         <CheckBoxGroup
           names_and_labels={underlying_condition_names_and_labels}
-          values={props.values}
+          values={values}
         />
       </Row>
-    </Container >
+    </Container>
   )
 }
 
-const mapStateToProps = state => ({ auth: state.auth });
-export default connect(mapStateToProps, { setAuth })(MedicalHistoryPage);
+export default MedicalHistoryPage;
