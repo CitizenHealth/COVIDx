@@ -53,20 +53,22 @@ export default function HeatMap(props) {
 
   useEffect(() => {
     const map = createDefaultMap();
-    if (user) {
-      customGet("/get_state_results", user.accessToken)
-        .then(res => setStateData(res));
-      customGet("/get_county_results", user.accessToken)
-        .then(res => setCountyData(res));
-    };
     setStoreMap(map);
 
     const newDiv = document.createElement("div");
     newDiv.setAttribute("class", "loading")
     newDiv.setAttribute("id", "loading")
     document.getElementById("map-wrapper").appendChild(newDiv);
-
   }, []);
+
+  useEffect(() => {
+    if (user) {
+      customGet("/get_state_results", user.accessToken)
+        .then(res => setStateData(res));
+      customGet("/get_county_results", user.accessToken)
+        .then(res => setCountyData(res));
+    };
+  }, [user])
 
   useEffect(() => {
     if (stateData && countyData && containingCounty) {
@@ -89,7 +91,7 @@ export default function HeatMap(props) {
         if (!features) { features=0 }
         const positives = level==='state' ? 
         (
-          stateData.features
+          stateData.payload.features
             .map(state => state.properties.positive)
             .filter(state => state)
         ) : 
@@ -193,7 +195,7 @@ export default function HeatMap(props) {
         });
       };
 
-      let gj = L.geoJson(stateData, {
+      let gj = L.geoJson(stateData.payload, {
         style: style, 
         onEachFeature: hoverState,
       });
@@ -232,7 +234,6 @@ export default function HeatMap(props) {
     };
   }, [stateData, countyData, containingCounty])
 
-  
   useEffect(() => {
     // find intersecting countydata and userlocation
     console.log('countyData @ => ', countyData)
