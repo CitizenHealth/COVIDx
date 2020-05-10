@@ -88,8 +88,7 @@ const CheckBoxGroup = ({ names_and_labels, values }) => {
 }
 
 const GeoInputField = ({ form }) => {
-  // const [countyData, setCountyData] = useState(null);
-  const [userLocation, setUserLocation] = useState(null); // this should hold coords
+  const [countyData, setCountyData] = useState(null);
   const [countyNames, setCountyNames] = useState(null);
   const [searchInput, setSearchInput] = useState(null);
   const [selectedCounty, setSelectedCounty] = useState(null); // this is the value we want... will also need to get coords if available
@@ -100,36 +99,43 @@ const GeoInputField = ({ form }) => {
   const success = position => {
     const latitude = position.coords.latitude;
     const longitude = position.coords.longitude;
-    setUserLocation([longitude, latitude]);
+    form.setFieldValue("longitude", longitude);
+    form.setFieldValue("latitude", latitude);
+
   };
 
-  const countyData = customGet("/get_county_results", user.accessToken);
   useEffect(() => {
-    // fetchCountyData();
-    navigator.geolocation.getCurrentPosition(success, () => console.log("Location not retrieved!"));
+    navigator.geolocation
+      .getCurrentPosition(success, () => console.log("Location not retrieved!"));
   }, []);
 
   useEffect(() => {
-    if (countyData && userLocation) {
-      countyData.features.forEach(county => {
-        const containing = d3.geoContains(county, userLocation)
+    user && customGet("/get_county_results", user.accessToken)
+      .then(res => setCountyData(res));
+  }, [user])
+
+  useEffect(() => {
+    if (countyData && (form.values.longitude || form.values.latitude)) {
+      countyData.payload.features.forEach(county => {
+        const lonLat = [form.values["longitude"], form.values['latitude']];
+        const containing = d3.geoContains(county, lonLat);
         if (containing) {
+          console.log("user is in => ", county)
           const countyText = `${county.properties.NAME}, ${county.properties.STATE_NAME}`
           setSearchInput(countyText);
-          // props.form.setFieldValue("location", countyText)
         }
       })
     }
-  }, [countyData, userLocation]);
+  }, [countyData, form.values.longitude, form.values.latitude]);
 
   useEffect(() => {
     if (countyData) {
       setCountyNames(
-        countyData.features.map(
+        countyData.payload.features.map(
           feature => `${feature.properties.NAME}, ${feature.properties.STATE_NAME}`)
       );
       var tempVals = {}
-      countyData.features.forEach(
+      countyData.payload.features.forEach(
         feature => {
           tempVals[`${feature.properties.NAME}, ${feature.properties.STATE_NAME}`] = {
             latitude: feature.geometry.coordinates[0][0][0][1],
@@ -141,28 +147,24 @@ const GeoInputField = ({ form }) => {
     }
   }, [countyData]);
 
-  useEffect(() => {
-    form.setFieldValue("location", searchInput)
-  }, [searchInput]);
+  const findLatLon = e => {
+    if (e.target.value in countyValues) {
+      const longitude = countyValues[e.target.value].longitude;
+      const latitude = countyValues[e.target.value].latitude;
+      form.setFieldValue("longitude", longitude);
+      form.setFieldValue("latitude", latitude);
+    }
+    setSearchInput(e.target.value)
+  };
 
   return (
     <>
       <Input className="mt-2"
         placeholder="Start typing in your county..."
-        // onChange = { event => setSearchInput(event.target.value) }
         list="search-suggest"
-        //value={userLocation ? '' : searchInput}
-        onChange={e => {
-          if (e.target.value in countyValues) {
-            var longitude = countyValues[e.target.value].longitude;
-            var latitude = countyValues[e.target.value].latitude;
-            form.setFieldValue("longitude", longitude);
-            form.setFieldValue("latitude", latitude);
-          }
-          setSearchInput(e.target.value)
-
-        }}
+        onChange={ findLatLon }
         readonly={countyData ? false : "readonly"}
+        value={ searchInput }
       />
       <datalist id="search-suggest">
         {

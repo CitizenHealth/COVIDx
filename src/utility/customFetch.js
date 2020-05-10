@@ -21,6 +21,7 @@ export const customGet = async (url, token) => {
 }
 
 export const customPost = async (url, token, values) => {
+  console.log(values)
   const postPayload = {
     method: "POST",
     headers: {

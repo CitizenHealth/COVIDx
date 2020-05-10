@@ -96,7 +96,7 @@ export default function HeatMap(props) {
             .filter(state => state)
         ) : 
         (
-          countyData.features
+          countyData.payload.features
             .map(state => state.properties.cases)
             .filter(state => state)
         )
@@ -145,7 +145,7 @@ export default function HeatMap(props) {
           `<h5>Positive Cases in ${containingCounty && containingCounty.properties.NAME}: ${containingCounty && formatNumber(containingCounty.properties.cases)}</h5></div>` + 
           `<div class="info-child"><h6>*hovered*<h6>` + 
           (props ? 
-            `<h5>Positive Cases in ${props.NAME} : ${props.positive ? formatNumber(props.positive) : formatNumber(props.cases)}</h5>` : 
+            `<h5>Positive Cases in ${props.NAME}: ${props.positive ? formatNumber(props.positive) : formatNumber(props.cases)}</h5>` : 
             "<h5>Hover over a state</h5>") + 
           `</div>`+
           `<div class="info-child"><h6>*tip*</h6>` + 
@@ -177,7 +177,7 @@ export default function HeatMap(props) {
           storeMap.fitBounds(e.target.getBounds());
           storeMap.removeLayer(e.target)
           const stateName = e.target.feature.properties.NAME;
-          const statePayload = countyData.features.filter(feat => feat.properties.STATE_NAME===stateName);
+          const statePayload = countyData.payload.features.filter(feat => feat.properties.STATE_NAME===stateName);
           const countyPayload = { ...statePayload, features:statePayload };
           let gjCounty = L.geoJson(countyPayload, {
             style: style, 
@@ -220,7 +220,7 @@ export default function HeatMap(props) {
           container.value = "Fit to USA and reset state view";
 
           container.onclick = () => {
-            map.fitBounds(L.geoJson(countyData).getBounds());
+            map.fitBounds(L.geoJson(countyData.payload).getBounds());
             map.eachLayer(layer => {
               layer instanceof L.GeoJSON && map.removeLayer(layer);
             })

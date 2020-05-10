@@ -65,13 +65,13 @@ const NotWellWizard = ({ backToStart, values, submitForm, onSubmit }) => {
         component={LocationFinder}
         onPrev={backToStart}
         onNext={() => setActiveStep(activeStep + 1)}
-        values={values}
+        values={ values }
       //   nextDisabled
       />
     },
     {
       title: 2, content: <WizardStep
-        component={NotWellPage}
+        component={ NotWellPage }
         onPrev={() => setActiveStep(activeStep - 1)}
         onNext={() => { setActiveStep(activeStep + 1) }}
         values={values}
@@ -243,7 +243,6 @@ const handleSubmit = (values, accessToken) => {
   if (values.household_tested_date instanceof Date) {
     values.household_tested_date = (values.household_tested_date.getYear() + 1900) + "-" + values.household_tested_date.getMonth() + "-" + values.household_tested_date.getDate();
   }
-  console.log(values);
   if (values.has_thermometer) {
     delete values.temp_guess;
   } else if (values.has_thermometer === false) {
@@ -259,8 +258,7 @@ const Questionnaire = (props) => {
   const user = useContext(UserContext);
   return (<Formik
     initialValues={initialValues}
-    onSubmit={handleSubmit}
-    accessToken={user && user.accessToken}>
+    onSubmit={values => handleSubmit(values, user.accessToken)}>
     {(props) => (
       <SelectQuestionnaire values={props.values} submitForm={props.submitForm}
         validateField={props.validateField} />

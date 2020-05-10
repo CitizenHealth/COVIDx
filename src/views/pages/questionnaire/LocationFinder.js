@@ -7,9 +7,7 @@ import "./questionnaire.scss"
 
 export default function LocationFinder({ values, setNextDisabled }) {
 
-  if (values.location) {
-    setNextDisabled(false);
-  };
+  values.location && setNextDisabled(false);
 
   return (
     <div className="location-finder">
