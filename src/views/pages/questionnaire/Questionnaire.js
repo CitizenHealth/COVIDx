@@ -174,6 +174,7 @@ const SelectQuestionnaire = ({ values, submitForm, validateField }) => {
     let component;
     switch (activeStep) {
       case 0: 
+        console.log('steppin')
         component = 
           <Field 
             component={ HowAreYouFeeling } 
@@ -185,7 +186,7 @@ const SelectQuestionnaire = ({ values, submitForm, validateField }) => {
           <FeelingWellWizard
             values={ values }
             submitForm={ submitForm }
-            backToStart={() => setActiveStep({ activeStep: 0 })}
+            backToStart={() => setActiveStep(0)}
           />;
         break;
       case 2:
@@ -194,11 +195,11 @@ const SelectQuestionnaire = ({ values, submitForm, validateField }) => {
             validateField={ validateField }
             values={ values }
             submitForm={ submitForm }
-            backToStart={() => setActiveStep({ activeStep: 0 })}
+            backToStart={() => setActiveStep(0)}
           />;
         break;
       default:
-        component = <div>nah bro</div>;
+        component = <div>oops, you've took a wrong turn!</div>;
     }
     return component;
   }; 
