@@ -5,29 +5,33 @@ export class Forms extends React.Component {
   state = {
     link: "Link coming soon",
     post: `I did my part to stop the COVID-19 spread ! Join me on COVIDx to help science beat this virus!\nLink coming soon`,
-    copySuccess: ''
+    copySuccess: "",
   };
 
-  copyCodeToClipboard = event => {
+  copyCodeToClipboard = (event) => {
     const el = this.textArea;
     el.select();
     document.execCommand("copy");
     event.target.focus();
-    this.setState({ copySuccess: ' Copied!' });
-    
-  }
-
-  handleChange = event => {
-    this.setState({ post: event.target.value });
+    this.setState({ copySuccess: " Copied!" });
   };
 
-  facebookRedirect = event => {
-    window.open(`https://www.facebook.com/share.php?u=https%3A%2F%2Fcovidx.citizenhealth.io%2Fdashboard&caption=${this.state.post}`)
-  }
+  handleChange = (event) => {
+    const prop = event.target.id;
+    this.setState({ [prop]: event.target.value });
+  };
+
+  facebookRedirect = (event) => {
+    window.open(
+      `https://www.facebook.com/share.php?u=https%3A%2F%2Fcovidx.citizenhealth.io%2Fdashboard&caption=${this.state.post}`
+    );
+  };
 
   twitterRedirect = () => {
-    window.open(`https://twitter.com/intent/tweet?text=${this.state.post}&hashtags=BeatCovid`)
-  }
+    window.open(
+      `https://twitter.com/intent/tweet?text=${this.state.post}&hashtags=BeatCovid`
+    );
+  };
 
   render() {
     return (
@@ -49,8 +53,10 @@ export class Forms extends React.Component {
         >
           <textarea
             className="textarea"
-            ref={(textarea) => this.textArea = textarea}
+            id="link"
+            onChange={this.handleChange}
             value={this.state.link}
+            ref={(textarea) => (this.textArea = textarea)}
             style={{
               width: "50%",
             }}
@@ -59,7 +65,7 @@ export class Forms extends React.Component {
             className="button"
             style={{
               marginLeft: "20px",
-              marginRight : "10px"
+              marginRight: "10px",
             }}
             color="#6f64f8"
             onClick={this.copyCodeToClipboard}
@@ -78,8 +84,8 @@ export class Forms extends React.Component {
           }}
         >
           <textarea
-            type="textarea"
             className="textarea"
+            id="post"
             onChange={this.handleChange}
             value={this.state.post}
             style={{
@@ -105,7 +111,11 @@ export class Forms extends React.Component {
             >
               Facebook
             </Button>
-            <Button className="button" color="#6f64f8" onClick={this.twitterRedirect}>
+            <Button
+              className="button"
+              color="#6f64f8"
+              onClick={this.twitterRedirect}
+            >
               Tweet
             </Button>
           </div>
