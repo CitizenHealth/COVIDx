@@ -1,13 +1,9 @@
-import React, { useState, useEffect, useContext } from "react"
+import React, { useContext } from "react"
 import {
-  NavItem,
-  NavLink,
   UncontrolledDropdown,
   DropdownMenu,
   DropdownItem,
   DropdownToggle,
-  Media,
-  Badge
 } from "reactstrap"
 import * as Icon from "react-feather";
 import googleSvg from "assets/img/svg/google.svg";
