@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 
 export const StyledMainCard = styled.div`
@@ -16,7 +15,7 @@ export const StyledMainCard = styled.div`
     padding: 10px;
     border-radius: 5px;
     width: 95px;
-    height : 42px;
+    height: 42px;
     outline: none;
   }
   button:active {
@@ -28,8 +27,11 @@ export const StyledMainCard = styled.div`
     resize: none;
     border-radius: 5px;
     border: 1px solid grey;
-    vertical-align : center;
-    padding : 5px 5px;
-    color : #5c6169
+    vertical-align: center;
+    padding: 5px 5px;
+    color: #5c6169;
+  }
+  @media screen and (max-width: 1001px) {
+    width: 100%;
   }
 `;

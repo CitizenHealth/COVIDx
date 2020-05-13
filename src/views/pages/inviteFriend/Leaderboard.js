@@ -1,6 +1,7 @@
 import React from "react";
 import { Table } from "reactstrap";
 import { IntlProvider, FormattedNumber } from "react-intl";
+import { StyledLeaderboard } from "./Styles/StyledLeaderboard";
 
 const testData = [
   {
@@ -56,30 +57,32 @@ export class Leaderboard extends React.Component {
   }
   render() {
     return (
-      <Table>
-        <thead>
-          <tr>
-            <th>
-              <h3>Leaderboard</h3>
-            </th>
-            <th>
-              <h3>Covids</h3>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          {this.state.leaderboard.map((row) => (
-            <tr key={row.rank}>
-              <td style={fontStyle}>{row.username}</td>
-              <td style={fontStyle}>
-                <IntlProvider>
-                  <FormattedNumber value={row.covids} />
-                </IntlProvider>
-              </td>
+      <StyledLeaderboard>
+        <Table>
+          <thead>
+            <tr>
+              <th>
+                <h3>Leaderboard</h3>
+              </th>
+              <th>
+                <h3>Covids</h3>
+              </th>
             </tr>
-          ))}
-        </tbody>
-      </Table>
+          </thead>
+          <tbody>
+            {this.state.leaderboard.map((row) => (
+              <tr key={row.rank}>
+                <td style={fontStyle}>{row.username}</td>
+                <td style={fontStyle}>
+                  <IntlProvider>
+                    <FormattedNumber value={row.covids} />
+                  </IntlProvider>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </Table>
+      </StyledLeaderboard>
     );
   }
 }
