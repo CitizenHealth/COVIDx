@@ -16,17 +16,30 @@ import { UserContext } from "App";
 import { auth, googleProvider, facebookProvider } from "configs/auth";
 
 const UserDropdown = ({ userData, signInWith }) => {
-  const loggedOut = 
-    (<DropdownMenu right style={{ width:"min-content" }}>
-      <DropdownItem tag="a" onClick = { () => signInWith(facebookProvider) }>
+  const loggedOut = (
+    <DropdownMenu right style={{ width: "min-content" }}>
+      <DropdownItem tag="a" onClick={() => signInWith(facebookProvider)}>
         <Icon.Facebook size={14} className="mr-50" />
         <span className="align-middle">Facebook</span>
       </DropdownItem>
-      <DropdownItem tag="a" onClick={ () => signInWith(googleProvider) }>
-        <img src={ googleSvg } className="mr-50" style={{ height:"1rem", fill:"black !important" }}/>
+      <DropdownItem tag="a" onClick={() => signInWith(googleProvider)}>
+        <img
+          src={googleSvg}
+          className="mr-50"
+          style={{ height: "1rem", fill: "black !important" }}
+        />
         <span className="align-middle">Google</span>
       </DropdownItem>
-    </DropdownMenu>)
+      <DropdownItem tag="a" onClick={() => anonimity()}>
+        <img
+          src={googleSvg}
+          className="mr-50"
+          style={{ height: "1rem", fill: "black !important" }}
+        />
+        <span className="align-middle">Anonymously</span>
+      </DropdownItem>
+    </DropdownMenu>
+  );
 
   const loggedIn = 
     (<DropdownMenu right style={{ width:"min-content" }}>
@@ -85,3 +98,4 @@ export default function NavbarUser(props) {
     </ul>
   )
 }
+
