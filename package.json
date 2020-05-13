@@ -86,13 +86,13 @@
     "yup": "^0.28.1"
   },
   "scripts": {
-    "start": "react-app-rewired start",
+    "start": "cross-env REACT_APP_ENDPOINT_URI=\"http://localhost:5000\" react-app-rewired start",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
     "eject": "react-app-rewired eject",
-    "deploy": "react-app-rewired build && firebase deploy",
-    "deploy-prod": "react-app-rewired build && firebase deploy --only hosting:prod",
-    "deploy-dev": "react-app-rewired build && firebase deploy --only hosting:dev"
+    "deploy": "cross-env REACT_APP_ENDPOINT_URI=\"https://map.covidx.app\" react-app-rewired build && firebase deploy",
+    "deploy-prod": "cross-env REACT_APP_ENDPOINT_URI=\"https://map.covidx.app\" react-app-rewired build && firebase deploy --only hosting:prod",
+    "deploy-dev": "cross-env REACT_APP_ENDPOINT_URI=\"https://map.covidx.app\" react-app-rewired build && firebase deploy --only hosting:dev"
   },
   "eslintConfig": {
     "extends": "react-app"

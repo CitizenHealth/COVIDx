@@ -1,4 +1,4 @@
-import React, { Suspense, lazy, useContext, useState } from "react"
+import React, { Suspense, lazy, useState } from "react"
 import {
   Card, CardBody, Container, Row, Button,
 } from "reactstrap";
@@ -59,11 +59,12 @@ export default function ViewRouter(props) {
 
   return (
     <Router history={history}>
-      <Redirect from="/" to="/dashboard" />
+      {/* <Redirect from="/" to="/dashboard" /> */}
       <Switch>
         <RouteConfig
-            path="/dashboard"
-            component= {Dashboard}
+          exact 
+          path="/"
+          component= {Dashboard}
         />
         <RouteConfig
           path="/map"
@@ -76,13 +77,13 @@ export default function ViewRouter(props) {
         <RouteConfig 
           path="/health-report"
           component={ props => ( 
-              <Row className="mx-auto h-100">
-              <Card className="col-12 col-lg-5 mx-auto">
-                <CardBody>
-                    <Questionnaire />
-                </CardBody>
-              </Card> 
-              </Row>)
+            <Row className="mx-auto h-100">
+            <Card className="col-12 col-lg-5 mx-auto">
+              <CardBody>
+                  <Questionnaire />
+              </CardBody>
+            </Card> 
+            </Row>)
           }
         />
         <Route 

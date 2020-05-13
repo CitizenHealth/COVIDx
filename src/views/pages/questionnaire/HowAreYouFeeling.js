@@ -8,17 +8,17 @@ import NeutralIcon from '../../../assets/img/icons/neutral.png';
 import UnwellIcon from '../../../assets/img/icons/unwell.png';
 import VeryUnwellIcon from '../../../assets/img/icons/very_unwell.png';
 
-const EmojiButton = props => {
+const EmojiButton = ({ src, text, onClick }) => {
   return (
-    <Button className="mx-auto text-center font-weight-bold" style={{ width: '66%' }} onClick={props.onClick}>
+    <Button className="mx-auto text-center font-weight-bold" style={{ width: '66%' }} onClick={ onClick }>
       <Container>
         <Row>
           <Col xs={3}>
-            <img src={props.src} alt="" />
+            <img src={ src } alt="" />
           </Col>
           <Col >
             <div style={{ width: '100%', paddingTop: 20, fontSize: 17 }} >
-              {props.text}
+              { text }
             </div>
           </Col>
         </Row>
@@ -27,50 +27,84 @@ const EmojiButton = props => {
   )
 }
 
+function HowAreYouFeeling({ form, handler }) {
+  const [emotion, setEmotion] = useState(null);
 
-class HowAreYouFeeling extends React.Component {
-
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      emotion: null
-    };
+  const handleWell = () => {
+    form.setFieldValue("feeling_well", true);
+    handler({ activeStep: 1 });
+  }
+  const handleNotWell = () => {
+    form.setFieldValue("feeling_well", false);
+    handler({ activeStep: 2 });
   }
 
-  handleWell = () => {
-    this.props.form.setFieldValue("feeling_well", true);
-    this.props.handler({ activeStep: 1 });
-  }
-  handleNotWell = () => {
-    this.props.form.setFieldValue("feeling_well", false);
-    this.props.handler({ activeStep: 2 });
-  }
+  return (
+    <div>
+      <h2>Self Health Check-in</h2>
+      <h4 className="text-center pt-1" style={{ paddingBottom: '20px' }}>How are you feeling?</h4>
+      <Row style={{ marginBottom: 15 }}>
+        <EmojiButton color="primary" src={VeryWellIcon} text="Very well" onClick={() => handler({ activeStep: 1, feelingWell: true })} />
+      </Row>
+      <Row style={{ marginBottom: 15 }}>
+        <EmojiButton color="primary" src={WellIcon} text="Well" onClick={() => handler({ activeStep: 1, feelingWell: true })} />
+      </Row>
+      <Row style={{ marginBottom: 15 }}>
+        <EmojiButton color="primary" src={NeutralIcon} text="Neutral" onClick={() => handler({ activeStep: 1, feelingWell: true })} />
+      </Row>
+      <Row style={{ marginBottom: 15 }}>
+        <EmojiButton color="primary" src={UnwellIcon} text="Unwell" onClick={() => handler({ activeStep: 2, feelingWell: false })} />
+      </Row>
+      <Row style={{ marginBottom: 15 }}>
+        <EmojiButton color="primary" src={VeryUnwellIcon} text="Very unwell" onClick={() => handler({ activeStep: 2, feelingWell: false })} />
+      </Row>
+    </div>
+  )
+};
 
-  render() {
-    return (
-      <div>
-        <h2>Self Health Check-in</h2>
-        <h4 className="text-center pt-1" style={{ paddingBottom: '20px' }}>How are you feeling?</h4>
-        <Row style={{ marginBottom: 15 }}>
-          <EmojiButton color="primary" src={VeryWellIcon} text="Very well" onClick={() => this.props.handler({ activeStep: 1, feelingWell: true })} />
-        </Row>
-        <Row style={{ marginBottom: 15 }}>
-          <EmojiButton color="primary" src={WellIcon} text="Well" onClick={() => this.props.handler({ activeStep: 1, feelingWell: true })} />
-        </Row>
-        <Row style={{ marginBottom: 15 }}>
-          <EmojiButton color="primary" src={NeutralIcon} text="Neutral" onClick={() => this.props.handler({ activeStep: 1, feelingWell: true })} />
-        </Row>
-        <Row style={{ marginBottom: 15 }}>
-          <EmojiButton color="primary" src={UnwellIcon} text="Unwell" onClick={() => this.props.handler({ activeStep: 2, feelingWell: false })} />
-        </Row>
-        <Row style={{ marginBottom: 15 }}>
-          <EmojiButton color="primary" src={VeryUnwellIcon} text="Very unwell" onClick={() => this.props.handler({ activeStep: 2, feelingWell: false })} />
-        </Row>
-      </div >
-    )
-  }
-}
+// class HowAreYouFeeling extends React.Component {
+// 
+//   constructor(props) {
+//     super(props);
+// 
+//     this.state = {
+//       emotion: null
+//     };
+//   }
+// 
+//   handleWell = () => {
+//     this.props.form.setFieldValue("feeling_well", true);
+//     this.props.handler({ activeStep: 1 });
+//   }
+//   handleNotWell = () => {
+//     this.props.form.setFieldValue("feeling_well", false);
+//     this.props.handler({ activeStep: 2 });
+//   }
+// 
+//   render() {
+//     return (
+//       <div>
+//         <h2>Self Health Check-in</h2>
+//         <h4 className="text-center pt-1" style={{ paddingBottom: '20px' }}>How are you feeling?</h4>
+//         <Row style={{ marginBottom: 15 }}>
+//           <EmojiButton color="primary" src={VeryWellIcon} text="Very well" onClick={() => this.props.handler({ activeStep: 1, feelingWell: true })} />
+//         </Row>
+//         <Row style={{ marginBottom: 15 }}>
+//           <EmojiButton color="primary" src={WellIcon} text="Well" onClick={() => this.props.handler({ activeStep: 1, feelingWell: true })} />
+//         </Row>
+//         <Row style={{ marginBottom: 15 }}>
+//           <EmojiButton color="primary" src={NeutralIcon} text="Neutral" onClick={() => this.props.handler({ activeStep: 1, feelingWell: true })} />
+//         </Row>
+//         <Row style={{ marginBottom: 15 }}>
+//           <EmojiButton color="primary" src={UnwellIcon} text="Unwell" onClick={() => this.props.handler({ activeStep: 2, feelingWell: false })} />
+//         </Row>
+//         <Row style={{ marginBottom: 15 }}>
+//           <EmojiButton color="primary" src={VeryUnwellIcon} text="Very unwell" onClick={() => this.props.handler({ activeStep: 2, feelingWell: false })} />
+//         </Row>
+//       </div>
+//     )
+//   }
+// }
 
 
 export default HowAreYouFeeling;

@@ -1,0 +1,50 @@
+$default-margin:20px;
+
+.custom-dashboard {
+  .card {
+    margin-bottom:0;
+  }
+  height:100%;
+  display:grid;
+  grid-template-columns:30% auto;
+  flex-direction:row;
+  width:100%;
+
+  // grid-template-columns:repeat(2, auto);
+  grid-gap: $default-margin;
+  .survey-card {
+    
+  }
+  .widgets {
+    display:grid;
+    grid-gap:$default-margin;
+    height:100%;
+
+    .wearable-data-container {
+      display:flex;
+      justify-content: center;
+    }
+    .wearable-data {
+      min-width:min-content;
+
+      p {
+        margin:1em 0;
+      }
+
+      h2, h3, h4, h5, i {
+        margin:0.1em 0;
+        text-align:center;
+      }
+
+      .button-container {
+        display:flex;
+        justify-content: center;
+        margin-top:$default-margin;
+      }
+    }
+  }
+
+  .map-wrapper {
+    height:50vh;
+  }
+}

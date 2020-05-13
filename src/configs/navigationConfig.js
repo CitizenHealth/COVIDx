@@ -5,7 +5,7 @@ const navigationConfig = [
     id: "dashboard",
     title: "Dashboard",
     type: "item",
-    navLink: "/dashboard"
+    navLink: "/"
   },
   {
     id: "map",
