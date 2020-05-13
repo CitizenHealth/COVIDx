@@ -12,4 +12,4 @@ firebase.initializeApp(firebaseConfig);
 export const auth = firebase.auth();
 export const googleProvider = new firebase.auth.GoogleAuthProvider();
 export const facebookProvider = new firebase.auth.FacebookAuthProvider();
-export const anonimity = () => auth.signInAnonymously()
+export const anonymousSignIn = () => auth.signInAnonymously()
