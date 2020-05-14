@@ -174,7 +174,6 @@ const SelectQuestionnaire = ({ values, submitForm, validateField }) => {
     let component;
     switch (activeStep) {
       case 0: 
-        console.log('steppin')
         component = 
           <Field 
             component={ HowAreYouFeeling } 
