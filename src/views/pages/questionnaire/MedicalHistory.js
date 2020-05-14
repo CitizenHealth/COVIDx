@@ -1,5 +1,4 @@
-
-import React from 'react';
+import React, { useContext } from 'react';
 import { Row, Container } from 'reactstrap';
 import { CheckBoxGroup, RadioGroup } from './Components';
 import { Field } from 'formik';
@@ -8,32 +7,38 @@ import {
   underlying_condition_names_and_labels,
   sex_names_and_labels,
 } from './QuestionSpecs';
-
-import { connect } from "react-redux";
-import { setAuth } from "redux/actions/auth/authAction";
+import { UserContext } from "App";
 
 
+import NumericInput from 'react-numeric-input';
 
-export const MedicalHistoryPage = props => {
-  if (
-    (props.values.age && props.values.sex) &&
-    (props.auth.login.isAuthenticated || localStorage.getItem("user_info"))
-  ) {
-    props.setNextDisabled(false)
-  }
+const AgeField = ({ form }) => {
+  return (
+    <NumericInput 
+      mobile
+      value={ form.values["age"] }
+      onChange={value => {
+        form.setFieldValue("age", value);
+      }} 
+    />
+  )
+}
+
+const MedicalHistoryPage = ({ values, setNextDisabled }) => {
+  const user = useContext(UserContext);
+
+  (values.age && values.sex) && user && setNextDisabled(false);
+
   return (
     <Container style={{ marginBottom: 40 }}>
       <Row>
         <h4>How old are you?</h4>
       </Row>
       <Row style={{ marginBottom: 30 }}>
-        <Field
-          component={RadioGroup}
-          names_and_labels={age_names_and_labels}
-          name="age" />
+        <Field component={AgeField} />
       </Row>
       <Row>
-        <h4>Are you male or female?</h4>
+        <h4>What was your sex at birth?</h4>
       </Row>
       <Row style={{ marginBottom: 30 }}>
         <Field
@@ -47,12 +52,11 @@ export const MedicalHistoryPage = props => {
       <Row style={{ marginBottom: 30 }}>
         <CheckBoxGroup
           names_and_labels={underlying_condition_names_and_labels}
-          values={props.values}
+          values={values}
         />
       </Row>
-    </Container >
+    </Container>
   )
 }
 
-const mapStateToProps = state => ({ auth: state.auth });
-export default connect(mapStateToProps, { setAuth })(MedicalHistoryPage);
+export default MedicalHistoryPage;

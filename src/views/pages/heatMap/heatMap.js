@@ -1,10 +1,19 @@
-import React, { useEffect, useState, useMemo } from 'react';
+import React, { 
+  useEffect, 
+  useState, 
+  useMemo, 
+  useContext 
+} from 'react';
+import { UserContext } from "App";
+
 import L from "leaflet";
 import * as d3 from "d3";
 
 import "./heatMap.scss";
 import "leaflet/dist/leaflet.css";
-
+// import { axiosInstance } from "App";
+// import axios from "axios"
+import { customGet } from "utility/customFetch";
 const formatNumber = num => {
   return num ? num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,') : 0
 }
@@ -17,6 +26,7 @@ export default function HeatMap(props) {
   const [userLocation, setUserLocation] = useState(null);
   const [containingCounty, setContainingCounty] = useState(null);
   const [hideInstruction, setHideInstruction] = useState(false);
+  const user = useContext(UserContext);
 
   function createDefaultMap() {
     const map = L.map('mapId', {
@@ -41,46 +51,26 @@ export default function HeatMap(props) {
     return map;
   };
 
-  const fetchStateData = async () => {
-    const getPayload = {
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      }
-    };
-    await fetch(`https://www.covidx.app/get_state_results`, getPayload)
-      .then(res => res.json())
-      .then(json => setStateData(json.payload))
-      .catch(e => console.log(e))
-  }; 
-
-  const fetchCountyData = async () => {
-    const getPayload = {
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      }
-    };
-    await fetch(`https://www.covidx.app/get_county_results`, getPayload)
-      .then(res => res.json())
-      .then(json => setCountyData(json.payload))
-      .catch(e => console.log(e))
-  }; 
-
   useEffect(() => {
     const map = createDefaultMap();
-    fetchStateData();
-    fetchCountyData();
     setStoreMap(map);
 
     const newDiv = document.createElement("div");
     newDiv.setAttribute("class", "loading")
     newDiv.setAttribute("id", "loading")
     document.getElementById("map-wrapper").appendChild(newDiv);
-
   }, []);
 
-  useMemo(() => {
+  useEffect(() => {
+    if (user) {
+      customGet("/get_state_results", user.accessToken)
+        .then(res => setStateData(res));
+      customGet("/get_county_results", user.accessToken)
+        .then(res => setCountyData(res));
+    };
+  }, [user])
+
+  useEffect(() => {
     if (stateData && countyData && containingCounty) {
       // create the color gradients...
       const gradient = {
@@ -101,12 +91,12 @@ export default function HeatMap(props) {
         if (!features) { features=0 }
         const positives = level==='state' ? 
         (
-          stateData.features
+          stateData.payload.features
             .map(state => state.properties.positive)
             .filter(state => state)
         ) : 
         (
-          countyData.features
+          countyData.payload.features
             .map(state => state.properties.cases)
             .filter(state => state)
         )
@@ -155,7 +145,7 @@ export default function HeatMap(props) {
           `<h5>Positive Cases in ${containingCounty && containingCounty.properties.NAME}: ${containingCounty && formatNumber(containingCounty.properties.cases)}</h5></div>` + 
           `<div class="info-child"><h6>*hovered*<h6>` + 
           (props ? 
-            `<h5>Positive Cases in ${props.NAME} : ${props.positive ? formatNumber(props.positive) : formatNumber(props.cases)}</h5>` : 
+            `<h5>Positive Cases in ${props.NAME}: ${props.positive ? formatNumber(props.positive) : formatNumber(props.cases)}</h5>` : 
             "<h5>Hover over a state</h5>") + 
           `</div>`+
           `<div class="info-child"><h6>*tip*</h6>` + 
@@ -187,7 +177,7 @@ export default function HeatMap(props) {
           storeMap.fitBounds(e.target.getBounds());
           storeMap.removeLayer(e.target)
           const stateName = e.target.feature.properties.NAME;
-          const statePayload = countyData.features.filter(feat => feat.properties.STATE_NAME===stateName);
+          const statePayload = countyData.payload.features.filter(feat => feat.properties.STATE_NAME===stateName);
           const countyPayload = { ...statePayload, features:statePayload };
           let gjCounty = L.geoJson(countyPayload, {
             style: style, 
@@ -205,7 +195,7 @@ export default function HeatMap(props) {
         });
       };
 
-      let gj = L.geoJson(stateData, {
+      let gj = L.geoJson(stateData.payload, {
         style: style, 
         onEachFeature: hoverState,
       });
@@ -230,7 +220,7 @@ export default function HeatMap(props) {
           container.value = "Fit to USA and reset state view";
 
           container.onclick = () => {
-            map.fitBounds(L.geoJson(countyData).getBounds());
+            map.fitBounds(L.geoJson(countyData.payload).getBounds());
             map.eachLayer(layer => {
               layer instanceof L.GeoJSON && map.removeLayer(layer);
             })
@@ -246,8 +236,9 @@ export default function HeatMap(props) {
 
   useEffect(() => {
     // find intersecting countydata and userlocation
+    console.log('countyData @ => ', countyData)
     if (countyData && userLocation) {
-      countyData.features.forEach(county => {
+      countyData.payload.features.forEach(county => {
         let location = [userLocation.lng, userLocation.lat];
         // console.log(location)
         d3.geoContains(county, location) && setContainingCounty(county);

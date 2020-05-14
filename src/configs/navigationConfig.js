@@ -2,6 +2,12 @@ import React from "react"
 import * as Icon from "react-feather"
 const navigationConfig = [
   {
+    id: "dashboard",
+    title: "Dashboard",
+    type: "item",
+    navLink: "/"
+  },
+  {
     id: "map",
     title: "Map",
     type: "item",

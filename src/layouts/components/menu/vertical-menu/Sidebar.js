@@ -219,10 +219,10 @@ class Sidebar extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    currentUser: state.auth.login.userRole
-  }
-}
+// const mapStateToProps = state => {
+//   return {
+//     currentUser: state.auth.login.userRole
+//   }
+// }
 
-export default connect(mapStateToProps)(Sidebar)
+export default Sidebar;
