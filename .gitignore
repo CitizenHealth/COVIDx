@@ -37,3 +37,6 @@ yarn-error.log*
 # Firebase
 .firebase/*
 .auth/login/auth.js
+
+#swp files
+*.swp

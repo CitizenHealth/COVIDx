@@ -4,7 +4,7 @@ import classnames from "classnames"
 import NavbarBookmarks from "./NavbarBookmarks"
 import NavbarUser from "./NavbarUser"
 import userImg from "../../../assets/img/portrait/small/avatar-s-11.jpg"
-
+import InstallButton from "../../../components/install"
 
 const ThemeNavbar = props => {
   const colorsArr = [ "primary", "danger", "success", "info", "warning", "dark"]
@@ -61,6 +61,7 @@ const ThemeNavbar = props => {
                   <h2 className="text-primary brand-text mb-0">COVIDx</h2>
                 </div>
               ) : null}
+                <InstallButton/>
               <NavbarUser
                 handleAppOverlay={props.handleAppOverlay}
                 changeCurrentLang={props.changeCurrentLang}
