@@ -6,10 +6,12 @@ const token = process.env.REACT_APP_TRIPETTO_TOKEN
 
 export const QuestionForm = () => {
   const [ formDefinition, setFormDefinition] = useState();
+  const [ formStyle, setFormStyle ] = useState();
   const [ loading, setLoading ] = useState(true)
   const [ error, setError ] = useState(false)
   useEffect(() => {
     Services.init({ token });
+    Services.style.then(res => { setFormStyle(res) });
     Services.definition.then(res => {
       setLoading(false)
       setFormDefinition(res);
@@ -26,6 +28,7 @@ export const QuestionForm = () => {
       { formDefinition && (
         <Collector
           definition={formDefinition}
+          style={formStyle}
           onFinish={(instance) => {
             console.log(instance);
           }}
