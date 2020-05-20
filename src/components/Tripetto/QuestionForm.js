@@ -1,8 +1,13 @@
 import React, { useEffect, useState } from 'react'
+import styled from 'styled-components'
 import { Collector } from "tripetto-collector-rolling";
 import Services from "tripetto-services";
 
 const token = process.env.REACT_APP_TRIPETTO_TOKEN
+
+const FormContainer = styled.div`
+  height: 80vh;
+`
 
 export const QuestionForm = () => {
   const [ formDefinition, setFormDefinition] = useState();
@@ -22,7 +27,7 @@ export const QuestionForm = () => {
     });
   },[])
   return (
-    <div>
+    <FormContainer>
       { loading && <div>form is loading...</div>}
       { error && !loading && <div>There is a problem with the form</div>}
       { formDefinition && (
@@ -34,6 +39,6 @@ export const QuestionForm = () => {
           }}
         />
       )}
-    </div>
+    </FormContainer>
   );
 }
