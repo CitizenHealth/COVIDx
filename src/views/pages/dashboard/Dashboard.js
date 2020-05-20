@@ -1,36 +1,41 @@
 import React, { useState } from "react";
-import { Card, CardBody, Button } from "reactstrap";
+import {
+  Card,
+  CardBody,
+  Modal,
+  ModalBody,
+} from "reactstrap";
 import HeatMap from "../heatMap/heatMap";
 
 import "./dashboard.scss";
 import { QuestionForm } from "components/Tripetto/QuestionForm";
+import CheckInCard from "./CheckIn";
+import WearableCard from "./Wearables";
 
 const Dashboard = (props) => {
   const [comingSoon, setComingSoon] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const toggleModal = () => setShowModal(!showModal);
   return (
     <div className="custom-dashboard">
-      <Card className="survey-card">
-        <CardBody>
+      <Modal isOpen={showModal} toggle={toggleModal} style={{paddingTop: 40}}>
+        <ModalBody>
           <QuestionForm />
+        </ModalBody>
+      </Modal>
+      <Card className="Card-checkin">
+        <CardBody className="Dashboard-cardbody">
+          <CheckInCard onClick={toggleModal} />
         </CardBody>
       </Card>
       <div className="widgets">
         <div className="wearable-data-container">
           <Card className="wearable-data">
             <CardBody>
-              <h2>Wearable Data</h2>
-              <p>
-                Connecting your Fitbit, Apple Watch, or other wearable device
-                will allow us to show you more personalized insights.
-              </p>
-              <h5 style={!comingSoon ? { display: "none" } : null}>
-                <i>Coming soon!</i>
-              </h5>
-              <div className="button-container">
-                <Button color="primary" onClick={() => setComingSoon(true)}>
-                  Connect to HumanAPI
-                </Button>
-              </div>
+              <WearableCard
+                comingSoon={comingSoon}
+                setComingSoon={setComingSoon}
+              />
             </CardBody>
           </Card>
         </div>
