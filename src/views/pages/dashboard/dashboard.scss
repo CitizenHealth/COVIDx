@@ -1,50 +1,62 @@
-$default-margin:20px;
+$default-margin: 20px;
+$breakpoint-phone: 460px;
 
 .custom-dashboard {
-  .card {
-    margin-bottom:0;
-  }
-  height:100%;
-  display:grid;
-  grid-template-columns:30% auto;
-  flex-direction:row;
-  width:100%;
-
-  // grid-template-columns:repeat(2, auto);
+  height: 100%;
+  display: grid;
+  grid-template-columns: 50% auto;
+  flex-direction: row;
+  width: 100%;
   grid-gap: $default-margin;
-  .survey-card {
-    
+
+  @media (max-width: $breakpoint-phone) {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card {
+    margin-bottom: 0;
+  }
+  .Card-checkin {
+    height: min-content;
+    @media (max-width: $breakpoint-phone) {
+      margin-bottom: $default-margin;
+    }
   }
   .widgets {
-    display:grid;
-    grid-gap:$default-margin;
-    height:100%;
+    display: grid;
+    grid-gap: $default-margin;
+    height: 100%;
 
     .wearable-data-container {
-      display:flex;
+      display: flex;
       justify-content: center;
     }
     .wearable-data {
-      min-width:min-content;
+      min-width: min-content;
 
       p {
-        margin:1em 0;
+        margin: 1em 0;
       }
 
-      h2, h3, h4, h5, i {
-        margin:0.1em 0;
-        text-align:center;
+      h2,
+      h3,
+      h4,
+      h5,
+      i {
+        margin: 0.1em 0;
+        text-align: center;
       }
 
       .button-container {
-        display:flex;
+        display: flex;
         justify-content: center;
-        margin-top:$default-margin;
+        margin-top: $default-margin;
       }
     }
   }
 
   .map-wrapper {
-    height:50vh;
+    height: 50vh;
   }
 }
