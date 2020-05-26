@@ -15,30 +15,51 @@ export const QuestionForm = () => {
   const [ loading, setLoading ] = useState(true)
   const [ error, setError ] = useState(false)
   useEffect(() => {
-    Services.init({ token });
-    Services.style.then(res => { setFormStyle(res) });
-    Services.definition.then(res => {
-      setLoading(false)
-      setFormDefinition(res);
+    if (token){
+      Services.init({ token });
+      Services.style.then((res) => {
+        setFormStyle(res);
+      });
+      Services.definition
+        .then((res) => {
+          setLoading(false);
+          setFormDefinition(res);
+        })
+        .catch( err => {
+          setError(true)
+          console.log(err)
+          setLoading(false)
+        })
     }
-    ).catch( err => {
-      setLoading(false);
-      setError(true);
-    });
+    else {
+      setLoading(false)
+    }
   },[])
-  return (
-    <FormContainer>
-      { loading && <div>form is loading...</div>}
-      { error && !loading && <div>There is a problem with the form</div>}
-      { formDefinition && (
-        <Collector
-          definition={formDefinition}
-          style={formStyle}
-          onFinish={(instance) => {
-            console.log(instance);
-          }}
-        />
-      )}
-    </FormContainer>
-  );
+
+  if ( formDefinition && formStyle ){
+    return (
+      <FormContainer>
+        {token && !error ? (
+          <Collector
+            definition={formDefinition}
+            style={formStyle}
+            onFinish={(instance) => {
+              console.log(instance);
+            }}
+          />
+        ) : (
+          <div></div>
+        )}
+      </FormContainer>
+    );
+  }
+  else {
+    return (
+      <div>
+        {loading && <div>form is loading...</div>}
+        {error && !loading && <div>There is a problem with the form</div>}
+      </div>
+    );
+  }
+  
 }
