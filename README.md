@@ -38,6 +38,13 @@ If you're new here, please use `yarn` as your package manager *instead* of `npm`
 
 Please branch off of `develop` if you're working on new features.
 
+Deployment from scratch
+--
+1. Clone github repo, make sure all dependencies are installed
+2. Be added to the firebase project if not already
+3. Run "firebase init"
+4. Run "firebase deploy"
+
 
 How to Contribute
 ---
@@ -100,7 +107,6 @@ COVIDx uses a number of open source projects to work properly:
 
 And of course COVIDx itself is open source under a MIT license.
 
-## Installation
 
 ## COVIDx API
 We also have a backend server that you can make API calls to if you are building features here. Right now, it's pretty barebones - user data, survey data, and location data are what's available. If there are any requests, please feel free to ask!
