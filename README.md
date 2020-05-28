@@ -38,13 +38,13 @@ If you're new here, please use `yarn` as your package manager *instead* of `npm`
 
 Please branch off of `develop` if you're working on new features.
 
-Deployment from scratch
+Build & Deployment from scratch
 --
-1. Clone github repo, make sure all dependencies are installed
-2. Be added to the firebase project if not already
-3. Run "firebase init"
-4. Run "firebase deploy"
+Pre-requisite: Be added to the Firebase project if not already
 
+1. Clone github repo
+2. Run: yarn install
+3. Run: yarn deploy
 
 How to Contribute
 ---
