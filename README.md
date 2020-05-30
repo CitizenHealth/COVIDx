@@ -44,7 +44,8 @@ Pre-requisite: Be added to the Firebase project if not already
 
 1. Clone github repo
 2. Run: yarn install
-3. Run: yarn deploy
+3. Create a .env file at the root project directory level, populate it with our Tripetto api token (not kept in src control)
+4. Run: yarn deploy
 
 How to Contribute
 ---
