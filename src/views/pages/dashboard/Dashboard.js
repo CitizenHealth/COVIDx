@@ -19,6 +19,7 @@ const Dashboard = (props) => {
   return (
     <div className="custom-dashboard">
       <Modal
+        size="lg"
         isOpen={showModal}
         toggle={toggleModal}
         style={{paddingTop: 40}}
