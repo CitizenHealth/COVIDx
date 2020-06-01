@@ -2,7 +2,7 @@
 
 > We're on a mission to reduce the coronavirus R0 to < 1 by 2021
 
-COVIDx is a pandemic response platform leveraging the crowd to predict & prevent the spread of COVID-19. This is an open source volunteer project supported by Citizen Health, a Public Benefit Cooperative dedicated to fighting COVID-19. 
+COVIDx is a pandemic response platform leveraging the crowd to predict & prevent the spread of COVID-19. This is an open source volunteer project supported by Citizen Health, a Public Benefit Cooperative dedicated to fighting COVID-19.
 
 COVIDx consists of three core components:
 
@@ -28,49 +28,51 @@ Games are a powerful tool to promote awareness and behavioral changes, including
 - Our designs are on [Figma](https://www.figma.com/file/ttoCvYKt8seGWl5dYi3ERL/COVIDx-Screens?node-id=7%3A0)
 - Images, graphics, and general files are shared on this [Google Drive folder](https://drive.google.com/drive/folders/1wqfooBvQyUleZ8OpVvuLxhKGmUdikQWz?usp=sharing)
 - [Citizen Health](https://citizenhealth.io) is sponsoring COVIDx  
-  
 
-Development
----
+
+## Development
 Want to contribute? Great!
 
 If you're new here, please use `yarn` as your package manager *instead* of `npm`, and use `yarn install` or `yarn` to install all dependencies.
 
 Please branch off of `develop` if you're working on new features.
 
+## Build & Deployment from scratch
+Pre-requisite: Be added to the Firebase project if not already
 
-How to Contribute
----
+1. Clone github repo
+2. Run: yarn install
+3. Run: yarn deploy
 
-I'm really glad you're reading this because we need volunteer developers to help this project come to fruition.
-
+## How to Contribute
 
 1. File an issue to notify the maintainers about what you're working on.
 2. Fork the repo, develop and test your code changes, add docs.
 3. Make sure that your commit messages clearly describe the changes.
 4. Send a pull request.
 
-File an Issue
-----------------------------------
+## Reporting Bugs, Filing Issues, & Feature Requests
 
 Use the issue tracker to start the discussion. It is possible that someone
 else is already working on your idea, your approach is not quite right, or that
 the functionality exists already. The ticket you file in the issue tracker will
 be used to hash that all out.
 
-Style Guides
--------------------
-Coming soon...
+If you notice any bugs in the app, see some code that can be improved, or have
+features you would like to be added, please create an Issue and mark it with
+the appropriate label such as [bug report] or a [feature request].
 
-Fork the Repository
--------------------
+If you want to open a PR that fixes a bug or adds a feature, then we can't thank
+you enough! It is definitely appreciated if an issue has been created
+before-hand so it can be discussed first.
+
+## Fork the Repository
 
 Be sure to add the relevant tests before making the pull request. Docs will be
 updated automatically when we merge to `master`, but you should also build
 the docs yourself and make sure they're readable.
 
-Make the Pull Request
----------------------
+## Make the Pull Request
 
 Once you have made all your changes, tests, and updated the documentation,
 make a pull request to move everything back into the main branch of the
@@ -78,39 +80,18 @@ make a pull request to move everything back into the main branch of the
 Expect some back-and-forth with regards to style and compliance of these
 rules.
 
-## Reporting issues & features requests
-
-If you notice any bugs in the app, see some code that can be improved, or have features you would like to be added, please create a [bug report] or a [feature request]!
-
-If you want to open a PR that fixes a bug or adds a feature, then we can't thank you enough! It is definitely appreciated if an issue has been created before-hand so it can be discussed first.
-
-## Working on issues
-
-Please feel free to take on any issue that's currently open. Feel free to resolve any issue that you would enjoy working on even if it happens to be a low priority.
-
-
 ### Tech
 
 COVIDx uses a number of open source projects to work properly:
 
 * [React](https://reactjs.org/) - for our frontend
-* [Formik](https://jaredpalmer.com/formik) - for building our forms
+* [Tripetto](https://tripetto.com/) - for our check-in surveys
 * [Flask](https://flask.palletsprojects.com/) - for our backend
 * [Leaflet](https://leafletjs.com/) - for our mobile-friendly interactive maps
 
 And of course COVIDx itself is open source under a MIT license.
 
-## Installation
-
 ## COVIDx API
-We also have a backend server that you can make API calls to if you are building features here. Right now, it's pretty barebones - user data, survey data, and location data are what's available. If there are any requests, please feel free to ask!
-
-More details will be coming soon.
-
-
-
-
-License
-----
-
-MIT
+We also have a backend server that you can make API calls to if you are building
+features here. Right now, it's pretty barebones - user data, survey data, and
+location data are what's available. If there are any requests, please ask!

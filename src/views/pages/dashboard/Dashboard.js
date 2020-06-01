@@ -18,7 +18,12 @@ const Dashboard = (props) => {
   const toggleModal = () => setShowModal(!showModal);
   return (
     <div className="custom-dashboard">
-      <Modal isOpen={showModal} toggle={toggleModal} style={{paddingTop: 40}}>
+      <Modal
+        size="lg"
+        isOpen={showModal}
+        toggle={toggleModal}
+        style={{paddingTop: 40}}
+      >
         <ModalBody>
           <QuestionForm />
         </ModalBody>
