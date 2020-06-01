@@ -1,16 +1,29 @@
 import React, { useState } from "react";
-import {
-  Card,
-  CardBody,
-  Modal,
-  ModalBody,
-} from "reactstrap";
+import styled from "styled-components";
+import { Card, CardBody, Modal, ModalBody } from "reactstrap";
 import HeatMap from "../heatMap/heatMap";
 
 import "./dashboard.scss";
 import { QuestionForm } from "components/Tripetto/QuestionForm";
 import CheckInCard from "./CheckIn";
 import WearableCard from "./Wearables";
+
+const ModalContent = styled(ModalBody)`
+  width: 900px;
+  margin: 0 auto;
+
+  @media (max-width: 960px) {
+    margin: 0;
+    width: auto;
+  }
+`;
+
+const ModalControl = styled.div`
+  align-content: right;
+  text-align: right;
+  padding: 20px;
+  cursor: pointer;
+`;
 
 const Dashboard = (props) => {
   const [comingSoon, setComingSoon] = useState(false);
@@ -19,14 +32,23 @@ const Dashboard = (props) => {
   return (
     <div className="custom-dashboard">
       <Modal
-        size="lg"
+        size="xl"
         isOpen={showModal}
         toggle={toggleModal}
-        style={{paddingTop: 40}}
+        style={{ paddingTop: 40 }}
       >
-        <ModalBody>
+        <ModalControl>
+          <span
+            onClick={() => {
+              setShowModal(false);
+            }}
+          >
+            x
+          </span>
+        </ModalControl>
+        <ModalContent>
           <QuestionForm />
-        </ModalBody>
+        </ModalContent>
       </Modal>
       <Card className="Card-checkin">
         <CardBody className="Dashboard-cardbody">
