@@ -11,6 +11,11 @@ import WearableCard from "./Wearables";
 const ModalContent = styled(ModalBody)`
   width: 900px;
   margin: 0 auto;
+
+  @media (max-width: 960px) {
+    margin: 0;
+    width: auto;
+  }
 `;
 
 const ModalControl = styled.div`
