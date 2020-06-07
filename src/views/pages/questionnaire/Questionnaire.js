@@ -30,11 +30,35 @@ const Questionnaire = () => {
       },
       onFinish: (instance) => {
         // TODO: Handle the collector results
-        // For example retrieve the results as a CSV-file:
-        const csv = TripettoCollector.Export.CSV(instance);
-        // Or retrieve the individual fields:
+        // retrieve the individual fields:
         const fields = TripettoCollector.Export.fields(instance).fields;
-        console.log("results: ", fields);
+
+        // obtain values from raw data
+        const how_are_you_feeling = parseInt(fields[0].value);
+        console.log("how_are_you_feeling", how_are_you_feeling);
+        const current_symptoms = fields
+          .slice(1, 17)
+          .filter((x) => x.value)
+          .map((x) => x.name);
+        console.log("current_symptoms", current_symptoms);
+        const temperature = fields[18].value;
+        console.log("temperature", temperature);
+        const fever_best_guess = fields[19].value;
+        console.log("fever_best_guess", fever_best_guess);
+        const self_tested = fields[20].value;
+        console.log("self_tested", self_tested);
+        const self_date_tested = fields[21].value;
+        console.log("self_date_tested", self_date_tested);
+
+        const household_tested = fields[22].value;
+        console.log("household_tested", household_tested);
+        const household_date_tested = fields[23].value;
+        console.log("household_date_tested", household_date_tested);
+        const medical_conditions = fields
+          .slice(24, 33)
+          .filter((x) => x.value)
+          .map((x) => x.name);
+        console.log("medical_conditions", medical_conditions);
       },
     });
   });
