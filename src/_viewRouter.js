@@ -58,7 +58,7 @@ export default function ViewRouter(props) {
           path="/health-report"
           component={(props) => (
             <Row className="mx-auto h-100">
-              <Card className="col-12 col-lg-5 mx-auto">
+              <Card className="col-12 col-lg-9 mx-auto">
                 <CardBody>
                   <Questionnaire />
                 </CardBody>
