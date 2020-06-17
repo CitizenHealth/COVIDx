@@ -9,7 +9,7 @@ import { ContextLayout } from "./utility/context/Layout";
 import HeatMap from "./views/pages/heatMap/heatMap";
 import Profile from "./views/pages/profile/Profile";
 import { PrivacyPolicy } from "./views/pages/privacyPolicy/privacyPolicy";
-import Questionnaire from "./views/pages/questionnaire/Questionnaire";
+import QuestionnaireMenu from "./views/pages/questionnaire/QuestionnaireMenu";
 import { InviteFriend } from "./views/pages/inviteFriend/InviteFriend";
 import Dashboard from "./views/pages/dashboard/Dashboard";
 
@@ -58,11 +58,7 @@ export default function ViewRouter(props) {
           path="/health-report"
           component={(props) => (
             <Row className="mx-auto h-100">
-              <Card className="col-12 col-lg-9 mx-auto">
-                <CardBody>
-                  <Questionnaire />
-                </CardBody>
-              </Card>
+              <QuestionnaireMenu />
             </Row>
           )}
         />

@@ -1,5 +1,27 @@
 @use "sass:color";
 
+#questionnaire-menu {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-evenly;
+  > .card {
+    display: "inline-block";
+    text-align: center;
+    .card-body {
+      > * {
+        margin: 10px 0;
+      }
+      h3 {
+        font-weight: 900;
+      }
+      span {
+        color: #6f64f8;
+      }
+    }
+  }
+}
+
 #survey {
   background-color: white;
   height: 80vh;
