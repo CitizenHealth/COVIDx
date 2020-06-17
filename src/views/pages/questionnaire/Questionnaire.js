@@ -1,53 +1,15 @@
-import React, { useEffect } from "react";
-import "rc-slider/assets/index.css";
-import "../../../assets/scss/plugins/extensions/slider.scss";
-import "./questionnaire.scss";
-import * as TripettoCollector from "tripetto-collector";
-import * as TripettoCollectorRolling from "tripetto-collector-rolling";
-import questions from "./questions.json";
+import React from "react";
+import { Route } from "react-router-dom";
+import QuestionnaireMenu from "./QuestionnaireMenu";
+import SurveyQuestions from "./SurveyQuestions";
 
 const Questionnaire = () => {
-  useEffect(() => {
-    TripettoCollectorRolling.run({
-      element: document.getElementById("survey"), // Or supply your own element here
-      definition: questions,
-      style: {
-        centerActiveBlock: true,
-        showProgressbar: true,
-        showEnumerators: false,
-        showNavigation: true,
-        showScrollbar: true,
-        autoFocus: false,
-      },
-      onFinish: (instance) => {
-        // TODO: Handle the collector results
-        // retrieve the individual fields:
-        const fields = TripettoCollector.Export.fields(instance).fields;
-
-        // obtain values from raw data
-        const survey_answers = {
-          how_are_you_feeling: parseInt(fields[0].value),
-          current_symptoms: fields
-            .slice(1, 17)
-            .filter((x) => x.value)
-            .map((x) => x.name),
-          temperature: fields[18].value,
-          fever_best_guess: fields[19].value,
-          self_tested: fields[20].value,
-          self_date_tested: fields[21].value,
-          household_tested: fields[22].value,
-          household_date_tested: fields[23].value,
-          medical_conditions: fields
-            .slice(24, 33)
-            .filter((x) => x.value)
-            .map((x) => x.name),
-        };
-
-        console.log(survey_answers);
-      },
-    });
-  });
-  return <div id="survey"></div>;
+  return (
+    <div id="questionnaire-container" className="col-12 mx-auto">
+      <Route exact path="/health-report/" component={QuestionnaireMenu} />
+      <Route path="/health-report/:questionType" component={SurveyQuestions} />
+    </div>
+  );
 };
 
 export default Questionnaire;

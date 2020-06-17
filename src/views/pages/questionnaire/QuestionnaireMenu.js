@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Card, CardBody, Button } from "reactstrap";
 import { IntlProvider, FormattedNumber } from "react-intl";
+import { Link } from "react-router-dom";
 import "./questionnaire.scss";
 
 // dummy data
@@ -54,9 +55,11 @@ const QuestionnaireMenu = () => {
         <Card className="col-12 col-md-5 col-lg-5">
           <CardBody>
             <h3>{item.category}</h3>
-            <Button className="button" color="primary" outline>
-              {item.buttonText}
-            </Button>
+            <Link to={`/health-report/${item.slug}`}>
+              <Button className="button" color="primary" outline>
+                {item.buttonText}
+              </Button>
+            </Link>
             <p>
               <span>
                 <IntlProvider>
