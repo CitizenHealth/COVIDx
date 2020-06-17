@@ -1,20 +1,11 @@
 import React, { useEffect } from "react";
 import "rc-slider/assets/index.css";
 import "../../../assets/scss/plugins/extensions/slider.scss";
-import styled from "styled-components";
+import "./questionnaire.scss";
 import * as TripettoCollector from "tripetto-collector";
 import * as TripettoCollectorRolling from "tripetto-collector-rolling";
 import questions from "./questions.json";
 
-const QuestionForm = styled.div`
-  background-color: white;
-  height: 80vh;
-  > .tripetto-collector-rolling {
-    width: inherit;
-    height: inherit;
-    position: relative;
-  }
-`;
 const Questionnaire = () => {
   useEffect(() => {
     TripettoCollectorRolling.run({
@@ -56,7 +47,7 @@ const Questionnaire = () => {
       },
     });
   });
-  return <QuestionForm id="survey"></QuestionForm>;
+  return <div id="survey"></div>;
 };
 
 export default Questionnaire;

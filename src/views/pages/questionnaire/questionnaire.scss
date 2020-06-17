@@ -1,57 +1,11 @@
 @use "sass:color";
 
-.location-finder {
-  padding:1rem 0;
-
-  .guess {
-    margin:2rem 0;
-    display:grid;
-    grid-template-columns:auto min-content;
-    height:2rem;
-
-    i, h3 {
-      margin:auto 0;
-    }
-
-    .loading-guess::after {
-      display: inline-block;
-      animation: dotty steps(1,end) 1s infinite;
-      content: '';
-    }
-
-    @keyframes dotty {
-      0%   { content: ''; }
-      25%  { content: '.'; }
-      50%  { content: '..'; }
-      75%  { content: '...'; }
-      100% { content: ''; }
-    }
-  }
-
-  .autocomplete {
-    max-height:50vh;
-    border:1px solid #d9d9d9;
-    background-color: #FFFF;
-    padding:1rem;
-    margin-top:5px;
-    border-radius:5px;
-    overflow-y:scroll;
-
-    ul {
-      list-style:none;
-      padding-left:0;
-      li {
-        padding:5px 0;
-
-        &:hover {
-          background-color: rgba(#7367f0, 0.2);
-          cursor:pointer;
-        }
-      }
-    }
-  }
-
-  .hidden {
-    display:none;
+#survey {
+  background-color: white;
+  height: 80vh;
+  > .tripetto-collector-rolling {
+    width: inherit;
+    height: inherit;
+    position: relative;
   }
 }
