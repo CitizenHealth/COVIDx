@@ -1,11 +1,14 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import { Card, CardBody } from "reactstrap";
 import "./questionnaire.scss";
 import * as TripettoCollector from "tripetto-collector";
 import * as TripettoCollectorRolling from "tripetto-collector-rolling";
 import questions from "./questions.json";
+import { UserContext } from "App";
+import { customPost } from "utility/customFetch";
 
 const SurveyQuestions = ({ match }) => {
+  const user = useContext(UserContext);
   console.log(match.params.questionType);
 
   useEffect(() => {
@@ -43,8 +46,8 @@ const SurveyQuestions = ({ match }) => {
             .filter((x) => x.value)
             .map((x) => x.name),
         };
-
         console.log(survey_answers);
+        customPost('/health_checkin/response', user.accessToken, survey_answers)
       },
     });
   }, []);
