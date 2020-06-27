@@ -25,6 +25,12 @@ const dataFromServer = [
     peopleCheckedIn: 73200,
   },
   {
+    category: "Testing Questions",
+    slug: "testing-questions",
+    buttonText: "Start",
+    peopleCheckedIn: 73200,
+  },
+  {
     category: "Personal Choices",
     slug: "personal-choices",
     buttonText: "Start",
