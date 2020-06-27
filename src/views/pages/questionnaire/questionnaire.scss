@@ -4,10 +4,12 @@
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: flex-start;
   > .card {
     display: "inline-block";
     text-align: center;
+    margin: 12px 30px;
+    max-width: 480px;
     .card-body {
       > * {
         margin: 10px 0;
