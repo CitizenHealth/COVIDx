@@ -44,10 +44,12 @@ Please be sure to use `yarn` as your package manager *instead* of `npm`.
 1. Clone our github repo, once you've been added to the project
 2. Run: `yarn install`
 3. Checkout to your issue branch
-4. Run `yarn start`, after an initial load it should auto-open http://localhost:3000/
-5. Develop and test your code changes, it should livereload out of the box
-6. Make sure you commit changes often, with clear commit messages
-7. Send a pull request
+4. Create a local .env file; you can use the .env.sample file as a guide.
+5. Reach out to a maintainer for the Firebase and Tripetto API keys.
+6. Run `yarn start`, after an initial load it should auto-open http://localhost:3000/
+7. Develop and test your code changes, it should livereload out of the box
+8. Make sure you commit changes often, with clear commit messages
+9. Send a pull request
 
 Build & Deployment from scratch
 --
@@ -56,6 +58,14 @@ Pre-requisite: Be added to the Firebase project if not already
 1. Clone github repo
 2. Run: yarn install
 3. Run: yarn deploy
+
+## Maintainers
+
+@BrennenHodge
+@murkantilism
+@jaredigms
+@vchu22
+@afixoftrix
 
 ## Tech
 
