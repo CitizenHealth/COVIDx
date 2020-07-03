@@ -69,6 +69,3 @@ COVIDx uses a number of open source projects to work properly:
 * [tripetto](https://tripetto.com/) - for building our forms
 * [Flask](https://flask.palletsprojects.com/) - for our backend
 * [Leaflet](https://leafletjs.com/) - for our mobile-friendly interactive maps
-
-### License
-Open Source under MIT License
