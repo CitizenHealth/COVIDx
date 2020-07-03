@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { Collector } from "tripetto-collector-rolling";
 import Services from "tripetto-services";
 
-const token = process.env.REACT_APP_TRIPETTO_TOKEN
+const token = process.env.REACT_APP_TRIPETTO_TOKEN;
 
 const FormContainer = styled.div`
   height: 80vh;
@@ -61,5 +61,5 @@ export const QuestionForm = () => {
       </div>
     );
   }
-  
+
 }
