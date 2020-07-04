@@ -5,7 +5,16 @@ import { Button } from "reactstrap";
 
 const CheckInContainer = styled.div`
   text-align: center;
-`
+  
+  .checkin-text {
+    font-size: 16px;
+    font-weight: bold;
+
+    .checkin-number {
+      color: #6f64f6;
+    }
+  }
+`;
 const Greeting = styled.div`
   font-size: 32px;
   font-weight: 600;
@@ -15,15 +24,22 @@ const Greeting = styled.div`
 const BtnContainer = styled.div`
   margin-bottom: 30px;
 `
-
+const Btn = styled(Button)`
+  color: #6f64f6;
+  border-color: #4234f3;
+`;
 const CheckInCard = ({ firstName, totalCheckins, onClick }) => {
   return (
     <CheckInContainer>
       <Greeting>Hi, {firstName}</Greeting>
       <BtnContainer>
-        <Button outline onClick={onClick} >Check-in Today</Button>
+        <Btn outline onClick={onClick} style>
+          Check-in Today
+        </Btn>
       </BtnContainer>
-      <div>{totalCheckins} have checked in today</div>
+      <div className="checkin-text">
+        <span className="checkin-number">{totalCheckins}</span> have checked in today
+      </div>
     </CheckInContainer>
   );
 };

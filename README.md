@@ -51,8 +51,7 @@ Please be sure to use `yarn` as your package manager *instead* of `npm`.
 8. Make sure you commit changes often, with clear commit messages
 9. Send a pull request
 
-Build & Deployment from scratch
---
+## Build & Deployment from scratch
 Pre-requisite: Be added to the Firebase project if not already
 
 1. Clone github repo
@@ -76,6 +75,13 @@ Our backend server is a separate repo [here](https://github.com/CitizenHealth/CO
 COVIDx uses a number of open source projects to work properly:
 
 * [React](https://reactjs.org/) - for our frontend
-* [tripetto](https://tripetto.com/) - for building our forms
+* [Tripetto](https://tripetto.com/) - for our check-in surveys
 * [Flask](https://flask.palletsprojects.com/) - for our backend
 * [Leaflet](https://leafletjs.com/) - for our mobile-friendly interactive maps
+
+And of course COVIDx itself is open source under a MIT license.
+
+## COVIDx API
+We also have a backend server that you can make API calls to if you are building
+features here. Right now, it's pretty barebones - user data, survey data, and
+location data are what's available. If there are any requests, please ask!
