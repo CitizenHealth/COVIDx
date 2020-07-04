@@ -7,6 +7,8 @@ const token = process.env.REACT_APP_TRIPETTO_TOKEN;
 
 const FormContainer = styled.div`
   height: 80vh;
+  max-width: 800px;
+  margin: 0 auto;
 `
 
 export const QuestionForm = () => {
