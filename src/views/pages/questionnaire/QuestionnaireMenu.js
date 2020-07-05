@@ -37,6 +37,12 @@ const dataFromServer = [
     peopleCheckedIn: 69105,
   },
   {
+    category: "Home Conditions",
+    slug: "home-conditions",
+    buttonText: "Start",
+    peopleCheckedIn: 68478,
+  },
+  {
     category: "Work Conditions",
     slug: "work-conditions",
     buttonText: "Start",
