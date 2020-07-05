@@ -1,0 +1,2802 @@
+{
+  "name": "Demographics",
+  "clusters": [
+    {
+      "id": "2c5c3c22dfbb8f32c2877fe5416655ab8b84d8a262f1b0c12b76517a7420c54e",
+      "name": "Welcome",
+      "nodes": [
+        {
+          "id": "8b94218fca3e4c8d09c013b88704498e4a0a543bd5e3c070d97f8e66ea9f35b8",
+          "name": "COVIDx is a citizen science platform for fighting COVID-19.",
+          "nameVisible": true,
+          "description": "*How it works:*\n\n**1. Asses your health risks** via surveys, wearables, and testing\n\n**2. Influence decision makers** by voting on government plans\n\n**3. Earn rewards** for daily check-ins & inviting friends"
+        }
+      ]
+    },
+    {
+      "id": "edc87ad7ec640e30546de877c19c70a2d684cabad653e268a50a191180515dd0",
+      "name": "Consent form",
+      "nodes": [
+        {
+          "id": "45c32fc3489daa72861b371358a3b52e956399beb71566b8413aa4332c5e3d7c",
+          "name": "Help save lives by donating your anonymous data to science",
+          "nameVisible": true,
+          "description": "🧬👩‍🔬🔬👨🏿‍🔬🧪🦠\n\nWe’re collecting data from as many people as possible to help health researchers better understand and fight COVID-19.\n\nYour submitted data will remain anonymous, de-identified, and combined with everyone else. We share this data with scientists & healthcare professionals actively fighting COVID-19.\n\nThis survey will only take a few minutes. We’ll ask you to provide your location, sex, age, and some previous health history, as well as how you’re feeling.\n\nYour use of this app is subject to our Terms and our Privacy Policy.\n\nYour participation is voluntary, and you can stop donating any time you like.",
+          "slots": [
+            {
+              "id": "429a3d484fb50862de15ce14893deed2db1a62d0544e8b00efdcd2e7cc04bd73",
+              "type": "string",
+              "kind": "static",
+              "reference": "answer",
+              "label": "Answer",
+              "alias": "consent",
+              "required": true
+            }
+          ],
+          "block": {
+            "type": "tripetto-block-yes-no",
+            "version": "1.0.3",
+            "altYes": "I consent",
+            "altNo": "I do not consent"
+          }
+        }
+      ],
+      "branches": [
+        {
+          "id": "2973f0c264b2efafadb3af780eec79e14e0630ae2f6ba92bb1c0b25ade0cc1ee",
+          "name": "I do not consent",
+          "conditions": [
+            {
+              "id": "5d2f6f3c8a87f7c5cb9e763e5cb2211c0a896518a9c8e021de6d8e6b873c27b4",
+              "block": {
+                "type": "tripetto-block-yes-no:no",
+                "version": "0.0.0",
+                "node": "45c32fc3489daa72861b371358a3b52e956399beb71566b8413aa4332c5e3d7c",
+                "slot": "429a3d484fb50862de15ce14893deed2db1a62d0544e8b00efdcd2e7cc04bd73"
+              }
+            }
+          ],
+          "jump": "abort"
+        }
+      ]
+    },
+    {
+      "id": "0d7ede988305ae28899edae92ddc581798d5d40dd8373b816dd66fa82ba80845",
+      "name": "Health check",
+      "nodes": [
+        {
+          "id": "301be91ebd82ca1f7a495054fe18fc6853c1e502a58077b11078692a932d1296",
+          "name": "How are you feeling today?",
+          "nameVisible": true,
+          "slots": [
+            {
+              "id": "f426a6b778845348ba413a40d556661c616adb4151a2d275bc703e0cd31576c3",
+              "type": "string",
+              "kind": "static",
+              "reference": "choice",
+              "label": "Choice",
+              "alias": "how_are_you_feeling"
+            }
+          ],
+          "block": {
+            "type": "tripetto-block-multiple-choice",
+            "version": "1.0.2",
+            "choices": [
+              {
+                "id": "b16ce8bb2293c4282dcce189046e928249e7d4199cdf6c443317171a0c7c0c49",
+                "name": "😀 Very Well",
+                "value": "5"
+              },
+              {
+                "id": "463e7b012959b106fa08108a1bd04fedfd076cedafca122e02e0158e7ee73e2a",
+                "name": "🙂 Well",
+                "value": "4"
+              },
+              {
+                "id": "d9274cbf2cd94d7a1e6c783bf2c592b4ca1b971a19e0f3608de2cfc6afb64985",
+                "name": "😐 Average",
+                "value": "3"
+              },
+              {
+                "id": "7dc3300d89ae18bb4d7dd5d144c7b7fef63c00fa8dd1c4c645cc4d2a889170bc",
+                "name": "🙁 Unwell",
+                "value": "2"
+              },
+              {
+                "id": "d3a0b8f6e06fce6b382b2325aa3faf666d8c6310f1d2cf1ad795ad6757f9d04c",
+                "name": "🥵 Very unwell",
+                "value": "1"
+              }
+            ],
+            "required": true,
+            "alias": "how_are_you_feeling"
+          }
+        },
+        {
+          "id": "6f3ec04c7602f54d415ffb654da7c61b69fd868511816f6204b46a02744069db",
+          "name": "Do you currently have any of these symptoms?",
+          "nameVisible": true,
+          "slots": [
+            {
+              "id": "c316b7d9c8d830c2f22000bc1bf7049bb810845c37bb0a04970a1e414d60da34",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "b445dbaa22756bfc444bf63aa68ad6e20d3922e4a5b90f07b7d37f313082bd56",
+              "sequence": 0,
+              "label": "Choice",
+              "name": "Fever",
+              "alias": "fever",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "current_symptoms"
+              }
+            },
+            {
+              "id": "90b170269d1dde4bf265b1b960cc67b43f19adbaefea2c207a7cf9d984584da6",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "bc05cc927c5855c653d92729a07ffd4a25a77a78e3bcfb0436a93fde1d2fd69b",
+              "sequence": 1,
+              "label": "Choice",
+              "name": "Chills",
+              "alias": "chills",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "current_symptoms"
+              }
+            },
+            {
+              "id": "6ffaa53637ef737799f3e36d445c017dcdde902eeb23ca6d6ba87a8b81b8489c",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "e71cefd93b332d29ec46dad878fbd73537aad87c3c7ee452d0c9af3619606965",
+              "sequence": 2,
+              "label": "Choice",
+              "name": "Fatigue",
+              "alias": "fatigue",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "current_symptoms"
+              }
+            },
+            {
+              "id": "afcb92b87e0e83b01a04dea88548ee9c607f6048974a13e280698b6b4a48b769",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "9c25d4fe1f992e472ede6d93ac452be4ab4de118bc6e91e772b21e9ef52e301d",
+              "sequence": 3,
+              "label": "Choice",
+              "name": "Dry cough",
+              "alias": "dry_cough",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "current_symptoms"
+              }
+            },
+            {
+              "id": "009ce7c8ea19c41c5ce61e30510effe5eb142c0d161cd0ecf90060d11c3bdbe6",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "86b95a7898c76ad345b087e88d3e3bf3a6b9e32393b055bf783dd0b17fc47922",
+              "sequence": 4,
+              "label": "Choice",
+              "name": "Wet cough (sputum)",
+              "alias": "wet_cough",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "current_symptoms"
+              }
+            },
+            {
+              "id": "829acbbef041853984c8e350ef1286a02948b27062e8c43cbb9366c13a1eb30b",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "b26df6bd9b2169bea248902630e4453b2950e6a7c400fb6293db06ccab33bff3",
+              "sequence": 5,
+              "label": "Choice",
+              "name": "Shortness of breath",
+              "alias": "shortness_of_breath",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "current_symptoms"
+              }
+            },
+            {
+              "id": "a3d7071f56e779811250ae80528a22d585707c3a2c55c578555e41ec77e8ba70",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "60e87e28442a70637f65e7bf724379318d7587110d1e24de91cfb33d89038322",
+              "sequence": 6,
+              "label": "Choice",
+              "name": "Loss of taste",
+              "alias": "loss_of_taste",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "current_symptoms"
+              }
+            },
+            {
+              "id": "4417bcdb79cccdefec200b1b8d924e06a08191aa1e02845be8ed5f9c41f93760",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "e031e00ac2304e6572317cefdb2bc377c16d828e7d4987197cf7080b65b9c218",
+              "sequence": 7,
+              "label": "Choice",
+              "name": "Loss of smell",
+              "alias": "loss_of_smell",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "current_symptoms"
+              }
+            },
+            {
+              "id": "d1dd07b955443e148a7f9bf3e84b380a673f9e5fba6b203f98de4c023589a72b",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "e994dd99b311fd6178984f9e40a25479fd76921276abac5d9c3c3f68e44ccad4",
+              "sequence": 8,
+              "label": "Choice",
+              "name": "Abdominal pain",
+              "alias": "abdominal_pain",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "current_symptoms"
+              }
+            },
+            {
+              "id": "f8f4d739e5c0f7e00551934a3e2b51651d8300c8035d4958767bb71a6868207c",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "966d26c308c5904409e241141b2a93f4fc1eecf051e18b5490dbcb48fda19c5c",
+              "sequence": 9,
+              "label": "Choice",
+              "name": "Diarrhea",
+              "alias": "diarrhea",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "current_symptoms"
+              }
+            },
+            {
+              "id": "16122a0a950322f28da1024a84c5ebe0ba91a068acb0c85fc3161027caa2dbf9",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "ed0417ed72c4fa8feaa2f4936aeb13a4ffdba4e05f71c6bd6d0171e31800ab46",
+              "sequence": 10,
+              "label": "Choice",
+              "name": "Sore throat",
+              "alias": "sore_throat",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "current_symptoms"
+              }
+            },
+            {
+              "id": "328def629e48b508822becb484192b7e78e1e61764174f91d3c467039e46259b",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "709db7e580ca646ba2444af6bc8b6e6b75f045fa879239e08d513f3c85c6613b",
+              "sequence": 11,
+              "label": "Choice",
+              "name": "Nausea",
+              "alias": "nausea",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "current_symptoms"
+              }
+            },
+            {
+              "id": "eaf7842ce4f1c1aa4d9ebbadb6135930c124fa5627e8c832e066b456754957f0",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "51e61514fa745fe0fa04405522820c1efb188fcedcb7c32c9a7f7ce6c31e467b",
+              "sequence": 12,
+              "label": "Choice",
+              "name": "Vomiting",
+              "alias": "vomiting",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "current_symptoms"
+              }
+            },
+            {
+              "id": "093741cbccc92fb7d80ccd010e7fdae4760ae98e19eb90e9a62df8287cd5994c",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "4fcb77bca9f5a313f8f4657eb0144fd0b5539913120c9265b0916f5e974e27f1",
+              "sequence": 13,
+              "label": "Choice",
+              "name": "Pressure feeling in chest",
+              "alias": "pressure_in_chest",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "current_symptoms"
+              }
+            },
+            {
+              "id": "fd637072c66643bccc8f80310866cdd07cd96d6afe1e079bad0f8d0fcc694122",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "4d4ee1d5c4e3295436b19c35db8d14b61f0fe7a1a91477284bd5d13f7b757fb3",
+              "sequence": 14,
+              "label": "Choice",
+              "name": "Pink eye",
+              "alias": "pink_eye",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "current_symptoms"
+              }
+            },
+            {
+              "id": "8f1e0551f5d88957c456042461559c760f1968ac81684ae0a209d4d6a3f5bf19",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "0215084ab3983c73beac049496518dc62ca22366f58ebf75e531a19327580cc3",
+              "sequence": 15,
+              "label": "Choice",
+              "name": "Headache",
+              "alias": "headache",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "current_symptoms"
+              }
+            },
+            {
+              "id": "38de18878f2091df6c25dc8947bbb42fdeb1fd70d6dada85064b209fcd1fd753",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "f7357f48e1fae3b5e9ce9bdeaca4554a18f412b7bb0717d9c0a2c1467a385787",
+              "sequence": 16,
+              "label": "Choice",
+              "name": "Confusion",
+              "alias": "confusion",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "current_symptoms"
+              }
+            },
+            {
+              "id": "9703eaeb14d2ec1dcb99872ed950a8c84e198845ee1872485e86babc45bd6385",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "4126e08d0e625b9851ac392c646a8dc25832ad10dfc630cf45588ec51e06352c",
+              "sequence": 17,
+              "label": "Choice",
+              "name": "Rash on feet",
+              "alias": "rash_on_feet",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "current_symptoms"
+              }
+            }
+          ],
+          "block": {
+            "type": "tripetto-block-multiple-choice",
+            "version": "1.0.2",
+            "choices": [
+              {
+                "id": "b445dbaa22756bfc444bf63aa68ad6e20d3922e4a5b90f07b7d37f313082bd56",
+                "name": "Fever",
+                "value": "fever"
+              },
+              {
+                "id": "bc05cc927c5855c653d92729a07ffd4a25a77a78e3bcfb0436a93fde1d2fd69b",
+                "name": "Chills",
+                "value": "chills"
+              },
+              {
+                "id": "e71cefd93b332d29ec46dad878fbd73537aad87c3c7ee452d0c9af3619606965",
+                "name": "Fatigue",
+                "value": "fatigue"
+              },
+              {
+                "id": "9c25d4fe1f992e472ede6d93ac452be4ab4de118bc6e91e772b21e9ef52e301d",
+                "name": "Dry cough",
+                "value": "dry_cough"
+              },
+              {
+                "id": "86b95a7898c76ad345b087e88d3e3bf3a6b9e32393b055bf783dd0b17fc47922",
+                "name": "Wet cough (sputum)",
+                "value": "wet_cough"
+              },
+              {
+                "id": "b26df6bd9b2169bea248902630e4453b2950e6a7c400fb6293db06ccab33bff3",
+                "name": "Shortness of breath",
+                "value": "shortness_of_breath"
+              },
+              {
+                "id": "60e87e28442a70637f65e7bf724379318d7587110d1e24de91cfb33d89038322",
+                "name": "Loss of taste",
+                "value": "loss_of_taste"
+              },
+              {
+                "id": "e031e00ac2304e6572317cefdb2bc377c16d828e7d4987197cf7080b65b9c218",
+                "name": "Loss of smell",
+                "value": "loss_of_smell"
+              },
+              {
+                "id": "e994dd99b311fd6178984f9e40a25479fd76921276abac5d9c3c3f68e44ccad4",
+                "name": "Abdominal pain",
+                "value": "abdominal_pain"
+              },
+              {
+                "id": "966d26c308c5904409e241141b2a93f4fc1eecf051e18b5490dbcb48fda19c5c",
+                "name": "Diarrhea",
+                "value": "diarrhea"
+              },
+              {
+                "id": "ed0417ed72c4fa8feaa2f4936aeb13a4ffdba4e05f71c6bd6d0171e31800ab46",
+                "name": "Sore throat",
+                "value": "sore_throat"
+              },
+              {
+                "id": "709db7e580ca646ba2444af6bc8b6e6b75f045fa879239e08d513f3c85c6613b",
+                "name": "Nausea",
+                "value": "nausea"
+              },
+              {
+                "id": "51e61514fa745fe0fa04405522820c1efb188fcedcb7c32c9a7f7ce6c31e467b",
+                "name": "Vomiting",
+                "value": "vomiting"
+              },
+              {
+                "id": "4fcb77bca9f5a313f8f4657eb0144fd0b5539913120c9265b0916f5e974e27f1",
+                "name": "Pressure feeling in chest",
+                "value": "pressure_in_chest"
+              },
+              {
+                "id": "4d4ee1d5c4e3295436b19c35db8d14b61f0fe7a1a91477284bd5d13f7b757fb3",
+                "name": "Pink eye",
+                "value": "pink_eye"
+              },
+              {
+                "id": "0215084ab3983c73beac049496518dc62ca22366f58ebf75e531a19327580cc3",
+                "name": "Headache",
+                "value": "headache"
+              },
+              {
+                "id": "f7357f48e1fae3b5e9ce9bdeaca4554a18f412b7bb0717d9c0a2c1467a385787",
+                "name": "Confusion",
+                "value": "confusion"
+              },
+              {
+                "id": "4126e08d0e625b9851ac392c646a8dc25832ad10dfc630cf45588ec51e06352c",
+                "name": "Rash on feet",
+                "value": "rash_on_feet"
+              }
+            ],
+            "multiple": true,
+            "alignment": true,
+            "alias": "current_symptoms"
+          }
+        },
+        {
+          "id": "a47eb190e51e3d14fa13c66d68993233ea4b723a9200b21a6a47b42abf3ad0f5",
+          "name": "Do you have a thermometer?",
+          "nameVisible": true,
+          "slots": [
+            {
+              "id": "149e7d62a9dd183106de47c5acda487abcbbd041a17c9ab12b393e776547d377",
+              "type": "string",
+              "kind": "static",
+              "reference": "answer",
+              "label": "Answer",
+              "alias": "have_thermometer"
+            }
+          ],
+          "block": { "type": "tripetto-block-yes-no", "version": "1.0.3" }
+        }
+      ],
+      "branches": [
+        {
+          "id": "4db9d825f29613f02de136de68c81883f4d1d7cb60bf3ca0b4f3d6cf459c76d6",
+          "name": "Yes",
+          "clusters": [
+            {
+              "id": "4cba9504d45ca363d78fa3a5f56677b2d5b7cc9432b57efbc99f41d35845003c",
+              "name": "Temperature",
+              "nodes": [
+                {
+                  "id": "639c4dd9fe97d4bdc0a7fce16f23fd4ee041cd5df6ed3738615dcdd18a093aa6",
+                  "name": "What is your temperature?",
+                  "nameVisible": true,
+                  "placeholder": "0.0",
+                  "slots": [
+                    {
+                      "id": "7af31a699184bec76bb0057c91facea8bfb1b8b1c6f1143df91c78378ca65d3a",
+                      "type": "numeric",
+                      "kind": "static",
+                      "reference": "number",
+                      "label": "Number",
+                      "alias": "temperature",
+                      "required": true,
+                      "precision": 1
+                    }
+                  ],
+                  "block": {
+                    "type": "tripetto-block-number",
+                    "version": "2.0.0"
+                  }
+                },
+                {
+                  "id": "ba11fcbb9e9d1826c1ca01dda5faf5e5b33ec162c57c03154e17acd2438c3a55",
+                  "name": "Which temperature scale are you using?",
+                  "nameVisible": true,
+                  "slots": [
+                    {
+                      "id": "0d68af5cb15c40c3e43ffb9b20782d283ec0d7e774a370c3850f9db4263727be",
+                      "type": "string",
+                      "kind": "static",
+                      "reference": "choice",
+                      "label": "Choice",
+                      "alias": "temperature_scale"
+                    }
+                  ],
+                  "block": {
+                    "type": "tripetto-block-multiple-choice",
+                    "version": "1.0.2",
+                    "choices": [
+                      {
+                        "id": "596990764c3fca6fa4dbef41944d0466ad41aa7d0d857894c50c64d1c47a9eeb",
+                        "name": "Fahrenheit",
+                        "value": "fahrenheit"
+                      },
+                      {
+                        "id": "56835a347860da2d8a75f3144f98a106c052a34816682f86b332b593d64910e7",
+                        "name": "Celsius",
+                        "value": "celsius"
+                      }
+                    ],
+                    "required": true,
+                    "alias": "temperature_scale"
+                  }
+                }
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "id": "36f0bc894d6fe76e71b85b31b427fa8daabb5f88ac5170c8230691024bc0e64f",
+              "block": {
+                "type": "tripetto-block-yes-no:yes",
+                "version": "0.0.0",
+                "node": "a47eb190e51e3d14fa13c66d68993233ea4b723a9200b21a6a47b42abf3ad0f5",
+                "slot": "149e7d62a9dd183106de47c5acda487abcbbd041a17c9ab12b393e776547d377"
+              }
+            }
+          ]
+        },
+        {
+          "id": "6351fca59945e8bd99db12349643e236bd551c2b0c01d4f2f7fb2fd9e5116092",
+          "name": "No",
+          "clusters": [
+            {
+              "id": "68d01a867169a75064c8bfe57fe39d5deedc875cfad3f96195290dce610bac1d",
+              "name": "Fever best guess",
+              "nodes": [
+                {
+                  "id": "a05c61558f6403a888996bbd50d50439b04a78c445e495acb7b7446d5c2f27de",
+                  "name": "How severe do you think your fever is?",
+                  "nameVisible": true,
+                  "slots": [
+                    {
+                      "id": "90841249a8238abeed5c99188d66bc0acc8f4ab944587cef72827a016e955f42",
+                      "type": "string",
+                      "kind": "static",
+                      "reference": "choice",
+                      "label": "Choice",
+                      "alias": "fever_best_guess"
+                    }
+                  ],
+                  "block": {
+                    "type": "tripetto-block-multiple-choice",
+                    "version": "1.0.2",
+                    "choices": [
+                      {
+                        "id": "934150f5794827ef7243078b3a750ad6140915b2bb5cfd6d3fdab405e4d85271",
+                        "name": "🙂 No fever",
+                        "value": "no_fever"
+                      },
+                      {
+                        "id": "91a204af50798dc0b7bc921abe4fb226c644dd4a7f0377af31b076dd90c1e48a",
+                        "name": "😕 Maybe feverish",
+                        "value": "maybe_feverish"
+                      },
+                      {
+                        "id": "c1be32587d27603de0ce715a893b1b4ca3a17be9dcf68a8ceaabd3de7cd07107",
+                        "name": "🤒 Definitely feverish",
+                        "value": "definitely_feverish"
+                      },
+                      {
+                        "id": "6e6ba94835dd5ee79c102dba36c473c860c0644f635b8f1a19fee6f6ada65837",
+                        "name": "😷 Worst fever ever",
+                        "value": "worst_fever"
+                      }
+                    ],
+                    "required": true,
+                    "alias": "fever_best_guess"
+                  }
+                }
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "id": "3e4a95af838b44a796af5e396a992447287d9368b7eacc638b64a3c274f055d8",
+              "block": {
+                "type": "tripetto-block-yes-no:no",
+                "version": "0.0.0",
+                "node": "a47eb190e51e3d14fa13c66d68993233ea4b723a9200b21a6a47b42abf3ad0f5",
+                "slot": "149e7d62a9dd183106de47c5acda487abcbbd041a17c9ab12b393e776547d377"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "3b641e19904ab0fe82dca227f59ea789cf686d926d2d3d8812592efad6917c5e",
+      "name": "Demographics",
+      "nodes": [
+        {
+          "id": "0b49a34ed2147a9727e525d200e4f56d13eb343d30668059bf65338c5a8b5e73",
+          "name": "What year were you born?",
+          "nameVisible": true,
+          "placeholder": "1900",
+          "description": "Enter all four digits (ex. 1986)",
+          "slots": [
+            {
+              "id": "39c42e377064a23371b74af9064b6c8eafc3d4ebbc8a0312c1675f5d7fcf9b38",
+              "type": "numeric",
+              "kind": "static",
+              "reference": "number",
+              "label": "Number",
+              "alias": "year_of_birth"
+            }
+          ],
+          "block": { "type": "tripetto-block-number", "version": "2.0.0" }
+        },
+        {
+          "id": "cff5b35e48985105651d5a6df37139b416374d9eed1ee7c57e2ce8a53baa2f5e",
+          "name": "What was your sex at birth?",
+          "nameVisible": true,
+          "slots": [
+            {
+              "id": "cf11332c71f09258c858a6ec6bd532a5d5cbe6dc685c11589fae4ba60f61b3f5",
+              "type": "string",
+              "kind": "static",
+              "reference": "choice",
+              "label": "Choice",
+              "alias": "sex"
+            }
+          ],
+          "block": {
+            "type": "tripetto-block-multiple-choice",
+            "version": "1.0.2",
+            "choices": [
+              {
+                "id": "6d93e19de2fb0bff1f98279ee024a486847947be22979e9108b37eed36db2fe0",
+                "name": "Male",
+                "value": "male"
+              },
+              {
+                "id": "ad950c2a64d8755ff1c33e8788dc2eb3647854eb3768eb454f060994f90fa554",
+                "name": "Female",
+                "value": "female"
+              },
+              {
+                "id": "e97cdbe5ec4fd10d3ccf61554d56e51a767932d974099da9227de2b600bca64c",
+                "name": "Intersex",
+                "value": "intersex"
+              },
+              {
+                "id": "96b61fe8898a881d49defa6f46135cc2721a57cd3c4c9d8ebe71295a11173d51",
+                "name": "Other",
+                "value": "other"
+              },
+              {
+                "id": "d839efd12f14afeba76820bef54521f05a05da444b81c4db4ac025b36f1a573e",
+                "name": "Prefer not to say",
+                "value": "prefer_not_to_say"
+              }
+            ],
+            "required": true,
+            "alias": "sex"
+          }
+        },
+        {
+          "id": "ace5e9c8a86d23d3f8aba61ec8ebc23fa23b37e4980389102323f3050b1e2ceb",
+          "name": "Which country are you located in?",
+          "nameVisible": true,
+          "slots": [
+            {
+              "id": "009efd5d8252f591f9c0ee81cfd81b71275fbc767e01266f00f07c763bad143d",
+              "type": "string",
+              "kind": "static",
+              "reference": "option",
+              "label": "Selected option",
+              "alias": "country"
+            }
+          ],
+          "block": {
+            "type": "tripetto-block-dropdown",
+            "version": "2.0.0",
+            "options": [
+              {
+                "id": "b961516d72ee147edb3b32a9b1fd5546884bac7456375eb900d8554503a265a7",
+                "name": "Afghanistan",
+                "value": "af"
+              },
+              {
+                "id": "b016d66d665553b6cf35b23ff040bfe7acb37f251f66374135e94087549f3559",
+                "name": "Åland Islands",
+                "value": "ax"
+              },
+              {
+                "id": "2a32727324d0e2c8260bfcf252379bb6dca2dd529609e366c0024eb236300dda",
+                "name": "Albania",
+                "value": "al"
+              },
+              {
+                "id": "43eb8ec42f59a30f27b5cb660041f1ab30cb0e62b102403a2aaac2204330660b",
+                "name": "Algeria",
+                "value": "dz"
+              },
+              {
+                "id": "94e6266adc68fa007687ce576ac14deacf920365ac240cf5bc18e8da51927ee5",
+                "name": "American Samoa",
+                "value": "as"
+              },
+              {
+                "id": "9b1d736ff8a9c12efd6e5bea391ebf3023a0ccfe783e946cf1605f0a73b18764",
+                "name": "Andorra",
+                "value": "ad"
+              },
+              {
+                "id": "e2ababacb2da7e74df18fbaf5dbb69a02f0b8e46122e9dcb5da77528a4e498e7",
+                "name": "Angola",
+                "value": "ao"
+              },
+              {
+                "id": "8557708211de28cdba63b25661965dd5ac3f279223122bd3085e9a99ed37c83a",
+                "name": "Anguilla",
+                "value": "ai"
+              },
+              {
+                "id": "f8e49936b53f693ff084e16da4821aff6c79b840fe46ab0a5868cbb80c67b633",
+                "name": "Antigua and Barbuda",
+                "value": "ag"
+              },
+              {
+                "id": "5256a488a853e80792fd07770f7887d3f7fa4e0bdb2cd38546d0c4701fc345cd",
+                "name": "Argentina",
+                "value": "ar"
+              },
+              {
+                "id": "e8f007e1330afcc576bb240e25425c6cd8f097697b17ae118026fa7d8e657c0a",
+                "name": "Armenia",
+                "value": "am"
+              },
+              {
+                "id": "fa38fdc28e13157cd38a63c793ae310c149ca00dbd12bc7ff2880375b39d136f",
+                "name": "Aruba",
+                "value": "aw"
+              },
+              {
+                "id": "57c7161309cb4127fc3a4ae3ecca3a8d60125b1d2bb80a2929587ad5e1664212",
+                "name": "Australia",
+                "value": "au"
+              },
+              {
+                "id": "38c8aad74f7b2979962d0e6c8354d74daf025551dcbfbf7e95fb64f9338400dc",
+                "name": "Austria",
+                "value": "at"
+              },
+              {
+                "id": "867237a0b39f0b38132f90d3da8d526211bc2ba504e6d970ee9c16fd49d0189f",
+                "name": "Azerbaijan",
+                "value": "az"
+              },
+              {
+                "id": "80f73fa72eb1aaab99379aadbfb8635c4df8edc91f47673c65c6ff8b26464306",
+                "name": "Bahamas",
+                "value": "bs"
+              },
+              {
+                "id": "bb3491b779a22b2b31736585585b1b0bd28ca6a67ceb62f24e70c6bbdbbf482d",
+                "name": "Bahrain",
+                "value": "bh"
+              },
+              {
+                "id": "45b55b3a605a71a2908637250182a26d4e573d0a34b429083da75870f52a2ca1",
+                "name": "Bangladesh",
+                "value": "bd"
+              },
+              {
+                "id": "854f73b876b0f8065b075c242851108995d16fbb9e119acd4b8225c22b1dc7e9",
+                "name": "Barbados",
+                "value": "bb"
+              },
+              {
+                "id": "03309863e7ad3791c27f7aa40517f99acce6e0ecdc46b42923562b94ab5fdd4b",
+                "name": "Belarus",
+                "value": "by"
+              },
+              {
+                "id": "d4dfae1852888556d6325a6d05b78d64f0a908dd6270b0504dc7a94d60fb8444",
+                "name": "Belgium",
+                "value": "be"
+              },
+              {
+                "id": "ab804ab64568e077e08848e6449ec622318388c75f2bd778f6c73de38862ede8",
+                "name": "Belize",
+                "value": "bz"
+              },
+              {
+                "id": "bf2e162e7b7411955face1ffc3c38ba933fbdc20e5e3da90e094d76ff558becf",
+                "name": "Benin",
+                "value": "bj"
+              },
+              {
+                "id": "a15acfc911cdb473814f9f5f64212068fea270e010a37f41bca290ab55e20aff",
+                "name": "Bermuda",
+                "value": "bm"
+              },
+              {
+                "id": "0ab897a13eb2951ac2e6a0fa27f9137e583458b1db105f36d90cf83a347f543d",
+                "name": "Bhutan",
+                "value": "bt"
+              },
+              {
+                "id": "bb01d9092fc7a0dd17e5825ef0fdbe10b05901dcfa0fca6debf8029c24c3faf5",
+                "name": "Bolivia",
+                "value": "bo"
+              },
+              {
+                "id": "5017ced9ee3cd67e692f3efabf7cd97cd849aff0464e31f02dd3fd4bbdec854f",
+                "name": "Bonaire, Sint Eustatius and Saba",
+                "value": "bq"
+              },
+              {
+                "id": "34c2c623e58339319797d7c8ae99e3fcf55e7442c8f8476a07743eb537646b29",
+                "name": "Bosnia and Herzegovina",
+                "value": "ba"
+              },
+              {
+                "id": "b04f815d8ad5b88cf931125cf8fe082be4f6f6d76df158ddb5cc62b6e90008c6",
+                "name": "Botswana",
+                "value": "bw"
+              },
+              {
+                "id": "57c25ba52350b99fed23bd3777e0a9d629e6b697dfc9e165647820f2b810f7eb",
+                "name": "Bouvet Island",
+                "value": "bv"
+              },
+              {
+                "id": "777d53541369545432a9a9c21b61a36d9ba05d7ab319886b7e3abe8449fddaa1",
+                "name": "Brazil",
+                "value": "br"
+              },
+              {
+                "id": "4fe21ee47f20fbc4741ab762e911bd8ba49b22b0558a52f74ca96be4709d6577",
+                "name": "British Virgin Islands",
+                "value": "vg"
+              },
+              {
+                "id": "e886dcf0f28b4d51c6a75e539643f95590da6af56a3be97577ecc1ef8ba60ca4",
+                "name": "British Indian Ocean Territory",
+                "value": "io"
+              },
+              {
+                "id": "fc11cf54dc6bb6f6ab55316c7fad3e30ed3f626b9682e8eb8ccf632e25cbd09d",
+                "name": "Brunei Darussalam",
+                "value": "bn"
+              },
+              {
+                "id": "f0c09e5a374dc703e872fa5dd62d175d5a214951731ba1c61d8d2c763674aef9",
+                "name": "Bulgaria",
+                "value": "bg"
+              },
+              {
+                "id": "2a76b8f68b0c015b711f9754d795df076d5f21734c47e46972d3ca214ad5006a",
+                "name": "Burkina Faso",
+                "value": "bf"
+              },
+              {
+                "id": "0fb231ed20d938922000f8ddb44326e0ecff43092194c919a6044e6d1827cec3",
+                "name": "Burundi",
+                "value": "bi"
+              },
+              {
+                "id": "0ed000fd40aa903a20f7098cb6946b05d1db46813d06787edd895404583ee275",
+                "name": "Cambodia",
+                "value": "kh"
+              },
+              {
+                "id": "649f711170e1311c39ebb9e641d8f2b49a7b616536bad818994ae82df96580c7",
+                "name": "Cameroon",
+                "value": "cm"
+              },
+              {
+                "id": "cd57f280917205a77e88b41207a5f527b23c8c6842c3a6c0ee0209885a372692",
+                "name": "Canada",
+                "value": "ca"
+              },
+              {
+                "id": "da827ba589a0896f11d29f0206e7a4d042f696d225e25c47b520bf38a6fb1b27",
+                "name": "Cape Verde",
+                "value": "cv"
+              },
+              {
+                "id": "1e4800cb2afa3042bab0dd0be672914f7afc4bf0de5e3fcb0a42185dbb214eda",
+                "name": "Cayman Islands",
+                "value": "ky"
+              },
+              {
+                "id": "6fa3641cb6853f9731ffed1f0159e76ed59a3b813b70c61585b50f9e1354bc0a",
+                "name": "Central African Republic",
+                "value": "cf"
+              },
+              {
+                "id": "f4ce688634ba8a25a7cd5c8ff679c1408680a74cbfc63dde0669526a157b1306",
+                "name": "Chad",
+                "value": "td"
+              },
+              {
+                "id": "508e6a726e4c0c1f940ec77017a654f419211f974068cdf8164dddc4ee4a04f5",
+                "name": "Chile",
+                "value": "cl"
+              },
+              {
+                "id": "c7e4e5ee778acf3d1f046d9280c7c7f5dd6333171d1a3468df053ec85ac10b87",
+                "name": "China",
+                "value": "cn"
+              },
+              {
+                "id": "063306473a0bb8cbe7792ce054425872d3dd51c0c31fe4bb420a74d27f526716",
+                "name": "Christmas Island",
+                "value": "cx"
+              },
+              {
+                "id": "7f9e5e1e7b9e7ad3976b7be31dbc4576d5aaac8efeb558e1075602c60a30c016",
+                "name": "Cocos (Keeling) Islands",
+                "value": "cc"
+              },
+              {
+                "id": "739ae1b35c5f7d2a76a401e769d4311c5854d431c7904826d8b72bfb5ca470b9",
+                "name": "Colombia",
+                "value": "co"
+              },
+              {
+                "id": "ac084e4217f3a4b0bf73e640069c1c8b6214ef8b257f2fe13434bd4299fb31d5",
+                "name": "Comoros",
+                "value": "km"
+              },
+              {
+                "id": "f0dc13b70fbe486d28c3a38ca3013b9c8f1d02b7add42053387bd12646fb2147",
+                "name": "Congo",
+                "value": "cg"
+              },
+              {
+                "id": "caca6205868325f23620ffc61dc64c8f440a536a46eb3e3e7f77404711cf3c44",
+                "name": "Congo, the Democratic Republic of the",
+                "value": "cd"
+              },
+              {
+                "id": "2b86400f014b3465402d3fbf147ef5f300176a7ceddfc21541e2dba3b9187773",
+                "name": "Cook Islands",
+                "value": "ck"
+              },
+              {
+                "id": "d93215c887169171418b5fb9bb2f97483223b5d7b17f59dbf6727880d089b8e0",
+                "name": "Costa Rica",
+                "value": "cr"
+              },
+              {
+                "id": "a148f47c7e50940ec9192c9a41f9d823cd6a993d500ba5e38eaeb391f7d82ef4",
+                "name": "Côte d'Ivoire",
+                "value": "ci"
+              },
+              {
+                "id": "2229cc752739958f092998c3fffac7b5c228821bce19029ecc586f8e8703ba79",
+                "name": "Croatia",
+                "value": "hr"
+              },
+              {
+                "id": "ed6346aa6048892e010773e83dec00ab11e228d5b0b4ac9a43c604540f609be4",
+                "name": "Cuba",
+                "value": "cu"
+              },
+              {
+                "id": "deb2df784c5bcffd7c0c4fc1f16f68771a403ec58f5836aa28b95619c7d1c348",
+                "name": "Curaçao",
+                "value": "cw"
+              },
+              {
+                "id": "3f6d45e3089c696bc8457c864d0e24a400003404b44b8eb06cbb51bd0ef9696a",
+                "name": "Cyprus",
+                "value": "cy"
+              },
+              {
+                "id": "588e480570e9d0e318309444f480d4e1e77ab177ff1e0ceaf668595ad39b1029",
+                "name": "Czech Republic",
+                "value": "cz"
+              },
+              {
+                "id": "afcc65c24bd9b69831e760413aee168313c8a68a30147d45c5341424f0e7ca1b",
+                "name": "Denmark",
+                "value": "dk"
+              },
+              {
+                "id": "92aa2bbeb9be4cf8c4a3ad7c2307842e89eca129545a3dbae7f34db3a9eb6f61",
+                "name": "Djibouti",
+                "value": "dj"
+              },
+              {
+                "id": "40732a33e10b7e597f2e2e5d92d7961ccf89db89b93b500a91cc338eacc439b9",
+                "name": "Dominica",
+                "value": "dm"
+              },
+              {
+                "id": "85dd6244d3f2004f7e195aeb746fb016622b98efb9308cd3bac6d274fe47d892",
+                "name": "Dominican Republic",
+                "value": "do"
+              },
+              {
+                "id": "5ab8a07a9fef8598354a09338fcc74bab9d8663b1e29bffc9ad3fadfee6b0fb5",
+                "name": "East Timor (Timor-Leste)",
+                "value": "tl"
+              },
+              {
+                "id": "9eb91299b4f49b53b0649f9b89b66c8834bfeff1a0f926495a98ca1af223ef95",
+                "name": "Ecuador",
+                "value": "ec"
+              },
+              {
+                "id": "5e9c1b4f1a6f0f1edaafd0dfbf1969ac02369b66975c893d08e93925bdb228a8",
+                "name": "Egypt",
+                "value": "eg"
+              },
+              {
+                "id": "587b5ddcbd50faf1f8a71c55f35635b276894ef2420e657cc065bb4a51ae02dd",
+                "name": "El Salvador",
+                "value": "sv"
+              },
+              {
+                "id": "b4b729b3db44f68d119b172c9edb7ac3faf8f02772e59ce0eee4199bc6a9b907",
+                "name": "Equatorial Guinea",
+                "value": "gq"
+              },
+              {
+                "id": "2ee65e023db4db146067a08f463d719607fdf9573b55f248cabfa8e2e23d3f1a",
+                "name": "Eritrea",
+                "value": "er"
+              },
+              {
+                "id": "977b59bd8e24dcffe03ebd023eaadd7e8268737217583a16a59352fe3ad7dcaf",
+                "name": "Estonia",
+                "value": "ee"
+              },
+              {
+                "id": "a609d837695417a23464de557771aee23dab554e8ca5c09988460331ec9c8c06",
+                "name": "Ethiopia",
+                "value": "et"
+              },
+              {
+                "id": "da5f4b578be6f621d6e353925deb38705f1597caa4cb604e725a42b162dd3101",
+                "name": "Falkland Islands (Malvinas)",
+                "value": "fk"
+              },
+              {
+                "id": "0b77ac18206a0dc1a9422afacaf89aff610730abf5691c962f6b02cc64a6e465",
+                "name": "Faroe Islands",
+                "value": "fo"
+              },
+              {
+                "id": "a6ed5f66244d18a36e608dddf32e8175472030a385d1870638f50d67944c5dd7",
+                "name": "Fiji",
+                "value": "fj"
+              },
+              {
+                "id": "ebd9b9183b7243050a450e24d09aa911d77c5d8b98d4a0b6ccdde77c437608f9",
+                "name": "Finland",
+                "value": "fi"
+              },
+              {
+                "id": "d3c5fb139dd9420db05f031f38c054a676c270311df3c45d9db498a1ae7a192d",
+                "name": "France",
+                "value": "fr"
+              },
+              {
+                "id": "084c3aad98dc90348bf329e4fff84e81ce78638a9d379afa01d27ff29998a895",
+                "name": "French Guiana",
+                "value": "gf"
+              },
+              {
+                "id": "d411e572b6884d2e872c173a57909aff945dfe065a0d4446bb6a44e0035b14d0",
+                "name": "French Polynesia",
+                "value": "pf"
+              },
+              {
+                "id": "0d9b5d00c5a1d3ad4f62a1426d54754bf7c357cf063f1860a7bf0fac3aab16ea",
+                "name": "French Southern Territories",
+                "value": "tf"
+              },
+              {
+                "id": "deb990b3fb13849691dcfe2413d3785e28e062c590864a55e2b93ebeef7c036b",
+                "name": "Gabon",
+                "value": "ga"
+              },
+              {
+                "id": "812306421d52167eb5637d232ec202678ce54d1567a85e914add14a213987abe",
+                "name": "Gambia",
+                "value": "gm"
+              },
+              {
+                "id": "3ba1af9150b0bbeb96acdbbbe97a77b87e9eb6ffebf75eb75fb664122d902202",
+                "name": "Georgia",
+                "value": "ge"
+              },
+              {
+                "id": "2e85aaa39f1ca8a3632567297765f54b5fcc11f20fec679b7dd1e075867b9ab6",
+                "name": "Germany",
+                "value": "de"
+              },
+              {
+                "id": "5904e394ea41a737bd87f3f56a67888a26bc82a9609b04fce4a2fb2e99f9d22b",
+                "name": "Ghana",
+                "value": "gh"
+              },
+              {
+                "id": "bf5d004378117aaa76e56524b8b3c4b2638cf9e25687bcbf36d764f74668a288",
+                "name": "Gibraltar",
+                "value": "gi"
+              },
+              {
+                "id": "90c89959350430c373ba2a50fe9e26b7e8e00349f36e9b17a3539b35bf094a67",
+                "name": "Greece",
+                "value": "gr"
+              },
+              {
+                "id": "a4e732c7451e56305273e57aeeacd7c640e5a20afa2aa4dc78760bf0c4656f55",
+                "name": "Greenland",
+                "value": "gl"
+              },
+              {
+                "id": "efd3615754888feeeff5199132feac73f350b24e55264e5ec99caeb4a6a4c18b",
+                "name": "Grenada",
+                "value": "gd"
+              },
+              {
+                "id": "4e0ed70ac7f018b74ac63176332627612ab83531849d1b3c401e1a765550d76e",
+                "name": "Guadeloupe",
+                "value": "gp"
+              },
+              {
+                "id": "d0e15df4f488932970263029fa996a0885e20769e2d0852001ee189f36219ac5",
+                "name": "Guam",
+                "value": "gu"
+              },
+              {
+                "id": "c51189246218a5664ea4f403afa5efe66b59f08bb21b9dded70afcb26cf1a0e3",
+                "name": "Guatemala",
+                "value": "gt"
+              },
+              {
+                "id": "791d0718adeb9d57911953b7daa79be561167f20c81526e8ca71528ccd1e8e62",
+                "name": "Guernsey",
+                "value": "gg"
+              },
+              {
+                "id": "b1e857133816f82e97df87211b317563bc48589817dc5f9c33834dc5c4ae4168",
+                "name": "Guinea",
+                "value": "gn"
+              },
+              {
+                "id": "d7e13a3911b5a8fdc7f56e5dbdf5dbc0cc5190e39eb10b6d4d090612a4edae9f",
+                "name": "Guinea-Bissau",
+                "value": "gw"
+              },
+              {
+                "id": "a082f3414bf680ae4f540dc8664925f4ba66b2c0a4eb2c649f22e658ffd48d87",
+                "name": "Guyana",
+                "value": "gy"
+              },
+              {
+                "id": "a17b6b0af728fb6f658c059b2dd46efa2f6a65d529c01d244574dafbb11147d6",
+                "name": "Haiti",
+                "value": "ht"
+              },
+              {
+                "id": "962a8615494f6930ef36eaebe61d962f179213f4285c8a8dc447b02b3ebbdd64",
+                "name": "Heard Island and McDonald Islands",
+                "value": "hm"
+              },
+              {
+                "id": "de38644257ad72fa363b1e5b2f209eccd499729ceb6144ee1962f3082a836d50",
+                "name": "Holy See (Vatican City State)",
+                "value": "va"
+              },
+              {
+                "id": "057b683964ae24ec1b9625f9a8ea9f5fa62e2708953139e6ed4897afc343df11",
+                "name": "Honduras",
+                "value": "hn"
+              },
+              {
+                "id": "dc47528bf1ff97c4eaec6c95aba0b543c33927353f53eb021bf9c2a89da72286",
+                "name": "Hong Kong",
+                "value": "hk"
+              },
+              {
+                "id": "85a123779757a91c2d17b410151e0dd72ccd79aae8c7590f369b9c27f7161ad2",
+                "name": "Hungary",
+                "value": "hu"
+              },
+              {
+                "id": "e507971988521ae67ec031a24805733be846d17b4628700f57aa1c48926e613d",
+                "name": "Iceland",
+                "value": "is"
+              },
+              {
+                "id": "a4bd42e9b259a51e9d38fbaaba38ae4ad019702c5676349f84603673f554cfd3",
+                "name": "India",
+                "value": "in"
+              },
+              {
+                "id": "cab5c9f8f316fc9b381179d3fa713e8f0ed418083a07d870691bee076e486318",
+                "name": "Indonesia",
+                "value": "id"
+              },
+              {
+                "id": "178febe727c3f2eef50dd8eb0381abcde94298efb6589c8c83e10181e6fc7be2",
+                "name": "Iran",
+                "value": "ir"
+              },
+              {
+                "id": "43df6379abe29c09feb4a6ab2019b932dd912116f84c41230b9366278fb04eb8",
+                "name": "Iraq",
+                "value": "iq"
+              },
+              {
+                "id": "3e25912b3a8f00546a143b8090c16f900a6d4ef7de3f280a8000dbb2a433aa09",
+                "name": "Ireland",
+                "value": "ie"
+              },
+              {
+                "id": "d62442b4c30042c8dff83efc6d04b7db55ce71fd9c2a880b414a6a6900d6bd4c",
+                "name": "Isle of Man",
+                "value": "im"
+              },
+              {
+                "id": "ad429fd3bb2cbfeda309d98f9623ad87d9bf3ecdfceed84d1e4760186e5e94b5",
+                "name": "Israel",
+                "value": "il"
+              },
+              {
+                "id": "f94d84b2a629b1db9ae7c580cdd7fcc9e812ed4ebd4cda97c45b54e99257c3a5",
+                "name": "Italy",
+                "value": "it"
+              },
+              {
+                "id": "041b7dd69c31dde31aae0eef183f40d040590666a3ff86204585cb517448d5b4",
+                "name": "Jamaica",
+                "value": "jm"
+              },
+              {
+                "id": "0464734103d35add97ba3bfa29c7c6c05c886ee79702b57d9d6aaa914b3291b4",
+                "name": "Japan",
+                "value": "jp"
+              },
+              {
+                "id": "99bb74314979c7e5e9de1212214f9b36f361d3f8d5ab100b359f1fb8388d4ac9",
+                "name": "Jersey",
+                "value": "je"
+              },
+              {
+                "id": "b0dd0eea95e69c6fe7c0f4bbf53313c6a054db944338e50a18af97a756cb3668",
+                "name": "Jordan",
+                "value": "jo"
+              },
+              {
+                "id": "9be2ae4e89acab6eb40dffb8b05c0c11acf48ba8372f3d374891afce7d43480b",
+                "name": "Kazakhstan",
+                "value": "kz"
+              },
+              {
+                "id": "88eed06d5b7fe6cb1f991b774fe5d3a000c2f93c37d6db958ab63237ffdb7f8d",
+                "name": "Kenya",
+                "value": "ke"
+              },
+              {
+                "id": "79289ec2db7b9d25594d5fd7f8e44a7661092d298772fc125b86e9b60a311a7a",
+                "name": "Kiribati",
+                "value": "ki"
+              },
+              {
+                "id": "9c4c07ea85dd02d23b78cdf749fdee48fa013873cd1d8434b7c0a750a7f84c6d",
+                "name": "Kuwait",
+                "value": "kw"
+              },
+              {
+                "id": "7eb1e20f02e6b9b17cab7df4a98b27c7a2bdc92eccd54c3301f72af3404bb672",
+                "name": "Kyrgyzstan",
+                "value": "kg"
+              },
+              {
+                "id": "abb9c6739e0f56d3c08dbcf29b83dd3f1c24e4d770f2b4da81251371bd091795",
+                "name": "Korea, North",
+                "value": "kp"
+              },
+              {
+                "id": "50bb2ff03663f307f00eea380104a3d7d82ede6a1507e16cae1341252df463f6",
+                "name": "Korea, South",
+                "value": "kr"
+              },
+              {
+                "id": "af6abe4a9c42f25f430ac40ea3bb537a9e5d978190ed4967ee17ec57d3a11491",
+                "name": "Lao People's Democratic Republic",
+                "value": "la"
+              },
+              {
+                "id": "61df9499a0c4a25f78eafe555e9e84995ce8673d263156918b5e064a72bd1efa",
+                "name": "Latvia",
+                "value": "lv"
+              },
+              {
+                "id": "b334d1cb3b5e493ffe7a73713da09c975983ddc0d423bef3b5a41c98c83ac15b",
+                "name": "Lebanon",
+                "value": "lb"
+              },
+              {
+                "id": "0fb586c64cca11c8c86bbcef223afd92d0699cdc5dfc90217f34bea3632c15ae",
+                "name": "Lesotho",
+                "value": "ls"
+              },
+              {
+                "id": "4a82ee1cc4b7bf397fd7d66acc384d87874e567d2d1c630115b50fccef73a840",
+                "name": "Liberia",
+                "value": "lr"
+              },
+              {
+                "id": "3b98d0ed551e03334151d72f55bc2d64615f4bdba8f6ce953793cf98c04f68b9",
+                "name": "Libya",
+                "value": "ly"
+              },
+              {
+                "id": "add7cb006c5b80de28eb0099b25e196d29c463cd7ffaad1df784a15558bb7780",
+                "name": "Liechtenstein",
+                "value": "li"
+              },
+              {
+                "id": "b789e10b6d4c38731231b5fa99e41e709340e2c0dcec49823de30cc5aa0d1ebb",
+                "name": "Lithuania",
+                "value": "lt"
+              },
+              {
+                "id": "d55af17427d7bc6301b015fa036595939574138098699c780b9bffb1e696de23",
+                "name": "Luxembourg",
+                "value": "lu"
+              },
+              {
+                "id": "bb1fc827a0a015b02683475fb505c29bf2cbeb828170f822c0574828155cb1a9",
+                "name": "Macao",
+                "value": "mo"
+              },
+              {
+                "id": "30e40664d771734454bcd6fbe9b4023a1d6283f33b184752c22af9c45636aaf9",
+                "name": "Macedonia, Republic of",
+                "value": "mk"
+              },
+              {
+                "id": "37d2b4856cce02995be15199a0f3f51b03480529121a22e23a0489d049c3e5a8",
+                "name": "Madagascar",
+                "value": "mg"
+              },
+              {
+                "id": "e4168556920bfa869c9dc86e06eebde29f35f657b938f02651e2cce18a294980",
+                "name": "Malawi",
+                "value": "mw"
+              },
+              {
+                "id": "a0f0f4d6f335ad339c38193e38789fe4d6833273caf41a82afbe3ac0bd06df41",
+                "name": "Malaysia",
+                "value": "my"
+              },
+              {
+                "id": "babfa126c02c91b45aa4de5ff12ef3dcefcd478ab7dfff21fbf67dda466cc6a3",
+                "name": "Maldives",
+                "value": "mv"
+              },
+              {
+                "id": "47de3b85110acec893c38eb0ab19e827a11359f3b8799f86dbc96e83ee6998b2",
+                "name": "Mali",
+                "value": "ml"
+              },
+              {
+                "id": "a0d3d94f273e63c02037d5fb761cb657b0310314b5432c4ef234f36a05108908",
+                "name": "Malta",
+                "value": "mt"
+              },
+              {
+                "id": "ce4d82c27d655e7390a8e613e47850a651c5face02a2b11c1830d7f19422b2f4",
+                "name": "Marshall Islands",
+                "value": "mh"
+              },
+              {
+                "id": "a1c598809b674dd97487841368df13925d3cf542071c26bd8d1ecf6b071df1ef",
+                "name": "Martinique",
+                "value": "mq"
+              },
+              {
+                "id": "83ac147b342055aa4cabeaa046473eb0b2023701b56a17637c7843462eef14a8",
+                "name": "Mauritania",
+                "value": "mr"
+              },
+              {
+                "id": "03e6e04c9fcbb14ddeff05b3fd3da4a4d1169a97cee54f07b2e772553cd1e2d4",
+                "name": "Mauritius",
+                "value": "mu"
+              },
+              {
+                "id": "1a34b4a2b66ae1b4e27eeef3e544423c058ae3040abf210e81eacdff4da13f78",
+                "name": "Mayotte",
+                "value": "yt"
+              },
+              {
+                "id": "ac2d88c1969f27d781ba66777c367542f23188cad7c8c9c6368e32f7ef2d94a9",
+                "name": "Mexico",
+                "value": "mx"
+              },
+              {
+                "id": "50d0ffd497773382f5b638e6fa61f86082bac128c8b72b59f291c687ddce8163",
+                "name": "Micronesia, Federated States of",
+                "value": "fm"
+              },
+              {
+                "id": "cb6dd2769596b3df3a8eaa28e3c1c617adcab972e725838df6930f98e1820cb4",
+                "name": "Moldova",
+                "value": "md"
+              },
+              {
+                "id": "f26468a3d4dbc31e45d30531d921e5f915b70c30fa3cac360e6a3f6ea907bb46",
+                "name": "Monaco",
+                "value": "mc"
+              },
+              {
+                "id": "8b71a139a988933b8c5c6acd13d05c5ad439f9e448e177fc498d9c280f09fa81",
+                "name": "Mongolia",
+                "value": "mn"
+              },
+              {
+                "id": "b41492e5715bd3faf0522b65a3d890426fe56ff60ba756a4ae3ebc52e4a4201a",
+                "name": "Montenegro",
+                "value": "me"
+              },
+              {
+                "id": "6812bcd31483fac91ddb14435a4aebe37ddab21aa4e9395ba5eb27402b70aab0",
+                "name": "Montserrat",
+                "value": "ms"
+              },
+              {
+                "id": "9b41ccc5a9c7bb3568af75086292cd14a7fa95ebe0f22dddf526695df1c0b732",
+                "name": "Morocco",
+                "value": "ma"
+              },
+              {
+                "id": "4ce59a299468c4ab6b6a3e0741a090482c12621abbda7656e3c8215ec54cdd6e",
+                "name": "Mozambique",
+                "value": "mz"
+              },
+              {
+                "id": "144bb9e0927688d28420169820c335e88d31b70596fd05da7cbfdab2bbd0b22c",
+                "name": "Myanmar",
+                "value": "mm"
+              },
+              {
+                "id": "1f6a5e1139862e559d5c49cb2fc2dd9d5baa9675592a514a34d8d2b536050d56",
+                "name": "Namibia",
+                "value": "na"
+              },
+              {
+                "id": "37a9ef3d391056159e5bd6f859ea6426771f5ea0bd314bc8f10b85b58d0aabaa",
+                "name": "Nauru",
+                "value": "nr"
+              },
+              {
+                "id": "8f6b154c25a847b37dd2a7621ab48a7bac729cb5a17a3841a437bf2ba9613b39",
+                "name": "Nepal",
+                "value": "np"
+              },
+              {
+                "id": "c52f36c901146edd44039ea7cb0e0bb1c89a036047435dc964caaf2b12f896fd",
+                "name": "Netherlands",
+                "value": "nl"
+              },
+              {
+                "id": "2481308dcbeba66634e91070078795d639769f08461519293ec1700ff4f3c451",
+                "name": "New Caledonia",
+                "value": "nc"
+              },
+              {
+                "id": "a6f08601ae2170c0529b666036c75ffbe7e5e3fb4b43993f79aa04f24f1267b8",
+                "name": "New Zealand",
+                "value": "nz"
+              },
+              {
+                "id": "d8815104f0faf0041527b3a4ab5b3b6f9a221dcf8417aa194d559bf3353573dc",
+                "name": "Nicaragua",
+                "value": "ni"
+              },
+              {
+                "id": "fabf0c017945108572a058ce833c050cc70ef6bb2fbe6c8cec4e85b874442145",
+                "name": "Niger",
+                "value": "ne"
+              },
+              {
+                "id": "69b24cf3998afc13cd5871515626a85e969e58451813f2019888806a0bb38466",
+                "name": "Nigeria",
+                "value": "ng"
+              },
+              {
+                "id": "f215f9b50d8292613c14703f7a4b22f3486fbcf24eaa1fdaa91c1dcad2a2ad4a",
+                "name": "Niue",
+                "value": "nu"
+              },
+              {
+                "id": "721cd9408be388d294b2fef836ad8056be9bebd76982bc1cb29953d2ee83c097",
+                "name": "Norfolk Island",
+                "value": "nf"
+              },
+              {
+                "id": "4454703f4ea5b1247367bebb5724041266e061432c4c91b787bc752c1afebc00",
+                "name": "Northern Mariana Islands",
+                "value": "mp"
+              },
+              {
+                "id": "d26cebd1765f5ec24957ac5d3b1137a97be7e60cad32be777aaebd209778a04c",
+                "name": "Norway",
+                "value": "no"
+              },
+              {
+                "id": "1e0d4bac53f5e148dd8e7705a296034ec466e2d4bcea0a0cbb6c81ac6de932a9",
+                "name": "Oman",
+                "value": "om"
+              },
+              {
+                "id": "b86116e036020171b96385b3b7c9cba80494dca04473a53e113de76d57d9a309",
+                "name": "Pakistan",
+                "value": "pk"
+              },
+              {
+                "id": "5b9899f16614f6e5f87e15c3ce49d9a1eabb80981644430aeab5207c64336a2b",
+                "name": "Palau",
+                "value": "pw"
+              },
+              {
+                "id": "79c0b0ec5ffe43bfae97f1b433b402b6a1c398353d26394637b770510dc76da0",
+                "name": "Palestinian Territory",
+                "value": "ps"
+              },
+              {
+                "id": "5a24f7d5eefaf4f6198f6e870e05de0ab6672a92094d6f5b6e19d8f9e8472c81",
+                "name": "Panama",
+                "value": "pa"
+              },
+              {
+                "id": "4ec1e4d3e6169fa26c7e4ec8adde831c331488496f50a5ed822add5831fb1128",
+                "name": "Papua New Guinea",
+                "value": "pg"
+              },
+              {
+                "id": "cc229130d4c4ea585ace85a1161a8dedf6faa8649bc534f2ab62edebb2462f53",
+                "name": "Paraguay",
+                "value": "py"
+              },
+              {
+                "id": "35b65f350d8ce6cbb7b2695b9ee925b3f7245278570e2d73720f7d3fabb7c184",
+                "name": "Peru",
+                "value": "pe"
+              },
+              {
+                "id": "245ddef8e564f0bf4b3af946c640a585bf5283bef082f15ef992e7a43a7faa76",
+                "name": "Philippines",
+                "value": "ph"
+              },
+              {
+                "id": "8610629c311192daba1f1f8442b9944874e50a4d4e211483d7d3a20ff0147e65",
+                "name": "Pitcairn",
+                "value": "pn"
+              },
+              {
+                "id": "bf4b33ab9389741d769dab0bd36c120f0dd89ac85973fbe00325580634e2528f",
+                "name": "Poland",
+                "value": "pl"
+              },
+              {
+                "id": "69846dd502dc53095e07b3f7555dd91bcf52a2d946019b41cf15833394755205",
+                "name": "Portugal",
+                "value": "pt"
+              },
+              {
+                "id": "e62bfbb6ec0694fbba3dd8a6f5cdee8861a82ea1c81a6c6c02ae6fc67a4230f5",
+                "name": "Puerto Rico",
+                "value": "pr"
+              },
+              {
+                "id": "cba728a2bf44f558ea156971473162d8e660753cddedcf49fd6dec81454e4be2",
+                "name": "Qatar",
+                "value": "qa"
+              },
+              {
+                "id": "f428183a02520a29b02910dde9e84a94cd6b5b0829d3d00dc60d83bf851d6619",
+                "name": "Réunion",
+                "value": "re"
+              },
+              {
+                "id": "8dc0a5802b9b0a7c52e0bf17d32c9521d2c9a64c212e0daed7c6c35822273bc2",
+                "name": "Romania",
+                "value": "ro"
+              },
+              {
+                "id": "09fd0fd5859d1af5421b2217a18ac84a3692c27fa943698bb9bcba346be8d0b5",
+                "name": "Russian Federation",
+                "value": "ru"
+              },
+              {
+                "id": "504683c2f948fcce42eb3a3b8e3dc34d80e3722231558e2d6b38f8380f429c02",
+                "name": "Rwanda",
+                "value": "rw"
+              },
+              {
+                "id": "eb566ad277c7eac5be183bef902de3be50ff9d71ccc9b2eca7a6f3b4afd67226",
+                "name": "Saint Barthélemy",
+                "value": "bl"
+              },
+              {
+                "id": "3e992c0e4603b3068c323b9319e19ed85427831f8ef6ac33a358c0edac5c5283",
+                "name": "Saint Helena, Ascension and Tristan da Cunha",
+                "value": "sh"
+              },
+              {
+                "id": "3da96c9de719196eb25d7a0941121209a5cedc0ec98534ff202057559b77e34c",
+                "name": "Saint Kitts and Nevis",
+                "value": "kn"
+              },
+              {
+                "id": "952837c2fae0c563e0be7ebbafff9a5cc920954e1d4df2ae182640e39e8727a6",
+                "name": "Saint Lucia",
+                "value": "lc"
+              },
+              {
+                "id": "09d635fa9fda1dceb734dbc4e5b2ea437dea164721cfd9c3ab7731d95083d023",
+                "name": "Saint Martin (French part)",
+                "value": "mf"
+              },
+              {
+                "id": "695f32ebbca56968d176de58c9a6a9c5c9c95b4fb7f2a71abee3fbb861b00357",
+                "name": "Saint Pierre and Miquelon",
+                "value": "pm"
+              },
+              {
+                "id": "f023ca9662ae45c566862f7e5a78400528db035c1ee5e8dd7bc74194b5376b56",
+                "name": "Saint Vincent and the Grenadines",
+                "value": "vc"
+              },
+              {
+                "id": "ea1742202ce1cbda727df6fe37c76965f279f498a7397ebf7dad28c4f13a6f2c",
+                "name": "Samoa",
+                "value": "ws"
+              },
+              {
+                "id": "b0471b7d7a5d98bbd9980b037d6423cd57d258a9177e7b65e73a75c5948fda35",
+                "name": "San Marino",
+                "value": "sm"
+              },
+              {
+                "id": "2f2604cfe1d3cd3991f10cee335843daaa4de7e3622cd9f6cb83be38319823ba",
+                "name": "Sao Tome and Principe",
+                "value": "st"
+              },
+              {
+                "id": "3c932dee1c637b916759cf41a1c245e6bc6f2dd03ec3bc440c7be3312dbccf5d",
+                "name": "Saudi Arabia",
+                "value": "sa"
+              },
+              {
+                "id": "74f800f4fe8336d172a300e43158ea64e2af456a0b9c74c036c74aa98eeb9871",
+                "name": "Senegal",
+                "value": "sn"
+              },
+              {
+                "id": "d96fc56743be7f98157272a6f3e8e2fc3a49600a50555b67e88097c389f3d1af",
+                "name": "Serbia",
+                "value": "rs"
+              },
+              {
+                "id": "82b7974a176b7df2874b2ccdf012f604eb14219a8910f18d0417c119f06704ca",
+                "name": "Seychelles",
+                "value": "sc"
+              },
+              {
+                "id": "d877120d7339f46ceea612c0d7c5b6d38f645b243e3874bc2b221a8a30f3c88b",
+                "name": "Sierra Leone",
+                "value": "sl"
+              },
+              {
+                "id": "0183398b980066eceee42d805fb4a927e2f2c2c47689cc8dff1dab650883cd81",
+                "name": "Singapore",
+                "value": "sg"
+              },
+              {
+                "id": "c18ff2e5e073a8d1832a2f3659c9b2602d3daf93f4e5bc3c0a760a2b84f32d04",
+                "name": "Sint Maarten (Dutch part)",
+                "value": "sx"
+              },
+              {
+                "id": "f6a723a74504ede8c75187619e620a136977e2c21491b82c0d4b6109748b5577",
+                "name": "Slovakia",
+                "value": "sk"
+              },
+              {
+                "id": "a48044ee199ea075a496c635bb42128a7a01a2c3c677355b1f35ea9d377a4ef0",
+                "name": "Slovenia",
+                "value": "si"
+              },
+              {
+                "id": "90dedd7c1cd99bffe7ef8607c1e758266e77cde89c3e4e6376c95c6776645199",
+                "name": "Solomon Islands",
+                "value": "sb"
+              },
+              {
+                "id": "fe764713c72129c55fa15dce6751911f1b30ffa432551147337ea2ed041c1526",
+                "name": "Somalia",
+                "value": "so"
+              },
+              {
+                "id": "c3b003e1dd7d0bd1ec38ea9e38e91e59f20b8f60b608ab0d888e8bc846d78617",
+                "name": "South Africa",
+                "value": "za"
+              },
+              {
+                "id": "fe8b5e26daad431849a0165d9a80f6e33cdd4bea1fb486a40ffa123e40e2cbe7",
+                "name": "South Georgia and the South Sandwich Islands",
+                "value": "gs"
+              },
+              {
+                "id": "e6ffdea84fabab215c10def4b9b02ea106161714efb677a6ffeb414b5cb08a59",
+                "name": "South Sudan",
+                "value": "ss"
+              },
+              {
+                "id": "87cf5a652d0a08c5b2731c6784b1fab525e0397c46e6aee81f12c344982faeb0",
+                "name": "Spain",
+                "value": "es"
+              },
+              {
+                "id": "72ac9d0c61e3a595335f26d7b5b442ee108a66fd6fc12fb489b166b9dd27019a",
+                "name": "Sri Lanka",
+                "value": "lk"
+              },
+              {
+                "id": "c416b3555678ac801610e17662a6bc00339dcfad704405bb6b4cf0cf1bbbb93f",
+                "name": "Sudan",
+                "value": "sd"
+              },
+              {
+                "id": "72dd6d7dbcb6db7d94a1674b89533ddbfc9b63a85b6138d604e22c68ee382311",
+                "name": "Suriname",
+                "value": "sr"
+              },
+              {
+                "id": "d97e17f6c6f83dbf41fb0bdd45edf0a5c8487c3af94cd952d4c17860607493a8",
+                "name": "Svalbard and Jan Mayen",
+                "value": "sj"
+              },
+              {
+                "id": "887e344e27e8dc947f4eec95234eda5230243a21e13fc4bb51e170d7436bf253",
+                "name": "Swaziland",
+                "value": "sz"
+              },
+              {
+                "id": "c2b5ec0ba33150026dfd40842015bc50b3b1b1dce4a6085b9bd7888347fce21d",
+                "name": "Sweden",
+                "value": "se"
+              },
+              {
+                "id": "2380eea75ce0748d25e210d5c2ddc7e78307b474e6756616d266c9c776fa4c13",
+                "name": "Switzerland",
+                "value": "ch"
+              },
+              {
+                "id": "834ab1e61b02086f65f9e96dd86b4db11fafb38ff757f3e8b8c35d7b367b2d19",
+                "name": "Syrian Arab Republic",
+                "value": "sy"
+              },
+              {
+                "id": "7cc71bd879cb66acc0ac29479d7985d95a1357e662f7ca57f2ecf05476f90605",
+                "name": "Taiwan, Republic of China",
+                "value": "tw"
+              },
+              {
+                "id": "2ee86a7e62c33dbb3351e86d96d816a7db5c4282def65730645b580e70c7a4d8",
+                "name": "Tajikistan",
+                "value": "tj"
+              },
+              {
+                "id": "13673d8b1fd8bb14dd69f74151c6558014eced2450b1b98b61633f39945e242f",
+                "name": "Tanzania, United Republic of",
+                "value": "tz"
+              },
+              {
+                "id": "a2cc22bf3a6ddd36fe31fc05f1b46f69884ca0d5f028e03b008fab06f577b017",
+                "name": "Thailand",
+                "value": "th"
+              },
+              {
+                "id": "6c3c6e2b0cfcd5f0ea1cbbae26fa08465a0d16b4d7629113ef53bf1bc99aca03",
+                "name": "Timor-Leste",
+                "value": "tl"
+              },
+              {
+                "id": "f127b297f89d3f049a99f1fb37bd1ca48995fbe2de7e6fdd9de7232dab7c4eeb",
+                "name": "Togo",
+                "value": "tg"
+              },
+              {
+                "id": "e136e18adf0292e1d1ff0a8d701ea2ce1b711bd88aaabb827598d27ed3c122fc",
+                "name": "Tokelau",
+                "value": "tk"
+              },
+              {
+                "id": "4b73aa3bd9c3baea403072a85b3bf5eb2522a3aee78558786361386cb1ba9d54",
+                "name": "Tonga",
+                "value": "to"
+              },
+              {
+                "id": "70f10fffb9e8ff2ef9c65cefaa93cb2ee3833af6477e35e1dfbe3fecc502edc2",
+                "name": "Trinidad and Tobago",
+                "value": "tt"
+              },
+              {
+                "id": "d93cc5b0c7272e4ea459ebecd752d27b53eddb7671431b95f139c965b1f7e861",
+                "name": "Tunisia",
+                "value": "tn"
+              },
+              {
+                "id": "ff2a81a678b146ec53f63edc547ac8a4b4830ed8bdb52e2c6d22dc5fd3e2ea33",
+                "name": "Turkey",
+                "value": "tr"
+              },
+              {
+                "id": "c6a511a49be1edc2c0bde194d6ee7a15e5ceb2e51151f4f92b43e1b07250aca8",
+                "name": "Turkmenistan",
+                "value": "tm"
+              },
+              {
+                "id": "3fd7a8c0561be0f908e4913a9f40a82f7b35ce7eba4efa96a7669aa99dd66167",
+                "name": "Turks and Caicos Islands",
+                "value": "tc"
+              },
+              {
+                "id": "9180608dd5db153875ac5ffef82197f1b9106b8d607478f635273ac78887bcfd",
+                "name": "Tuvalu",
+                "value": "tv"
+              },
+              {
+                "id": "4f77a81f82f2495fb74e03d6fbf5723763dc8eece89a599e61824e85a894ab59",
+                "name": "Uganda",
+                "value": "ug"
+              },
+              {
+                "id": "1dcef5c2857d630b6478c6e98b2029dcbdff80f35e478d3254de5e966ab4c45a",
+                "name": "Ukraine",
+                "value": "ua"
+              },
+              {
+                "id": "94cd8b49a77aa46f384b3d818e887bd61bb1db3ab427b4ab744ac14cfe29b943",
+                "name": "United Arab Emirates",
+                "value": "ae"
+              },
+              {
+                "id": "b11bbf4e1b94d176f80fd1ea1ebc4edfa7827b3a634a080cf7ffc5b51d493f08",
+                "name": "United Kingdom",
+                "value": "gb"
+              },
+              {
+                "id": "fa74cceab3f8c245d26565bec62127362f53d7f8408d1b6adff6bf8143f3caeb",
+                "name": "United States",
+                "value": "us"
+              },
+              {
+                "id": "a4dc7fc0226b9fbcc2b9e297ada2550bee11db625c8f1dc50f87057b9fd4d6cc",
+                "name": "United States Minor Outlying Islands",
+                "value": "um"
+              },
+              {
+                "id": "71f6714ba6cf6da36f6386cb2c6fc946a5be02df7e741ae170aaf07525f284bf",
+                "name": "Uruguay",
+                "value": "uy"
+              },
+              {
+                "id": "1573cd32c5cccab33f7953f0d3b032f3c8a443c4ab01b622aeb0145d258d86b1",
+                "name": "Uzbekistan",
+                "value": "uz"
+              },
+              {
+                "id": "5dbc908ff0f22b283d4876c5e7f55778b5a286ea434f800435b1f69b6c5270a9",
+                "name": "Vanuatu",
+                "value": "vu"
+              },
+              {
+                "id": "cf24579abe6b18b486a62ddab63a4697fc24cb6fb315e3bb021ba3fabd68be50",
+                "name": "Venezuela, Bolivarian Republic of",
+                "value": "ve"
+              },
+              {
+                "id": "596f3dfcde2c69cd1a318518ab85801b0b160423912f50b5a0113dc280e714e5",
+                "name": "Vietnam",
+                "value": "vn"
+              },
+              {
+                "id": "2ad2e9a9767c304ddd2988ec1dfc87996dda175357b3173d029936e89cfa79e8",
+                "name": "Virgin Islands, British",
+                "value": "vg"
+              },
+              {
+                "id": "3aa2f33e9353756649808eb0058118004c8f8c1814b0d60657bd3f181ec84977",
+                "name": "Virgin Islands, U.S.",
+                "value": "vi"
+              },
+              {
+                "id": "0fa9e6b1a41ea45f373751864cb5a12ceac22e3d3ad0a3579e3c451bceb3ae51",
+                "name": "Wallis and Futuna",
+                "value": "wf"
+              },
+              {
+                "id": "57804338dd693dc484980924409111ce53b9053ff37d72625d25124fd779a680",
+                "name": "Western Sahara",
+                "value": "eh"
+              },
+              {
+                "id": "720bced4600d411b554ffe012ba78b46e672501afe3c997f781d096a03d8620c",
+                "name": "Yemen",
+                "value": "ye"
+              },
+              {
+                "id": "1bf6deb801aa676cb8c73d2c171821fdae33292b2ab4cc52a0ccde8058f8d14c",
+                "name": "Zambia",
+                "value": "zm"
+              },
+              {
+                "id": "46a52246384cba047576f070ab0330b8e609339de4f5d2a92c890b587a6ecf2d",
+                "name": "Zimbabwe",
+                "value": "zw"
+              },
+              {
+                "id": "0d164280d5ecccaa5cfc6b148537ad04c21c895577cf73656acd635c8d95f82c",
+                "name": "Not on the list",
+                "value": "not_on_the_list"
+              }
+            ]
+          }
+        },
+        {
+          "id": "cf4201a25c612eca74c28b9cb8adec3062b6b46f17adc290a0cd14f634e81042",
+          "name": "Enter the zip code/postal code you are located in",
+          "nameVisible": true,
+          "slots": [
+            {
+              "id": "550ede4967f500d8f796bb8c77acdb5299c87771e4e4cd3ec6a15456615e093f",
+              "type": "text",
+              "kind": "static",
+              "reference": "value",
+              "label": "Text",
+              "alias": "zip_code"
+            }
+          ],
+          "block": { "type": "tripetto-block-text", "version": "2.0.0" }
+        }
+      ]
+    },
+    {
+      "id": "48eb603e9cc1487b8ea49df12e34d99204b9ac007315de71b45262f4a81b3411",
+      "name": "Race",
+      "nodes": [
+        {
+          "id": "916e174f536eb7f5f19ab22c214510dedaa2b32727d5c0578d4aeebf220aef47",
+          "name": "Select the racial group(s) that best describe you",
+          "nameVisible": true,
+          "slots": [
+            {
+              "id": "3922e96a208545778856fc8b8a96bec24708a8ff52a2e9e32acd9c3af2568181",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "23911761bb43a9c985536d566699282225c793c8035d551f7f6df2686d969446",
+              "sequence": 0,
+              "label": "Choice",
+              "name": "Asian",
+              "alias": "asian",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "racial_groups"
+              }
+            },
+            {
+              "id": "79d6ee658ce9966d8cf113f189b5803fb0c4bbfb53e79a12a02d463cf0130877",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "f3b28a1691ca3a3043e208c4217b2f878d385b87ff199636b0adcd186a569f62",
+              "sequence": 1,
+              "label": "Choice",
+              "name": "Black or African descent",
+              "alias": "black",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "racial_groups"
+              }
+            },
+            {
+              "id": "a7ce12da05bc27ef8c4c01ea2412c8cbcd3524faae7936a90dfbe46587d78ed1",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "8f9d0ef796d18a75f512ef80065d5a1f83d9c8072b24e41ab7603a066cbd384e",
+              "sequence": 2,
+              "label": "Choice",
+              "name": "Middle Eastern or North Africans",
+              "alias": "middle_eastern",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "racial_groups"
+              }
+            },
+            {
+              "id": "99298a844554556c2b497f6c873a464a7f0ed9c14574592f4c5beed4f6ff8465",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "0210ebd0f6df2fd311dbb6cccbdd53706e03a9f5abaee1f1c3450da5b8cf8889",
+              "sequence": 3,
+              "label": "Choice",
+              "name": "Native Americans/Indigenous",
+              "alias": "indigenous",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "racial_groups"
+              }
+            },
+            {
+              "id": "eb79b5884857064fdc1030e1d50edfdd71ae2bd32ad15ddbe979fe63141acd6b",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "293c5237897bbabf82e882e5a6383de7187edd76f67d3278a87fc5b9fc8adcdf",
+              "sequence": 4,
+              "label": "Choice",
+              "name": "Native Hawaiian or Other Pacific Islander",
+              "alias": "pacific_islander",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "racial_groups"
+              }
+            },
+            {
+              "id": "db771e1c1a54427658ac8703bd26e2c58a4a8e63fbc052be81ac2c2e372af808",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "124ef883cb09345715f05dde0d79e6fdf7cd6eacd7fc3d64623a29018ee24020",
+              "sequence": 5,
+              "label": "Choice",
+              "name": "Hispanic, Latino, or Spanish Origin",
+              "alias": "hispanic",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "racial_groups"
+              }
+            },
+            {
+              "id": "91c98ba1efed858fae4a3adeacd8eb365ab4954d9e3220b87e7077dd219ba19b",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "25405aaed8574d445b94c056c0c9d2d6256aa21da3885292d8c2a0ee5f4158b9",
+              "sequence": 6,
+              "label": "Choice",
+              "name": "White or European descent",
+              "alias": "white",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "racial_groups"
+              }
+            },
+            {
+              "id": "aa50ccb0e226094c0d86e859b70668b9478f7cf39c044162e4e7399d29868c5d",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "5b5a5025c0ecbd829c242e83f10326ab5a029a3291e3a52413da35743f7c29e9",
+              "sequence": 7,
+              "label": "Choice",
+              "name": "Other",
+              "alias": "other",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "racial_groups"
+              }
+            }
+          ],
+          "block": {
+            "type": "tripetto-block-multiple-choice",
+            "version": "1.0.2",
+            "choices": [
+              {
+                "id": "23911761bb43a9c985536d566699282225c793c8035d551f7f6df2686d969446",
+                "name": "Asian",
+                "value": "asian"
+              },
+              {
+                "id": "f3b28a1691ca3a3043e208c4217b2f878d385b87ff199636b0adcd186a569f62",
+                "name": "Black or African descent",
+                "value": "black"
+              },
+              {
+                "id": "8f9d0ef796d18a75f512ef80065d5a1f83d9c8072b24e41ab7603a066cbd384e",
+                "name": "Middle Eastern or North Africans",
+                "value": "middle_eastern"
+              },
+              {
+                "id": "0210ebd0f6df2fd311dbb6cccbdd53706e03a9f5abaee1f1c3450da5b8cf8889",
+                "name": "Native Americans/Indigenous",
+                "value": "indigenous"
+              },
+              {
+                "id": "293c5237897bbabf82e882e5a6383de7187edd76f67d3278a87fc5b9fc8adcdf",
+                "name": "Native Hawaiian or Other Pacific Islander",
+                "value": "pacific_islander"
+              },
+              {
+                "id": "124ef883cb09345715f05dde0d79e6fdf7cd6eacd7fc3d64623a29018ee24020",
+                "name": "Hispanic, Latino, or Spanish Origin",
+                "value": "hispanic"
+              },
+              {
+                "id": "25405aaed8574d445b94c056c0c9d2d6256aa21da3885292d8c2a0ee5f4158b9",
+                "name": "White or European descent",
+                "value": "white"
+              },
+              {
+                "id": "5b5a5025c0ecbd829c242e83f10326ab5a029a3291e3a52413da35743f7c29e9",
+                "name": "Other",
+                "value": "other"
+              }
+            ],
+            "multiple": true,
+            "alias": "racial_groups"
+          }
+        }
+      ],
+      "branches": [
+        {
+          "id": "91d2d5085859e63db0a288a5dee5c5a723c519d00cc4ac6fafb32c7287dfef66",
+          "name": "Other",
+          "clusters": [
+            {
+              "id": "53cef8817eb259a8273918a5600bd34c44206dba4549e542175aad0e4e4621e8",
+              "name": "Other Race",
+              "nodes": [
+                {
+                  "id": "2d874b03f9d72685ad5aa05e2ecb65e683db6989e7e593ca74ba2cec07755ceb",
+                  "name": "If you selected \"Other,\" what is the name describe your racial group(s)",
+                  "nameVisible": true,
+                  "description": "If multiple racial groups, use semicolons as the separators. (e.g. Race 1;Race 2)",
+                  "slots": [
+                    {
+                      "id": "26003dc591170fbbf5f45f3b172539b6347f8d0328a12d0a9aa3de92ac2bf5fe",
+                      "type": "text",
+                      "kind": "static",
+                      "reference": "value",
+                      "label": "Text",
+                      "alias": "race_other"
+                    }
+                  ],
+                  "block": { "type": "tripetto-block-text", "version": "2.0.0" }
+                }
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "id": "75cf04b88b336a77acdd4a8972d500d8f55ca9f10d33a0b5f16b7f8de982252c",
+              "block": {
+                "choice": "5b5a5025c0ecbd829c242e83f10326ab5a029a3291e3a52413da35743f7c29e9",
+                "type": "tripetto-block-multiple-choice",
+                "version": "0.0.0",
+                "node": "916e174f536eb7f5f19ab22c214510dedaa2b32727d5c0578d4aeebf220aef47",
+                "slot": "aa50ccb0e226094c0d86e859b70668b9478f7cf39c044162e4e7399d29868c5d"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "5544c267ffa247be765690a7e691312bf90f3e449d93d529cf681ed1530613fa",
+      "name": "Ethnicity",
+      "nodes": [
+        {
+          "id": "1524c2e4ab3d6d847934f6a2499ad531f0e5cdce5af6738a26f8b30fa824a9ef",
+          "name": "Select the ethnic group(s) that best describe you",
+          "nameVisible": true,
+          "slots": [
+            {
+              "id": "d18a8a1c8f07396443e1f48def2438aabf227f2f48270d9c5fc10c65c800336c",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "043360b0e08d5d6aa621b3f2da892a93dfe35af18cb567726fe48c13706141da",
+              "sequence": 0,
+              "label": "Checkbox",
+              "name": "African American",
+              "alias": "african_american",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "ethnicity"
+              }
+            },
+            {
+              "id": "09d0d04ef9ff17ebe24376bff7583cb1a49fb8c6b4bb0006b719f43e463f47c1",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "14371fee040bfc0275b4620354e66c6961ea2e22c4a63174fe6c468615822955",
+              "sequence": 1,
+              "label": "Checkbox",
+              "name": "Afro-Caribbean",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "ethnicity"
+              }
+            },
+            {
+              "id": "e9918dac2e214fa6ef61f8aaf6dd3b9d47764e9ed8880d463243716e89a9c93c",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "572e0cc69f63ffe7de512220a84cdf3eedd1292e21a1705cf140fe9912147aed",
+              "sequence": 2,
+              "label": "Checkbox",
+              "name": "Arab",
+              "alias": "arab",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "ethnicity"
+              }
+            },
+            {
+              "id": "755c9e1b8751001964fa5993b0109e260d1e4b78e7cc45513afda47a3bc9368c",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "eac9bb001735e1a88683e92cd752a03e476c614dd28548a109f27f033aec60e6",
+              "sequence": 3,
+              "label": "Checkbox",
+              "name": "Bengali",
+              "alias": "bengali",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "ethnicity"
+              }
+            },
+            {
+              "id": "2bf37f645abbb8d998ba4e66a5d44e65eb4b1ed5e65b632af6975094f5744fa7",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "ac8cc088de4981afb6be25b6348672cb96769c55c359f741c31abcbd85e315b1",
+              "sequence": 4,
+              "label": "Checkbox",
+              "name": "Chinese",
+              "alias": "chinese",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "ethnicity"
+              }
+            },
+            {
+              "id": "f19f784cba1a66034471613b2242fd7dc03e930829a8b1fdc0e46b2738c330f4",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "44e80f279bc5e5e4ea557855223ca050988dbafaa7c2fe48240d8f78a197fe40",
+              "sequence": 5,
+              "label": "Checkbox",
+              "name": "Dutch",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "ethnicity"
+              }
+            },
+            {
+              "id": "9aacdfc9a5e0a11bbdd03347773631b1fce47f20942b9bdcacec48d7dfb2b217",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "a6625f915372ab90bc8bf46ac6c1a6585483efb081453466d465d5e670541927",
+              "sequence": 6,
+              "label": "Checkbox",
+              "name": "English",
+              "alias": "english",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "ethnicity"
+              }
+            },
+            {
+              "id": "d2d470f7a6d172764bc31fdc1cc903c0031797411f6435a59a9ae34ee9e48ca8",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "ce760ee263fbc831f668754d200e9eafa032b5ea561c5c22e4f340eb3278cd80",
+              "sequence": 7,
+              "label": "Checkbox",
+              "name": "French",
+              "alias": "french",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "ethnicity"
+              }
+            },
+            {
+              "id": "cdf7ea7227bea180753fec18ebbec79fda02115b3d020485adafc22e9733fff3",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "37970bb119308d9fc71afa867d3dc4eeb314dedb8ff41698ba58ffed56ade429",
+              "sequence": 8,
+              "label": "Checkbox",
+              "name": "German",
+              "alias": "german",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "ethnicity"
+              }
+            },
+            {
+              "id": "81575b3040183e5654720c5528b74473898a6615e345781e397ced26192caff8",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "b51c6fa49c5ae135574fc20f1f1e9750b7922633cfec87351d32fe7a3d03784c",
+              "sequence": 9,
+              "label": "Checkbox",
+              "name": "Hmong",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "ethnicity"
+              }
+            },
+            {
+              "id": "cc6f3f0782c7719b345ecf655c7961c028cb67ef244443e953ac4b5dc1d90d37",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "7db81b5df58f493ecfc12ffb4655dd7a8af57c9601647b6aad462c52a73b61a9",
+              "sequence": 10,
+              "label": "Checkbox",
+              "name": "Irish",
+              "alias": "irish",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "ethnicity"
+              }
+            },
+            {
+              "id": "c4bd0989cefad374e9debf9dec1f867cc7df860d7fc7179d43910b08a199e1bb",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "2334a53886166038e4d13f970833215cd73dc418463b97e1cc164c27f6f1c749",
+              "sequence": 11,
+              "label": "Checkbox",
+              "name": "Indian",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "ethnicity"
+              }
+            },
+            {
+              "id": "4d1303d9b1f0d51e0dfa01d8d312d0508f002e42e205e56a5f72d025cfc990c2",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "05ae17d2125621a7c56b0de093d1358960a95ff725d23d5dd80e5f330fe8336f",
+              "sequence": 12,
+              "label": "Checkbox",
+              "name": "Inuit",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "ethnicity"
+              }
+            },
+            {
+              "id": "130203c1f5ba998fbafaaed605b9e30222e316ca2babc256d62b8c7b982ed06a",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "fa6beba30f35307e693fa62eb5a9e8bb415c6a8a392e222ff2dcd8769aec2b7b",
+              "sequence": 13,
+              "label": "Checkbox",
+              "name": "Japanese",
+              "alias": "japanese",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "ethnicity"
+              }
+            },
+            {
+              "id": "967fe8bdbd636a2dafec5c0afbbebde5e59aaa986d16d7139d70d81528c8f486",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "9942eadc01f58eaf6ac864fc4f247656d692e19c972d8b9f4c44e6c25a7fb392",
+              "sequence": 14,
+              "label": "Checkbox",
+              "name": "Korean",
+              "alias": "korean",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "ethnicity"
+              }
+            },
+            {
+              "id": "a2e343e7219d22af913d0660cdc996350fc6a22bac7ac638bf59e5583dfb17d7",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "d276843abfc9da6a3351cb264915f40177f0640f468cea0e0584546ae2060788",
+              "sequence": 15,
+              "label": "Checkbox",
+              "name": "Navajo",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "ethnicity"
+              }
+            },
+            {
+              "id": "b9f32a75fb8015911a788abc574de7b00c9cbb842d2b142f1e3aedb4fd7d4bc8",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "85a250542d2c5f04cf9da2e781bafe2bdce1c6a17e2dff708777d40beca00c18",
+              "sequence": 16,
+              "label": "Checkbox",
+              "name": "Russian",
+              "alias": "russian",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "ethnicity"
+              }
+            },
+            {
+              "id": "701f859842bd190954d481cd654bd4708a161fe1c4018583efa5fdb270ac12e9",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "eb5f18c73e1054ac900118a9e7df296c0626fb1219569dd9152238f33548cfe5",
+              "sequence": 17,
+              "label": "Checkbox",
+              "name": "Thai",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "ethnicity"
+              }
+            },
+            {
+              "id": "5ccc794801c51b23b66ec789d59d0e7bdb1445b8f84c38e48505609ff5e4d10f",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "b0d91fe51ccbcd6db28a62900afff35333bde96783b447cef889b744855cc672",
+              "sequence": 18,
+              "label": "Checkbox",
+              "name": "Tibetan",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "ethnicity"
+              }
+            },
+            {
+              "id": "eee9d16e07d3a9a42fc35a254c229062bcc376831de276f6e2856b04b267337d",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "d41f4a55cfc60e83df5f28d09410dc7db2cef2778502aea64e69552cfdccbba5",
+              "sequence": 19,
+              "label": "Checkbox",
+              "name": "Somali",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "ethnicity"
+              }
+            },
+            {
+              "id": "1c4ab7ffb99c89dc84b6b83f68d27d60da3c8cee4b4518e36560c155c814a29a",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "1c3e0b4a1706347cf6cedf39cb1541f634821bd1ee7d05b7f5d8a71cfa927173",
+              "sequence": 20,
+              "label": "Checkbox",
+              "name": "Swahili",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "ethnicity"
+              }
+            },
+            {
+              "id": "6d0c62a15492ed4decbb6297b609e73cec96daf7477415baf5eb08b8da0ae11f",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "5cfb487e680724e11c2918e095c467cbfd8b17df38727b8be65d4818e1a11697",
+              "sequence": 21,
+              "label": "Checkbox",
+              "name": "Other",
+              "alias": "other",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "ethnicity"
+              }
+            }
+          ],
+          "block": {
+            "type": "tripetto-block-checkboxes",
+            "version": "2.0.2",
+            "checkboxes": [
+              {
+                "id": "043360b0e08d5d6aa621b3f2da892a93dfe35af18cb567726fe48c13706141da",
+                "name": "African American",
+                "value": "african_american"
+              },
+              {
+                "id": "14371fee040bfc0275b4620354e66c6961ea2e22c4a63174fe6c468615822955",
+                "name": "Afro-Caribbean"
+              },
+              {
+                "id": "572e0cc69f63ffe7de512220a84cdf3eedd1292e21a1705cf140fe9912147aed",
+                "name": "Arab",
+                "value": "arab"
+              },
+              {
+                "id": "eac9bb001735e1a88683e92cd752a03e476c614dd28548a109f27f033aec60e6",
+                "name": "Bengali",
+                "value": "bengali"
+              },
+              {
+                "id": "ac8cc088de4981afb6be25b6348672cb96769c55c359f741c31abcbd85e315b1",
+                "name": "Chinese",
+                "value": "chinese"
+              },
+              {
+                "id": "44e80f279bc5e5e4ea557855223ca050988dbafaa7c2fe48240d8f78a197fe40",
+                "name": "Dutch"
+              },
+              {
+                "id": "a6625f915372ab90bc8bf46ac6c1a6585483efb081453466d465d5e670541927",
+                "name": "English",
+                "value": "english"
+              },
+              {
+                "id": "ce760ee263fbc831f668754d200e9eafa032b5ea561c5c22e4f340eb3278cd80",
+                "name": "French",
+                "value": "french"
+              },
+              {
+                "id": "37970bb119308d9fc71afa867d3dc4eeb314dedb8ff41698ba58ffed56ade429",
+                "name": "German",
+                "value": "german"
+              },
+              {
+                "id": "b51c6fa49c5ae135574fc20f1f1e9750b7922633cfec87351d32fe7a3d03784c",
+                "name": "Hmong"
+              },
+              {
+                "id": "7db81b5df58f493ecfc12ffb4655dd7a8af57c9601647b6aad462c52a73b61a9",
+                "name": "Irish",
+                "value": "irish"
+              },
+              {
+                "id": "2334a53886166038e4d13f970833215cd73dc418463b97e1cc164c27f6f1c749",
+                "name": "Indian"
+              },
+              {
+                "id": "05ae17d2125621a7c56b0de093d1358960a95ff725d23d5dd80e5f330fe8336f",
+                "name": "Inuit"
+              },
+              {
+                "id": "fa6beba30f35307e693fa62eb5a9e8bb415c6a8a392e222ff2dcd8769aec2b7b",
+                "name": "Japanese",
+                "value": "japanese"
+              },
+              {
+                "id": "9942eadc01f58eaf6ac864fc4f247656d692e19c972d8b9f4c44e6c25a7fb392",
+                "name": "Korean",
+                "value": "korean"
+              },
+              {
+                "id": "d276843abfc9da6a3351cb264915f40177f0640f468cea0e0584546ae2060788",
+                "name": "Navajo"
+              },
+              {
+                "id": "85a250542d2c5f04cf9da2e781bafe2bdce1c6a17e2dff708777d40beca00c18",
+                "name": "Russian",
+                "value": "russian"
+              },
+              {
+                "id": "eb5f18c73e1054ac900118a9e7df296c0626fb1219569dd9152238f33548cfe5",
+                "name": "Thai"
+              },
+              {
+                "id": "b0d91fe51ccbcd6db28a62900afff35333bde96783b447cef889b744855cc672",
+                "name": "Tibetan"
+              },
+              {
+                "id": "d41f4a55cfc60e83df5f28d09410dc7db2cef2778502aea64e69552cfdccbba5",
+                "name": "Somali"
+              },
+              {
+                "id": "1c3e0b4a1706347cf6cedf39cb1541f634821bd1ee7d05b7f5d8a71cfa927173",
+                "name": "Swahili"
+              },
+              {
+                "id": "5cfb487e680724e11c2918e095c467cbfd8b17df38727b8be65d4818e1a11697",
+                "name": "Other",
+                "value": "other"
+              }
+            ],
+            "alias": "ethnicity"
+          }
+        }
+      ],
+      "branches": [
+        {
+          "id": "aadd5cd43ea5729b859fcbc2b3c99029a25572a88f35e71585f8a1c932e7d43a",
+          "name": "Other",
+          "clusters": [
+            {
+              "id": "acd6e7987baf918af04f1d5ae32cef22fc1acfcd65e704018ff67ce123ca0776",
+              "name": "Other Ethnicity",
+              "nodes": [
+                {
+                  "id": "f479fce7f36a4ec096ee848edb22d51f158fae2a1c4e26051849a47f19a0e374",
+                  "name": "If you selected \"Other,\" what is the name describe your ethnic group(s)",
+                  "nameVisible": true,
+                  "description": "If multiple ethnic groups, use semicolons as the separators. (e.g. Ethnicity 1;Ethnicity 2)",
+                  "slots": [
+                    {
+                      "id": "e41f201266338ef781a8bc05c84a156a1ef108f244fb9d68c549524510ae5f79",
+                      "type": "text",
+                      "kind": "static",
+                      "reference": "value",
+                      "label": "Text",
+                      "alias": "ethnicity_other"
+                    }
+                  ],
+                  "block": { "type": "tripetto-block-text", "version": "2.0.0" }
+                }
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "id": "c977a33f4848d2edb87cc203b811c2882ec589c09b3fea3db42a660c24d58884",
+              "block": {
+                "checkbox": "5cfb487e680724e11c2918e095c467cbfd8b17df38727b8be65d4818e1a11697",
+                "type": "tripetto-block-checkboxes",
+                "version": "0.0.0",
+                "node": "1524c2e4ab3d6d847934f6a2499ad531f0e5cdce5af6738a26f8b30fa824a9ef",
+                "slot": "6d0c62a15492ed4decbb6297b609e73cec96daf7477415baf5eb08b8da0ae11f",
+                "checked": true
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fb9858492523581885782f94360af71a17184e0c885bb11b1cfc48a2621572c1",
+      "name": "Email",
+      "nodes": [
+        {
+          "id": "5ff8c11640e157f9801261d90f8f1348d5fa89643a31d29c3fb44023416f258f",
+          "explanation": "You will be sent a magic link to your inbox. Go check after you click OK.",
+          "name": "All done! Thanks for helping the fight against COVID-19 🙏",
+          "nameVisible": false,
+          "placeholder": "you@email.com",
+          "description": "You've also earned 150 points! To save them and help fight COVID-19 even more, join our citizen science community with your email:",
+          "slots": [
+            {
+              "id": "4423c05d5c7ab17a99e4bedfcb7cbba79a5d6aac6f3fab0afdf722df8a48d8f4",
+              "type": "string",
+              "kind": "static",
+              "reference": "email",
+              "label": "Email address",
+              "alias": "email"
+            }
+          ],
+          "block": { "type": "tripetto-block-email", "version": "2.0.0" }
+        }
+      ]
+    }
+  ],
+  "editor": { "name": "tripetto", "version": "1.7.1" }
+}
