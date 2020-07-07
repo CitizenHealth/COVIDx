@@ -508,7 +508,7 @@
         },
         {
           "id": "a47eb190e51e3d14fa13c66d68993233ea4b723a9200b21a6a47b42abf3ad0f5",
-          "name": "Do you have a thermometer?",
+          "name": "Do you have a thermometer right now?",
           "nameVisible": true,
           "slots": [
             {
@@ -631,22 +631,22 @@
                       {
                         "id": "934150f5794827ef7243078b3a750ad6140915b2bb5cfd6d3fdab405e4d85271",
                         "name": "🙂 No fever",
-                        "value": "no_fever"
+                        "value": "1"
                       },
                       {
                         "id": "91a204af50798dc0b7bc921abe4fb226c644dd4a7f0377af31b076dd90c1e48a",
                         "name": "😕 Maybe feverish",
-                        "value": "maybe_feverish"
+                        "value": "2"
                       },
                       {
                         "id": "c1be32587d27603de0ce715a893b1b4ca3a17be9dcf68a8ceaabd3de7cd07107",
                         "name": "🤒 Definitely feverish",
-                        "value": "definitely_feverish"
+                        "value": "3"
                       },
                       {
                         "id": "6e6ba94835dd5ee79c102dba36c473c860c0644f635b8f1a19fee6f6ada65837",
                         "name": "😷 Worst fever ever",
-                        "value": "worst_fever"
+                        "value": "4"
                       }
                     ],
                     "required": true,
@@ -678,7 +678,6 @@
           "id": "0b49a34ed2147a9727e525d200e4f56d13eb343d30668059bf65338c5a8b5e73",
           "name": "What year were you born?",
           "nameVisible": true,
-          "placeholder": "1900",
           "description": "Enter all four digits (ex. 1986)",
           "slots": [
             {
@@ -2044,107 +2043,11 @@
           "nameVisible": true,
           "slots": [
             {
-              "id": "3922e96a208545778856fc8b8a96bec24708a8ff52a2e9e32acd9c3af2568181",
-              "type": "boolean",
-              "kind": "dynamic",
-              "reference": "23911761bb43a9c985536d566699282225c793c8035d551f7f6df2686d969446",
-              "sequence": 0,
-              "label": "Choice",
-              "name": "Asian",
-              "alias": "asian",
-              "pipable": {
-                "group": "Choice",
-                "label": "Choice",
-                "template": "name",
-                "alias": "racial_groups"
-              }
-            },
-            {
-              "id": "79d6ee658ce9966d8cf113f189b5803fb0c4bbfb53e79a12a02d463cf0130877",
-              "type": "boolean",
-              "kind": "dynamic",
-              "reference": "f3b28a1691ca3a3043e208c4217b2f878d385b87ff199636b0adcd186a569f62",
-              "sequence": 1,
-              "label": "Choice",
-              "name": "Black or African descent",
-              "alias": "black",
-              "pipable": {
-                "group": "Choice",
-                "label": "Choice",
-                "template": "name",
-                "alias": "racial_groups"
-              }
-            },
-            {
-              "id": "a7ce12da05bc27ef8c4c01ea2412c8cbcd3524faae7936a90dfbe46587d78ed1",
-              "type": "boolean",
-              "kind": "dynamic",
-              "reference": "8f9d0ef796d18a75f512ef80065d5a1f83d9c8072b24e41ab7603a066cbd384e",
-              "sequence": 2,
-              "label": "Choice",
-              "name": "Middle Eastern or North Africans",
-              "alias": "middle_eastern",
-              "pipable": {
-                "group": "Choice",
-                "label": "Choice",
-                "template": "name",
-                "alias": "racial_groups"
-              }
-            },
-            {
-              "id": "99298a844554556c2b497f6c873a464a7f0ed9c14574592f4c5beed4f6ff8465",
-              "type": "boolean",
-              "kind": "dynamic",
-              "reference": "0210ebd0f6df2fd311dbb6cccbdd53706e03a9f5abaee1f1c3450da5b8cf8889",
-              "sequence": 3,
-              "label": "Choice",
-              "name": "Native Americans/Indigenous",
-              "alias": "indigenous",
-              "pipable": {
-                "group": "Choice",
-                "label": "Choice",
-                "template": "name",
-                "alias": "racial_groups"
-              }
-            },
-            {
-              "id": "eb79b5884857064fdc1030e1d50edfdd71ae2bd32ad15ddbe979fe63141acd6b",
-              "type": "boolean",
-              "kind": "dynamic",
-              "reference": "293c5237897bbabf82e882e5a6383de7187edd76f67d3278a87fc5b9fc8adcdf",
-              "sequence": 4,
-              "label": "Choice",
-              "name": "Native Hawaiian or Other Pacific Islander",
-              "alias": "pacific_islander",
-              "pipable": {
-                "group": "Choice",
-                "label": "Choice",
-                "template": "name",
-                "alias": "racial_groups"
-              }
-            },
-            {
-              "id": "db771e1c1a54427658ac8703bd26e2c58a4a8e63fbc052be81ac2c2e372af808",
-              "type": "boolean",
-              "kind": "dynamic",
-              "reference": "124ef883cb09345715f05dde0d79e6fdf7cd6eacd7fc3d64623a29018ee24020",
-              "sequence": 5,
-              "label": "Choice",
-              "name": "Hispanic, Latino, or Spanish Origin",
-              "alias": "hispanic",
-              "pipable": {
-                "group": "Choice",
-                "label": "Choice",
-                "template": "name",
-                "alias": "racial_groups"
-              }
-            },
-            {
               "id": "91c98ba1efed858fae4a3adeacd8eb365ab4954d9e3220b87e7077dd219ba19b",
               "type": "boolean",
               "kind": "dynamic",
               "reference": "25405aaed8574d445b94c056c0c9d2d6256aa21da3885292d8c2a0ee5f4158b9",
-              "sequence": 6,
+              "sequence": 0,
               "label": "Choice",
               "name": "White or European descent",
               "alias": "white",
@@ -2152,7 +2055,135 @@
                 "group": "Choice",
                 "label": "Choice",
                 "template": "name",
-                "alias": "racial_groups"
+                "alias": "race"
+              }
+            },
+            {
+              "id": "a7ce12da05bc27ef8c4c01ea2412c8cbcd3524faae7936a90dfbe46587d78ed1",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "8f9d0ef796d18a75f512ef80065d5a1f83d9c8072b24e41ab7603a066cbd384e",
+              "sequence": 1,
+              "label": "Choice",
+              "name": "Middle Eastern and North African",
+              "alias": "middle_eastern_north_african",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "race"
+              }
+            },
+            {
+              "id": "79d6ee658ce9966d8cf113f189b5803fb0c4bbfb53e79a12a02d463cf0130877",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "f3b28a1691ca3a3043e208c4217b2f878d385b87ff199636b0adcd186a569f62",
+              "sequence": 2,
+              "label": "Choice",
+              "name": "Black or African descent",
+              "alias": "black",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "race"
+              }
+            },
+            {
+              "id": "3922e96a208545778856fc8b8a96bec24708a8ff52a2e9e32acd9c3af2568181",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "23911761bb43a9c985536d566699282225c793c8035d551f7f6df2686d969446",
+              "sequence": 3,
+              "label": "Choice",
+              "name": "East and Southeast Asian",
+              "alias": "east_southeast_asian",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "race"
+              }
+            },
+            {
+              "id": "5f2825beb97620b24e4be2db5d3eecd04853a9a3ad9aabcc382805fe50b32b7d",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "16e3be778006a4779d5d70845897aae0b7b63686f800a1bfadcbf1a9188c133b",
+              "sequence": 4,
+              "label": "Choice",
+              "name": "South Asian",
+              "alias": "south_asian",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "race"
+              }
+            },
+            {
+              "id": "55c6722f9e846f98f991bbc6cd4881205f46ddcc8bf28f2b022a605035c1cc67",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "bc5129fab6ec4b072cd301980388d0da0d78314057563de3eb410898132da754",
+              "sequence": 5,
+              "label": "Choice",
+              "name": "Central Asian",
+              "alias": "central_asian",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "race"
+              }
+            },
+            {
+              "id": "99298a844554556c2b497f6c873a464a7f0ed9c14574592f4c5beed4f6ff8465",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "0210ebd0f6df2fd311dbb6cccbdd53706e03a9f5abaee1f1c3450da5b8cf8889",
+              "sequence": 6,
+              "label": "Choice",
+              "name": "Native Americans/Indigenous",
+              "alias": "native_americans_indigenous",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "race"
+              }
+            },
+            {
+              "id": "eb79b5884857064fdc1030e1d50edfdd71ae2bd32ad15ddbe979fe63141acd6b",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "293c5237897bbabf82e882e5a6383de7187edd76f67d3278a87fc5b9fc8adcdf",
+              "sequence": 7,
+              "label": "Choice",
+              "name": "Native Hawaiian or Other Pacific Islander",
+              "alias": "pacific_islander",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "race"
+              }
+            },
+            {
+              "id": "db771e1c1a54427658ac8703bd26e2c58a4a8e63fbc052be81ac2c2e372af808",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "124ef883cb09345715f05dde0d79e6fdf7cd6eacd7fc3d64623a29018ee24020",
+              "sequence": 8,
+              "label": "Choice",
+              "name": "Hispanic, Latino, or Spanish Origin",
+              "alias": "hispanic",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "race"
               }
             },
             {
@@ -2160,7 +2191,7 @@
               "type": "boolean",
               "kind": "dynamic",
               "reference": "5b5a5025c0ecbd829c242e83f10326ab5a029a3291e3a52413da35743f7c29e9",
-              "sequence": 7,
+              "sequence": 9,
               "label": "Choice",
               "name": "Other",
               "alias": "other",
@@ -2168,7 +2199,7 @@
                 "group": "Choice",
                 "label": "Choice",
                 "template": "name",
-                "alias": "racial_groups"
+                "alias": "race"
               }
             }
           ],
@@ -2177,9 +2208,14 @@
             "version": "1.0.2",
             "choices": [
               {
-                "id": "23911761bb43a9c985536d566699282225c793c8035d551f7f6df2686d969446",
-                "name": "Asian",
-                "value": "asian"
+                "id": "25405aaed8574d445b94c056c0c9d2d6256aa21da3885292d8c2a0ee5f4158b9",
+                "name": "White or European descent",
+                "value": "white"
+              },
+              {
+                "id": "8f9d0ef796d18a75f512ef80065d5a1f83d9c8072b24e41ab7603a066cbd384e",
+                "name": "Middle Eastern and North African",
+                "value": "middle_eastern_north_african"
               },
               {
                 "id": "f3b28a1691ca3a3043e208c4217b2f878d385b87ff199636b0adcd186a569f62",
@@ -2187,14 +2223,24 @@
                 "value": "black"
               },
               {
-                "id": "8f9d0ef796d18a75f512ef80065d5a1f83d9c8072b24e41ab7603a066cbd384e",
-                "name": "Middle Eastern or North Africans",
-                "value": "middle_eastern"
+                "id": "23911761bb43a9c985536d566699282225c793c8035d551f7f6df2686d969446",
+                "name": "East and Southeast Asian",
+                "value": "east_southeast_asian"
+              },
+              {
+                "id": "16e3be778006a4779d5d70845897aae0b7b63686f800a1bfadcbf1a9188c133b",
+                "name": "South Asian",
+                "value": "south_asian"
+              },
+              {
+                "id": "bc5129fab6ec4b072cd301980388d0da0d78314057563de3eb410898132da754",
+                "name": "Central Asian",
+                "value": "central_asian"
               },
               {
                 "id": "0210ebd0f6df2fd311dbb6cccbdd53706e03a9f5abaee1f1c3450da5b8cf8889",
                 "name": "Native Americans/Indigenous",
-                "value": "indigenous"
+                "value": "native_americans_indigenous"
               },
               {
                 "id": "293c5237897bbabf82e882e5a6383de7187edd76f67d3278a87fc5b9fc8adcdf",
@@ -2207,18 +2253,13 @@
                 "value": "hispanic"
               },
               {
-                "id": "25405aaed8574d445b94c056c0c9d2d6256aa21da3885292d8c2a0ee5f4158b9",
-                "name": "White or European descent",
-                "value": "white"
-              },
-              {
                 "id": "5b5a5025c0ecbd829c242e83f10326ab5a029a3291e3a52413da35743f7c29e9",
                 "name": "Other",
                 "value": "other"
               }
             ],
             "multiple": true,
-            "alias": "racial_groups"
+            "alias": "race"
           }
         }
       ],
@@ -2233,7 +2274,7 @@
               "nodes": [
                 {
                   "id": "2d874b03f9d72685ad5aa05e2ecb65e683db6989e7e593ca74ba2cec07755ceb",
-                  "name": "If you selected \"Other,\" what is the name describe your racial group(s)",
+                  "name": "If you selected \"Other,\" what is the name of your racial group(s)",
                   "nameVisible": true,
                   "description": "If multiple racial groups, use semicolons as the separators. (e.g. Race 1;Race 2)",
                   "slots": [
@@ -2299,6 +2340,7 @@
               "sequence": 1,
               "label": "Checkbox",
               "name": "Afro-Caribbean",
+              "alias": "afro-caribbean",
               "pipable": {
                 "group": "Checkbox",
                 "label": "Checkbox",
@@ -2362,6 +2404,7 @@
               "sequence": 5,
               "label": "Checkbox",
               "name": "Dutch",
+              "alias": "dutch",
               "pipable": {
                 "group": "Checkbox",
                 "label": "Checkbox",
@@ -2425,6 +2468,7 @@
               "sequence": 9,
               "label": "Checkbox",
               "name": "Hmong",
+              "alias": "hmong",
               "pipable": {
                 "group": "Checkbox",
                 "label": "Checkbox",
@@ -2456,6 +2500,7 @@
               "sequence": 11,
               "label": "Checkbox",
               "name": "Indian",
+              "alias": "indian",
               "pipable": {
                 "group": "Checkbox",
                 "label": "Checkbox",
@@ -2471,6 +2516,7 @@
               "sequence": 12,
               "label": "Checkbox",
               "name": "Inuit",
+              "alias": "inuit",
               "pipable": {
                 "group": "Checkbox",
                 "label": "Checkbox",
@@ -2518,6 +2564,23 @@
               "sequence": 15,
               "label": "Checkbox",
               "name": "Navajo",
+              "alias": "navajo",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "ethnicity"
+              }
+            },
+            {
+              "id": "3e0202d5feee200c1198bf07876525bf50c185bca3fcaddd2d1d05acf7a65f18",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "bb740891487e8765caf56be55c49d7fe0ac06eedaa0f0d17d4698e30d7808e84",
+              "sequence": 16,
+              "label": "Checkbox",
+              "name": "Polish",
+              "alias": "polish",
               "pipable": {
                 "group": "Checkbox",
                 "label": "Checkbox",
@@ -2530,7 +2593,7 @@
               "type": "boolean",
               "kind": "dynamic",
               "reference": "85a250542d2c5f04cf9da2e781bafe2bdce1c6a17e2dff708777d40beca00c18",
-              "sequence": 16,
+              "sequence": 17,
               "label": "Checkbox",
               "name": "Russian",
               "alias": "russian",
@@ -2546,9 +2609,10 @@
               "type": "boolean",
               "kind": "dynamic",
               "reference": "eb5f18c73e1054ac900118a9e7df296c0626fb1219569dd9152238f33548cfe5",
-              "sequence": 17,
+              "sequence": 18,
               "label": "Checkbox",
               "name": "Thai",
+              "alias": "thai",
               "pipable": {
                 "group": "Checkbox",
                 "label": "Checkbox",
@@ -2557,13 +2621,14 @@
               }
             },
             {
-              "id": "5ccc794801c51b23b66ec789d59d0e7bdb1445b8f84c38e48505609ff5e4d10f",
+              "id": "20999898b74dd38f7f79a8b9a7e3ae759e18a60bcef8fdfc669391607018db69",
               "type": "boolean",
               "kind": "dynamic",
-              "reference": "b0d91fe51ccbcd6db28a62900afff35333bde96783b447cef889b744855cc672",
-              "sequence": 18,
+              "reference": "f118b8f36ee2154c2787a25d31cf07fcda42ac5d6965e3e87fe093d3b66d418a",
+              "sequence": 19,
               "label": "Checkbox",
-              "name": "Tibetan",
+              "name": "Turk",
+              "alias": "turk",
               "pipable": {
                 "group": "Checkbox",
                 "label": "Checkbox",
@@ -2576,9 +2641,26 @@
               "type": "boolean",
               "kind": "dynamic",
               "reference": "d41f4a55cfc60e83df5f28d09410dc7db2cef2778502aea64e69552cfdccbba5",
-              "sequence": 19,
+              "sequence": 20,
               "label": "Checkbox",
               "name": "Somali",
+              "alias": "somali",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "ethnicity"
+              }
+            },
+            {
+              "id": "86c4535e8dc155239f805e4934a293c7291d86f88bf8c5e22c2d8bda23a03b4a",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "06d124b472c062ac3e591cc5cbb466741b68a342c0f5462c16f95b8c7393fa2d",
+              "sequence": 21,
+              "label": "Checkbox",
+              "name": "Spaniard",
+              "alias": "spaniard",
               "pipable": {
                 "group": "Checkbox",
                 "label": "Checkbox",
@@ -2591,9 +2673,10 @@
               "type": "boolean",
               "kind": "dynamic",
               "reference": "1c3e0b4a1706347cf6cedf39cb1541f634821bd1ee7d05b7f5d8a71cfa927173",
-              "sequence": 20,
+              "sequence": 22,
               "label": "Checkbox",
-              "name": "Swahili",
+              "name": "Vietnamese",
+              "alias": "vietnamese",
               "pipable": {
                 "group": "Checkbox",
                 "label": "Checkbox",
@@ -2606,7 +2689,7 @@
               "type": "boolean",
               "kind": "dynamic",
               "reference": "5cfb487e680724e11c2918e095c467cbfd8b17df38727b8be65d4818e1a11697",
-              "sequence": 21,
+              "sequence": 23,
               "label": "Checkbox",
               "name": "Other",
               "alias": "other",
@@ -2629,7 +2712,8 @@
               },
               {
                 "id": "14371fee040bfc0275b4620354e66c6961ea2e22c4a63174fe6c468615822955",
-                "name": "Afro-Caribbean"
+                "name": "Afro-Caribbean",
+                "value": "afro-caribbean"
               },
               {
                 "id": "572e0cc69f63ffe7de512220a84cdf3eedd1292e21a1705cf140fe9912147aed",
@@ -2648,7 +2732,8 @@
               },
               {
                 "id": "44e80f279bc5e5e4ea557855223ca050988dbafaa7c2fe48240d8f78a197fe40",
-                "name": "Dutch"
+                "name": "Dutch",
+                "value": "dutch"
               },
               {
                 "id": "a6625f915372ab90bc8bf46ac6c1a6585483efb081453466d465d5e670541927",
@@ -2667,7 +2752,8 @@
               },
               {
                 "id": "b51c6fa49c5ae135574fc20f1f1e9750b7922633cfec87351d32fe7a3d03784c",
-                "name": "Hmong"
+                "name": "Hmong",
+                "value": "hmong"
               },
               {
                 "id": "7db81b5df58f493ecfc12ffb4655dd7a8af57c9601647b6aad462c52a73b61a9",
@@ -2676,11 +2762,13 @@
               },
               {
                 "id": "2334a53886166038e4d13f970833215cd73dc418463b97e1cc164c27f6f1c749",
-                "name": "Indian"
+                "name": "Indian",
+                "value": "indian"
               },
               {
                 "id": "05ae17d2125621a7c56b0de093d1358960a95ff725d23d5dd80e5f330fe8336f",
-                "name": "Inuit"
+                "name": "Inuit",
+                "value": "inuit"
               },
               {
                 "id": "fa6beba30f35307e693fa62eb5a9e8bb415c6a8a392e222ff2dcd8769aec2b7b",
@@ -2694,7 +2782,13 @@
               },
               {
                 "id": "d276843abfc9da6a3351cb264915f40177f0640f468cea0e0584546ae2060788",
-                "name": "Navajo"
+                "name": "Navajo",
+                "value": "navajo"
+              },
+              {
+                "id": "bb740891487e8765caf56be55c49d7fe0ac06eedaa0f0d17d4698e30d7808e84",
+                "name": "Polish",
+                "value": "polish"
               },
               {
                 "id": "85a250542d2c5f04cf9da2e781bafe2bdce1c6a17e2dff708777d40beca00c18",
@@ -2703,19 +2797,28 @@
               },
               {
                 "id": "eb5f18c73e1054ac900118a9e7df296c0626fb1219569dd9152238f33548cfe5",
-                "name": "Thai"
+                "name": "Thai",
+                "value": "thai"
               },
               {
-                "id": "b0d91fe51ccbcd6db28a62900afff35333bde96783b447cef889b744855cc672",
-                "name": "Tibetan"
+                "id": "f118b8f36ee2154c2787a25d31cf07fcda42ac5d6965e3e87fe093d3b66d418a",
+                "name": "Turk",
+                "value": "turk"
               },
               {
                 "id": "d41f4a55cfc60e83df5f28d09410dc7db2cef2778502aea64e69552cfdccbba5",
-                "name": "Somali"
+                "name": "Somali",
+                "value": "somali"
+              },
+              {
+                "id": "06d124b472c062ac3e591cc5cbb466741b68a342c0f5462c16f95b8c7393fa2d",
+                "name": "Spaniard",
+                "value": "spaniard"
               },
               {
                 "id": "1c3e0b4a1706347cf6cedf39cb1541f634821bd1ee7d05b7f5d8a71cfa927173",
-                "name": "Swahili"
+                "name": "Vietnamese",
+                "value": "vietnamese"
               },
               {
                 "id": "5cfb487e680724e11c2918e095c467cbfd8b17df38727b8be65d4818e1a11697",
@@ -2738,7 +2841,7 @@
               "nodes": [
                 {
                   "id": "f479fce7f36a4ec096ee848edb22d51f158fae2a1c4e26051849a47f19a0e374",
-                  "name": "If you selected \"Other,\" what is the name describe your ethnic group(s)",
+                  "name": "If you selected \"Other,\" what is the name of your ethnic group(s)",
                   "nameVisible": true,
                   "description": "If multiple ethnic groups, use semicolons as the separators. (e.g. Ethnicity 1;Ethnicity 2)",
                   "slots": [

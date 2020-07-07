@@ -1,55 +1,85 @@
 import demographics from "./demographics.json";
 
 export const forms = {
-  demographics: demographics,
+  demographics,
 };
 
 export const parsingRules = {
   demographics: (fields) => {
     if (fields[0].value === "yes") {
-      let racial_groups = fields
-        .slice(28, 35)
-        .filter((x) => x.value)
-        .map((x) => x.name);
-      if (fields[36].value !== undefined) {
-        // if selected "other" for racial_groups
-        const other_groups = fields[36].value.split(/;\s+|;/g).map((str) => {
-          return str.toLowerCase().replaceAll(/\s+/g, "_");
-        });
-        racial_groups.push(...other_groups); // add the name of that other racial_group
-      }
+      const multiple_choice_fields = ["current_symptoms", "race", "ethnicity"];
+      let result = extractAnswers(
+        fields.slice(1, fields.length),
+        multiple_choice_fields
+      );
 
-      let ethnic_groups = fields
-        .slice(37, 58)
-        .filter((x) => x.value)
-        .map((x) => x.name);
-      if (fields[59].value !== undefined) {
-        // if selected "other" for ethnic_groups
-        const other_groups = fields[59].value.split(/;\s+|;/g);
-        ethnic_groups.push(...other_groups); // add the name of that other ethnic_groups
+      if (result.have_thermometer) {
+        delete result.fever_best_guess;
+      } else {
+        delete result.temperature;
+        delete result.temperature_scale;
       }
-      ethnic_groups = ethnic_groups.map((str) => {
-        return str.toLowerCase().replaceAll(/\s+/g, "_");
-      });
+      delete result.have_thermometer;
 
-      return {
-        how_are_you_feeling: parseInt(fields[1].value),
-        current_symptoms: fields
-          .slice(2, 20)
-          .filter((x) => x.value)
-          .map((x) => x.name),
-        temperature: fields[21].value,
-        temperature_scale: fields[22].value,
-        fever_best_guess: fields[23].value,
-        year_of_birth: fields[24].value,
-        sex: fields[25].value,
-        country: fields[26].value,
-        zip_code: fields[27].value,
-        racial_groups,
-        ethnic_groups,
-        email: fields[57].value,
-      };
+      return result;
     }
     return {};
   },
+};
+
+const extractAnswers = (fields, multiple_choice_fields) => {
+  let multiple_choice_ranges = [];
+  let lowerEnd = -1;
+  let finalResult = {};
+  // process questions with single answer
+  fields.forEach((field, i) => {
+    if (
+      (field.type === "tripetto-block-multiple-choice" ||
+        field.type === "tripetto-block-checkboxes") &&
+      typeof field.value === "boolean"
+    ) {
+      if (lowerEnd === -1) {
+        lowerEnd = i;
+      }
+      if (i === fields.length - 1 || field.node !== fields[i + 1].node) {
+        multiple_choice_ranges.push([lowerEnd, i]);
+        lowerEnd = -1;
+      }
+    } else {
+      if (
+        field.name === "how_are_you_feeling" ||
+        field.name === "fever_best_guess"
+      ) {
+        finalResult[field.name] = parseInt(field.value);
+      } else if (field.type === "tripetto-block-yes-no")
+        finalResult[field.name] = field.value === "yes" ? true : false;
+      else finalResult[field.name] = field.value;
+    }
+  });
+
+  // process questions with multiple choices
+  multiple_choice_ranges.forEach((range, i) => {
+    let choices = fields
+      .slice(range[0], range[1] + 1)
+      .filter((field) => field.value)
+      .map((field) => field.name);
+    const other_label = multiple_choice_fields[i] + "_other";
+    if (
+      choices.length > 0 &&
+      choices[choices.length - 1].toLowerCase() === "other"
+    ) {
+      choices.pop();
+      const other_groups = finalResult[other_label]
+        .split(/;\s+|;/g)
+        .map((str) => {
+          return str.toLowerCase().replaceAll(/[\s|-]+|-/g, "_");
+        });
+      choices.push(...other_groups);
+    }
+    if (finalResult.hasOwnProperty(other_label)) {
+      delete finalResult[other_label];
+    }
+    finalResult[multiple_choice_fields[i]] = choices;
+  });
+  return finalResult;
 };
