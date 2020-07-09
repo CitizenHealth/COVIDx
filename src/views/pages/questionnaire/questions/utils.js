@@ -1,7 +1,9 @@
 import demographics from "./demographics.json";
+import medical_history from "./medical_history.json";
 
 export const forms = {
   demographics,
+  medical_history,
 };
 
 export const parsingRules = {
@@ -12,26 +14,32 @@ export const parsingRules = {
         fields.slice(1, fields.length),
         multiple_choice_fields
       );
-
-      if (result.have_thermometer) {
-        delete result.fever_best_guess;
-      } else {
-        delete result.temperature;
-        delete result.temperature_scale;
-      }
-      delete result.have_thermometer;
-
       return result;
     }
     return {};
   },
+  medical_history: (fields) => {
+    const multiple_choice_fields = ["current_symptoms", "medical_conditions"];
+    const multi_items_string_fields = ["medications"];
+    let result = extractAnswers(
+      fields,
+      multiple_choice_fields,
+      multi_items_string_fields
+    );
+
+    return result;
+  },
 };
 
-const extractAnswers = (fields, multiple_choice_fields) => {
+const extractAnswers = (
+  fields,
+  multiple_choice_fields = [],
+  multi_items_string_fields = []
+) => {
   let multiple_choice_ranges = [];
   let lowerEnd = -1;
   let finalResult = {};
-  // process questions with single answer
+  // process questions with single answers
   fields.forEach((field, i) => {
     if (
       (field.type === "tripetto-block-multiple-choice" ||
@@ -46,14 +54,13 @@ const extractAnswers = (fields, multiple_choice_fields) => {
         lowerEnd = -1;
       }
     } else {
-      if (
-        field.name === "how_are_you_feeling" ||
-        field.name === "fever_best_guess"
-      ) {
+      if (field.name === "how_are_you_feeling") {
         finalResult[field.name] = parseInt(field.value);
-      } else if (field.type === "tripetto-block-yes-no")
-        finalResult[field.name] = field.value === "yes" ? true : false;
-      else finalResult[field.name] = field.value;
+      } else if (field.name === "fever_best_guess") {
+        if (field.value) {
+          finalResult[field.name] = parseInt(field.value);
+        }
+      } else finalResult[field.name] = field.value;
     }
   });
 
@@ -69,11 +76,7 @@ const extractAnswers = (fields, multiple_choice_fields) => {
       choices[choices.length - 1].toLowerCase() === "other"
     ) {
       choices.pop();
-      const other_groups = finalResult[other_label]
-        .split(/;\s+|;/g)
-        .map((str) => {
-          return str.toLowerCase().replaceAll(/[\s|-]+|-/g, "_");
-        });
+      const other_groups = finalResult[other_label].split(/;\s*/g);
       choices.push(...other_groups);
     }
     if (finalResult.hasOwnProperty(other_label)) {
@@ -81,5 +84,21 @@ const extractAnswers = (fields, multiple_choice_fields) => {
     }
     finalResult[multiple_choice_fields[i]] = choices;
   });
+
+  delete finalResult.have_thermometer;
+
+  // process strings with multiple items
+  multi_items_string_fields.forEach((field) => {
+    if (finalResult[field] === undefined) {
+      finalResult[field] = [];
+    } else {
+      console.log(finalResult[field]);
+      const items = finalResult[field]
+        .split(/;\s*/g)
+        .map((str) => str.toLowerCase().replace(/[\s|-]+|-/g, "_"));
+      finalResult[field] = items;
+    }
+  });
+
   return finalResult;
 };
