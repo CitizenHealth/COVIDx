@@ -8,7 +8,7 @@
   > .card {
     display: "inline-block";
     text-align: center;
-    margin: 12px 30px;
+    margin: 12px unquote("min(2vw, 30px)");
     max-width: 480px;
     .card-body {
       > * {
