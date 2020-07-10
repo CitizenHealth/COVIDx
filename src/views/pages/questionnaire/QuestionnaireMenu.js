@@ -63,8 +63,8 @@ const QuestionnaireMenu = () => {
   }, []);
   return (
     <div id="questionnaire-menu" className="col-12 mx-auto">
-      {menu.map((item) => (
-        <Card className="col-12 col-md-5 col-lg-5">
+      {menu.map((item, idx) => (
+        <Card className="col-12 col-md-5 col-lg-5" key={idx}>
           <CardBody>
             <h3>{item.category}</h3>
             <Link to={`/health-report/${item.slug}`}>
