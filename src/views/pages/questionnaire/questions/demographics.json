@@ -686,7 +686,9 @@
               "kind": "static",
               "reference": "number",
               "label": "Number",
-              "alias": "year_of_birth"
+              "alias": "year_of_birth",
+              "minimum": 1800,
+              "maximum": 2200
             }
           ],
           "block": { "type": "tripetto-block-number", "version": "2.0.0" }
@@ -2340,7 +2342,7 @@
               "sequence": 1,
               "label": "Checkbox",
               "name": "Afro-Caribbean",
-              "alias": "afro-caribbean",
+              "alias": "afro_caribbean",
               "pipable": {
                 "group": "Checkbox",
                 "label": "Checkbox",
@@ -2713,7 +2715,7 @@
               {
                 "id": "14371fee040bfc0275b4620354e66c6961ea2e22c4a63174fe6c468615822955",
                 "name": "Afro-Caribbean",
-                "value": "afro-caribbean"
+                "value": "afro_caribbean"
               },
               {
                 "id": "572e0cc69f63ffe7de512220a84cdf3eedd1292e21a1705cf140fe9912147aed",

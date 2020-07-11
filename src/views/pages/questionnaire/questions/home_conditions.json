@@ -1,5 +1,5 @@
 {
-  "name": "Medical History",
+  "name": "Home Conditions",
   "clusters": [
     {
       "id": "0d7ede988305ae28899edae92ddc581798d5d40dd8373b816dd66fa82ba80845",
@@ -55,9 +55,8 @@
         },
         {
           "id": "6f3ec04c7602f54d415ffb654da7c61b69fd868511816f6204b46a02744069db",
-          "name": "Any new symptoms to report today?",
+          "name": "Do you currently have any of these symptoms?",
           "nameVisible": true,
-          "description": "Check all that apply",
           "slots": [
             {
               "id": "c316b7d9c8d830c2f22000bc1bf7049bb810845c37bb0a04970a1e414d60da34",
@@ -449,296 +448,6 @@
           }
         },
         {
-          "id": "997d4a62f832f29218d40346145600ba06d3a3282a05c5096cfe97136d407d8a",
-          "name": "Do you have any of these medical conditions?",
-          "nameVisible": true,
-          "description": "Check all that apply",
-          "slots": [
-            {
-              "id": "d04d16e635892803f65545ec342d0e71c674d80ce70748c7788a022f871fa4e1",
-              "type": "boolean",
-              "kind": "dynamic",
-              "reference": "f290473106a7381ecdd5f6dc92823fc4f3df049a26750a612f7e4ae6b176cbbb",
-              "sequence": 0,
-              "label": "Choice",
-              "name": "High blood pressure",
-              "alias": "high_blood_pressure",
-              "pipable": {
-                "group": "Choice",
-                "label": "Choice",
-                "template": "name",
-                "alias": "medical_conditions"
-              }
-            },
-            {
-              "id": "c8d7c61f2e0f5cb1d067a49ef40a3a43f95cb976af81e8bad7d98cd7b13436d9",
-              "type": "boolean",
-              "kind": "dynamic",
-              "reference": "9bb7ff21d030dd604600372ef7dece31eb33a1505d13d43b5be0324a00455377",
-              "sequence": 1,
-              "label": "Choice",
-              "name": "Asthma",
-              "alias": "asthma",
-              "pipable": {
-                "group": "Choice",
-                "label": "Choice",
-                "template": "name",
-                "alias": "medical_conditions"
-              }
-            },
-            {
-              "id": "44850b9676ee4fbbc7ee86e6a65245b9bf9da18ac0353d748d8479e9b4e79dc0",
-              "type": "boolean",
-              "kind": "dynamic",
-              "reference": "78667f88523134e501afaca08b4381d24029eb1d5f678cd6beec9ac67f1e1527",
-              "sequence": 2,
-              "label": "Choice",
-              "name": "COPD/Emphysema",
-              "alias": "copd_emphysema",
-              "pipable": {
-                "group": "Choice",
-                "label": "Choice",
-                "template": "name",
-                "alias": "medical_conditions"
-              }
-            },
-            {
-              "id": "5163950be27ffe766148a5c3608f74e4416a9d1a2480677ef395c1b07ece9283",
-              "type": "boolean",
-              "kind": "dynamic",
-              "reference": "ece05468dcdc7dced6193d1d6eafefe16d8449641ccd617dcdf100984e081323",
-              "sequence": 3,
-              "label": "Choice",
-              "name": "Kidney disease",
-              "alias": "kidney_disease",
-              "pipable": {
-                "group": "Choice",
-                "label": "Choice",
-                "template": "name",
-                "alias": "medical_conditions"
-              }
-            },
-            {
-              "id": "98424786d837d93636c153d41f09cd155cdb94ab9730b78f5a28acfca6b608f5",
-              "type": "boolean",
-              "kind": "dynamic",
-              "reference": "bea5d97f10c1cf03bc3d12a1a1809592cdd4a133c93eda10ccc513719da53a87",
-              "sequence": 4,
-              "label": "Choice",
-              "name": "Liver disease",
-              "alias": "liver_disease",
-              "pipable": {
-                "group": "Choice",
-                "label": "Choice",
-                "template": "name",
-                "alias": "medical_conditions"
-              }
-            },
-            {
-              "id": "731ea73c83015f9c4d1366eb300bb95e9c48a9e572d9daf20cb94ceb36ba8783",
-              "type": "boolean",
-              "kind": "dynamic",
-              "reference": "0e44edf02c00c1c826dc61c57ea3a47e26a2017383d35e3a4d75ad1ffaf58de2",
-              "sequence": 5,
-              "label": "Choice",
-              "name": "Cancer",
-              "alias": "cancer",
-              "pipable": {
-                "group": "Choice",
-                "label": "Choice",
-                "template": "name",
-                "alias": "medical_conditions"
-              }
-            },
-            {
-              "id": "c367277a20d5ef4f9a2d9f1685f061768549461bc511140768969c0cdaa8c2bc",
-              "type": "boolean",
-              "kind": "dynamic",
-              "reference": "a6adba8594adb80a266b4169d77e93eca41ff28b8831db78ee940300cc2dd551",
-              "sequence": 6,
-              "label": "Choice",
-              "name": "Diabetes",
-              "alias": "diabetes",
-              "pipable": {
-                "group": "Choice",
-                "label": "Choice",
-                "template": "name",
-                "alias": "medical_conditions"
-              }
-            },
-            {
-              "id": "5d838d3af9727d350d30b2d636bc24fe4c35dedfa66cde4035f557631257cf16",
-              "type": "boolean",
-              "kind": "dynamic",
-              "reference": "32723c04d28d000d706486fcecf324829ec5133cf12e25595ea7f33071e5fd72",
-              "sequence": 7,
-              "label": "Choice",
-              "name": "Cardiovascular disease",
-              "alias": "cardiovascular_disease",
-              "pipable": {
-                "group": "Choice",
-                "label": "Choice",
-                "template": "name",
-                "alias": "medical_conditions"
-              }
-            },
-            {
-              "id": "793b4d3ee9642c4d54d6dd258c3c386d74329a88a15140826e8d80c94d41d4bc",
-              "type": "boolean",
-              "kind": "dynamic",
-              "reference": "400e9a5fa335dfcd9d8fb5b5ed3e8baae502365ee4ddb31ff7511ff5031bd455",
-              "sequence": 8,
-              "label": "Choice",
-              "name": "HIV/AIDS",
-              "alias": "hiv_aids",
-              "pipable": {
-                "group": "Choice",
-                "label": "Choice",
-                "template": "name",
-                "alias": "medical_conditions"
-              }
-            },
-            {
-              "id": "1acd1fc5eb60a439695b0c68ce125cc4aef9bf04110540d1a2076ed590f48c70",
-              "type": "boolean",
-              "kind": "dynamic",
-              "reference": "5a54768bf3866562b7e4e37d9e343fce78c672e6cd7b36580fbd1dda035f8bb0",
-              "sequence": 9,
-              "label": "Choice",
-              "name": "BMI over 40",
-              "alias": "bmi_over_40",
-              "pipable": {
-                "group": "Choice",
-                "label": "Choice",
-                "template": "name",
-                "alias": "medical_conditions"
-              }
-            },
-            {
-              "id": "2c6c95bcc6958f5748efdd4f86efc701eb930ad92361b42b7ce10178187f425b",
-              "type": "boolean",
-              "kind": "dynamic",
-              "reference": "75e6b8dccf920a5b6c2b0c4ae403e9cb77beed094be37fd14057e1f6fc9ab233",
-              "sequence": 10,
-              "label": "Choice",
-              "name": "Pulmonary disease",
-              "alias": "pulmonary_disease",
-              "pipable": {
-                "group": "Choice",
-                "label": "Choice",
-                "template": "name",
-                "alias": "medical_conditions"
-              }
-            },
-            {
-              "id": "16b5b8287c4ffa5e6216acc8fbc029cd77523dbb08c2a8c41ef2fd150d608c89",
-              "type": "boolean",
-              "kind": "dynamic",
-              "reference": "b203be2f142797de9529a13eb78b88228cd582004c7aa4cbfd7455a246396cb8",
-              "sequence": 11,
-              "label": "Choice",
-              "name": "Obesity",
-              "alias": "obesity",
-              "pipable": {
-                "group": "Choice",
-                "label": "Choice",
-                "template": "name",
-                "alias": "medical_conditions"
-              }
-            },
-            {
-              "id": "545c19e347606daf7dcabc31b75c9ba75f3453b0027960a4c98f582fb4aa02df",
-              "type": "boolean",
-              "kind": "dynamic",
-              "reference": "503a1e55df0a5e980888ea3e61cb9c10ddba50c4ca1ac6106bb8fbaf987bd460",
-              "sequence": 12,
-              "label": "Choice",
-              "name": "Fatigue",
-              "alias": "fatigue",
-              "pipable": {
-                "group": "Choice",
-                "label": "Choice",
-                "template": "name",
-                "alias": "medical_conditions"
-              }
-            }
-          ],
-          "block": {
-            "type": "tripetto-block-multiple-choice",
-            "version": "1.0.2",
-            "choices": [
-              {
-                "id": "f290473106a7381ecdd5f6dc92823fc4f3df049a26750a612f7e4ae6b176cbbb",
-                "name": "High blood pressure",
-                "value": "high_blood_pressure"
-              },
-              {
-                "id": "9bb7ff21d030dd604600372ef7dece31eb33a1505d13d43b5be0324a00455377",
-                "name": "Asthma",
-                "value": "asthma"
-              },
-              {
-                "id": "78667f88523134e501afaca08b4381d24029eb1d5f678cd6beec9ac67f1e1527",
-                "name": "COPD/Emphysema",
-                "value": "copd_emphysema"
-              },
-              {
-                "id": "ece05468dcdc7dced6193d1d6eafefe16d8449641ccd617dcdf100984e081323",
-                "name": "Kidney disease",
-                "value": "kidney_disease"
-              },
-              {
-                "id": "bea5d97f10c1cf03bc3d12a1a1809592cdd4a133c93eda10ccc513719da53a87",
-                "name": "Liver disease",
-                "value": "liver_disease"
-              },
-              {
-                "id": "0e44edf02c00c1c826dc61c57ea3a47e26a2017383d35e3a4d75ad1ffaf58de2",
-                "name": "Cancer",
-                "value": "cancer"
-              },
-              {
-                "id": "a6adba8594adb80a266b4169d77e93eca41ff28b8831db78ee940300cc2dd551",
-                "name": "Diabetes",
-                "value": "diabetes"
-              },
-              {
-                "id": "32723c04d28d000d706486fcecf324829ec5133cf12e25595ea7f33071e5fd72",
-                "name": "Cardiovascular disease",
-                "value": "cardiovascular_disease"
-              },
-              {
-                "id": "400e9a5fa335dfcd9d8fb5b5ed3e8baae502365ee4ddb31ff7511ff5031bd455",
-                "name": "HIV/AIDS",
-                "value": "hiv_aids"
-              },
-              {
-                "id": "5a54768bf3866562b7e4e37d9e343fce78c672e6cd7b36580fbd1dda035f8bb0",
-                "name": "BMI over 40",
-                "value": "bmi_over_40"
-              },
-              {
-                "id": "75e6b8dccf920a5b6c2b0c4ae403e9cb77beed094be37fd14057e1f6fc9ab233",
-                "name": "Pulmonary disease",
-                "value": "pulmonary_disease"
-              },
-              {
-                "id": "b203be2f142797de9529a13eb78b88228cd582004c7aa4cbfd7455a246396cb8",
-                "name": "Obesity",
-                "value": "obesity"
-              },
-              {
-                "id": "503a1e55df0a5e980888ea3e61cb9c10ddba50c4ca1ac6106bb8fbaf987bd460",
-                "name": "Fatigue",
-                "value": "fatigue"
-              }
-            ],
-            "multiple": true,
-            "alignment": true,
-            "alias": "medical_conditions"
-          }
-        },
-        {
           "id": "a47eb190e51e3d14fa13c66d68993233ea4b723a9200b21a6a47b42abf3ad0f5",
           "name": "Do you have a thermometer?",
           "nameVisible": true,
@@ -749,7 +458,8 @@
               "kind": "static",
               "reference": "answer",
               "label": "Answer",
-              "alias": "have_thermometer"
+              "alias": "have_thermometer",
+              "required": true
             }
           ],
           "block": { "type": "tripetto-block-yes-no", "version": "1.0.3" }
@@ -788,7 +498,7 @@
                 },
                 {
                   "id": "ba11fcbb9e9d1826c1ca01dda5faf5e5b33ec162c57c03154e17acd2438c3a55",
-                  "name": "What temperature scale are you using?",
+                  "name": "Which temperature scale are you using?",
                   "nameVisible": true,
                   "slots": [
                     {
@@ -863,22 +573,22 @@
                       {
                         "id": "934150f5794827ef7243078b3a750ad6140915b2bb5cfd6d3fdab405e4d85271",
                         "name": "🙂 No fever",
-                        "value": "4"
+                        "value": "no_fever"
                       },
                       {
                         "id": "91a204af50798dc0b7bc921abe4fb226c644dd4a7f0377af31b076dd90c1e48a",
-                        "name": "😷 Maybe feverish",
-                        "value": "3"
+                        "name": "😕 Maybe feverish",
+                        "value": "maybe_feverish"
                       },
                       {
                         "id": "c1be32587d27603de0ce715a893b1b4ca3a17be9dcf68a8ceaabd3de7cd07107",
                         "name": "🤒 Definitely feverish",
-                        "value": "2"
+                        "value": "definitely_feverish"
                       },
                       {
                         "id": "6e6ba94835dd5ee79c102dba36c473c860c0644f635b8f1a19fee6f6ada65837",
-                        "name": "🥵 Worst fever ever",
-                        "value": "1"
+                        "name": "😷 Worst fever ever",
+                        "value": "worst_fever"
                       }
                     ],
                     "required": true,
@@ -903,21 +613,21 @@
       ]
     },
     {
-      "id": "7bacc7e25f402c715a26ba5fdfcb48b424d972f9a80a1cae8a3efa3366bf234a",
-      "name": "Health check",
+      "id": "3b641e19904ab0fe82dca227f59ea789cf686d926d2d3d8812592efad6917c5e",
+      "name": "Demographics",
       "nodes": [
         {
-          "id": "d6357cc8a99b5f0372fb2705d7b52fee4a682fded59f6707f5918baca68e3b9b",
-          "name": "Do you currently smoke or vape tobacco/nicotine products?",
+          "id": "33da78f99e2a783be4eddfc4c15025e7ceda5686c8a7777e4dc670de80907d05",
+          "name": "What is your total household income before tax last year?",
           "nameVisible": true,
           "slots": [
             {
-              "id": "b29680862e9028f46d8153566228ca1e2f5163cb6faeb3f38c2b9a1b1d740bdb",
+              "id": "4fd5e69f858b1431944382e5141525bf209b1c86b92406e02eb31f51f5843682",
               "type": "string",
               "kind": "static",
               "reference": "choice",
               "label": "Choice",
-              "alias": "do_you_smoke"
+              "alias": "income"
             }
           ],
           "block": {
@@ -925,99 +635,113 @@
             "version": "1.0.2",
             "choices": [
               {
-                "id": "7fd7547148cc0b642957a8ac16ab8b05bceca9d32f3fbf0dc0b1a268b885bd1f",
-                "name": "Yes",
-                "value": "yes"
+                "id": "c5a40cbca2d661777ce6e19f41bd3e92f01d32f6d4921baa55d0089fa96da35a",
+                "name": "Less than $20,000"
               },
               {
-                "id": "ec977dfae2f79b12a1808dc3507e82a9b11ee74a7195c7e3c74261327c6ff6d9",
-                "name": "No",
-                "value": "no"
+                "id": "1f1fa0ebb3ae92fe184e1938f0d48f36ab95d32874206c82900659dbb14cff3b",
+                "name": "$20,000 to $34,999"
               },
               {
-                "id": "282cca75316ff531b634598ad66154ddee242a2a0e67fcb46ff19067811024d9",
-                "name": "Prefer not to say",
-                "value": "prefer_not_to_say"
+                "id": "5b462263957be75c933e225cc87e00ec598726e0f8ab06942ff7d983ae6d0501",
+                "name": "$35,000 to $49,999"
+              },
+              {
+                "id": "207a974fc5d183a8a15e4188d6a38c90ff4aba03c8649558a99e22d8758cb437",
+                "name": "$50,000 to $74,999"
+              },
+              {
+                "id": "b17ddb78d648a267a3f8f4d6bb8b0d4e0eab5e191cd1be137f8655e4ca5154e3",
+                "name": "$75,000 to $99,999"
+              },
+              {
+                "id": "30542cb597749e18f7875040339a15f152a062a6a4aad7796419c34ab0e0d8ad",
+                "name": "Over $100,000"
               }
             ],
-            "required": true,
-            "alias": "do_you_smoke"
+            "alias": "income"
           }
         },
         {
-          "id": "2b78e90dcd1c525e6740a78e26e177677c86853c2f6278eb924fc59ad0803a44",
-          "name": "What is your BMI (Body mass index)?",
+          "id": "305ec64bda0508865949b927a2336d140e3f9b9015f1715e608c5147729fed79",
+          "name": "How many people are living with you?",
           "nameVisible": true,
-          "description": "Can be calculated using this BMI calculator: [](https://www.nhlbi.nih.gov/health/educational/lose_wt/BMI/bmicalc.htm)",
           "slots": [
             {
-              "id": "7be51b6185ae8dd63b23348e0c9f531a574eb1c2545330a878340b8997348b0a",
+              "id": "f7a8e07f3c354ae460e5178202c748a00494c48c3667d4a7858b04fa7494cb6a",
               "type": "numeric",
               "kind": "static",
               "reference": "number",
               "label": "Number",
-              "alias": "bmi",
+              "alias": "people_living_with_you",
               "minimum": 0,
-              "maximum": 100,
-              "precision": 2
+              "maximum": 100
             }
           ],
           "block": { "type": "tripetto-block-number", "version": "2.0.0" }
-        }
-      ]
-    },
-    {
-      "id": "b8e992f69c68f950c67ce1663f30f55e0fbcdcb9531ec1500b2d959c51d6297d",
-      "name": "Medical",
-      "nodes": [
+        },
         {
-          "id": "12c90e659856e8e58904b1666d9d11fd40acac4cf81c7787bd43c49a441cbbfa",
-          "name": "Have you visited a doctor in the past few days?",
+          "id": "12e9d201f0c5919953783376ac14fbad1c07c7cf02d5489bb032327e2a8ed16c",
+          "name": "What is your current housing condition?",
           "nameVisible": true,
           "slots": [
             {
-              "id": "f8a153b2b0f16b87602923eda80e27609e9d858f9f824bc187b61547cd91d8ca",
+              "id": "bdd656e9990fd5fa5ed4f1d4406d7e9bb04d2ea132500062743fb9666070b67f",
+              "type": "string",
+              "kind": "static",
+              "reference": "choice",
+              "label": "Choice",
+              "alias": "type_of_house"
+            }
+          ],
+          "block": {
+            "type": "tripetto-block-multiple-choice",
+            "version": "1.0.2",
+            "choices": [
+              {
+                "id": "32661d13eb0fc362f73448a94678ec76efe1106604aca941449a9301b0f7be9b",
+                "name": "I live in a single family house",
+                "value": "single_family"
+              },
+              {
+                "id": "a3884398bc00236455ab4b31b4db4346feb8cfe7dd8d4b6d459eefe46bdb4996",
+                "name": "I live in an apartment/condominium",
+                "value": "apartment"
+              },
+              {
+                "id": "df89f7dce5b799ef5180b9158264fa3a78d234659bc4b1ef3d28f5e967a4f3b6",
+                "name": "I live in a college dorm",
+                "value": "college_dorm"
+              },
+              {
+                "id": "5a68274b076a37ea8a5ed1dceb8769d81bd694d7b33ed0beab66a0df89835eb8",
+                "name": "I live in a mobile home",
+                "value": "mobile_home"
+              },
+              {
+                "id": "9ee1b0ccf8ccaaaed3af1637cff6afc1b1446c6903009b2a6c159c8f854dffdc",
+                "name": "None, I'm homeless",
+                "value": "homeless"
+              }
+            ],
+            "alias": "type_of_house"
+          }
+        },
+        {
+          "id": "f0cb5cfcdc52b3eb557e914e260f4218443d4c318497b50b606cd3a783eef795",
+          "name": "Are you able to keep the 6-feet social distance at home?",
+          "nameVisible": true,
+          "slots": [
+            {
+              "id": "2debcf1f6b9638fde8ba000f4c9f78043be1ae5aea08398de6b8c644f33e1573",
               "type": "string",
               "kind": "static",
               "reference": "answer",
               "label": "Answer",
-              "alias": "recent_doctor_visit"
+              "alias": "social_distance_at_home"
             }
           ],
           "block": { "type": "tripetto-block-yes-no", "version": "1.0.3" }
-        },
-        {
-          "id": "c3501e933b49ec6d34f20f111ad77ed6c7757b24219b47b7d24833f3d82731ed",
-          "name": "Do you have health insurance that covers your medical expenses?",
-          "nameVisible": true,
-          "slots": [
-            {
-              "id": "4af7c4565b402886225925c297561d6765226586e1c76cedb2ff0ac98820677c",
-              "type": "string",
-              "kind": "static",
-              "reference": "answer",
-              "label": "Answer",
-              "alias": "have_health_insurance"
-            }
-          ],
-          "block": { "type": "tripetto-block-yes-no", "version": "1.0.3" }
-        },
-        {
-          "id": "97433a334cb5b103aa5a2a6b990b72b862d3230c4331f0bcebd81d799a0a3197",
-          "name": "What medications are you taking?",
-          "nameVisible": true,
-          "description": "(use semicolon as the separator. e.g. Benzonatate;Levofloxacin)",
-          "slots": [
-            {
-              "id": "c596af164119523d43841189cf1412702502ac007060c0ae8e82d4a6ecddcc19",
-              "type": "text",
-              "kind": "static",
-              "reference": "value",
-              "label": "Multi-line text",
-              "alias": "medications"
-            }
-          ],
-          "block": { "type": "tripetto-block-textarea", "version": "2.0.0" }
         }
       ]
     }

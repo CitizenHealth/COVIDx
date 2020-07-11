@@ -1,9 +1,21 @@
 import demographics from "./demographics.json";
 import medical_history from "./medical_history.json";
+import emotional_health from "./emotional_health.json";
+import testing_questions from "./testing_questions.json";
+import personal_decisions from "./personal_decisions";
+import home_conditions from "./home_conditions";
+import work_conditions from "./work_conditions";
+import city_state_decisions from "./city_state_decisions";
 
 export const forms = {
   demographics,
   medical_history,
+  emotional_health,
+  testing_questions,
+  personal_decisions,
+  home_conditions,
+  work_conditions,
+  city_state_decisions,
 };
 
 export const parsingRules = {
@@ -26,9 +38,14 @@ export const parsingRules = {
       multiple_choice_fields,
       multi_items_string_fields
     );
-
     return result;
   },
+  emotional_health: (fields) => {},
+  testing_questions: (fields) => {},
+  personal_decisions: (fields) => {},
+  home_conditions: (fields) => {},
+  work_conditions: (fields) => {},
+  city_state_decisions: (fields) => {},
 };
 
 const extractAnswers = (
@@ -92,7 +109,6 @@ const extractAnswers = (
     if (finalResult[field] === undefined) {
       finalResult[field] = [];
     } else {
-      console.log(finalResult[field]);
       const items = finalResult[field]
         .split(/;\s*/g)
         .map((str) => str.toLowerCase().replace(/[\s|-]+|-/g, "_"));

@@ -19,20 +19,21 @@ const dataFromServer = [
     peopleCheckedIn: 73200,
   },
   {
-    category: "Emotional Health",
-    slug: "emotional_health",
-    buttonText: "Start",
-    peopleCheckedIn: 73200,
-  },
-  {
     category: "Testing Questions",
     slug: "testing_questions",
     buttonText: "Start",
     peopleCheckedIn: 73200,
   },
   {
-    category: "Personal Choices",
-    slug: "personal_choices",
+    category: "Emotional Health",
+    slug: "emotional_health",
+    buttonText: "Start",
+    peopleCheckedIn: 73200,
+  },
+
+  {
+    category: "Personal Decisions",
+    slug: "personal_decisions",
     buttonText: "Start",
     peopleCheckedIn: 69105,
   },
@@ -49,8 +50,8 @@ const dataFromServer = [
     peopleCheckedIn: 68478,
   },
   {
-    category: "Your City/State",
-    slug: "your_city_state",
+    category: "Your City/State Decisions",
+    slug: "city_state_decisions",
     buttonText: "Start",
     peopleCheckedIn: 73200,
   },
