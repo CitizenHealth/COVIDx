@@ -1,1 +1,1327 @@
-{"name":"Emotional Health","clusters":[{"id":"0d7ede988305ae28899edae92ddc581798d5d40dd8373b816dd66fa82ba80845","name":"Health check","nodes":[{"id":"e707562ac819fe99f04b587d82847c4191f3854fc7ccff29b4d0baa53e3706a3","name":"How are you physically feeling today?","nameVisible":true,"slots":[{"id":"ad1b6641b1d4edfcf573ec300839fbbaef9b5af7fcfa65fba8ba670cdd94acc8","type":"string","kind":"static","reference":"choice","label":"Choice","alias":"how_are_you_feeling"}],"block":{"type":"tripetto-block-multiple-choice","version":"1.0.2","choices":[{"id":"b16ce8bb2293c4282dcce189046e928249e7d4199cdf6c443317171a0c7c0c49","name":"😀 Very Well","value":"5"},{"id":"463e7b012959b106fa08108a1bd04fedfd076cedafca122e02e0158e7ee73e2a","name":"🙂 Well","value":"4"},{"id":"d9274cbf2cd94d7a1e6c783bf2c592b4ca1b971a19e0f3608de2cfc6afb64985","name":"😐 Average","value":"3"},{"id":"7dc3300d89ae18bb4d7dd5d144c7b7fef63c00fa8dd1c4c645cc4d2a889170bc","name":"🙁 Unwell","value":"2"},{"id":"d3a0b8f6e06fce6b382b2325aa3faf666d8c6310f1d2cf1ad795ad6757f9d04c","name":"🥵 Very unwell","value":"1"}],"required":true,"alias":"how_are_you_feeling"}},{"id":"6f3ec04c7602f54d415ffb654da7c61b69fd868511816f6204b46a02744069db","name":"Any new symptoms to report today?","nameVisible":true,"description":"Check all that apply","slots":[{"id":"c316b7d9c8d830c2f22000bc1bf7049bb810845c37bb0a04970a1e414d60da34","type":"boolean","kind":"dynamic","reference":"b445dbaa22756bfc444bf63aa68ad6e20d3922e4a5b90f07b7d37f313082bd56","sequence":0,"label":"Choice","name":"Fever","alias":"fever","pipable":{"group":"Choice","label":"Choice","template":"name","alias":"current_symptoms"}},{"id":"90b170269d1dde4bf265b1b960cc67b43f19adbaefea2c207a7cf9d984584da6","type":"boolean","kind":"dynamic","reference":"bc05cc927c5855c653d92729a07ffd4a25a77a78e3bcfb0436a93fde1d2fd69b","sequence":1,"label":"Choice","name":"Chills","alias":"chills","pipable":{"group":"Choice","label":"Choice","template":"name","alias":"current_symptoms"}},{"id":"6ffaa53637ef737799f3e36d445c017dcdde902eeb23ca6d6ba87a8b81b8489c","type":"boolean","kind":"dynamic","reference":"e71cefd93b332d29ec46dad878fbd73537aad87c3c7ee452d0c9af3619606965","sequence":2,"label":"Choice","name":"Fatigue","alias":"fatigue","pipable":{"group":"Choice","label":"Choice","template":"name","alias":"current_symptoms"}},{"id":"afcb92b87e0e83b01a04dea88548ee9c607f6048974a13e280698b6b4a48b769","type":"boolean","kind":"dynamic","reference":"9c25d4fe1f992e472ede6d93ac452be4ab4de118bc6e91e772b21e9ef52e301d","sequence":3,"label":"Choice","name":"Dry cough","alias":"dry_cough","pipable":{"group":"Choice","label":"Choice","template":"name","alias":"current_symptoms"}},{"id":"009ce7c8ea19c41c5ce61e30510effe5eb142c0d161cd0ecf90060d11c3bdbe6","type":"boolean","kind":"dynamic","reference":"86b95a7898c76ad345b087e88d3e3bf3a6b9e32393b055bf783dd0b17fc47922","sequence":4,"label":"Choice","name":"Wet cough (sputum)","alias":"wet_cough","pipable":{"group":"Choice","label":"Choice","template":"name","alias":"current_symptoms"}},{"id":"829acbbef041853984c8e350ef1286a02948b27062e8c43cbb9366c13a1eb30b","type":"boolean","kind":"dynamic","reference":"b26df6bd9b2169bea248902630e4453b2950e6a7c400fb6293db06ccab33bff3","sequence":5,"label":"Choice","name":"Shortness of breath","alias":"shortness_of_breath","pipable":{"group":"Choice","label":"Choice","template":"name","alias":"current_symptoms"}},{"id":"a3d7071f56e779811250ae80528a22d585707c3a2c55c578555e41ec77e8ba70","type":"boolean","kind":"dynamic","reference":"60e87e28442a70637f65e7bf724379318d7587110d1e24de91cfb33d89038322","sequence":6,"label":"Choice","name":"Loss of taste","alias":"loss_of_taste","pipable":{"group":"Choice","label":"Choice","template":"name","alias":"current_symptoms"}},{"id":"4417bcdb79cccdefec200b1b8d924e06a08191aa1e02845be8ed5f9c41f93760","type":"boolean","kind":"dynamic","reference":"e031e00ac2304e6572317cefdb2bc377c16d828e7d4987197cf7080b65b9c218","sequence":7,"label":"Choice","name":"Loss of smell","alias":"loss_of_smell","pipable":{"group":"Choice","label":"Choice","template":"name","alias":"current_symptoms"}},{"id":"d1dd07b955443e148a7f9bf3e84b380a673f9e5fba6b203f98de4c023589a72b","type":"boolean","kind":"dynamic","reference":"e994dd99b311fd6178984f9e40a25479fd76921276abac5d9c3c3f68e44ccad4","sequence":8,"label":"Choice","name":"Abdominal pain","alias":"abdominal_pain","pipable":{"group":"Choice","label":"Choice","template":"name","alias":"current_symptoms"}},{"id":"f8f4d739e5c0f7e00551934a3e2b51651d8300c8035d4958767bb71a6868207c","type":"boolean","kind":"dynamic","reference":"966d26c308c5904409e241141b2a93f4fc1eecf051e18b5490dbcb48fda19c5c","sequence":9,"label":"Choice","name":"Diarrhea","alias":"diarrhea","pipable":{"group":"Choice","label":"Choice","template":"name","alias":"current_symptoms"}},{"id":"16122a0a950322f28da1024a84c5ebe0ba91a068acb0c85fc3161027caa2dbf9","type":"boolean","kind":"dynamic","reference":"ed0417ed72c4fa8feaa2f4936aeb13a4ffdba4e05f71c6bd6d0171e31800ab46","sequence":10,"label":"Choice","name":"Sore throat","alias":"sore_throat","pipable":{"group":"Choice","label":"Choice","template":"name","alias":"current_symptoms"}},{"id":"328def629e48b508822becb484192b7e78e1e61764174f91d3c467039e46259b","type":"boolean","kind":"dynamic","reference":"709db7e580ca646ba2444af6bc8b6e6b75f045fa879239e08d513f3c85c6613b","sequence":11,"label":"Choice","name":"Nausea","alias":"nausea","pipable":{"group":"Choice","label":"Choice","template":"name","alias":"current_symptoms"}},{"id":"eaf7842ce4f1c1aa4d9ebbadb6135930c124fa5627e8c832e066b456754957f0","type":"boolean","kind":"dynamic","reference":"51e61514fa745fe0fa04405522820c1efb188fcedcb7c32c9a7f7ce6c31e467b","sequence":12,"label":"Choice","name":"Vomiting","alias":"vomiting","pipable":{"group":"Choice","label":"Choice","template":"name","alias":"current_symptoms"}},{"id":"093741cbccc92fb7d80ccd010e7fdae4760ae98e19eb90e9a62df8287cd5994c","type":"boolean","kind":"dynamic","reference":"4fcb77bca9f5a313f8f4657eb0144fd0b5539913120c9265b0916f5e974e27f1","sequence":13,"label":"Choice","name":"Pressure feeling in chest","alias":"pressure_in_chest","pipable":{"group":"Choice","label":"Choice","template":"name","alias":"current_symptoms"}},{"id":"fd637072c66643bccc8f80310866cdd07cd96d6afe1e079bad0f8d0fcc694122","type":"boolean","kind":"dynamic","reference":"4d4ee1d5c4e3295436b19c35db8d14b61f0fe7a1a91477284bd5d13f7b757fb3","sequence":14,"label":"Choice","name":"Pink eye","alias":"pink_eye","pipable":{"group":"Choice","label":"Choice","template":"name","alias":"current_symptoms"}},{"id":"8f1e0551f5d88957c456042461559c760f1968ac81684ae0a209d4d6a3f5bf19","type":"boolean","kind":"dynamic","reference":"0215084ab3983c73beac049496518dc62ca22366f58ebf75e531a19327580cc3","sequence":15,"label":"Choice","name":"Headache","alias":"headache","pipable":{"group":"Choice","label":"Choice","template":"name","alias":"current_symptoms"}},{"id":"38de18878f2091df6c25dc8947bbb42fdeb1fd70d6dada85064b209fcd1fd753","type":"boolean","kind":"dynamic","reference":"f7357f48e1fae3b5e9ce9bdeaca4554a18f412b7bb0717d9c0a2c1467a385787","sequence":16,"label":"Choice","name":"Confusion","alias":"confusion","pipable":{"group":"Choice","label":"Choice","template":"name","alias":"current_symptoms"}},{"id":"9703eaeb14d2ec1dcb99872ed950a8c84e198845ee1872485e86babc45bd6385","type":"boolean","kind":"dynamic","reference":"4126e08d0e625b9851ac392c646a8dc25832ad10dfc630cf45588ec51e06352c","sequence":17,"label":"Choice","name":"Rash on feet","alias":"rash_on_feet","pipable":{"group":"Choice","label":"Choice","template":"name","alias":"current_symptoms"}}],"block":{"type":"tripetto-block-multiple-choice","version":"1.0.2","choices":[{"id":"b445dbaa22756bfc444bf63aa68ad6e20d3922e4a5b90f07b7d37f313082bd56","name":"Fever","value":"fever"},{"id":"bc05cc927c5855c653d92729a07ffd4a25a77a78e3bcfb0436a93fde1d2fd69b","name":"Chills","value":"chills"},{"id":"e71cefd93b332d29ec46dad878fbd73537aad87c3c7ee452d0c9af3619606965","name":"Fatigue","value":"fatigue"},{"id":"9c25d4fe1f992e472ede6d93ac452be4ab4de118bc6e91e772b21e9ef52e301d","name":"Dry cough","value":"dry_cough"},{"id":"86b95a7898c76ad345b087e88d3e3bf3a6b9e32393b055bf783dd0b17fc47922","name":"Wet cough (sputum)","value":"wet_cough"},{"id":"b26df6bd9b2169bea248902630e4453b2950e6a7c400fb6293db06ccab33bff3","name":"Shortness of breath","value":"shortness_of_breath"},{"id":"60e87e28442a70637f65e7bf724379318d7587110d1e24de91cfb33d89038322","name":"Loss of taste","value":"loss_of_taste"},{"id":"e031e00ac2304e6572317cefdb2bc377c16d828e7d4987197cf7080b65b9c218","name":"Loss of smell","value":"loss_of_smell"},{"id":"e994dd99b311fd6178984f9e40a25479fd76921276abac5d9c3c3f68e44ccad4","name":"Abdominal pain","value":"abdominal_pain"},{"id":"966d26c308c5904409e241141b2a93f4fc1eecf051e18b5490dbcb48fda19c5c","name":"Diarrhea","value":"diarrhea"},{"id":"ed0417ed72c4fa8feaa2f4936aeb13a4ffdba4e05f71c6bd6d0171e31800ab46","name":"Sore throat","value":"sore_throat"},{"id":"709db7e580ca646ba2444af6bc8b6e6b75f045fa879239e08d513f3c85c6613b","name":"Nausea","value":"nausea"},{"id":"51e61514fa745fe0fa04405522820c1efb188fcedcb7c32c9a7f7ce6c31e467b","name":"Vomiting","value":"vomiting"},{"id":"4fcb77bca9f5a313f8f4657eb0144fd0b5539913120c9265b0916f5e974e27f1","name":"Pressure feeling in chest","value":"pressure_in_chest"},{"id":"4d4ee1d5c4e3295436b19c35db8d14b61f0fe7a1a91477284bd5d13f7b757fb3","name":"Pink eye","value":"pink_eye"},{"id":"0215084ab3983c73beac049496518dc62ca22366f58ebf75e531a19327580cc3","name":"Headache","value":"headache"},{"id":"f7357f48e1fae3b5e9ce9bdeaca4554a18f412b7bb0717d9c0a2c1467a385787","name":"Confusion","value":"confusion"},{"id":"4126e08d0e625b9851ac392c646a8dc25832ad10dfc630cf45588ec51e06352c","name":"Rash on feet","value":"rash_on_feet"}],"multiple":true,"alignment":true,"alias":"current_symptoms"}},{"id":"997d4a62f832f29218d40346145600ba06d3a3282a05c5096cfe97136d407d8a","name":"Do you have the following mental health conditions?","nameVisible":true,"description":"Check all that apply","slots":[{"id":"d04d16e635892803f65545ec342d0e71c674d80ce70748c7788a022f871fa4e1","type":"boolean","kind":"dynamic","reference":"f290473106a7381ecdd5f6dc92823fc4f3df049a26750a612f7e4ae6b176cbbb","sequence":0,"label":"Choice","name":"Anxiety","alias":"anxiety","pipable":{"group":"Choice","label":"Choice","template":"name","alias":"mental_conditions"}},{"id":"c8d7c61f2e0f5cb1d067a49ef40a3a43f95cb976af81e8bad7d98cd7b13436d9","type":"boolean","kind":"dynamic","reference":"9bb7ff21d030dd604600372ef7dece31eb33a1505d13d43b5be0324a00455377","sequence":1,"label":"Choice","name":"Depression","alias":"depression","pipable":{"group":"Choice","label":"Choice","template":"name","alias":"mental_conditions"}},{"id":"44850b9676ee4fbbc7ee86e6a65245b9bf9da18ac0353d748d8479e9b4e79dc0","type":"boolean","kind":"dynamic","reference":"78667f88523134e501afaca08b4381d24029eb1d5f678cd6beec9ac67f1e1527","sequence":2,"label":"Choice","name":"Bipolar","alias":"bipolar","pipable":{"group":"Choice","label":"Choice","template":"name","alias":"mental_conditions"}},{"id":"5163950be27ffe766148a5c3608f74e4416a9d1a2480677ef395c1b07ece9283","type":"boolean","kind":"dynamic","reference":"ece05468dcdc7dced6193d1d6eafefe16d8449641ccd617dcdf100984e081323","sequence":3,"label":"Choice","name":"Psychosis","alias":"psychosis","pipable":{"group":"Choice","label":"Choice","template":"name","alias":"mental_conditions"}},{"id":"731ea73c83015f9c4d1366eb300bb95e9c48a9e572d9daf20cb94ceb36ba8783","type":"boolean","kind":"dynamic","reference":"0e44edf02c00c1c826dc61c57ea3a47e26a2017383d35e3a4d75ad1ffaf58de2","sequence":4,"label":"Choice","name":"PTSD","alias":"ptsd","pipable":{"group":"Choice","label":"Choice","template":"name","alias":"mental_conditions"}},{"id":"c367277a20d5ef4f9a2d9f1685f061768549461bc511140768969c0cdaa8c2bc","type":"boolean","kind":"dynamic","reference":"a6adba8594adb80a266b4169d77e93eca41ff28b8831db78ee940300cc2dd551","sequence":5,"label":"Choice","name":"Substance Abuse","alias":"substance_abuse","pipable":{"group":"Choice","label":"Choice","template":"name","alias":"mental_conditions"}},{"id":"5d838d3af9727d350d30b2d636bc24fe4c35dedfa66cde4035f557631257cf16","type":"boolean","kind":"dynamic","reference":"32723c04d28d000d706486fcecf324829ec5133cf12e25595ea7f33071e5fd72","sequence":6,"label":"Choice","name":"Eating Disorder","alias":"eating_disorder","pipable":{"group":"Choice","label":"Choice","template":"name","alias":"mental_conditions"}}],"block":{"type":"tripetto-block-multiple-choice","version":"1.0.2","choices":[{"id":"f290473106a7381ecdd5f6dc92823fc4f3df049a26750a612f7e4ae6b176cbbb","name":"Anxiety","value":"anxiety"},{"id":"9bb7ff21d030dd604600372ef7dece31eb33a1505d13d43b5be0324a00455377","name":"Depression","value":"depression"},{"id":"78667f88523134e501afaca08b4381d24029eb1d5f678cd6beec9ac67f1e1527","name":"Bipolar","value":"bipolar"},{"id":"ece05468dcdc7dced6193d1d6eafefe16d8449641ccd617dcdf100984e081323","name":"Psychosis","value":"psychosis"},{"id":"0e44edf02c00c1c826dc61c57ea3a47e26a2017383d35e3a4d75ad1ffaf58de2","name":"PTSD","value":"ptsd"},{"id":"a6adba8594adb80a266b4169d77e93eca41ff28b8831db78ee940300cc2dd551","name":"Substance Abuse","value":"substance_abuse"},{"id":"32723c04d28d000d706486fcecf324829ec5133cf12e25595ea7f33071e5fd72","name":"Eating Disorder","value":"eating_disorder"}],"multiple":true,"alignment":true,"alias":"mental_conditions"}}]},{"id":"54fdd6827c8c5e2e9a3c0f418ee40226cf3eb0b359d2fafff97c576c0830877b","name":"Mental health","nodes":[{"id":"0073bc37ef9059f47063d8c7ce07f8f6118fbc61586f84e6018cb5469bb36bc4","name":"How anxious are you feeling today?","nameVisible":true,"slots":[{"id":"29fcf0fb772dbc76578dcbe4d60c486b297e83ea092ec949acead0ac852bbfe0","type":"string","kind":"static","reference":"choice","label":"Choice","alias":"anxiety_level"}],"block":{"type":"tripetto-block-multiple-choice","version":"1.0.2","choices":[{"id":"0c1925b88c33c2c4e4b3fce5e79da565460dfad79a72cdac731684bcac15eeb0","name":"😀 Not at all","value":"5"},{"id":"7b5dc71b4792c477881dcf69e99def9322a2539fbe2837b46bdc1f9edde50078","name":"🙂 I'm fine","value":"4"},{"id":"6c8a6072ed83ebff8978a82588fb31374376ecfa0cbc4b34b7d9e79bb3e8ede4","name":"😐 Well, I don't know","value":"3"},{"id":"a3f0c6469628ed8cebdcd25d491be2de42195e339207e15e85aacb2a5e94a8b0","name":"😖 Really anxious","value":"2"},{"id":"8993c95bcca30fdcfa0d2c03604f53b8cf3808046ffdf4f153f55f45d06c2656","name":"😫 Super anxious","value":"1"}],"alias":"anxiety_level"}},{"id":"563174a034c0f052232ebb73267245b5ed9bf2fb6bfe189a0477e7977b1b553b","name":"How depressed are you feeling today?","nameVisible":true,"slots":[{"id":"807e0ed2c331938274954f29a29f8d57806786c2359caad7e28bdabb33768163","type":"string","kind":"static","reference":"choice","label":"Choice","alias":"depression_level"}],"block":{"type":"tripetto-block-multiple-choice","version":"1.0.2","choices":[{"id":"0c1925b88c33c2c4e4b3fce5e79da565460dfad79a72cdac731684bcac15eeb0","name":"😀 Not at all","value":"5"},{"id":"7b5dc71b4792c477881dcf69e99def9322a2539fbe2837b46bdc1f9edde50078","name":"🙂 I'm fine","value":"4"},{"id":"6c8a6072ed83ebff8978a82588fb31374376ecfa0cbc4b34b7d9e79bb3e8ede4","name":"😐 Well, I don't know","value":"3"},{"id":"a3f0c6469628ed8cebdcd25d491be2de42195e339207e15e85aacb2a5e94a8b0","name":"😞 Really depressed","value":"2"},{"id":"8993c95bcca30fdcfa0d2c03604f53b8cf3808046ffdf4f153f55f45d06c2656","name":"😭 Super depressed","value":"5"}],"alias":"depression_level"}},{"id":"7b3a97988f5b2e1c42802a2d30006c21451ce8a3d225ed4e6120897cab2049e1","name":"Are you experiencing any of the following events or anything that worries you have recently?","nameVisible":true,"slots":[{"id":"7e9c71d353ebdf1fe7b98faf7a8ec2aa73559d04b76b51d8727071398eecdfa7","type":"boolean","kind":"dynamic","reference":"d0500ef261ff3ab38a3d70270b129d751449f68f964786f763a97d09f1cbe15c","sequence":0,"label":"Checkbox","name":"Breakup or divorce","alias":"breakup","pipable":{"group":"Checkbox","label":"Checkbox","template":"name","alias":"events_worries"}},{"id":"45dc381823b3e100cf77067efff1a06ebfca60ed56ff1aaac2cc260782cef19c","type":"boolean","kind":"dynamic","reference":"27f376d0f7c7d6e34e4a30e84c177dbcd00a86fa0978533d33562599bd87b369","sequence":1,"label":"Checkbox","name":"Domestic violence","alias":"domestic_violence","pipable":{"group":"Checkbox","label":"Checkbox","template":"name","alias":"events_worries"}},{"id":"6d29221e00a2ea6d6b6d6d3f08f1ab200c95d03884d1f3d79048bd7659189ed0","type":"boolean","kind":"dynamic","reference":"3b9e5bbf66d35c29eeeaef34d5cacc787c4418a5b099eed8a5247e74b4d83799","sequence":2,"label":"Checkbox","name":"Death of family or loved ones","alias":"death_of_loved_ones","pipable":{"group":"Checkbox","label":"Checkbox","template":"name","alias":"events_worries"}},{"id":"67a51da83bcb23677f9ba688a2c8dfe2347933e6627a0dde84a934a892fcff85","type":"boolean","kind":"dynamic","reference":"4ac2debdb841c6990b0a719c1b949c0b62ede101aac4d95cfb899c0234e06b45","sequence":3,"label":"Checkbox","name":"Financial insecurity","pipable":{"group":"Checkbox","label":"Checkbox","template":"name","alias":"events_worries"}},{"id":"9443bdc2a586db786c43d2491b76dc976443fee8635e288bec78dedb2fb271bd","type":"boolean","kind":"dynamic","reference":"7a13c905dd025dd53457d8ee68942730612e87aedbd83b93a443122626cf6d58","sequence":4,"label":"Checkbox","name":"Lack of food security","alias":"food_insecurity","pipable":{"group":"Checkbox","label":"Checkbox","template":"name","alias":"events_worries"}},{"id":"1b157f6879895adccf77a23c63c7ea8211555d993cc7008f7214c0411ddb4b0d","type":"boolean","kind":"dynamic","reference":"fb33a2747ad7b74f1230cca963813d3d235d89c10afc5b22612ef64cb3a814d4","sequence":5,"label":"Checkbox","name":"Loss of home/shelter","alias":"loss_of_home","pipable":{"group":"Checkbox","label":"Checkbox","template":"name","alias":"events_worries"}},{"id":"ddb7fdf2388722722d0fdca98f123125e628e302fbfee38b86f9d3a61dd28a75","type":"boolean","kind":"dynamic","reference":"a077cbd650576a5918561d737828da8472ec3841a2800fe9250a4c17d2d44613","sequence":6,"label":"Checkbox","name":"Loss of job","alias":"loss_of_job","pipable":{"group":"Checkbox","label":"Checkbox","template":"name","alias":"events_worries"}},{"id":"fdd250425c8c8882480f7e06d2274e7c1167d7251c095a66c853bc1189777e65","type":"boolean","kind":"dynamic","reference":"7805efc1a6450f35715255e22349bb4e36b2611a28b39e9ec6e31abf7f428a12","sequence":7,"label":"Checkbox","name":"Hate crimes or harassments","alias":"hate_crime_harassments","pipable":{"group":"Checkbox","label":"Checkbox","template":"name","alias":"events_worries"}},{"id":"de68ac69263d402bfd132f09e6d06715fd7894ec476f94a7739c6c4fbfd36b54","type":"boolean","kind":"dynamic","reference":"8621f77e7ca9d1dbd90fbc78cd031c42c511f094e0f040db8bff800e696b9e29","sequence":8,"label":"Checkbox","name":"War or political unrest","alias":"war_political_unrest","pipable":{"group":"Checkbox","label":"Checkbox","template":"name","alias":"events_worries"}},{"id":"b40378dd6c63f1b5e9f3634334f8373ecbaab9dc5f25137f36753ec956453321","type":"boolean","kind":"dynamic","reference":"54bd7b9bfb3f5d3df9784869e5294b5d20cad946064b36c8a7790d97eac9489c","sequence":9,"label":"Checkbox","name":"Natural disasters","alias":"natural_disasters","pipable":{"group":"Checkbox","label":"Checkbox","template":"name","alias":"events_worries"}},{"id":"2805b689d79911ad89ad1f32042a4b9295860ec20f4745e13519d25472f62709","type":"boolean","kind":"dynamic","reference":"0b006182128bffc38d9bf128dc40510cebb864dedeb9dbb933718f1eb1387cf0","sequence":10,"label":"Checkbox","name":"Other","alias":"other","pipable":{"group":"Checkbox","label":"Checkbox","template":"name","alias":"events_worries"}}],"block":{"type":"tripetto-block-checkboxes","version":"2.0.2","checkboxes":[{"id":"d0500ef261ff3ab38a3d70270b129d751449f68f964786f763a97d09f1cbe15c","name":"Breakup or divorce","value":"breakup"},{"id":"27f376d0f7c7d6e34e4a30e84c177dbcd00a86fa0978533d33562599bd87b369","name":"Domestic violence","value":"domestic_violence"},{"id":"3b9e5bbf66d35c29eeeaef34d5cacc787c4418a5b099eed8a5247e74b4d83799","name":"Death of family or loved ones","value":"death_of_loved_ones"},{"id":"4ac2debdb841c6990b0a719c1b949c0b62ede101aac4d95cfb899c0234e06b45","name":"Financial insecurity"},{"id":"7a13c905dd025dd53457d8ee68942730612e87aedbd83b93a443122626cf6d58","name":"Lack of food security","value":"food_insecurity"},{"id":"fb33a2747ad7b74f1230cca963813d3d235d89c10afc5b22612ef64cb3a814d4","name":"Loss of home/shelter","value":"loss_of_home"},{"id":"a077cbd650576a5918561d737828da8472ec3841a2800fe9250a4c17d2d44613","name":"Loss of job","value":"loss_of_job"},{"id":"7805efc1a6450f35715255e22349bb4e36b2611a28b39e9ec6e31abf7f428a12","name":"Hate crimes or harassments","value":"hate_crime_harassments"},{"id":"8621f77e7ca9d1dbd90fbc78cd031c42c511f094e0f040db8bff800e696b9e29","name":"War or political unrest","value":"war_political_unrest"},{"id":"54bd7b9bfb3f5d3df9784869e5294b5d20cad946064b36c8a7790d97eac9489c","name":"Natural disasters","value":"natural_disasters"},{"id":"0b006182128bffc38d9bf128dc40510cebb864dedeb9dbb933718f1eb1387cf0","name":"Other","value":"other"}],"alias":"events_worries"}}],"branches":[{"id":"1b0d0e45313088ed53488bc1f495186ac18fd1df1d38882c2a5204fc3e31680a","name":"Other","clusters":[{"id":"bc1ad2ebbfb7b684e971e45c7644d5fde42c73d04ccf2dcd4b8d407037a9928d","name":"Worries Other","nodes":[{"id":"e853146e62d1f8958bd1759f53e7a1e1b46b5b224277a733f2919d433da38102","name":"What other events have bothered you or what other worries do you have?","nameVisible":true,"description":"If multiple, use semicolon as the separator. (e.g. Event 1;Event 2)","slots":[{"id":"db18ad98dcefcdb2b4beefd423f3184ea2cdb57007b97c21b774750e01395588","type":"text","kind":"static","reference":"value","label":"Multi-line text","alias":"events_worries_other"}],"block":{"type":"tripetto-block-textarea","version":"2.0.0"}}]}],"conditions":[{"id":"011c691101d5b7344ea4ec59a4e32eb0646281f2d3e2ab76fafbf88cf9352f37","block":{"checkbox":"0b006182128bffc38d9bf128dc40510cebb864dedeb9dbb933718f1eb1387cf0","type":"tripetto-block-checkboxes","version":"0.0.0","node":"7b3a97988f5b2e1c42802a2d30006c21451ce8a3d225ed4e6120897cab2049e1","slot":"2805b689d79911ad89ad1f32042a4b9295860ec20f4745e13519d25472f62709","checked":true}}]}]},{"id":"a4703231c3a4874a12499638a45697ea76a7a7c18395fa4d9c1860110e1a1ab4","name":"Seeking Help","nodes":[{"id":"78da917eb52c631687f1dd3a72518a95796f647c215a2c640088b9b65e751db3","name":"Have you tried talking to close friend or therapist about your worries?","nameVisible":true,"slots":[{"id":"deea315b708edb4003302dd4aea581e79a45ce44dc4743f75f3771d6d7b61e02","type":"string","kind":"static","reference":"answer","label":"Answer","alias":"talking_to_someone"}],"block":{"type":"tripetto-block-yes-no","version":"1.0.3"}},{"id":"1cc3c3e53c1b07867225d48d0511aa5dc5ec80965b8fad7502d9239a19070bcf","name":"What do you usually do to reduce stress?","nameVisible":true,"slots":[{"id":"bb19463f21cf70a5a9268df4b7055459c87e10b45f889b27c9f086c845ed1046","type":"boolean","kind":"dynamic","reference":"3223cc63df7f7db10209928d62e6ffe43f53baef16891d971978132595b88ed0","sequence":0,"label":"Choice","name":"Watch movies","alias":"watch_movies","pipable":{"group":"Choice","label":"Choice","template":"name","alias":"reduce_stress"}},{"id":"3a54f512c57b19783728b17ca4cc4efedfaabc4d70bdd56e1a531621d9e509b3","type":"boolean","kind":"dynamic","reference":"c1ed42f87fb66addb30e89807ebd5190eee87feb7bce0360f9a9262ed3fad5dc","sequence":1,"label":"Choice","name":"Play video games","alias":"video_games","pipable":{"group":"Choice","label":"Choice","template":"name","alias":"reduce_stress"}},{"id":"2c52b0127dabed65f1a8e230d7dfdaf02804f69c6cf6555cca4cb27fa0c0643d","type":"boolean","kind":"dynamic","reference":"88e8c0d884225174d38458f287d1814393d7a017c5a5748cdb377d2b006c4d30","sequence":2,"label":"Choice","name":"Exercise","alias":"exercise","pipable":{"group":"Choice","label":"Choice","template":"name","alias":"reduce_stress"}},{"id":"8da680c138cd48646c8d35e357ab4c0fd2be1905089838e346095b67847b93ef","type":"boolean","kind":"dynamic","reference":"a9a6b92746bb68a841d711c2a7b8fc307e45d81549a4afe3df1bf1ca968b7d0b","sequence":3,"label":"Choice","name":"Read books/blogs/articles","alias":"read","pipable":{"group":"Choice","label":"Choice","template":"name","alias":"reduce_stress"}},{"id":"3e416d1e8b350eb07730e6aa0beabf3cec77ff4c9cf16e1415319134d82204fd","type":"boolean","kind":"dynamic","reference":"0cdd113d89b52c3c0aaa0032b3a394a7ecf966ce2c8717aceffea5cb1e4f6a7b","sequence":4,"label":"Choice","name":"Catch up with friends","alias":"catch_up_with_friends","pipable":{"group":"Choice","label":"Choice","template":"name","alias":"reduce_stress"}},{"id":"e2fa9dd51fc197fa50356b6eba004eda3d7e977512fd4aeda2a27de510a2d02d","type":"boolean","kind":"dynamic","reference":"2242c309b121c502c867307e9bdf9350e136211e900f08bdd1ec7aeb2218ba20","sequence":5,"label":"Choice","name":"Listen to music","alias":"music","pipable":{"group":"Choice","label":"Choice","template":"name","alias":"reduce_stress"}},{"id":"33734d62a5124447facaee088f76b734bb421621bf83edf398b2f5360ce6a821","type":"boolean","kind":"dynamic","reference":"9173f67d32cc3b2b0abfa5bfbaad76479007ca800c9a1a67c3878545b4fd6feb","sequence":6,"label":"Choice","name":"Other","alias":"other","pipable":{"group":"Choice","label":"Choice","template":"name","alias":"reduce_stress"}}],"block":{"type":"tripetto-block-multiple-choice","version":"1.0.2","choices":[{"id":"3223cc63df7f7db10209928d62e6ffe43f53baef16891d971978132595b88ed0","name":"Watch movies","value":"watch_movies"},{"id":"c1ed42f87fb66addb30e89807ebd5190eee87feb7bce0360f9a9262ed3fad5dc","name":"Play video games","value":"video_games"},{"id":"88e8c0d884225174d38458f287d1814393d7a017c5a5748cdb377d2b006c4d30","name":"Exercise","value":"exercise"},{"id":"a9a6b92746bb68a841d711c2a7b8fc307e45d81549a4afe3df1bf1ca968b7d0b","name":"Read books/blogs/articles","value":"read"},{"id":"0cdd113d89b52c3c0aaa0032b3a394a7ecf966ce2c8717aceffea5cb1e4f6a7b","name":"Catch up with friends","value":"catch_up_with_friends"},{"id":"2242c309b121c502c867307e9bdf9350e136211e900f08bdd1ec7aeb2218ba20","name":"Listen to music","value":"music"},{"id":"9173f67d32cc3b2b0abfa5bfbaad76479007ca800c9a1a67c3878545b4fd6feb","name":"Other","value":"other"}],"multiple":true,"alias":"reduce_stress"}}],"branches":[{"id":"494a8f94f91bc2b700f9369663e6e6398005c4c747b92ea8801762ef0d2a0840","name":"Other","clusters":[{"id":"8b23acb9bafff16a5e91edc8c4fb129b3413c33f38395c8e36c51227df3da113","name":"Reduce Stress Other","nodes":[{"id":"a256bbfd3004f5296a16c7f0c807b3720984ba40e140752bc832a937aa007e6b","name":"Please specify the other things you do to reduce stress","nameVisible":true,"description":"If multiple, use semicolon as the separator. (e.g. Method 1;Method 2)","slots":[{"id":"655c64303d1a2a7ecad395137b9099e843c04ba0a694a83ba432a62934da12f5","type":"text","kind":"static","reference":"value","label":"Multi-line text","alias":"reduce_stress_other"}],"block":{"type":"tripetto-block-textarea","version":"2.0.0"}}]}],"conditions":[{"id":"a5b8494dedf16547b57b47622a0c0d6cb5a2b407a52a8eb5cd77e39d673698d9","block":{"choice":"9173f67d32cc3b2b0abfa5bfbaad76479007ca800c9a1a67c3878545b4fd6feb","type":"tripetto-block-multiple-choice","version":"0.0.0","node":"1cc3c3e53c1b07867225d48d0511aa5dc5ec80965b8fad7502d9239a19070bcf","slot":"33734d62a5124447facaee088f76b734bb421621bf83edf398b2f5360ce6a821"}}]}]}],"editor":{"name":"tripetto","version":"1.7.1"}}
+{
+  "name": "Emotional Health",
+  "clusters": [
+    {
+      "id": "0d7ede988305ae28899edae92ddc581798d5d40dd8373b816dd66fa82ba80845",
+      "name": "Health check",
+      "nodes": [
+        {
+          "id": "e707562ac819fe99f04b587d82847c4191f3854fc7ccff29b4d0baa53e3706a3",
+          "name": "How are you physically feeling today?",
+          "nameVisible": true,
+          "slots": [
+            {
+              "id": "ad1b6641b1d4edfcf573ec300839fbbaef9b5af7fcfa65fba8ba670cdd94acc8",
+              "type": "string",
+              "kind": "static",
+              "reference": "choice",
+              "label": "Choice",
+              "alias": "how_are_you_feeling"
+            }
+          ],
+          "block": {
+            "type": "tripetto-block-multiple-choice",
+            "version": "1.0.2",
+            "choices": [
+              {
+                "id": "b16ce8bb2293c4282dcce189046e928249e7d4199cdf6c443317171a0c7c0c49",
+                "name": "😀 Very Well",
+                "value": "5"
+              },
+              {
+                "id": "463e7b012959b106fa08108a1bd04fedfd076cedafca122e02e0158e7ee73e2a",
+                "name": "🙂 Well",
+                "value": "4"
+              },
+              {
+                "id": "d9274cbf2cd94d7a1e6c783bf2c592b4ca1b971a19e0f3608de2cfc6afb64985",
+                "name": "😐 Average",
+                "value": "3"
+              },
+              {
+                "id": "7dc3300d89ae18bb4d7dd5d144c7b7fef63c00fa8dd1c4c645cc4d2a889170bc",
+                "name": "🙁 Unwell",
+                "value": "2"
+              },
+              {
+                "id": "d3a0b8f6e06fce6b382b2325aa3faf666d8c6310f1d2cf1ad795ad6757f9d04c",
+                "name": "🥵 Very unwell",
+                "value": "1"
+              }
+            ],
+            "required": true,
+            "alias": "how_are_you_feeling"
+          }
+        },
+        {
+          "id": "6f3ec04c7602f54d415ffb654da7c61b69fd868511816f6204b46a02744069db",
+          "name": "Any new symptoms to report today?",
+          "nameVisible": true,
+          "description": "Check all that apply",
+          "slots": [
+            {
+              "id": "c316b7d9c8d830c2f22000bc1bf7049bb810845c37bb0a04970a1e414d60da34",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "b445dbaa22756bfc444bf63aa68ad6e20d3922e4a5b90f07b7d37f313082bd56",
+              "sequence": 0,
+              "label": "Choice",
+              "name": "Fever",
+              "alias": "fever",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "current_symptoms"
+              }
+            },
+            {
+              "id": "90b170269d1dde4bf265b1b960cc67b43f19adbaefea2c207a7cf9d984584da6",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "bc05cc927c5855c653d92729a07ffd4a25a77a78e3bcfb0436a93fde1d2fd69b",
+              "sequence": 1,
+              "label": "Choice",
+              "name": "Chills",
+              "alias": "chills",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "current_symptoms"
+              }
+            },
+            {
+              "id": "6ffaa53637ef737799f3e36d445c017dcdde902eeb23ca6d6ba87a8b81b8489c",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "e71cefd93b332d29ec46dad878fbd73537aad87c3c7ee452d0c9af3619606965",
+              "sequence": 2,
+              "label": "Choice",
+              "name": "Fatigue",
+              "alias": "fatigue",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "current_symptoms"
+              }
+            },
+            {
+              "id": "afcb92b87e0e83b01a04dea88548ee9c607f6048974a13e280698b6b4a48b769",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "9c25d4fe1f992e472ede6d93ac452be4ab4de118bc6e91e772b21e9ef52e301d",
+              "sequence": 3,
+              "label": "Choice",
+              "name": "Dry cough",
+              "alias": "dry_cough",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "current_symptoms"
+              }
+            },
+            {
+              "id": "009ce7c8ea19c41c5ce61e30510effe5eb142c0d161cd0ecf90060d11c3bdbe6",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "86b95a7898c76ad345b087e88d3e3bf3a6b9e32393b055bf783dd0b17fc47922",
+              "sequence": 4,
+              "label": "Choice",
+              "name": "Wet cough (sputum)",
+              "alias": "wet_cough",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "current_symptoms"
+              }
+            },
+            {
+              "id": "829acbbef041853984c8e350ef1286a02948b27062e8c43cbb9366c13a1eb30b",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "b26df6bd9b2169bea248902630e4453b2950e6a7c400fb6293db06ccab33bff3",
+              "sequence": 5,
+              "label": "Choice",
+              "name": "Shortness of breath",
+              "alias": "shortness_of_breath",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "current_symptoms"
+              }
+            },
+            {
+              "id": "a3d7071f56e779811250ae80528a22d585707c3a2c55c578555e41ec77e8ba70",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "60e87e28442a70637f65e7bf724379318d7587110d1e24de91cfb33d89038322",
+              "sequence": 6,
+              "label": "Choice",
+              "name": "Loss of taste",
+              "alias": "loss_of_taste",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "current_symptoms"
+              }
+            },
+            {
+              "id": "4417bcdb79cccdefec200b1b8d924e06a08191aa1e02845be8ed5f9c41f93760",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "e031e00ac2304e6572317cefdb2bc377c16d828e7d4987197cf7080b65b9c218",
+              "sequence": 7,
+              "label": "Choice",
+              "name": "Loss of smell",
+              "alias": "loss_of_smell",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "current_symptoms"
+              }
+            },
+            {
+              "id": "d1dd07b955443e148a7f9bf3e84b380a673f9e5fba6b203f98de4c023589a72b",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "e994dd99b311fd6178984f9e40a25479fd76921276abac5d9c3c3f68e44ccad4",
+              "sequence": 8,
+              "label": "Choice",
+              "name": "Abdominal pain",
+              "alias": "abdominal_pain",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "current_symptoms"
+              }
+            },
+            {
+              "id": "f8f4d739e5c0f7e00551934a3e2b51651d8300c8035d4958767bb71a6868207c",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "966d26c308c5904409e241141b2a93f4fc1eecf051e18b5490dbcb48fda19c5c",
+              "sequence": 9,
+              "label": "Choice",
+              "name": "Diarrhea",
+              "alias": "diarrhea",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "current_symptoms"
+              }
+            },
+            {
+              "id": "16122a0a950322f28da1024a84c5ebe0ba91a068acb0c85fc3161027caa2dbf9",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "ed0417ed72c4fa8feaa2f4936aeb13a4ffdba4e05f71c6bd6d0171e31800ab46",
+              "sequence": 10,
+              "label": "Choice",
+              "name": "Sore throat",
+              "alias": "sore_throat",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "current_symptoms"
+              }
+            },
+            {
+              "id": "328def629e48b508822becb484192b7e78e1e61764174f91d3c467039e46259b",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "709db7e580ca646ba2444af6bc8b6e6b75f045fa879239e08d513f3c85c6613b",
+              "sequence": 11,
+              "label": "Choice",
+              "name": "Nausea",
+              "alias": "nausea",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "current_symptoms"
+              }
+            },
+            {
+              "id": "eaf7842ce4f1c1aa4d9ebbadb6135930c124fa5627e8c832e066b456754957f0",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "51e61514fa745fe0fa04405522820c1efb188fcedcb7c32c9a7f7ce6c31e467b",
+              "sequence": 12,
+              "label": "Choice",
+              "name": "Vomiting",
+              "alias": "vomiting",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "current_symptoms"
+              }
+            },
+            {
+              "id": "093741cbccc92fb7d80ccd010e7fdae4760ae98e19eb90e9a62df8287cd5994c",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "4fcb77bca9f5a313f8f4657eb0144fd0b5539913120c9265b0916f5e974e27f1",
+              "sequence": 13,
+              "label": "Choice",
+              "name": "Pressure feeling in chest",
+              "alias": "pressure_in_chest",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "current_symptoms"
+              }
+            },
+            {
+              "id": "fd637072c66643bccc8f80310866cdd07cd96d6afe1e079bad0f8d0fcc694122",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "4d4ee1d5c4e3295436b19c35db8d14b61f0fe7a1a91477284bd5d13f7b757fb3",
+              "sequence": 14,
+              "label": "Choice",
+              "name": "Pink eye",
+              "alias": "pink_eye",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "current_symptoms"
+              }
+            },
+            {
+              "id": "8f1e0551f5d88957c456042461559c760f1968ac81684ae0a209d4d6a3f5bf19",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "0215084ab3983c73beac049496518dc62ca22366f58ebf75e531a19327580cc3",
+              "sequence": 15,
+              "label": "Choice",
+              "name": "Headache",
+              "alias": "headache",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "current_symptoms"
+              }
+            },
+            {
+              "id": "38de18878f2091df6c25dc8947bbb42fdeb1fd70d6dada85064b209fcd1fd753",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "f7357f48e1fae3b5e9ce9bdeaca4554a18f412b7bb0717d9c0a2c1467a385787",
+              "sequence": 16,
+              "label": "Choice",
+              "name": "Confusion",
+              "alias": "confusion",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "current_symptoms"
+              }
+            },
+            {
+              "id": "9703eaeb14d2ec1dcb99872ed950a8c84e198845ee1872485e86babc45bd6385",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "4126e08d0e625b9851ac392c646a8dc25832ad10dfc630cf45588ec51e06352c",
+              "sequence": 17,
+              "label": "Choice",
+              "name": "Rash on feet",
+              "alias": "rash_on_feet",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "current_symptoms"
+              }
+            }
+          ],
+          "block": {
+            "type": "tripetto-block-multiple-choice",
+            "version": "1.0.2",
+            "choices": [
+              {
+                "id": "b445dbaa22756bfc444bf63aa68ad6e20d3922e4a5b90f07b7d37f313082bd56",
+                "name": "Fever",
+                "value": "fever"
+              },
+              {
+                "id": "bc05cc927c5855c653d92729a07ffd4a25a77a78e3bcfb0436a93fde1d2fd69b",
+                "name": "Chills",
+                "value": "chills"
+              },
+              {
+                "id": "e71cefd93b332d29ec46dad878fbd73537aad87c3c7ee452d0c9af3619606965",
+                "name": "Fatigue",
+                "value": "fatigue"
+              },
+              {
+                "id": "9c25d4fe1f992e472ede6d93ac452be4ab4de118bc6e91e772b21e9ef52e301d",
+                "name": "Dry cough",
+                "value": "dry_cough"
+              },
+              {
+                "id": "86b95a7898c76ad345b087e88d3e3bf3a6b9e32393b055bf783dd0b17fc47922",
+                "name": "Wet cough (sputum)",
+                "value": "wet_cough"
+              },
+              {
+                "id": "b26df6bd9b2169bea248902630e4453b2950e6a7c400fb6293db06ccab33bff3",
+                "name": "Shortness of breath",
+                "value": "shortness_of_breath"
+              },
+              {
+                "id": "60e87e28442a70637f65e7bf724379318d7587110d1e24de91cfb33d89038322",
+                "name": "Loss of taste",
+                "value": "loss_of_taste"
+              },
+              {
+                "id": "e031e00ac2304e6572317cefdb2bc377c16d828e7d4987197cf7080b65b9c218",
+                "name": "Loss of smell",
+                "value": "loss_of_smell"
+              },
+              {
+                "id": "e994dd99b311fd6178984f9e40a25479fd76921276abac5d9c3c3f68e44ccad4",
+                "name": "Abdominal pain",
+                "value": "abdominal_pain"
+              },
+              {
+                "id": "966d26c308c5904409e241141b2a93f4fc1eecf051e18b5490dbcb48fda19c5c",
+                "name": "Diarrhea",
+                "value": "diarrhea"
+              },
+              {
+                "id": "ed0417ed72c4fa8feaa2f4936aeb13a4ffdba4e05f71c6bd6d0171e31800ab46",
+                "name": "Sore throat",
+                "value": "sore_throat"
+              },
+              {
+                "id": "709db7e580ca646ba2444af6bc8b6e6b75f045fa879239e08d513f3c85c6613b",
+                "name": "Nausea",
+                "value": "nausea"
+              },
+              {
+                "id": "51e61514fa745fe0fa04405522820c1efb188fcedcb7c32c9a7f7ce6c31e467b",
+                "name": "Vomiting",
+                "value": "vomiting"
+              },
+              {
+                "id": "4fcb77bca9f5a313f8f4657eb0144fd0b5539913120c9265b0916f5e974e27f1",
+                "name": "Pressure feeling in chest",
+                "value": "pressure_in_chest"
+              },
+              {
+                "id": "4d4ee1d5c4e3295436b19c35db8d14b61f0fe7a1a91477284bd5d13f7b757fb3",
+                "name": "Pink eye",
+                "value": "pink_eye"
+              },
+              {
+                "id": "0215084ab3983c73beac049496518dc62ca22366f58ebf75e531a19327580cc3",
+                "name": "Headache",
+                "value": "headache"
+              },
+              {
+                "id": "f7357f48e1fae3b5e9ce9bdeaca4554a18f412b7bb0717d9c0a2c1467a385787",
+                "name": "Confusion",
+                "value": "confusion"
+              },
+              {
+                "id": "4126e08d0e625b9851ac392c646a8dc25832ad10dfc630cf45588ec51e06352c",
+                "name": "Rash on feet",
+                "value": "rash_on_feet"
+              }
+            ],
+            "multiple": true,
+            "alignment": true,
+            "alias": "current_symptoms"
+          }
+        },
+        {
+          "id": "997d4a62f832f29218d40346145600ba06d3a3282a05c5096cfe97136d407d8a",
+          "name": "Do you have the following mental health conditions?",
+          "nameVisible": true,
+          "description": "Check all that apply",
+          "slots": [
+            {
+              "id": "d04d16e635892803f65545ec342d0e71c674d80ce70748c7788a022f871fa4e1",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "f290473106a7381ecdd5f6dc92823fc4f3df049a26750a612f7e4ae6b176cbbb",
+              "sequence": 0,
+              "label": "Choice",
+              "name": "Anxiety",
+              "alias": "anxiety",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "mental_illnesses"
+              }
+            },
+            {
+              "id": "c8d7c61f2e0f5cb1d067a49ef40a3a43f95cb976af81e8bad7d98cd7b13436d9",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "9bb7ff21d030dd604600372ef7dece31eb33a1505d13d43b5be0324a00455377",
+              "sequence": 1,
+              "label": "Choice",
+              "name": "Depression",
+              "alias": "depression",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "mental_illnesses"
+              }
+            },
+            {
+              "id": "44850b9676ee4fbbc7ee86e6a65245b9bf9da18ac0353d748d8479e9b4e79dc0",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "78667f88523134e501afaca08b4381d24029eb1d5f678cd6beec9ac67f1e1527",
+              "sequence": 2,
+              "label": "Choice",
+              "name": "Bipolar",
+              "alias": "bipolar",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "mental_illnesses"
+              }
+            },
+            {
+              "id": "5163950be27ffe766148a5c3608f74e4416a9d1a2480677ef395c1b07ece9283",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "ece05468dcdc7dced6193d1d6eafefe16d8449641ccd617dcdf100984e081323",
+              "sequence": 3,
+              "label": "Choice",
+              "name": "Psychosis",
+              "alias": "psychosis",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "mental_illnesses"
+              }
+            },
+            {
+              "id": "731ea73c83015f9c4d1366eb300bb95e9c48a9e572d9daf20cb94ceb36ba8783",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "0e44edf02c00c1c826dc61c57ea3a47e26a2017383d35e3a4d75ad1ffaf58de2",
+              "sequence": 4,
+              "label": "Choice",
+              "name": "PTSD",
+              "alias": "ptsd",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "mental_illnesses"
+              }
+            },
+            {
+              "id": "c367277a20d5ef4f9a2d9f1685f061768549461bc511140768969c0cdaa8c2bc",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "a6adba8594adb80a266b4169d77e93eca41ff28b8831db78ee940300cc2dd551",
+              "sequence": 5,
+              "label": "Choice",
+              "name": "Substance Abuse",
+              "alias": "substance_abuse",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "mental_illnesses"
+              }
+            },
+            {
+              "id": "5d838d3af9727d350d30b2d636bc24fe4c35dedfa66cde4035f557631257cf16",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "32723c04d28d000d706486fcecf324829ec5133cf12e25595ea7f33071e5fd72",
+              "sequence": 6,
+              "label": "Choice",
+              "name": "Eating Disorder",
+              "alias": "eating_disorder",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "mental_illnesses"
+              }
+            },
+            {
+              "id": "6dcf35657a85cc10006db8f9b3c82f55b6ddedd15fad460b722c5b64f2802897",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "1ecb1cb7d8867da03d25a5148baed13c1c1ada8a4d38dd820bffa159666d303c",
+              "sequence": 7,
+              "label": "Choice",
+              "name": "Other",
+              "alias": "other",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "mental_illnesses"
+              }
+            }
+          ],
+          "block": {
+            "type": "tripetto-block-multiple-choice",
+            "version": "1.0.2",
+            "choices": [
+              {
+                "id": "f290473106a7381ecdd5f6dc92823fc4f3df049a26750a612f7e4ae6b176cbbb",
+                "name": "Anxiety",
+                "value": "anxiety"
+              },
+              {
+                "id": "9bb7ff21d030dd604600372ef7dece31eb33a1505d13d43b5be0324a00455377",
+                "name": "Depression",
+                "value": "depression"
+              },
+              {
+                "id": "78667f88523134e501afaca08b4381d24029eb1d5f678cd6beec9ac67f1e1527",
+                "name": "Bipolar",
+                "value": "bipolar"
+              },
+              {
+                "id": "ece05468dcdc7dced6193d1d6eafefe16d8449641ccd617dcdf100984e081323",
+                "name": "Psychosis",
+                "value": "psychosis"
+              },
+              {
+                "id": "0e44edf02c00c1c826dc61c57ea3a47e26a2017383d35e3a4d75ad1ffaf58de2",
+                "name": "PTSD",
+                "value": "ptsd"
+              },
+              {
+                "id": "a6adba8594adb80a266b4169d77e93eca41ff28b8831db78ee940300cc2dd551",
+                "name": "Substance Abuse",
+                "value": "substance_abuse"
+              },
+              {
+                "id": "32723c04d28d000d706486fcecf324829ec5133cf12e25595ea7f33071e5fd72",
+                "name": "Eating Disorder",
+                "value": "eating_disorder"
+              },
+              {
+                "id": "1ecb1cb7d8867da03d25a5148baed13c1c1ada8a4d38dd820bffa159666d303c",
+                "name": "Other",
+                "value": "other"
+              }
+            ],
+            "multiple": true,
+            "alignment": true,
+            "alias": "mental_illnesses"
+          }
+        }
+      ],
+      "branches": [
+        {
+          "id": "e6510e46b3111040dde6ac56b33d9797991810b6df9d09b2d146d42822151c1f",
+          "name": "Other",
+          "clusters": [
+            {
+              "id": "094f04ca3be8643b57ca08b53fc3e687bfbdd86850ad4b1ed99c5791138a089e",
+              "name": "Mental illnesses other",
+              "nodes": [
+                {
+                  "id": "6b3aabd55dd8b44500d52a1e90c21efc7ae43325c266d9ca35c1e850ece2bf89",
+                  "name": "What other mental health conditions do you have?",
+                  "nameVisible": true,
+                  "description": "If multiple, use semicolons as the separators (For example, Condition 1; Condition 2; Condition 3)",
+                  "slots": [
+                    {
+                      "id": "b6be289cf46ab3af390ac3d607f9a53cdbe63aa55d9f940c030d00aa8ec99352",
+                      "type": "text",
+                      "kind": "static",
+                      "reference": "value",
+                      "label": "Multi-line text",
+                      "alias": "mental_illnesses_order"
+                    }
+                  ],
+                  "block": {
+                    "type": "tripetto-block-textarea",
+                    "version": "2.0.0"
+                  }
+                }
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "id": "ac0c08f8e94e18ab434006c46f74f8cfcf99313a1122a7cb3c56c730f5dc96e2",
+              "block": {
+                "choice": "1ecb1cb7d8867da03d25a5148baed13c1c1ada8a4d38dd820bffa159666d303c",
+                "type": "tripetto-block-multiple-choice",
+                "version": "0.0.0",
+                "node": "997d4a62f832f29218d40346145600ba06d3a3282a05c5096cfe97136d407d8a",
+                "slot": "6dcf35657a85cc10006db8f9b3c82f55b6ddedd15fad460b722c5b64f2802897"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "54fdd6827c8c5e2e9a3c0f418ee40226cf3eb0b359d2fafff97c576c0830877b",
+      "name": "Mental health",
+      "nodes": [
+        {
+          "id": "0073bc37ef9059f47063d8c7ce07f8f6118fbc61586f84e6018cb5469bb36bc4",
+          "name": "How anxious are you feeling today?",
+          "nameVisible": true,
+          "slots": [
+            {
+              "id": "29fcf0fb772dbc76578dcbe4d60c486b297e83ea092ec949acead0ac852bbfe0",
+              "type": "string",
+              "kind": "static",
+              "reference": "choice",
+              "label": "Choice",
+              "alias": "anxiety_level"
+            }
+          ],
+          "block": {
+            "type": "tripetto-block-multiple-choice",
+            "version": "1.0.2",
+            "choices": [
+              {
+                "id": "0c1925b88c33c2c4e4b3fce5e79da565460dfad79a72cdac731684bcac15eeb0",
+                "name": "😀 Not at all",
+                "value": "1"
+              },
+              {
+                "id": "7b5dc71b4792c477881dcf69e99def9322a2539fbe2837b46bdc1f9edde50078",
+                "name": "🙂 I'm fine",
+                "value": "2"
+              },
+              {
+                "id": "6c8a6072ed83ebff8978a82588fb31374376ecfa0cbc4b34b7d9e79bb3e8ede4",
+                "name": "😐 Well, I don't know",
+                "value": "3"
+              },
+              {
+                "id": "a3f0c6469628ed8cebdcd25d491be2de42195e339207e15e85aacb2a5e94a8b0",
+                "name": "😖 Really anxious",
+                "value": "4"
+              },
+              {
+                "id": "8993c95bcca30fdcfa0d2c03604f53b8cf3808046ffdf4f153f55f45d06c2656",
+                "name": "😫 Super anxious",
+                "value": "5"
+              }
+            ],
+            "alias": "anxiety_level"
+          }
+        },
+        {
+          "id": "563174a034c0f052232ebb73267245b5ed9bf2fb6bfe189a0477e7977b1b553b",
+          "name": "How depressed are you feeling today?",
+          "nameVisible": true,
+          "slots": [
+            {
+              "id": "807e0ed2c331938274954f29a29f8d57806786c2359caad7e28bdabb33768163",
+              "type": "string",
+              "kind": "static",
+              "reference": "choice",
+              "label": "Choice",
+              "alias": "depression_level"
+            }
+          ],
+          "block": {
+            "type": "tripetto-block-multiple-choice",
+            "version": "1.0.2",
+            "choices": [
+              {
+                "id": "0c1925b88c33c2c4e4b3fce5e79da565460dfad79a72cdac731684bcac15eeb0",
+                "name": "😀 Not at all",
+                "value": "1"
+              },
+              {
+                "id": "7b5dc71b4792c477881dcf69e99def9322a2539fbe2837b46bdc1f9edde50078",
+                "name": "🙂 I'm fine",
+                "value": "2"
+              },
+              {
+                "id": "6c8a6072ed83ebff8978a82588fb31374376ecfa0cbc4b34b7d9e79bb3e8ede4",
+                "name": "😐 Well, I don't know",
+                "value": "3"
+              },
+              {
+                "id": "a3f0c6469628ed8cebdcd25d491be2de42195e339207e15e85aacb2a5e94a8b0",
+                "name": "😞 Really depressed",
+                "value": "4"
+              },
+              {
+                "id": "8993c95bcca30fdcfa0d2c03604f53b8cf3808046ffdf4f153f55f45d06c2656",
+                "name": "😭 Super depressed",
+                "value": "5"
+              }
+            ],
+            "alias": "depression_level"
+          }
+        },
+        {
+          "id": "7b3a97988f5b2e1c42802a2d30006c21451ce8a3d225ed4e6120897cab2049e1",
+          "name": "Are you experiencing any of the following events or anything that worries you have recently?",
+          "nameVisible": true,
+          "slots": [
+            {
+              "id": "7e9c71d353ebdf1fe7b98faf7a8ec2aa73559d04b76b51d8727071398eecdfa7",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "d0500ef261ff3ab38a3d70270b129d751449f68f964786f763a97d09f1cbe15c",
+              "sequence": 0,
+              "label": "Checkbox",
+              "name": "Breakup or divorce",
+              "alias": "breakup_divorce",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "events_worries"
+              }
+            },
+            {
+              "id": "45dc381823b3e100cf77067efff1a06ebfca60ed56ff1aaac2cc260782cef19c",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "27f376d0f7c7d6e34e4a30e84c177dbcd00a86fa0978533d33562599bd87b369",
+              "sequence": 1,
+              "label": "Checkbox",
+              "name": "Domestic violence",
+              "alias": "domestic_violence",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "events_worries"
+              }
+            },
+            {
+              "id": "6d29221e00a2ea6d6b6d6d3f08f1ab200c95d03884d1f3d79048bd7659189ed0",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "3b9e5bbf66d35c29eeeaef34d5cacc787c4418a5b099eed8a5247e74b4d83799",
+              "sequence": 2,
+              "label": "Checkbox",
+              "name": "Death of family or loved ones",
+              "alias": "death_of_loved_ones",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "events_worries"
+              }
+            },
+            {
+              "id": "67a51da83bcb23677f9ba688a2c8dfe2347933e6627a0dde84a934a892fcff85",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "4ac2debdb841c6990b0a719c1b949c0b62ede101aac4d95cfb899c0234e06b45",
+              "sequence": 3,
+              "label": "Checkbox",
+              "name": "Financial insecurity",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "events_worries"
+              }
+            },
+            {
+              "id": "9443bdc2a586db786c43d2491b76dc976443fee8635e288bec78dedb2fb271bd",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "7a13c905dd025dd53457d8ee68942730612e87aedbd83b93a443122626cf6d58",
+              "sequence": 4,
+              "label": "Checkbox",
+              "name": "Lack of food security",
+              "alias": "food_insecurity",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "events_worries"
+              }
+            },
+            {
+              "id": "1b157f6879895adccf77a23c63c7ea8211555d993cc7008f7214c0411ddb4b0d",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "fb33a2747ad7b74f1230cca963813d3d235d89c10afc5b22612ef64cb3a814d4",
+              "sequence": 5,
+              "label": "Checkbox",
+              "name": "Loss of home/shelter",
+              "alias": "loss_of_home",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "events_worries"
+              }
+            },
+            {
+              "id": "ddb7fdf2388722722d0fdca98f123125e628e302fbfee38b86f9d3a61dd28a75",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "a077cbd650576a5918561d737828da8472ec3841a2800fe9250a4c17d2d44613",
+              "sequence": 6,
+              "label": "Checkbox",
+              "name": "Loss of job",
+              "alias": "loss_of_job",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "events_worries"
+              }
+            },
+            {
+              "id": "fdd250425c8c8882480f7e06d2274e7c1167d7251c095a66c853bc1189777e65",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "7805efc1a6450f35715255e22349bb4e36b2611a28b39e9ec6e31abf7f428a12",
+              "sequence": 7,
+              "label": "Checkbox",
+              "name": "Hate crimes or harassments",
+              "alias": "hate_crime_harassments",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "events_worries"
+              }
+            },
+            {
+              "id": "de68ac69263d402bfd132f09e6d06715fd7894ec476f94a7739c6c4fbfd36b54",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "8621f77e7ca9d1dbd90fbc78cd031c42c511f094e0f040db8bff800e696b9e29",
+              "sequence": 8,
+              "label": "Checkbox",
+              "name": "War or political unrest",
+              "alias": "war_political_unrest",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "events_worries"
+              }
+            },
+            {
+              "id": "b40378dd6c63f1b5e9f3634334f8373ecbaab9dc5f25137f36753ec956453321",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "54bd7b9bfb3f5d3df9784869e5294b5d20cad946064b36c8a7790d97eac9489c",
+              "sequence": 9,
+              "label": "Checkbox",
+              "name": "Natural disasters",
+              "alias": "natural_disasters",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "events_worries"
+              }
+            },
+            {
+              "id": "2805b689d79911ad89ad1f32042a4b9295860ec20f4745e13519d25472f62709",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "0b006182128bffc38d9bf128dc40510cebb864dedeb9dbb933718f1eb1387cf0",
+              "sequence": 10,
+              "label": "Checkbox",
+              "name": "Other",
+              "alias": "other",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "events_worries"
+              }
+            }
+          ],
+          "block": {
+            "type": "tripetto-block-checkboxes",
+            "version": "2.0.2",
+            "checkboxes": [
+              {
+                "id": "d0500ef261ff3ab38a3d70270b129d751449f68f964786f763a97d09f1cbe15c",
+                "name": "Breakup or divorce",
+                "value": "breakup_divorce"
+              },
+              {
+                "id": "27f376d0f7c7d6e34e4a30e84c177dbcd00a86fa0978533d33562599bd87b369",
+                "name": "Domestic violence",
+                "value": "domestic_violence"
+              },
+              {
+                "id": "3b9e5bbf66d35c29eeeaef34d5cacc787c4418a5b099eed8a5247e74b4d83799",
+                "name": "Death of family or loved ones",
+                "value": "death_of_loved_ones"
+              },
+              {
+                "id": "4ac2debdb841c6990b0a719c1b949c0b62ede101aac4d95cfb899c0234e06b45",
+                "name": "Financial insecurity"
+              },
+              {
+                "id": "7a13c905dd025dd53457d8ee68942730612e87aedbd83b93a443122626cf6d58",
+                "name": "Lack of food security",
+                "value": "food_insecurity"
+              },
+              {
+                "id": "fb33a2747ad7b74f1230cca963813d3d235d89c10afc5b22612ef64cb3a814d4",
+                "name": "Loss of home/shelter",
+                "value": "loss_of_home"
+              },
+              {
+                "id": "a077cbd650576a5918561d737828da8472ec3841a2800fe9250a4c17d2d44613",
+                "name": "Loss of job",
+                "value": "loss_of_job"
+              },
+              {
+                "id": "7805efc1a6450f35715255e22349bb4e36b2611a28b39e9ec6e31abf7f428a12",
+                "name": "Hate crimes or harassments",
+                "value": "hate_crime_harassments"
+              },
+              {
+                "id": "8621f77e7ca9d1dbd90fbc78cd031c42c511f094e0f040db8bff800e696b9e29",
+                "name": "War or political unrest",
+                "value": "war_political_unrest"
+              },
+              {
+                "id": "54bd7b9bfb3f5d3df9784869e5294b5d20cad946064b36c8a7790d97eac9489c",
+                "name": "Natural disasters",
+                "value": "natural_disasters"
+              },
+              {
+                "id": "0b006182128bffc38d9bf128dc40510cebb864dedeb9dbb933718f1eb1387cf0",
+                "name": "Other",
+                "value": "other"
+              }
+            ],
+            "alias": "events_worries"
+          }
+        }
+      ],
+      "branches": [
+        {
+          "id": "1b0d0e45313088ed53488bc1f495186ac18fd1df1d38882c2a5204fc3e31680a",
+          "name": "Other",
+          "clusters": [
+            {
+              "id": "bc1ad2ebbfb7b684e971e45c7644d5fde42c73d04ccf2dcd4b8d407037a9928d",
+              "name": "Worries Other",
+              "nodes": [
+                {
+                  "id": "e853146e62d1f8958bd1759f53e7a1e1b46b5b224277a733f2919d433da38102",
+                  "name": "What other events have bothered you or what other worries do you have?",
+                  "nameVisible": true,
+                  "description": "If multiple, use semicolon as the separator. (e.g. Event 1;Event 2)",
+                  "slots": [
+                    {
+                      "id": "db18ad98dcefcdb2b4beefd423f3184ea2cdb57007b97c21b774750e01395588",
+                      "type": "text",
+                      "kind": "static",
+                      "reference": "value",
+                      "label": "Multi-line text",
+                      "alias": "events_worries_other"
+                    }
+                  ],
+                  "block": {
+                    "type": "tripetto-block-textarea",
+                    "version": "2.0.0"
+                  }
+                }
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "id": "011c691101d5b7344ea4ec59a4e32eb0646281f2d3e2ab76fafbf88cf9352f37",
+              "block": {
+                "checkbox": "0b006182128bffc38d9bf128dc40510cebb864dedeb9dbb933718f1eb1387cf0",
+                "type": "tripetto-block-checkboxes",
+                "version": "0.0.0",
+                "node": "7b3a97988f5b2e1c42802a2d30006c21451ce8a3d225ed4e6120897cab2049e1",
+                "slot": "2805b689d79911ad89ad1f32042a4b9295860ec20f4745e13519d25472f62709",
+                "checked": true
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "a4703231c3a4874a12499638a45697ea76a7a7c18395fa4d9c1860110e1a1ab4",
+      "name": "Seeking Help",
+      "nodes": [
+        {
+          "id": "78da917eb52c631687f1dd3a72518a95796f647c215a2c640088b9b65e751db3",
+          "name": "Have you tried talking to close friend or therapist about your worries?",
+          "nameVisible": true,
+          "slots": [
+            {
+              "id": "deea315b708edb4003302dd4aea581e79a45ce44dc4743f75f3771d6d7b61e02",
+              "type": "string",
+              "kind": "static",
+              "reference": "answer",
+              "label": "Answer",
+              "alias": "talked_to_someone"
+            }
+          ],
+          "block": { "type": "tripetto-block-yes-no", "version": "1.0.3" }
+        },
+        {
+          "id": "1cc3c3e53c1b07867225d48d0511aa5dc5ec80965b8fad7502d9239a19070bcf",
+          "name": "What do you usually do to reduce stress during the pandemic?",
+          "nameVisible": true,
+          "slots": [
+            {
+              "id": "bb19463f21cf70a5a9268df4b7055459c87e10b45f889b27c9f086c845ed1046",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "3223cc63df7f7db10209928d62e6ffe43f53baef16891d971978132595b88ed0",
+              "sequence": 0,
+              "label": "Choice",
+              "name": "Watch movies",
+              "alias": "watch_movies",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "stress_reducing_methods"
+              }
+            },
+            {
+              "id": "3a54f512c57b19783728b17ca4cc4efedfaabc4d70bdd56e1a531621d9e509b3",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "c1ed42f87fb66addb30e89807ebd5190eee87feb7bce0360f9a9262ed3fad5dc",
+              "sequence": 1,
+              "label": "Choice",
+              "name": "Play video games",
+              "alias": "video_games",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "stress_reducing_methods"
+              }
+            },
+            {
+              "id": "2c52b0127dabed65f1a8e230d7dfdaf02804f69c6cf6555cca4cb27fa0c0643d",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "88e8c0d884225174d38458f287d1814393d7a017c5a5748cdb377d2b006c4d30",
+              "sequence": 2,
+              "label": "Choice",
+              "name": "Exercise",
+              "alias": "exercise",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "stress_reducing_methods"
+              }
+            },
+            {
+              "id": "8da680c138cd48646c8d35e357ab4c0fd2be1905089838e346095b67847b93ef",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "a9a6b92746bb68a841d711c2a7b8fc307e45d81549a4afe3df1bf1ca968b7d0b",
+              "sequence": 3,
+              "label": "Choice",
+              "name": "Read books/blogs/articles",
+              "alias": "read",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "stress_reducing_methods"
+              }
+            },
+            {
+              "id": "3e416d1e8b350eb07730e6aa0beabf3cec77ff4c9cf16e1415319134d82204fd",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "0cdd113d89b52c3c0aaa0032b3a394a7ecf966ce2c8717aceffea5cb1e4f6a7b",
+              "sequence": 4,
+              "label": "Choice",
+              "name": "Catch up with friends",
+              "alias": "catch_up_with_friends",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "stress_reducing_methods"
+              }
+            },
+            {
+              "id": "e2fa9dd51fc197fa50356b6eba004eda3d7e977512fd4aeda2a27de510a2d02d",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "2242c309b121c502c867307e9bdf9350e136211e900f08bdd1ec7aeb2218ba20",
+              "sequence": 5,
+              "label": "Choice",
+              "name": "Listen to music",
+              "alias": "music",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "stress_reducing_methods"
+              }
+            },
+            {
+              "id": "e96af3354894ce6ef1ed54421c5af6a5f39ff0f0f2d8f81878e746374526e1ae",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "c593551dbe78494ada5cbe10a65a38d93ea97522650a1c6d954274262fd732a3",
+              "sequence": 6,
+              "label": "Choice",
+              "name": "Meditation",
+              "alias": "meditation",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "stress_reducing_methods"
+              }
+            },
+            {
+              "id": "33734d62a5124447facaee088f76b734bb421621bf83edf398b2f5360ce6a821",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "9173f67d32cc3b2b0abfa5bfbaad76479007ca800c9a1a67c3878545b4fd6feb",
+              "sequence": 7,
+              "label": "Choice",
+              "name": "Other",
+              "alias": "other",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "stress_reducing_methods"
+              }
+            }
+          ],
+          "block": {
+            "type": "tripetto-block-multiple-choice",
+            "version": "1.0.2",
+            "choices": [
+              {
+                "id": "3223cc63df7f7db10209928d62e6ffe43f53baef16891d971978132595b88ed0",
+                "name": "Watch movies",
+                "value": "watch_movies"
+              },
+              {
+                "id": "c1ed42f87fb66addb30e89807ebd5190eee87feb7bce0360f9a9262ed3fad5dc",
+                "name": "Play video games",
+                "value": "video_games"
+              },
+              {
+                "id": "88e8c0d884225174d38458f287d1814393d7a017c5a5748cdb377d2b006c4d30",
+                "name": "Exercise",
+                "value": "exercise"
+              },
+              {
+                "id": "a9a6b92746bb68a841d711c2a7b8fc307e45d81549a4afe3df1bf1ca968b7d0b",
+                "name": "Read books/blogs/articles",
+                "value": "read"
+              },
+              {
+                "id": "0cdd113d89b52c3c0aaa0032b3a394a7ecf966ce2c8717aceffea5cb1e4f6a7b",
+                "name": "Catch up with friends",
+                "value": "catch_up_with_friends"
+              },
+              {
+                "id": "2242c309b121c502c867307e9bdf9350e136211e900f08bdd1ec7aeb2218ba20",
+                "name": "Listen to music",
+                "value": "music"
+              },
+              {
+                "id": "c593551dbe78494ada5cbe10a65a38d93ea97522650a1c6d954274262fd732a3",
+                "name": "Meditation",
+                "value": "meditation"
+              },
+              {
+                "id": "9173f67d32cc3b2b0abfa5bfbaad76479007ca800c9a1a67c3878545b4fd6feb",
+                "name": "Other",
+                "value": "other"
+              }
+            ],
+            "multiple": true,
+            "alias": "stress_reducing_methods"
+          }
+        }
+      ],
+      "branches": [
+        {
+          "id": "494a8f94f91bc2b700f9369663e6e6398005c4c747b92ea8801762ef0d2a0840",
+          "name": "Other",
+          "clusters": [
+            {
+              "id": "8b23acb9bafff16a5e91edc8c4fb129b3413c33f38395c8e36c51227df3da113",
+              "name": "Reduce Stress Other",
+              "nodes": [
+                {
+                  "id": "a256bbfd3004f5296a16c7f0c807b3720984ba40e140752bc832a937aa007e6b",
+                  "name": "Please specify the other things you do to reduce stress",
+                  "nameVisible": true,
+                  "description": "If multiple, use semicolon as the separator. (e.g. Method 1;Method 2)",
+                  "slots": [
+                    {
+                      "id": "655c64303d1a2a7ecad395137b9099e843c04ba0a694a83ba432a62934da12f5",
+                      "type": "text",
+                      "kind": "static",
+                      "reference": "value",
+                      "label": "Multi-line text",
+                      "alias": "stress_reducing_methods_other"
+                    }
+                  ],
+                  "block": {
+                    "type": "tripetto-block-textarea",
+                    "version": "2.0.0"
+                  }
+                }
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "id": "a5b8494dedf16547b57b47622a0c0d6cb5a2b407a52a8eb5cd77e39d673698d9",
+              "block": {
+                "choice": "9173f67d32cc3b2b0abfa5bfbaad76479007ca800c9a1a67c3878545b4fd6feb",
+                "type": "tripetto-block-multiple-choice",
+                "version": "0.0.0",
+                "node": "1cc3c3e53c1b07867225d48d0511aa5dc5ec80965b8fad7502d9239a19070bcf",
+                "slot": "33734d62a5124447facaee088f76b734bb421621bf83edf398b2f5360ce6a821"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "editor": { "name": "tripetto", "version": "1.7.1" }
+}

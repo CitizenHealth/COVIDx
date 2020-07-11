@@ -863,22 +863,22 @@
                       {
                         "id": "934150f5794827ef7243078b3a750ad6140915b2bb5cfd6d3fdab405e4d85271",
                         "name": "🙂 No fever",
-                        "value": "4"
+                        "value": "1"
                       },
                       {
                         "id": "91a204af50798dc0b7bc921abe4fb226c644dd4a7f0377af31b076dd90c1e48a",
-                        "name": "😷 Maybe feverish",
-                        "value": "3"
+                        "name": "🤒 Maybe feverish",
+                        "value": "2"
                       },
                       {
                         "id": "c1be32587d27603de0ce715a893b1b4ca3a17be9dcf68a8ceaabd3de7cd07107",
-                        "name": "🤒 Definitely feverish",
-                        "value": "2"
+                        "name": "😷 Definitely feverish",
+                        "value": "3"
                       },
                       {
                         "id": "6e6ba94835dd5ee79c102dba36c473c860c0644f635b8f1a19fee6f6ada65837",
                         "name": "🥵 Worst fever ever",
-                        "value": "1"
+                        "value": "4"
                       }
                     ],
                     "required": true,

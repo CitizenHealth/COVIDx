@@ -725,6 +725,20 @@
                 "label": "Checkbox",
                 "template": "name"
               }
+            },
+            {
+              "id": "a0d6c793066586e9efd0c77c00aa38940222da0198c7384b4f4777664816ff4d",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "f9e1d7d087270abf9a3f73a81788319a5c06cd4866d06a22b5cf2d63b9221d85",
+              "sequence": 5,
+              "label": "Checkbox",
+              "name": "None",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name"
+              }
             }
           ],
           "block": {
@@ -755,6 +769,10 @@
                 "id": "df904cfacb231d1b1c1b2d829fb63813d94373d9e251a2a53fc2ae663c71fa09",
                 "name": "Disinfect the floor",
                 "value": "disinfect_floor"
+              },
+              {
+                "id": "f9e1d7d087270abf9a3f73a81788319a5c06cd4866d06a22b5cf2d63b9221d85",
+                "name": "None"
               }
             ]
           }

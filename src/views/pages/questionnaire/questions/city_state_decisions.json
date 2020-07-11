@@ -464,7 +464,7 @@
               "kind": "static",
               "reference": "choice",
               "label": "Choice",
-              "alias": "how_do_you_feeling_leaving_house"
+              "alias": "governor_orders_rating"
             }
           ],
           "block": {
@@ -473,12 +473,12 @@
             "choices": [
               {
                 "id": "21bb75699d31e0bfbca56adafe0a494c2eb87b9c7cd86b259ed7ab351bea02de",
-                "name": "😀 Strongly Agree",
+                "name": "😀 Very Satisfied",
                 "value": "5"
               },
               {
                 "id": "c038873d5cf716d9a697c1a0cab280bb2704104f9f3059ca8f3b6f15568f67fb",
-                "name": "🙂 Agree",
+                "name": "🙂 Satisfied",
                 "value": "4"
               },
               {
@@ -488,16 +488,16 @@
               },
               {
                 "id": "3b33059810fe0f2280d98dd4bd9e3d277b94a8abcb8eca6e232c5e79d42d2469",
-                "name": "☹️ Disagree",
+                "name": "☹️ Dissatisfied",
                 "value": "2"
               },
               {
                 "id": "a83fadc4a24a7589ff842a432fb48ebdce4784c9ad94cdd4a9b66ae3dadb897b",
-                "name": "😡 Strongly Disagree",
+                "name": "😡 Strongly Dissatisfied",
                 "value": "1"
               }
             ],
-            "alias": "how_do_you_feeling_leaving_house"
+            "alias": "governor_orders_rating"
           }
         }
       ]

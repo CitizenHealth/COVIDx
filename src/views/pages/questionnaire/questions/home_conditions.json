@@ -573,22 +573,22 @@
                       {
                         "id": "934150f5794827ef7243078b3a750ad6140915b2bb5cfd6d3fdab405e4d85271",
                         "name": "🙂 No fever",
-                        "value": "no_fever"
+                        "value": "1"
                       },
                       {
                         "id": "91a204af50798dc0b7bc921abe4fb226c644dd4a7f0377af31b076dd90c1e48a",
-                        "name": "😕 Maybe feverish",
-                        "value": "maybe_feverish"
+                        "name": "🤒 Maybe feverish",
+                        "value": "2"
                       },
                       {
                         "id": "c1be32587d27603de0ce715a893b1b4ca3a17be9dcf68a8ceaabd3de7cd07107",
-                        "name": "🤒 Definitely feverish",
-                        "value": "definitely_feverish"
+                        "name": "😷 Definitely feverish",
+                        "value": "3"
                       },
                       {
                         "id": "6e6ba94835dd5ee79c102dba36c473c860c0644f635b8f1a19fee6f6ada65837",
-                        "name": "😷 Worst fever ever",
-                        "value": "worst_fever"
+                        "name": "🥵 Worst fever ever",
+                        "value": "4"
                       }
                     ],
                     "required": true,
@@ -636,27 +636,33 @@
             "choices": [
               {
                 "id": "c5a40cbca2d661777ce6e19f41bd3e92f01d32f6d4921baa55d0089fa96da35a",
-                "name": "Less than $20,000"
+                "name": "Less than $20,000",
+                "value": "less_than_20000"
               },
               {
                 "id": "1f1fa0ebb3ae92fe184e1938f0d48f36ab95d32874206c82900659dbb14cff3b",
-                "name": "$20,000 to $34,999"
+                "name": "$20,000 to $34,999",
+                "value": "20000_to_34999"
               },
               {
                 "id": "5b462263957be75c933e225cc87e00ec598726e0f8ab06942ff7d983ae6d0501",
-                "name": "$35,000 to $49,999"
+                "name": "$35,000 to $49,999",
+                "value": "35000_to_49999"
               },
               {
                 "id": "207a974fc5d183a8a15e4188d6a38c90ff4aba03c8649558a99e22d8758cb437",
-                "name": "$50,000 to $74,999"
+                "name": "$50,000 to $74,999",
+                "value": "50000_to_74999"
               },
               {
                 "id": "b17ddb78d648a267a3f8f4d6bb8b0d4e0eab5e191cd1be137f8655e4ca5154e3",
-                "name": "$75,000 to $99,999"
+                "name": "$75,000 to $99,999",
+                "value": "75000_to_99999"
               },
               {
                 "id": "30542cb597749e18f7875040339a15f152a062a6a4aad7796419c34ab0e0d8ad",
-                "name": "Over $100,000"
+                "name": "Over $100,000",
+                "value": "over_100000"
               }
             ],
             "alias": "income"
@@ -682,7 +688,7 @@
         },
         {
           "id": "12e9d201f0c5919953783376ac14fbad1c07c7cf02d5489bb032327e2a8ed16c",
-          "name": "What is your current housing condition?",
+          "name": "What type of house do you currently live in?",
           "nameVisible": true,
           "slots": [
             {
@@ -691,7 +697,7 @@
               "kind": "static",
               "reference": "choice",
               "label": "Choice",
-              "alias": "type_of_house"
+              "alias": "type_of_housing"
             }
           ],
           "block": {
@@ -724,7 +730,7 @@
                 "value": "homeless"
               }
             ],
-            "alias": "type_of_house"
+            "alias": "type_of_housing"
           }
         },
         {
