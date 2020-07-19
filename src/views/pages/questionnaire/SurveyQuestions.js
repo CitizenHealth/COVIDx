@@ -29,7 +29,10 @@ const SurveyQuestions = ({ match }) => {
         const fields = TripettoCollector.Export.fields(instance).fields;
 
         console.log(fields);
-        const survey_answers = parsingRules[match.params.questionType](fields);
+        const survey_answers = {
+          form: match.params.questionType,
+          responses: parsingRules[match.params.questionType](fields),
+        };
         console.log(survey_answers);
         if (survey_answers.hasOwnProperty("how_are_you_feeling")) {
           customPost(
