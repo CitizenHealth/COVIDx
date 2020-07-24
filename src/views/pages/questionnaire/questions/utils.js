@@ -58,7 +58,14 @@ export const parsingRules = {
       "events_worries",
       "stress_reducing_methods",
     ];
-    let result = extractAnswers(fields, multiple_choice_fields);
+    const numeric_fields = ["anxiety_level", "depression_level"];
+    let result = extractAnswers(
+      fields,
+      multiple_choice_fields,
+      [],
+      [],
+      numeric_fields
+    );
     return result;
   },
   personal_decisions: (fields) => {
