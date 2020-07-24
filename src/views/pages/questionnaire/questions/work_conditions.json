@@ -21,7 +21,7 @@
           ],
           "block": {
             "type": "tripetto-block-multiple-choice",
-            "version": "1.0.2",
+            "version": "2.0.0",
             "choices": [
               {
                 "id": "21bb75699d31e0bfbca56adafe0a494c2eb87b9c7cd86b259ed7ab351bea02de",
@@ -345,11 +345,91 @@
                 "template": "name",
                 "alias": "current_symptoms"
               }
+            },
+            {
+              "id": "970871e4dc7b24189fe1e618ec5481b8313cc2cb953505b83411c3fa0d87b529",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "c01f374a641d90ba6482c8c5a5a983d087221ba0f71a13cf3c65bf3bc36d04da",
+              "sequence": 18,
+              "label": "Choice",
+              "name": "Muscle pain",
+              "alias": "muscle_pain",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "current_symptoms"
+              }
+            },
+            {
+              "id": "8666780c2761b6dd6f82ffc72fe224fa98e0b38d0b98bf431e4df55fb8581ea5",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "db607156d68eb5900fca0fc1f67dde2d009180678a6e962810cffdfec22afc9a",
+              "sequence": 19,
+              "label": "Choice",
+              "name": "Chest pain",
+              "alias": "chest_pain",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "current_symptoms"
+              }
+            },
+            {
+              "id": "32679491de0a43a74528b7badc366db8982ba8be470d86efcd7981ee9642d123",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "f0bdb8bb7bb8d3e010da72cf4b3960825187318dd3b769d636ef60a11d435958",
+              "sequence": 20,
+              "label": "Choice",
+              "name": "Loss of appetite",
+              "alias": "loss_of_appetite",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "current_symptoms"
+              }
+            },
+            {
+              "id": "0e78e8ecfdd2f75f96a5342cdd5799d4822ca9a4ad404c787c66c90a08a65727",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "8bb5bd7b8a7c22002d38b03ba47fbb9e89fdab71243b90a01f1299146cfbf4d0",
+              "sequence": 21,
+              "label": "Choice",
+              "name": "Hoarseness",
+              "alias": "hoarseness",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "current_symptoms"
+              }
+            },
+            {
+              "id": "f8636b0579b8a263233c0f6c4e0e069919802d7bd5876029e48d1ef523e1b4e6",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "93c41ba8e9414b8c27874ddd3d7e8a3493164c94bfd62f1bf7fcfc1dac74eda8",
+              "sequence": 22,
+              "label": "Choice",
+              "name": "No symptoms",
+              "alias": "no_symptoms",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "current_symptoms"
+              }
             }
           ],
           "block": {
             "type": "tripetto-block-multiple-choice",
-            "version": "1.0.2",
+            "version": "2.0.0",
             "choices": [
               {
                 "id": "91cfb4d01e0f1a4211b3a84b0d0f0bc1b3a4c6413ffdabee7f624413ef83ea86",
@@ -440,6 +520,32 @@
                 "id": "c5416e3596a6df559170b7007778f02290185b33771ab06e2dc7c0714058c104",
                 "name": "Abdominal pain",
                 "value": "abdominal_pain"
+              },
+              {
+                "id": "c01f374a641d90ba6482c8c5a5a983d087221ba0f71a13cf3c65bf3bc36d04da",
+                "name": "Muscle pain",
+                "value": "muscle_pain"
+              },
+              {
+                "id": "db607156d68eb5900fca0fc1f67dde2d009180678a6e962810cffdfec22afc9a",
+                "name": "Chest pain",
+                "value": "chest_pain"
+              },
+              {
+                "id": "f0bdb8bb7bb8d3e010da72cf4b3960825187318dd3b769d636ef60a11d435958",
+                "name": "Loss of appetite",
+                "value": "loss_of_appetite"
+              },
+              {
+                "id": "8bb5bd7b8a7c22002d38b03ba47fbb9e89fdab71243b90a01f1299146cfbf4d0",
+                "name": "Hoarseness",
+                "value": "hoarseness"
+              },
+              {
+                "id": "93c41ba8e9414b8c27874ddd3d7e8a3493164c94bfd62f1bf7fcfc1dac74eda8",
+                "name": "No symptoms",
+                "value": "no_symptoms",
+                "exclusive": true
               }
             ],
             "multiple": true,
@@ -470,7 +576,7 @@
           ],
           "block": {
             "type": "tripetto-block-yes-no",
-            "version": "1.0.3",
+            "version": "2.0.0",
             "altYes": "Yes, I do",
             "altNo": "No, I don't have a job"
           }
@@ -485,7 +591,7 @@
               "id": "7c47e9b1d3536fa99eed01529b31ec31f99c38ef40d23add0b40c239dacd2e44",
               "block": {
                 "type": "tripetto-block-yes-no:no",
-                "version": "0.0.0",
+                "version": "2.0.0",
                 "node": "eb26c06e63db96032256af85193c96445e58e17acb5d98c4948c89827c2947e0",
                 "slot": "8e71ffb845899c3037dded62be18f563a63a36a6582651e156218bdee4bb4f54"
               }
@@ -2843,7 +2949,7 @@
           ],
           "block": {
             "type": "tripetto-block-checkboxes",
-            "version": "2.0.2",
+            "version": "3.0.0",
             "checkboxes": [
               {
                 "id": "610422247d7a512d33d92f78cb348f770ac7f2f886ec96987f1b574e80958666",
@@ -3593,7 +3699,7 @@
               "alias": "close_contact_with_people"
             }
           ],
-          "block": { "type": "tripetto-block-yes-no", "version": "1.0.3" }
+          "block": { "type": "tripetto-block-yes-no", "version": "2.0.0" }
         },
         {
           "id": "1435f07ff9d23f2654854ff1c0317864e2b15d86cf395615866c962321f815af",
@@ -3611,7 +3717,7 @@
           ],
           "block": {
             "type": "tripetto-block-multiple-choice",
-            "version": "1.0.2",
+            "version": "2.0.0",
             "choices": [
               {
                 "id": "e72ece52dc32fba1a3709975cc82fdf797e06700bb2f5ee2dffa957775664eec",
@@ -3642,87 +3748,61 @@
         {
           "id": "e45098ce9d74c6e9d05fe8eb3cb82fcda4e9b1cf142ff5e8860e1f6b61e954f5",
           "name": "Yes",
-          "clusters": [
-            {
-              "id": "4b5fff204f1f24f633fc8c7609de779d2e347b9a74dd3966070853259292b600",
-              "name": "Place of work",
-              "nodes": [
-                {
-                  "id": "5c3635147ab545dc8aa44587ffb9040e019d1f70867e371834e2992a97cbc159",
-                  "name": "Where do you drive, walk, or take public transit to work?",
-                  "nameVisible": true,
-                  "slots": [
-                    {
-                      "id": "69acd2fc987647337dec2fed04a3051d972c3125019f4581ea5a37a883cedb6f",
-                      "type": "text",
-                      "kind": "static",
-                      "reference": "value",
-                      "label": "Text",
-                      "alias": "where_do_you_work"
-                    }
-                  ],
-                  "block": { "type": "tripetto-block-text", "version": "2.0.0" }
-                },
-                {
-                  "id": "a8275984194da0c7bcd757c8f6496663b97f82a99056d05133b9aaaf593ef644",
-                  "name": "How many days in a week do you need to commute to work?",
-                  "nameVisible": true,
-                  "slots": [
-                    {
-                      "id": "257adf4b486557e7b37ef7a16e57a04df7536b51b47b478c9273a69f7ae70a63",
-                      "type": "numeric",
-                      "kind": "static",
-                      "reference": "number",
-                      "label": "Number",
-                      "alias": "days_need_to_commute",
-                      "minimum": 0,
-                      "maximum": 7
-                    }
-                  ],
-                  "block": {
-                    "type": "tripetto-block-number",
-                    "version": "2.0.0"
-                  }
-                }
-              ]
-            }
-          ],
           "conditions": [
             {
-              "id": "2e96a7375d29453daf8196c2a70502a6294a08795453a8cd73fede7497ae03f5",
+              "id": "13fc42038805cff9301cfbb5cf137e3a5c55626ffaafa4f36c408a9c5f1ee30e",
               "block": {
-                "choice": "5d7dc65b1492d94f43ab1c7877a0d32351804cfb1301bb6ef216917e879811f3",
-                "type": "tripetto-block-multiple-choice",
-                "version": "0.0.0",
-                "node": "1435f07ff9d23f2654854ff1c0317864e2b15d86cf395615866c962321f815af",
-                "slot": "f62318ba9f5f05984047eb9ec76934794abbb1bed2387b3c86437c14f68cf5ad"
-              }
-            },
-            {
-              "id": "16eebc9aae2e03e7c5f0dd4e6cfef3495bc980efce76930f11c090c0332e4176",
-              "block": {
-                "choice": "e1c03e93fd7bb340abb70fa3c82427a59b81ac2e6e9ac1856ed8abf166fb83da",
-                "type": "tripetto-block-multiple-choice",
-                "version": "0.0.0",
-                "node": "1435f07ff9d23f2654854ff1c0317864e2b15d86cf395615866c962321f815af",
-                "slot": "f62318ba9f5f05984047eb9ec76934794abbb1bed2387b3c86437c14f68cf5ad"
-              }
-            },
-            {
-              "id": "792fb916d1f41f8f12d56b52715a589bfa41b724641d0f07344c164b5a17a451",
-              "block": {
-                "choice": "40a19a875b05b6654d7d0b6d3e375466ec3f3489af308fb58361e17265ce8a4e",
-                "type": "tripetto-block-multiple-choice",
-                "version": "0.0.0",
-                "node": "1435f07ff9d23f2654854ff1c0317864e2b15d86cf395615866c962321f815af",
-                "slot": "f62318ba9f5f05984047eb9ec76934794abbb1bed2387b3c86437c14f68cf5ad"
+                "type": "tripetto-block-yes-no:no",
+                "version": "2.0.0",
+                "node": "69041109e9ac1e5007c6278b7e950d527c4c3b405925e868e8307e450c103e0b",
+                "slot": "81c4d4480c2a2ac0ebb39ae8a4b722529729396abd76bd47b74761cba77443e7"
               }
             }
           ],
-          "culling": "each"
+          "jump": "abort"
+        }
+      ]
+    },
+    {
+      "id": "4b5fff204f1f24f633fc8c7609de779d2e347b9a74dd3966070853259292b600",
+      "name": "Place of work",
+      "nodes": [
+        {
+          "id": "5c3635147ab545dc8aa44587ffb9040e019d1f70867e371834e2992a97cbc159",
+          "name": "Where do you drive, walk, or take public transit to work?",
+          "nameVisible": true,
+          "slots": [
+            {
+              "id": "69acd2fc987647337dec2fed04a3051d972c3125019f4581ea5a37a883cedb6f",
+              "type": "text",
+              "kind": "static",
+              "reference": "value",
+              "label": "Text",
+              "alias": "where_do_you_work"
+            }
+          ],
+          "block": { "type": "tripetto-block-text", "version": "3.0.0" }
+        },
+        {
+          "id": "a8275984194da0c7bcd757c8f6496663b97f82a99056d05133b9aaaf593ef644",
+          "name": "How many days in a week do you need to commute to work?",
+          "nameVisible": true,
+          "slots": [
+            {
+              "id": "257adf4b486557e7b37ef7a16e57a04df7536b51b47b478c9273a69f7ae70a63",
+              "type": "numeric",
+              "kind": "static",
+              "reference": "number",
+              "label": "Number",
+              "alias": "days_need_to_commute",
+              "minimum": 0,
+              "maximum": 7
+            }
+          ],
+          "block": { "type": "tripetto-block-number", "version": "4.0.0" }
         }
       ]
     }
   ],
-  "editor": { "name": "tripetto", "version": "1.7.1" }
+  "builder": { "name": "tripetto", "version": "2.0.1" }
 }

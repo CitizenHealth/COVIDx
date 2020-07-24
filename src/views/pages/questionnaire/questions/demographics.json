@@ -35,7 +35,7 @@
           ],
           "block": {
             "type": "tripetto-block-yes-no",
-            "version": "1.0.3",
+            "version": "2.0.0",
             "altYes": "I consent",
             "altNo": "I do not consent"
           }
@@ -50,7 +50,7 @@
               "id": "5d2f6f3c8a87f7c5cb9e763e5cb2211c0a896518a9c8e021de6d8e6b873c27b4",
               "block": {
                 "type": "tripetto-block-yes-no:no",
-                "version": "0.0.0",
+                "version": "2.0.0",
                 "node": "45c32fc3489daa72861b371358a3b52e956399beb71566b8413aa4332c5e3d7c",
                 "slot": "429a3d484fb50862de15ce14893deed2db1a62d0544e8b00efdcd2e7cc04bd73"
               }
@@ -68,6 +68,7 @@
           "id": "301be91ebd82ca1f7a495054fe18fc6853c1e502a58077b11078692a932d1296",
           "name": "How are you feeling today?",
           "nameVisible": true,
+          "description": "",
           "slots": [
             {
               "id": "f426a6b778845348ba413a40d556661c616adb4151a2d275bc703e0cd31576c3",
@@ -80,7 +81,7 @@
           ],
           "block": {
             "type": "tripetto-block-multiple-choice",
-            "version": "1.0.2",
+            "version": "2.0.0",
             "choices": [
               {
                 "id": "b16ce8bb2293c4282dcce189046e928249e7d4199cdf6c443317171a0c7c0c49",
@@ -246,27 +247,11 @@
               }
             },
             {
-              "id": "d1dd07b955443e148a7f9bf3e84b380a673f9e5fba6b203f98de4c023589a72b",
-              "type": "boolean",
-              "kind": "dynamic",
-              "reference": "e994dd99b311fd6178984f9e40a25479fd76921276abac5d9c3c3f68e44ccad4",
-              "sequence": 8,
-              "label": "Choice",
-              "name": "Abdominal pain",
-              "alias": "abdominal_pain",
-              "pipable": {
-                "group": "Choice",
-                "label": "Choice",
-                "template": "name",
-                "alias": "current_symptoms"
-              }
-            },
-            {
               "id": "f8f4d739e5c0f7e00551934a3e2b51651d8300c8035d4958767bb71a6868207c",
               "type": "boolean",
               "kind": "dynamic",
               "reference": "966d26c308c5904409e241141b2a93f4fc1eecf051e18b5490dbcb48fda19c5c",
-              "sequence": 9,
+              "sequence": 8,
               "label": "Choice",
               "name": "Diarrhea",
               "alias": "diarrhea",
@@ -282,7 +267,7 @@
               "type": "boolean",
               "kind": "dynamic",
               "reference": "ed0417ed72c4fa8feaa2f4936aeb13a4ffdba4e05f71c6bd6d0171e31800ab46",
-              "sequence": 10,
+              "sequence": 9,
               "label": "Choice",
               "name": "Sore throat",
               "alias": "sore_throat",
@@ -298,7 +283,7 @@
               "type": "boolean",
               "kind": "dynamic",
               "reference": "709db7e580ca646ba2444af6bc8b6e6b75f045fa879239e08d513f3c85c6613b",
-              "sequence": 11,
+              "sequence": 10,
               "label": "Choice",
               "name": "Nausea",
               "alias": "nausea",
@@ -314,7 +299,7 @@
               "type": "boolean",
               "kind": "dynamic",
               "reference": "51e61514fa745fe0fa04405522820c1efb188fcedcb7c32c9a7f7ce6c31e467b",
-              "sequence": 12,
+              "sequence": 11,
               "label": "Choice",
               "name": "Vomiting",
               "alias": "vomiting",
@@ -330,7 +315,7 @@
               "type": "boolean",
               "kind": "dynamic",
               "reference": "4fcb77bca9f5a313f8f4657eb0144fd0b5539913120c9265b0916f5e974e27f1",
-              "sequence": 13,
+              "sequence": 12,
               "label": "Choice",
               "name": "Pressure feeling in chest",
               "alias": "pressure_in_chest",
@@ -346,7 +331,7 @@
               "type": "boolean",
               "kind": "dynamic",
               "reference": "4d4ee1d5c4e3295436b19c35db8d14b61f0fe7a1a91477284bd5d13f7b757fb3",
-              "sequence": 14,
+              "sequence": 13,
               "label": "Choice",
               "name": "Pink eye",
               "alias": "pink_eye",
@@ -362,7 +347,7 @@
               "type": "boolean",
               "kind": "dynamic",
               "reference": "0215084ab3983c73beac049496518dc62ca22366f58ebf75e531a19327580cc3",
-              "sequence": 15,
+              "sequence": 14,
               "label": "Choice",
               "name": "Headache",
               "alias": "headache",
@@ -378,7 +363,7 @@
               "type": "boolean",
               "kind": "dynamic",
               "reference": "f7357f48e1fae3b5e9ce9bdeaca4554a18f412b7bb0717d9c0a2c1467a385787",
-              "sequence": 16,
+              "sequence": 15,
               "label": "Choice",
               "name": "Confusion",
               "alias": "confusion",
@@ -394,10 +379,106 @@
               "type": "boolean",
               "kind": "dynamic",
               "reference": "4126e08d0e625b9851ac392c646a8dc25832ad10dfc630cf45588ec51e06352c",
-              "sequence": 17,
+              "sequence": 16,
               "label": "Choice",
               "name": "Rash on feet",
               "alias": "rash_on_feet",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "current_symptoms"
+              }
+            },
+            {
+              "id": "d1dd07b955443e148a7f9bf3e84b380a673f9e5fba6b203f98de4c023589a72b",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "e994dd99b311fd6178984f9e40a25479fd76921276abac5d9c3c3f68e44ccad4",
+              "sequence": 17,
+              "label": "Choice",
+              "name": "Abdominal pain",
+              "alias": "abdominal_pain",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "current_symptoms"
+              }
+            },
+            {
+              "id": "ef42b37f1d04e56755df8d6a7626fd53f06f6933daedda019f9df70ec6d1e960",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "45ee985f703f3f0f62223907c70cb165eceebad23ed066471470e49a7848eca9",
+              "sequence": 18,
+              "label": "Choice",
+              "name": "Chest pain",
+              "alias": "chest_pain",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "current_symptoms"
+              }
+            },
+            {
+              "id": "050136975a909a524e7d6a83476a54e41455c8fb2cffeb0ed37b9fb56d27cee0",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "71e0a9a72e337846a17de794bc690e0fa65ea0ee47dbeaf8b12fe2e454d76d1d",
+              "sequence": 19,
+              "label": "Choice",
+              "name": "Muscle pain",
+              "alias": "muscle_pain",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "current_symptoms"
+              }
+            },
+            {
+              "id": "06a9e9d78ec9f3a0508b6c1e784cacb4c77d7f0cda8ec4a6b491d897fad2c51f",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "30f2ac09b8d506feb197c85a1b4660e207e38ee2791bd6a3ce79b6dc05304a2d",
+              "sequence": 20,
+              "label": "Choice",
+              "name": "Loss of appetite",
+              "alias": "loss_of_appetite",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "current_symptoms"
+              }
+            },
+            {
+              "id": "e47e83a1b9117e18fd0c16f44b0bab69f3b365c44b00075568d986ab1f44bf83",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "f43b9d55f6f16212b43d94f9f3b11f81c76cd76044082a5d81c8a0d4e70453b2",
+              "sequence": 21,
+              "label": "Choice",
+              "name": "Hoarseness",
+              "alias": "hoarseness",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "current_symptoms"
+              }
+            },
+            {
+              "id": "27c16045aad8abd5e3ed715209eaf9741c68d171fc0dc0a19f30ed8c6e7ee496",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "1eb923b4de5c5bcc92777f6e8ec6ab1ab87934ac1a959632aaf7259f62c62f61",
+              "sequence": 22,
+              "label": "Choice",
+              "name": "No symptoms",
+              "alias": "no_symptoms",
               "pipable": {
                 "group": "Choice",
                 "label": "Choice",
@@ -408,7 +489,7 @@
           ],
           "block": {
             "type": "tripetto-block-multiple-choice",
-            "version": "1.0.2",
+            "version": "2.0.0",
             "choices": [
               {
                 "id": "b445dbaa22756bfc444bf63aa68ad6e20d3922e4a5b90f07b7d37f313082bd56",
@@ -449,11 +530,6 @@
                 "id": "e031e00ac2304e6572317cefdb2bc377c16d828e7d4987197cf7080b65b9c218",
                 "name": "Loss of smell",
                 "value": "loss_of_smell"
-              },
-              {
-                "id": "e994dd99b311fd6178984f9e40a25479fd76921276abac5d9c3c3f68e44ccad4",
-                "name": "Abdominal pain",
-                "value": "abdominal_pain"
               },
               {
                 "id": "966d26c308c5904409e241141b2a93f4fc1eecf051e18b5490dbcb48fda19c5c",
@@ -499,6 +575,37 @@
                 "id": "4126e08d0e625b9851ac392c646a8dc25832ad10dfc630cf45588ec51e06352c",
                 "name": "Rash on feet",
                 "value": "rash_on_feet"
+              },
+              {
+                "id": "e994dd99b311fd6178984f9e40a25479fd76921276abac5d9c3c3f68e44ccad4",
+                "name": "Abdominal pain",
+                "value": "abdominal_pain"
+              },
+              {
+                "id": "45ee985f703f3f0f62223907c70cb165eceebad23ed066471470e49a7848eca9",
+                "name": "Chest pain",
+                "value": "chest_pain"
+              },
+              {
+                "id": "71e0a9a72e337846a17de794bc690e0fa65ea0ee47dbeaf8b12fe2e454d76d1d",
+                "name": "Muscle pain",
+                "value": "muscle_pain"
+              },
+              {
+                "id": "30f2ac09b8d506feb197c85a1b4660e207e38ee2791bd6a3ce79b6dc05304a2d",
+                "name": "Loss of appetite",
+                "value": "loss_of_appetite"
+              },
+              {
+                "id": "f43b9d55f6f16212b43d94f9f3b11f81c76cd76044082a5d81c8a0d4e70453b2",
+                "name": "Hoarseness",
+                "value": "hoarseness"
+              },
+              {
+                "id": "1eb923b4de5c5bcc92777f6e8ec6ab1ab87934ac1a959632aaf7259f62c62f61",
+                "name": "No symptoms",
+                "value": "no_symptoms",
+                "exclusive": true
               }
             ],
             "multiple": true,
@@ -520,7 +627,7 @@
               "alias": "have_thermometer"
             }
           ],
-          "block": { "type": "tripetto-block-yes-no", "version": "1.0.3" }
+          "block": { "type": "tripetto-block-yes-no", "version": "2.0.0" }
         }
       ],
       "branches": [
@@ -551,7 +658,7 @@
                   ],
                   "block": {
                     "type": "tripetto-block-number",
-                    "version": "2.0.0"
+                    "version": "4.0.0"
                   }
                 },
                 {
@@ -570,7 +677,7 @@
                   ],
                   "block": {
                     "type": "tripetto-block-multiple-choice",
-                    "version": "1.0.2",
+                    "version": "2.0.0",
                     "choices": [
                       {
                         "id": "596990764c3fca6fa4dbef41944d0466ad41aa7d0d857894c50c64d1c47a9eeb",
@@ -595,7 +702,7 @@
               "id": "36f0bc894d6fe76e71b85b31b427fa8daabb5f88ac5170c8230691024bc0e64f",
               "block": {
                 "type": "tripetto-block-yes-no:yes",
-                "version": "0.0.0",
+                "version": "2.0.0",
                 "node": "a47eb190e51e3d14fa13c66d68993233ea4b723a9200b21a6a47b42abf3ad0f5",
                 "slot": "149e7d62a9dd183106de47c5acda487abcbbd041a17c9ab12b393e776547d377"
               }
@@ -626,7 +733,7 @@
                   ],
                   "block": {
                     "type": "tripetto-block-multiple-choice",
-                    "version": "1.0.2",
+                    "version": "2.0.0",
                     "choices": [
                       {
                         "id": "934150f5794827ef7243078b3a750ad6140915b2bb5cfd6d3fdab405e4d85271",
@@ -661,7 +768,7 @@
               "id": "3e4a95af838b44a796af5e396a992447287d9368b7eacc638b64a3c274f055d8",
               "block": {
                 "type": "tripetto-block-yes-no:no",
-                "version": "0.0.0",
+                "version": "2.0.0",
                 "node": "a47eb190e51e3d14fa13c66d68993233ea4b723a9200b21a6a47b42abf3ad0f5",
                 "slot": "149e7d62a9dd183106de47c5acda487abcbbd041a17c9ab12b393e776547d377"
               }
@@ -691,7 +798,7 @@
               "maximum": 2200
             }
           ],
-          "block": { "type": "tripetto-block-number", "version": "2.0.0" }
+          "block": { "type": "tripetto-block-number", "version": "4.0.0" }
         },
         {
           "id": "cff5b35e48985105651d5a6df37139b416374d9eed1ee7c57e2ce8a53baa2f5e",
@@ -709,7 +816,7 @@
           ],
           "block": {
             "type": "tripetto-block-multiple-choice",
-            "version": "1.0.2",
+            "version": "2.0.0",
             "choices": [
               {
                 "id": "6d93e19de2fb0bff1f98279ee024a486847947be22979e9108b37eed36db2fe0",
@@ -757,7 +864,7 @@
           ],
           "block": {
             "type": "tripetto-block-dropdown",
-            "version": "2.0.0",
+            "version": "3.0.0",
             "options": [
               {
                 "id": "b961516d72ee147edb3b32a9b1fd5546884bac7456375eb900d8554503a265a7",
@@ -2031,7 +2138,7 @@
               "alias": "zip_code"
             }
           ],
-          "block": { "type": "tripetto-block-text", "version": "2.0.0" }
+          "block": { "type": "tripetto-block-text", "version": "3.0.0" }
         }
       ]
     },
@@ -2207,7 +2314,7 @@
           ],
           "block": {
             "type": "tripetto-block-multiple-choice",
-            "version": "1.0.2",
+            "version": "2.0.0",
             "choices": [
               {
                 "id": "25405aaed8574d445b94c056c0c9d2d6256aa21da3885292d8c2a0ee5f4158b9",
@@ -2289,7 +2396,7 @@
                       "alias": "race_other"
                     }
                   ],
-                  "block": { "type": "tripetto-block-text", "version": "2.0.0" }
+                  "block": { "type": "tripetto-block-text", "version": "3.0.0" }
                 }
               ]
             }
@@ -2300,7 +2407,7 @@
               "block": {
                 "choice": "5b5a5025c0ecbd829c242e83f10326ab5a029a3291e3a52413da35743f7c29e9",
                 "type": "tripetto-block-multiple-choice",
-                "version": "0.0.0",
+                "version": "2.0.0",
                 "node": "916e174f536eb7f5f19ab22c214510dedaa2b32727d5c0578d4aeebf220aef47",
                 "slot": "aa50ccb0e226094c0d86e859b70668b9478f7cf39c044162e4e7399d29868c5d"
               }
@@ -2705,7 +2812,7 @@
           ],
           "block": {
             "type": "tripetto-block-checkboxes",
-            "version": "2.0.2",
+            "version": "3.0.0",
             "checkboxes": [
               {
                 "id": "043360b0e08d5d6aa621b3f2da892a93dfe35af18cb567726fe48c13706141da",
@@ -2856,7 +2963,7 @@
                       "alias": "ethnicity_other"
                     }
                   ],
-                  "block": { "type": "tripetto-block-text", "version": "2.0.0" }
+                  "block": { "type": "tripetto-block-text", "version": "3.0.0" }
                 }
               ]
             }
@@ -2867,7 +2974,7 @@
               "block": {
                 "checkbox": "5cfb487e680724e11c2918e095c467cbfd8b17df38727b8be65d4818e1a11697",
                 "type": "tripetto-block-checkboxes",
-                "version": "0.0.0",
+                "version": "3.0.0",
                 "node": "1524c2e4ab3d6d847934f6a2499ad531f0e5cdce5af6738a26f8b30fa824a9ef",
                 "slot": "6d0c62a15492ed4decbb6297b609e73cec96daf7477415baf5eb08b8da0ae11f",
                 "checked": true
@@ -2898,10 +3005,10 @@
               "alias": "email"
             }
           ],
-          "block": { "type": "tripetto-block-email", "version": "2.0.0" }
+          "block": { "type": "tripetto-block-email", "version": "3.0.0" }
         }
       ]
     }
   ],
-  "editor": { "name": "tripetto", "version": "1.7.1" }
+  "builder": { "name": "tripetto", "version": "2.0.1" }
 }

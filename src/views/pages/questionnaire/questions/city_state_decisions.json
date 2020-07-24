@@ -21,7 +21,7 @@
           ],
           "block": {
             "type": "tripetto-block-multiple-choice",
-            "version": "1.0.2",
+            "version": "2.0.0",
             "choices": [
               {
                 "id": "21bb75699d31e0bfbca56adafe0a494c2eb87b9c7cd86b259ed7ab351bea02de",
@@ -345,11 +345,91 @@
                 "template": "name",
                 "alias": "current_symptoms"
               }
+            },
+            {
+              "id": "cc3e6e38ef0c2ef4481a7b63566be7120ee084ed2320b0e4556a94dd56dee24e",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "83ccf1f591a4998c17cbf6450d0d920918c0faee5b905ebc41309d19cc6db9f6",
+              "sequence": 18,
+              "label": "Choice",
+              "name": "Muscle pain",
+              "alias": "muscle_pain",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "current_symptoms"
+              }
+            },
+            {
+              "id": "073021fc84c5fb8e1eff0a0f0065f03d7c40d0a8b06fbc28791ea4606dd3afe7",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "63635612efc11b6e93476544034e1dad88faeb0b6ed52ca58b45b48ad967aebe",
+              "sequence": 19,
+              "label": "Choice",
+              "name": "Chest pain",
+              "alias": "chest_pain",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "current_symptoms"
+              }
+            },
+            {
+              "id": "26fdf9a3c0ec313f9faf7c70d4e98d0c461800746e4559c3789ff1ec340d4b57",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "c35dd6454846da71b21e25bd67eec97cfba52ed0c7cf51a695897196ad0461a2",
+              "sequence": 20,
+              "label": "Choice",
+              "name": "Loss of appetite",
+              "alias": "loss_of_appetite",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "current_symptoms"
+              }
+            },
+            {
+              "id": "2258b4e72345da5e2c49e7c9047533ef1fc5b6b63057acd84c8c3309fd59b62d",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "def8a75dbff4243eceb88abf9d49f405455d13292a33d751480a9ede3165dc0a",
+              "sequence": 21,
+              "label": "Choice",
+              "name": "Hoarseness",
+              "alias": "hoarseness",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "current_symptoms"
+              }
+            },
+            {
+              "id": "07b540a6ef5cfd2ca79a6a1019d30fc66363932cd369322fe777a9c8a5f4e22e",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "27071ee41a88a9a1390606035396b11c26f3ab27703eace0aa001facf5bb1eac",
+              "sequence": 22,
+              "label": "Choice",
+              "name": "No symptoms",
+              "alias": "no_symptoms",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "current_symptoms"
+              }
             }
           ],
           "block": {
             "type": "tripetto-block-multiple-choice",
-            "version": "1.0.2",
+            "version": "2.0.0",
             "choices": [
               {
                 "id": "91cfb4d01e0f1a4211b3a84b0d0f0bc1b3a4c6413ffdabee7f624413ef83ea86",
@@ -440,6 +520,32 @@
                 "id": "c5416e3596a6df559170b7007778f02290185b33771ab06e2dc7c0714058c104",
                 "name": "Abdominal pain",
                 "value": "abdominal_pain"
+              },
+              {
+                "id": "83ccf1f591a4998c17cbf6450d0d920918c0faee5b905ebc41309d19cc6db9f6",
+                "name": "Muscle pain",
+                "value": "muscle_pain"
+              },
+              {
+                "id": "63635612efc11b6e93476544034e1dad88faeb0b6ed52ca58b45b48ad967aebe",
+                "name": "Chest pain",
+                "value": "chest_pain"
+              },
+              {
+                "id": "c35dd6454846da71b21e25bd67eec97cfba52ed0c7cf51a695897196ad0461a2",
+                "name": "Loss of appetite",
+                "value": "loss_of_appetite"
+              },
+              {
+                "id": "def8a75dbff4243eceb88abf9d49f405455d13292a33d751480a9ede3165dc0a",
+                "name": "Hoarseness",
+                "value": "hoarseness"
+              },
+              {
+                "id": "27071ee41a88a9a1390606035396b11c26f3ab27703eace0aa001facf5bb1eac",
+                "name": "No symptoms",
+                "value": "no_symptoms",
+                "exclusive": true
               }
             ],
             "multiple": true,
@@ -469,7 +575,7 @@
           ],
           "block": {
             "type": "tripetto-block-multiple-choice",
-            "version": "1.0.2",
+            "version": "2.0.0",
             "choices": [
               {
                 "id": "21bb75699d31e0bfbca56adafe0a494c2eb87b9c7cd86b259ed7ab351bea02de",
@@ -503,5 +609,5 @@
       ]
     }
   ],
-  "editor": { "name": "tripetto", "version": "1.7.1" }
+  "builder": { "name": "tripetto", "version": "2.0.1" }
 }

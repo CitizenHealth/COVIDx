@@ -21,7 +21,7 @@
           ],
           "block": {
             "type": "tripetto-block-multiple-choice",
-            "version": "1.0.2",
+            "version": "2.0.0",
             "choices": [
               {
                 "id": "b16ce8bb2293c4282dcce189046e928249e7d4199cdf6c443317171a0c7c0c49",
@@ -345,11 +345,91 @@
                 "template": "name",
                 "alias": "current_symptoms"
               }
+            },
+            {
+              "id": "70bd1e5d4b52701a346c17f453d38a3fb945ee6d468db7b92472f31a20f09c73",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "0512a151a67703194523638efd8d1406ce5a75665770874f6d04e3b56448756e",
+              "sequence": 18,
+              "label": "Choice",
+              "name": "Muscle pain",
+              "alias": "muscle_pain",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "current_symptoms"
+              }
+            },
+            {
+              "id": "56c53fccbdc0d9d3ab3bf80de40c175b3e437d420eee63c236711827c0e97f8e",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "bbe7ad8e096a42ea506876b903f72ae2e71bf169942f7789eb0f1e19208a224e",
+              "sequence": 19,
+              "label": "Choice",
+              "name": "Chest pain",
+              "alias": "chest_pain",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "current_symptoms"
+              }
+            },
+            {
+              "id": "01a573456fd4ac9c65fe1e4037c6b611a2e62a431267259990e833482647d6bb",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "4abe50741f57915ca5ecd7e9e493e03177b2c675b34593536e4a7756287b36fa",
+              "sequence": 20,
+              "label": "Choice",
+              "name": "Loss of appetite",
+              "alias": "loss_of_appetite",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "current_symptoms"
+              }
+            },
+            {
+              "id": "93b1ff6b1e9f5a82b1ec50231e4ff7fcb129313e453df5958591fad0df112533",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "4c83f9c290e097de6426014bd396d72a38a843f6a5222b15bbfd7a44f3a76ca9",
+              "sequence": 21,
+              "label": "Choice",
+              "name": "Hoarseness",
+              "alias": "hoarseness",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "current_symptoms"
+              }
+            },
+            {
+              "id": "44be35cfdd79e084a2f41914553665d4c34bf363f06c16f2a301d5db6c040a86",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "175a847c43611069fa3af94eb981b248dc49a3fc468b3e8cdb9dda9e931ea4c5",
+              "sequence": 22,
+              "label": "Choice",
+              "name": "No symptoms",
+              "alias": "no_symptoms",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "current_symptoms"
+              }
             }
           ],
           "block": {
             "type": "tripetto-block-multiple-choice",
-            "version": "1.0.2",
+            "version": "2.0.0",
             "choices": [
               {
                 "id": "b445dbaa22756bfc444bf63aa68ad6e20d3922e4a5b90f07b7d37f313082bd56",
@@ -440,6 +520,32 @@
                 "id": "4126e08d0e625b9851ac392c646a8dc25832ad10dfc630cf45588ec51e06352c",
                 "name": "Rash on feet",
                 "value": "rash_on_feet"
+              },
+              {
+                "id": "0512a151a67703194523638efd8d1406ce5a75665770874f6d04e3b56448756e",
+                "name": "Muscle pain",
+                "value": "muscle_pain"
+              },
+              {
+                "id": "bbe7ad8e096a42ea506876b903f72ae2e71bf169942f7789eb0f1e19208a224e",
+                "name": "Chest pain",
+                "value": "chest_pain"
+              },
+              {
+                "id": "4abe50741f57915ca5ecd7e9e493e03177b2c675b34593536e4a7756287b36fa",
+                "name": "Loss of appetite",
+                "value": "loss_of_appetite"
+              },
+              {
+                "id": "4c83f9c290e097de6426014bd396d72a38a843f6a5222b15bbfd7a44f3a76ca9",
+                "name": "Hoarseness",
+                "value": "hoarseness"
+              },
+              {
+                "id": "175a847c43611069fa3af94eb981b248dc49a3fc468b3e8cdb9dda9e931ea4c5",
+                "name": "No symptoms",
+                "value": "no_symptoms",
+                "exclusive": true
               }
             ],
             "multiple": true,
@@ -462,7 +568,7 @@
               "required": true
             }
           ],
-          "block": { "type": "tripetto-block-yes-no", "version": "1.0.3" }
+          "block": { "type": "tripetto-block-yes-no", "version": "2.0.0" }
         }
       ],
       "branches": [
@@ -493,7 +599,7 @@
                   ],
                   "block": {
                     "type": "tripetto-block-number",
-                    "version": "2.0.0"
+                    "version": "4.0.0"
                   }
                 },
                 {
@@ -512,7 +618,7 @@
                   ],
                   "block": {
                     "type": "tripetto-block-multiple-choice",
-                    "version": "1.0.2",
+                    "version": "2.0.0",
                     "choices": [
                       {
                         "id": "596990764c3fca6fa4dbef41944d0466ad41aa7d0d857894c50c64d1c47a9eeb",
@@ -537,7 +643,7 @@
               "id": "36f0bc894d6fe76e71b85b31b427fa8daabb5f88ac5170c8230691024bc0e64f",
               "block": {
                 "type": "tripetto-block-yes-no:yes",
-                "version": "0.0.0",
+                "version": "2.0.0",
                 "node": "a47eb190e51e3d14fa13c66d68993233ea4b723a9200b21a6a47b42abf3ad0f5",
                 "slot": "149e7d62a9dd183106de47c5acda487abcbbd041a17c9ab12b393e776547d377"
               }
@@ -568,7 +674,7 @@
                   ],
                   "block": {
                     "type": "tripetto-block-multiple-choice",
-                    "version": "1.0.2",
+                    "version": "2.0.0",
                     "choices": [
                       {
                         "id": "934150f5794827ef7243078b3a750ad6140915b2bb5cfd6d3fdab405e4d85271",
@@ -603,7 +709,7 @@
               "id": "3e4a95af838b44a796af5e396a992447287d9368b7eacc638b64a3c274f055d8",
               "block": {
                 "type": "tripetto-block-yes-no:no",
-                "version": "0.0.0",
+                "version": "2.0.0",
                 "node": "a47eb190e51e3d14fa13c66d68993233ea4b723a9200b21a6a47b42abf3ad0f5",
                 "slot": "149e7d62a9dd183106de47c5acda487abcbbd041a17c9ab12b393e776547d377"
               }
@@ -632,7 +738,7 @@
           ],
           "block": {
             "type": "tripetto-block-multiple-choice",
-            "version": "1.0.2",
+            "version": "2.0.0",
             "choices": [
               {
                 "id": "c5a40cbca2d661777ce6e19f41bd3e92f01d32f6d4921baa55d0089fa96da35a",
@@ -684,7 +790,7 @@
               "maximum": 100
             }
           ],
-          "block": { "type": "tripetto-block-number", "version": "2.0.0" }
+          "block": { "type": "tripetto-block-number", "version": "4.0.0" }
         },
         {
           "id": "12e9d201f0c5919953783376ac14fbad1c07c7cf02d5489bb032327e2a8ed16c",
@@ -692,7 +798,7 @@
           "nameVisible": true,
           "slots": [
             {
-              "id": "bdd656e9990fd5fa5ed4f1d4406d7e9bb04d2ea132500062743fb9666070b67f",
+              "id": "ea0fe4ff13fe2af634cde4893c36fa462fcfae1c278c6c8414fe7204f2120cb1",
               "type": "string",
               "kind": "static",
               "reference": "choice",
@@ -702,7 +808,7 @@
           ],
           "block": {
             "type": "tripetto-block-multiple-choice",
-            "version": "1.0.2",
+            "version": "2.0.0",
             "choices": [
               {
                 "id": "32661d13eb0fc362f73448a94678ec76efe1106604aca941449a9301b0f7be9b",
@@ -747,10 +853,10 @@
               "alias": "social_distance_at_home"
             }
           ],
-          "block": { "type": "tripetto-block-yes-no", "version": "1.0.3" }
+          "block": { "type": "tripetto-block-yes-no", "version": "2.0.0" }
         }
       ]
     }
   ],
-  "editor": { "name": "tripetto", "version": "1.7.1" }
+  "builder": { "name": "tripetto", "version": "2.0.1" }
 }
