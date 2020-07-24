@@ -174,8 +174,10 @@ const extractAnswers = (
     ) {
       choices.pop();
       const other_groups = finalResult[other_label]
-        .split(/;\s*/g)
-        .map((str) => str.toLowerCase().replace(/[\s|-]+|-/g, "_"));
+        ? finalResult[other_label]
+            .split(/;\s*/g)
+            .map((str) => str.toLowerCase().replace(/[\s|-]+|-/g, "_"))
+        : [];
       choices.push(...other_groups);
     }
     if (finalResult.hasOwnProperty(other_label)) {
@@ -188,14 +190,12 @@ const extractAnswers = (
 
   // process strings with multiple items
   multi_items_string_fields.forEach((field) => {
-    if (finalResult[field] === undefined) {
-      finalResult[field] = [];
-    } else {
-      const items = finalResult[field]
-        .split(/;\s*/g)
-        .map((str) => str.toLowerCase().replace(/[\s|-]+|-/g, "_"));
-      finalResult[field] = items;
-    }
+    const items = finalResult[field]
+      ? finalResult[field]
+          .split(/;\s*/g)
+          .map((str) => str.toLowerCase().replace(/[\s|-]+|-/g, "_"))
+      : [];
+    finalResult[field] = items;
   });
 
   // process numeric fields
