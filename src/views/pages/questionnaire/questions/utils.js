@@ -206,6 +206,8 @@ const extractAnswers = (
       else finalResult[field] = parseInt(finalResult[field]);
     }
   });
-
+  Object.keys(finalResult).forEach(
+    (key) => finalResult[key] == null && delete finalResult[key]
+  );
   return finalResult;
 };
