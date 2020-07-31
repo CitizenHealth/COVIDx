@@ -34,7 +34,7 @@ const SurveyQuestions = ({ match }) => {
           responses: parsingRules[match.params.questionType](fields),
         };
         console.log(survey_answers);
-        if (survey_answers.hasOwnProperty("how_are_you_feeling")) {
+        if (survey_answers["responses"].hasOwnProperty("how_are_you_feeling")) {
           customPost(
             "/health_checkin/response",
             user.accessToken,
