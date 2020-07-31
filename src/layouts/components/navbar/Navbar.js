@@ -8,8 +8,7 @@ import InstallButton from "../../../components/install"
 
 const ThemeNavbar = props => {
   const colorsArr = [ "primary", "danger", "success", "info", "warning", "dark"]
-  const navbarTypes = ["floating" , "static" , "sticky" , "hidden"]  
-
+  const navbarTypes = ["floating" , "static" , "sticky" , "hidden"]
   return (
     <React.Fragment>
       <div className="content-overlay" />
@@ -50,10 +49,10 @@ const ThemeNavbar = props => {
               id="navbar-mobile"
             >
               <div className="bookmark-wrapper">
-                {/* <NavbarBookmarks */}
-                {/*   sidebarVisibility={props.sidebarVisibility} */}
-                {/*   handleAppOverlay={props.handleAppOverlay} */}
-                {/* /> */}
+                <NavbarBookmarks
+                  sidebarVisibility={props.sidebarVisibility}
+                  handleAppOverlay={props.handleAppOverlay}
+                />
               </div>
               {props.horizontal ? (
                 <div className="logo d-flex align-items-center">
