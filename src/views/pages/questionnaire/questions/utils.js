@@ -207,10 +207,9 @@ const extractAnswers = (
 
   // process numeric fields
   numeric_fields.forEach((field) => {
-    if (finalResult[field] !== undefined) {
-      if (finalResult[field].includes("."))
-        finalResult[field] = parseFloat(finalResult[field]);
-      else finalResult[field] = parseInt(finalResult[field]);
+    let n = finalResult[field];
+    if (!isNaN(parseFloat(n)) && isFinite(n)) {
+      finalResult[field] = parseFloat(n);
     }
   });
   Object.keys(finalResult).forEach(
