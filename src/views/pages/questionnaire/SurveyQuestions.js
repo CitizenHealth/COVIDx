@@ -24,8 +24,6 @@ const SurveyQuestions = ({ match }) => {
         autoFocus: false,
       },
       onFinish: (instance) => {
-        // TODO: Handle the collector results
-        // retrieve the individual fields:
         const fields = TripettoCollector.Export.fields(instance).fields;
 
         console.log(fields);
