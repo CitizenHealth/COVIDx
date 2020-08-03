@@ -1,0 +1,3808 @@
+{
+  "name": "Work Conditions",
+  "clusters": [
+    {
+      "id": "536bec4fec74e2d688bac731755e50e5fb2cb191832f82269dce4d02940ae607",
+      "name": "Health check",
+      "nodes": [
+        {
+          "id": "2a90205249149e7fbfad53b13aae7fb2b1ba0e152fbc16c0cb4aadffae388b94",
+          "name": "How are you feeling today?",
+          "nameVisible": true,
+          "slots": [
+            {
+              "id": "7d4e7ba5029a96fe6fdc3c03f127363fa5f9ac3d400c8292a31b04110ca305ee",
+              "type": "string",
+              "kind": "static",
+              "reference": "choice",
+              "label": "Choice",
+              "alias": "how_are_you_feeling"
+            }
+          ],
+          "block": {
+            "type": "tripetto-block-multiple-choice",
+            "version": "2.0.0",
+            "choices": [
+              {
+                "id": "21bb75699d31e0bfbca56adafe0a494c2eb87b9c7cd86b259ed7ab351bea02de",
+                "name": "😀 Very Well",
+                "value": "5"
+              },
+              {
+                "id": "c038873d5cf716d9a697c1a0cab280bb2704104f9f3059ca8f3b6f15568f67fb",
+                "name": "🙂 Well",
+                "value": "4"
+              },
+              {
+                "id": "2ae35a8b07665282ecfd03a61443d3bbbcae03f3296155683bc24e3090f2927b",
+                "name": "😐 Average",
+                "value": "3"
+              },
+              {
+                "id": "3b33059810fe0f2280d98dd4bd9e3d277b94a8abcb8eca6e232c5e79d42d2469",
+                "name": "🙁 Unwell",
+                "value": "2"
+              },
+              {
+                "id": "a83fadc4a24a7589ff842a432fb48ebdce4784c9ad94cdd4a9b66ae3dadb897b",
+                "name": "🥵 Very unwell",
+                "value": "1"
+              }
+            ],
+            "required": true,
+            "alias": "how_are_you_feeling"
+          }
+        },
+        {
+          "id": "c524652aa5ed5760f9974fc27ef99b486fab5d491f8e80b4177cb18eb62a29bf",
+          "name": "Do you currently have any of these symptoms?",
+          "nameVisible": true,
+          "slots": [
+            {
+              "id": "09758300eb4e4654719e0e2ae7b512ca226b793bd3d419c38eaa9351b20969e9",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "91cfb4d01e0f1a4211b3a84b0d0f0bc1b3a4c6413ffdabee7f624413ef83ea86",
+              "sequence": 0,
+              "label": "Choice",
+              "name": "Fever",
+              "alias": "fever",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "current_symptoms"
+              }
+            },
+            {
+              "id": "94c9c08f2c5a4a0f3f23bfcf1c3cf55ebaf255a321b41fda58a18e57e31a0d69",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "d3fac63173945be45caf8e9e75e627781a3fabdb98467296681b1bb0400f455d",
+              "sequence": 1,
+              "label": "Choice",
+              "name": "Chills",
+              "alias": "chills",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "current_symptoms"
+              }
+            },
+            {
+              "id": "4d42bc5531d28692eef548dccfd67c027d979a62c1c259b397fe3fda32fbdf6a",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "2dc0b3e0480b1513d3f6d6e5625f0508c05e3d306071dc67eec526e252128f75",
+              "sequence": 2,
+              "label": "Choice",
+              "name": "Fatigue",
+              "alias": "fatigue",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "current_symptoms"
+              }
+            },
+            {
+              "id": "6cd4c00cc5c5402afcae16223506bc059e0cea6c8ebc812865ae6f16d8c39756",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "c302feb96d7901fdc3d09bb818a2653494de5a05017919da921b858350cf259e",
+              "sequence": 3,
+              "label": "Choice",
+              "name": "Dry cough",
+              "alias": "dry_cough",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "current_symptoms"
+              }
+            },
+            {
+              "id": "41d163ea5d95b5a092cb9d82a773706e1d149a0dd2174561393fd3bdfada8356",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "8f770b22dbb0fd6a47d5f260665d7b3b540f4c1bc1e732211d2f321678db6a20",
+              "sequence": 4,
+              "label": "Choice",
+              "name": "Wet cough (sputum)",
+              "alias": "wet_cough",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "current_symptoms"
+              }
+            },
+            {
+              "id": "eb8cc7b492478de67da8f673b49740691a546f101c90ace83e936d835a1d3b97",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "9aea39e7feac653880f4d568df9cdbac36903c2336696db74f546c305f1b92c7",
+              "sequence": 5,
+              "label": "Choice",
+              "name": "Shortness of breath",
+              "alias": "shortness_breath",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "current_symptoms"
+              }
+            },
+            {
+              "id": "d63cdf90adfc7c916c26ab264f055fe420009a1d6a37c486c1181cf06b81bfe0",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "5959c1992f49ca1166ece1aceae180cdf93b94c30d6093d24690e827a38a103c",
+              "sequence": 6,
+              "label": "Choice",
+              "name": "Loss of taste",
+              "alias": "loss_of_taste",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "current_symptoms"
+              }
+            },
+            {
+              "id": "2c08064e4a259b66ca62bcb88087d74ea17c0d4fe6414a299e4bbdc7da155075",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "63605156f9e30199c2933dd27385c8710dec879d1cc5de25dbe208693fc8b00b",
+              "sequence": 7,
+              "label": "Choice",
+              "name": "Loss of smell",
+              "alias": "loss_of_smell",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "current_symptoms"
+              }
+            },
+            {
+              "id": "80c814a627a6c71d3294806aa45f8dbf7515f0294c5cde6c646418a3c36bc8fd",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "10f9086ae06e36a5948a9e91852002946368e7fc84ea429f837b468bc853c981",
+              "sequence": 8,
+              "label": "Choice",
+              "name": "Diarrhea",
+              "alias": "diarrhea",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "current_symptoms"
+              }
+            },
+            {
+              "id": "67cd1899a48bc1655bd406a132d9202831b17a927926cb8f8c3ad391bc79995e",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "550a1ff9efe97f03b1e7ebdc5f216972f37814a60b7a6928e42a4d1a769d6234",
+              "sequence": 9,
+              "label": "Choice",
+              "name": "Sore throat",
+              "alias": "sore_throat",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "current_symptoms"
+              }
+            },
+            {
+              "id": "3986118f323134eebd8b0915e887378f7c71b5e8efb280f8611c6ff45a5e876f",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "1ad46a77a5fca5b6219d27b189d176dfa76baaf8b4a6e0c3f7f4d7d80b9458fd",
+              "sequence": 10,
+              "label": "Choice",
+              "name": "Nausea",
+              "alias": "nausea",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "current_symptoms"
+              }
+            },
+            {
+              "id": "0d1dbcf74d382bc6abec7649a114727deba14323fbb1908a3eb00e2adc0f3b0e",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "5ae3f2609fe6a893ffc16cd5d2a5230148ff9ae1af407ede8f468e51f7616a63",
+              "sequence": 11,
+              "label": "Choice",
+              "name": "Vomiting",
+              "alias": "vomiting",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "current_symptoms"
+              }
+            },
+            {
+              "id": "3aa33e0ed6240a1e262237599d9ba914a405aeed22cb3ea372d7429df3b3c054",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "30fb4290933251092b84fe0ff3e0291fbfdf6bc64a493e49cd8dd8ab85bf9e08",
+              "sequence": 12,
+              "label": "Choice",
+              "name": "Pressure feeling in chest",
+              "alias": "pressure_in_chest",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "current_symptoms"
+              }
+            },
+            {
+              "id": "efe4aded01ca3ca0326fea51c6a82e6a72ccc2b8084aa3528a5b0cd48cb34589",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "c4686855956c9b13f4323a0381f862950207456d498c4649f493a05778c3818c",
+              "sequence": 13,
+              "label": "Choice",
+              "name": "Pink eye",
+              "alias": "pink_eye",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "current_symptoms"
+              }
+            },
+            {
+              "id": "4b847d2a62f82a66e3c589873b3bf2aa542b96e350d49edfd8a4d471a45c63ca",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "f5d9ee1c28a2cbd051efa5ca379f14a55a68c7bc578de74fcf51f4d4c6594ba5",
+              "sequence": 14,
+              "label": "Choice",
+              "name": "Headache",
+              "alias": "headache",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "current_symptoms"
+              }
+            },
+            {
+              "id": "0656abb1b2fbcce1524bbfe0860d129018650860aa5e8bee7c5fa1a086b1304d",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "67124b981639fc0ef53685dc9ccaa62282a35047af23f76631f99a5f2e8cb81d",
+              "sequence": 15,
+              "label": "Choice",
+              "name": "Confusion",
+              "alias": "confusion",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "current_symptoms"
+              }
+            },
+            {
+              "id": "d40af9d9734cebfc0d9a4d796aff82f3709d2a0e3b23fb196e4a7eedd43f7cbf",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "c5509dcf4ea79367e6b274aa55995385a3e18b779a84b186a0fcb9d7a2f0de59",
+              "sequence": 16,
+              "label": "Choice",
+              "name": "Rash on feet",
+              "alias": "rash_on_feet",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "current_symptoms"
+              }
+            },
+            {
+              "id": "ae6bf591b422732c1aa6f23494f3f23c16772ed67e905ccc13802c20080d87d8",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "c5416e3596a6df559170b7007778f02290185b33771ab06e2dc7c0714058c104",
+              "sequence": 17,
+              "label": "Choice",
+              "name": "Abdominal pain",
+              "alias": "abdominal_pain",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "current_symptoms"
+              }
+            },
+            {
+              "id": "970871e4dc7b24189fe1e618ec5481b8313cc2cb953505b83411c3fa0d87b529",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "c01f374a641d90ba6482c8c5a5a983d087221ba0f71a13cf3c65bf3bc36d04da",
+              "sequence": 18,
+              "label": "Choice",
+              "name": "Muscle pain",
+              "alias": "muscle_pain",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "current_symptoms"
+              }
+            },
+            {
+              "id": "8666780c2761b6dd6f82ffc72fe224fa98e0b38d0b98bf431e4df55fb8581ea5",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "db607156d68eb5900fca0fc1f67dde2d009180678a6e962810cffdfec22afc9a",
+              "sequence": 19,
+              "label": "Choice",
+              "name": "Chest pain",
+              "alias": "chest_pain",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "current_symptoms"
+              }
+            },
+            {
+              "id": "32679491de0a43a74528b7badc366db8982ba8be470d86efcd7981ee9642d123",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "f0bdb8bb7bb8d3e010da72cf4b3960825187318dd3b769d636ef60a11d435958",
+              "sequence": 20,
+              "label": "Choice",
+              "name": "Loss of appetite",
+              "alias": "loss_of_appetite",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "current_symptoms"
+              }
+            },
+            {
+              "id": "0e78e8ecfdd2f75f96a5342cdd5799d4822ca9a4ad404c787c66c90a08a65727",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "8bb5bd7b8a7c22002d38b03ba47fbb9e89fdab71243b90a01f1299146cfbf4d0",
+              "sequence": 21,
+              "label": "Choice",
+              "name": "Hoarseness",
+              "alias": "hoarseness",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "current_symptoms"
+              }
+            },
+            {
+              "id": "f8636b0579b8a263233c0f6c4e0e069919802d7bd5876029e48d1ef523e1b4e6",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "93c41ba8e9414b8c27874ddd3d7e8a3493164c94bfd62f1bf7fcfc1dac74eda8",
+              "sequence": 22,
+              "label": "Choice",
+              "name": "No symptoms",
+              "alias": "no_symptoms",
+              "pipable": {
+                "group": "Choice",
+                "label": "Choice",
+                "template": "name",
+                "alias": "current_symptoms"
+              }
+            }
+          ],
+          "block": {
+            "type": "tripetto-block-multiple-choice",
+            "version": "2.0.0",
+            "choices": [
+              {
+                "id": "91cfb4d01e0f1a4211b3a84b0d0f0bc1b3a4c6413ffdabee7f624413ef83ea86",
+                "name": "Fever",
+                "value": "fever"
+              },
+              {
+                "id": "d3fac63173945be45caf8e9e75e627781a3fabdb98467296681b1bb0400f455d",
+                "name": "Chills",
+                "value": "chills"
+              },
+              {
+                "id": "2dc0b3e0480b1513d3f6d6e5625f0508c05e3d306071dc67eec526e252128f75",
+                "name": "Fatigue",
+                "value": "fatigue"
+              },
+              {
+                "id": "c302feb96d7901fdc3d09bb818a2653494de5a05017919da921b858350cf259e",
+                "name": "Dry cough",
+                "value": "dry_cough"
+              },
+              {
+                "id": "8f770b22dbb0fd6a47d5f260665d7b3b540f4c1bc1e732211d2f321678db6a20",
+                "name": "Wet cough (sputum)",
+                "value": "wet_cough"
+              },
+              {
+                "id": "9aea39e7feac653880f4d568df9cdbac36903c2336696db74f546c305f1b92c7",
+                "name": "Shortness of breath",
+                "value": "shortness_breath"
+              },
+              {
+                "id": "5959c1992f49ca1166ece1aceae180cdf93b94c30d6093d24690e827a38a103c",
+                "name": "Loss of taste",
+                "value": "loss_of_taste"
+              },
+              {
+                "id": "63605156f9e30199c2933dd27385c8710dec879d1cc5de25dbe208693fc8b00b",
+                "name": "Loss of smell",
+                "value": "loss_of_smell"
+              },
+              {
+                "id": "10f9086ae06e36a5948a9e91852002946368e7fc84ea429f837b468bc853c981",
+                "name": "Diarrhea",
+                "value": "diarrhea"
+              },
+              {
+                "id": "550a1ff9efe97f03b1e7ebdc5f216972f37814a60b7a6928e42a4d1a769d6234",
+                "name": "Sore throat",
+                "value": "sore_throat"
+              },
+              {
+                "id": "1ad46a77a5fca5b6219d27b189d176dfa76baaf8b4a6e0c3f7f4d7d80b9458fd",
+                "name": "Nausea",
+                "value": "nausea"
+              },
+              {
+                "id": "5ae3f2609fe6a893ffc16cd5d2a5230148ff9ae1af407ede8f468e51f7616a63",
+                "name": "Vomiting",
+                "value": "vomiting"
+              },
+              {
+                "id": "30fb4290933251092b84fe0ff3e0291fbfdf6bc64a493e49cd8dd8ab85bf9e08",
+                "name": "Pressure feeling in chest",
+                "value": "pressure_in_chest"
+              },
+              {
+                "id": "c4686855956c9b13f4323a0381f862950207456d498c4649f493a05778c3818c",
+                "name": "Pink eye",
+                "value": "pink_eye"
+              },
+              {
+                "id": "f5d9ee1c28a2cbd051efa5ca379f14a55a68c7bc578de74fcf51f4d4c6594ba5",
+                "name": "Headache",
+                "value": "headache"
+              },
+              {
+                "id": "67124b981639fc0ef53685dc9ccaa62282a35047af23f76631f99a5f2e8cb81d",
+                "name": "Confusion",
+                "value": "confusion"
+              },
+              {
+                "id": "c5509dcf4ea79367e6b274aa55995385a3e18b779a84b186a0fcb9d7a2f0de59",
+                "name": "Rash on feet",
+                "value": "rash_on_feet"
+              },
+              {
+                "id": "c5416e3596a6df559170b7007778f02290185b33771ab06e2dc7c0714058c104",
+                "name": "Abdominal pain",
+                "value": "abdominal_pain"
+              },
+              {
+                "id": "c01f374a641d90ba6482c8c5a5a983d087221ba0f71a13cf3c65bf3bc36d04da",
+                "name": "Muscle pain",
+                "value": "muscle_pain"
+              },
+              {
+                "id": "db607156d68eb5900fca0fc1f67dde2d009180678a6e962810cffdfec22afc9a",
+                "name": "Chest pain",
+                "value": "chest_pain"
+              },
+              {
+                "id": "f0bdb8bb7bb8d3e010da72cf4b3960825187318dd3b769d636ef60a11d435958",
+                "name": "Loss of appetite",
+                "value": "loss_of_appetite"
+              },
+              {
+                "id": "8bb5bd7b8a7c22002d38b03ba47fbb9e89fdab71243b90a01f1299146cfbf4d0",
+                "name": "Hoarseness",
+                "value": "hoarseness"
+              },
+              {
+                "id": "93c41ba8e9414b8c27874ddd3d7e8a3493164c94bfd62f1bf7fcfc1dac74eda8",
+                "name": "No symptoms",
+                "value": "no_symptoms",
+                "exclusive": true
+              }
+            ],
+            "multiple": true,
+            "alignment": true,
+            "alias": "current_symptoms"
+          }
+        }
+      ]
+    },
+    {
+      "id": "1be8eef3d36c0399b8f20017de963c0f5b223d1255b641d3b94c7bb5a4e92b34",
+      "name": "Work-related Questions",
+      "nodes": [
+        {
+          "id": "eb26c06e63db96032256af85193c96445e58e17acb5d98c4948c89827c2947e0",
+          "name": "Do you work?",
+          "nameVisible": true,
+          "slots": [
+            {
+              "id": "8e71ffb845899c3037dded62be18f563a63a36a6582651e156218bdee4bb4f54",
+              "type": "string",
+              "kind": "static",
+              "reference": "answer",
+              "label": "Answer",
+              "alias": "do_you_work",
+              "required": true
+            }
+          ],
+          "block": {
+            "type": "tripetto-block-yes-no",
+            "version": "2.0.0",
+            "altYes": "Yes, I do",
+            "altNo": "No, I don't have a job"
+          }
+        }
+      ],
+      "branches": [
+        {
+          "id": "868211580a77c6a5e272392963e8c0006ac4c035399c7a46ff11111800312bea",
+          "name": "No",
+          "conditions": [
+            {
+              "id": "7c47e9b1d3536fa99eed01529b31ec31f99c38ef40d23add0b40c239dacd2e44",
+              "block": {
+                "type": "tripetto-block-yes-no:no",
+                "version": "2.0.0",
+                "node": "eb26c06e63db96032256af85193c96445e58e17acb5d98c4948c89827c2947e0",
+                "slot": "8e71ffb845899c3037dded62be18f563a63a36a6582651e156218bdee4bb4f54"
+              }
+            }
+          ],
+          "jump": "abort"
+        }
+      ]
+    },
+    {
+      "id": "cde145c17f659c62d7fa340ef1d148dc21c38950fd7acf21bc3308cc23b3ff94",
+      "name": "Work-related Questions",
+      "nodes": [
+        {
+          "id": "d0cc8795a7c4f099247005adca48cbe9f9cc71733f90ed6b78dd07c218ffdaa5",
+          "name": "What industry/industries are you working for?",
+          "nameVisible": true,
+          "slots": [
+            {
+              "id": "1281782187f880eb570b1871fa44753dd4bc81d323be64b0eda55d2ff5751e2c",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "610422247d7a512d33d92f78cb348f770ac7f2f886ec96987f1b574e80958666",
+              "sequence": 0,
+              "label": "Checkbox",
+              "name": "Accounting",
+              "alias": "accounting",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "ac1be48db17762812490ef415a3dba913cfb9449af5b2512511e145177471e8b",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "d6985e89f117da06cb9bea3bd02a58b23b8dd26f394449d0ae52e27610c5b215",
+              "sequence": 1,
+              "label": "Checkbox",
+              "name": "Airlines/Aviation",
+              "alias": "airlines_aviation",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "24dbd51c1d1eac9f046c7bf479c0c170dc8206a7b3627b4b7424c3e0768d4f3c",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "f5c4940f5020b9a7e82b356c460a0ad77be8918670cd37e13c8c3c5c27bd2cba",
+              "sequence": 2,
+              "label": "Checkbox",
+              "name": "Alternative Dispute Resolution",
+              "alias": "alternative_dispute_resolution",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "402bb7d703593aaacf110770add1eb41e12b5dfab958a45cb556305d33bda533",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "150484f4a00f786ed22e2c18eb8fb43f5e4789d9dbdfcebe458703eced9f9724",
+              "sequence": 3,
+              "label": "Checkbox",
+              "name": "Alternative Medicine",
+              "alias": "alternative_medicine",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "25ab366a193edb2ba9ae90dfdada2e442f061e2eec68f6056d26d7811750c3d8",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "b9511777303e6e5e8fae0ee35e4e1823bfa6cf5f01491c95d4f7af50c2a885f1",
+              "sequence": 4,
+              "label": "Checkbox",
+              "name": "Animation",
+              "alias": "animation",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "ddce072c755331860f84cd5fe058b28bf3a06312e1f5bbdf60ad6ed3f046c6d1",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "40167791147f4eb91aa3da02b0b4c9146245649122132dd6cdcee240405b0173",
+              "sequence": 5,
+              "label": "Checkbox",
+              "name": "Apparel/Fashion",
+              "alias": "apparel_fashion",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "048d35a88a1e7109c50493eb5678a2558eb7b7bcda07095106bda5b8d946bda7",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "f0b0f9a2085b44d68e26ff887a3ea7f20de57294e564c9586f4d4203fc5e0c75",
+              "sequence": 6,
+              "label": "Checkbox",
+              "name": "Architecture/Planning",
+              "alias": "architecture_planning",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "1692ef6cd2027653f183bec4d3dbfc6d23ae3c7dc3c2614a04c4f933dda6dc93",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "68c5df4649d1a56ca17283a302c10c0fa2549b6171187a926a9b87643e6f3b3f",
+              "sequence": 7,
+              "label": "Checkbox",
+              "name": "Arts/Crafts",
+              "alias": "arts_crafts",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "851756679b851e5ed41dc1479ab384e6654b9e9f8ed0d7415087e1fb31cfcdc6",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "f51903d4b1a60926b406cfc24f89726b54307e9f709c74b7c1c0e1fd03b350ba",
+              "sequence": 8,
+              "label": "Checkbox",
+              "name": "Automotive",
+              "alias": "automotive",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "0dbe3f76aa3d3618ab15c5b15d76d7b42c298404eba6069589f9ab2ac1a044b3",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "d63e923bfc31031e4badde7ccebcd576932730cc957d3a1100d853c9f43bea0a",
+              "sequence": 9,
+              "label": "Checkbox",
+              "name": "Aviation/Aerospace",
+              "alias": "aviation_aerospace",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "84f306278ef2357a644c399dd6f7a530fc839c83bcf0a32fd0513ec642f346e7",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "8f9c5be14493adb9d548770fa18c944237dee303421684847a31be50ba2b3b1e",
+              "sequence": 10,
+              "label": "Checkbox",
+              "name": "Banking/Mortgage",
+              "alias": "banking_mortgage",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "b0146d10b75049ea7b5b8f077b97e51d7e7f2eaefca729d97d4a8db2f4f3887d",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "5cb068cfda07c52a1def4f0aec0d9f26fcecea616508f76ea4f32a30b709910d",
+              "sequence": 11,
+              "label": "Checkbox",
+              "name": "Biotechnology/Greentech",
+              "alias": "biotechnology_greentech",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "03609a7f9f0f95f3caa734f38186a43cd8a0efee509d36388a2907b6aa2dde54",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "671441de241e668444e3e9fd2d0f0abb9d6cf98b24d11e37c1961de397c17086",
+              "sequence": 12,
+              "label": "Checkbox",
+              "name": "Broadcast Media",
+              "alias": "broadcast_media",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "12114e37dd307637cf2bf1cab48b7acb0ba0345a1d5e01179e05477941708e8b",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "f35e9c1c5a3dab2c817e81976134e3becf26828dae799093d79a42f003e090e1",
+              "sequence": 13,
+              "label": "Checkbox",
+              "name": "Building Materials",
+              "alias": "building_materials",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "57869c943b3338cbd07f8781e025a5d6494d7b78335ea21b7fb7f5458deb59a2",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "a5fe194816af1e4741f2f5270f3e9f5af3d7e0f8ca104acbee98c01c6ffcb291",
+              "sequence": 14,
+              "label": "Checkbox",
+              "name": "Business Supplies/Equipment",
+              "alias": "business_supplies_equipment",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "5cea408d816817671d1952ddff7a96e8193675ce2535300b0dcb44b2e6f0a4e7",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "fc3c42a88c7173a82b48f93b060adc70556aecab878ec69b753356f0ede20632",
+              "sequence": 15,
+              "label": "Checkbox",
+              "name": "Capital Markets/Hedge Fund/Private Equity",
+              "alias": "capital_markets_hedge_fund_private_equity",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "bd3b98ab11d8ed7b5ccf325ef0ad6202c6fb7d7f8c467591a31c21af183a7fd2",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "749418f2ac61cadfba4e6f226bcd2c0996768453d53b893d07bb33a443e8d400",
+              "sequence": 16,
+              "label": "Checkbox",
+              "name": "Chemicals",
+              "alias": "chemicals",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "797567a78c1f3cefdf70fff731174bf26fa55390ee0f28bf7a42bd068a7d74d0",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "85dc23f68c7b475d39d2601c83cdb2fbbeecec3ce18772c70c420c7b344540cb",
+              "sequence": 17,
+              "label": "Checkbox",
+              "name": "Civic/Social Organization",
+              "alias": "civic_social_organization",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "a16dec38631d95e26d5e3d693e3acea0d346320cbe3bcc1d8fdfcfc43b451d3b",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "45126cc8768b03cddc47e2157384cc57c6e3959847a1f3eda2513a4af9a018a9",
+              "sequence": 18,
+              "label": "Checkbox",
+              "name": "Civil Engineering",
+              "alias": "civil_engineering",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "761d3afe47e24178543fb7d6f10586e309525df767e9b097676bcb383a3cbc4e",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "3b4c7a4841751940933461ce988998f5b0c05a2df3d31477af8f23bf8bdc9f09",
+              "sequence": 19,
+              "label": "Checkbox",
+              "name": "Commercial Real Estate",
+              "alias": "commercial_real_estate",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "bd8a01d8d6049ec72f4b1d620c423105a7ae0a027557c17b9f2d4438cb52b3ec",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "af535895f6b943784a683910268492fc3c94952742c8940930c71b998447bb65",
+              "sequence": 20,
+              "label": "Checkbox",
+              "name": "Computer Games",
+              "alias": "computer_games",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "0658b82fc7342471ec476af89c38829412e26c97ce911fecedf5a8d3b3dfe45f",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "23449b59d3ec22a5c50d929ceb88353da4bc6e11d62ab31da77d584be5a67857",
+              "sequence": 21,
+              "label": "Checkbox",
+              "name": "Computer Hardware",
+              "alias": "computer_hardware",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "b2c21e1f6996504c3f02040642ba85c9523f4c72f37b8a524db3935042dd3804",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "d40ebd9aa9d01d59699ea287bd1973f408142633adbfc559ac37d0e2a4c7b3f6",
+              "sequence": 22,
+              "label": "Checkbox",
+              "name": "Computer Networking",
+              "alias": "computer_networking",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "a0c37264d841532fefd43474f9b72d00e3c360278c0f25fae07f434dd6c0d27d",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "e03f7a0942e51b98467dcb5d07ba3678ddd9c5dd3dddde6a081c8102545a5ed3",
+              "sequence": 23,
+              "label": "Checkbox",
+              "name": "Computer Software/Engineering",
+              "alias": "computer_software_engineering",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "7fbc7353bb92fe586d63d12d4bddf90b7f54bc0d4fed7f7c29a0d93a907e01eb",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "27b256ccb5dbe86b5dc5bcb387e881d7d4fc207534195d998e508cf0e2371b5a",
+              "sequence": 24,
+              "label": "Checkbox",
+              "name": "Computer/Network Security",
+              "alias": "computer_network_security",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "364007016ce36ad2ca2cf7a5fe0369624176062a9328dc15fc1e612f8cb317f2",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "d05f82758bf145ccac1d0f6c6a1c340196bbf6e35a78415730b849b82f214382",
+              "sequence": 25,
+              "label": "Checkbox",
+              "name": "Construction",
+              "alias": "construction",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "7f3fecbf15c3c5677cd84a82ff655585fb0bf20d11c445d69a2bd863d4e13a11",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "63beeaec8f215c9941f655420cc4df66b4d167578d002cf239501c4126c5a3f7",
+              "sequence": 26,
+              "label": "Checkbox",
+              "name": "Consumer Electronics",
+              "alias": "consumer_electronics",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "bfa91631bc0ecab5938c19797eaba15f50cdf108a280da0c5a245e8262a35798",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "a76f9a02fa2113d37f32afffc283fedb2ab7885ebd825e1b66da6e0d37ded4c8",
+              "sequence": 27,
+              "label": "Checkbox",
+              "name": "Consumer Goods",
+              "alias": "consumer_goods",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "fe1909e74708c77fac213e624f5dd1b588d662ffd48247b0ef04d0bedaff25eb",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "15c1cd8ee86f968aa8b1118f4c984e8422dd94db7300acc637a3962f0cdf583d",
+              "sequence": 28,
+              "label": "Checkbox",
+              "name": "Consumer Services",
+              "alias": "consumer_services",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "0f90fffebdf93467523279deb10db2fdd8b3618980bfd4fc14dcdf9551c6e1ff",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "bd55b0d18461d3c45e99e6c12d2d9ecba39d72db79c8edd9e64e0ce135a8362a",
+              "sequence": 29,
+              "label": "Checkbox",
+              "name": "Cosmetics",
+              "alias": "cosmetics",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "1e85db2cb786f89d97943454bad84902708cbae035c40d531f4213b428083ed7",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "e22e3241e3676a6982655570d32e62457c59dea54106b42a853dc9cf61cd9856",
+              "sequence": 30,
+              "label": "Checkbox",
+              "name": "Dairy",
+              "alias": "dairy",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "483c575215de7e0d18d5d0e9c41e077a7574ff3d9ebba870b66ab7633c356595",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "3d5172b27744d5cd04018beae013f268a0c8e2f648fc9caca0b2bcc4bb410023",
+              "sequence": 31,
+              "label": "Checkbox",
+              "name": "Defense/Space",
+              "alias": "defense_space",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "13365a9776535b35b305eb8adfdfcfc1838c3cc9f8c1aeba3c2f0f43108616d9",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "4388cf751598fe938f83856d625294363d583c770126253225a3f46326156b3f",
+              "sequence": 32,
+              "label": "Checkbox",
+              "name": "Design",
+              "alias": "design",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "c714842dbf6d33c376c7b2d624916c28a3e8036b84d4bc550dbdd7be9a40ccf0",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "5bbb3d01050c34c4324ba7eabe32a4562af5e700a7dc37ea88b302d5825fc1d9",
+              "sequence": 33,
+              "label": "Checkbox",
+              "name": "E-Learning",
+              "alias": "e-learning",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "da4ad02b04d7dc5a301fdf49d46aae595f5ae8953cfeaca0c93ea6520dbfe7e3",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "09bf4d92e240acccd39ebe87aa7f41c31887ebe1c4051a5d39bd728ffe12a6d8",
+              "sequence": 34,
+              "label": "Checkbox",
+              "name": "Education Management",
+              "alias": "education_management",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "7e6d83c58f7325f717fe26d2bb2f5806fa6568f4df492ae17713f71bc4ec1c42",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "f9f2ee523671e22f32c7ea34792704a509369122b79157a20c4bf566e763a5cf",
+              "sequence": 35,
+              "label": "Checkbox",
+              "name": "Electrical/Electronic Manufacturing",
+              "alias": "electrical_electronic_manufacturing",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "b7447f6cd3647fa3e880c8c7e5e6d4d3c2c93bd7237ca58c61abb5ce9c4c8788",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "12c2c7bca404ca2acd28d75e49f2d6c186bd7266a4c7bfc69de70b9c82373f1c",
+              "sequence": 36,
+              "label": "Checkbox",
+              "name": "Entertainment/Movie Production",
+              "alias": "entertainment_movie_production",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "6765cd169f851975a9423be192f1d25c740e1a52ab0fb7c732cfed5a83c15632",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "f05bde7fc9b63068bf74f5d14e1eeaae1830176c36a44ca61b1837d482d86e3c",
+              "sequence": 37,
+              "label": "Checkbox",
+              "name": "Environmental Services",
+              "alias": "environmental_services",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "4a2dd57b0e548f73d4960770851e4555e6e2d76cb965f0c528305896337a1f90",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "bc9eb5fcdb130ce7f512fee2f4afcd0c5a7e76b9fdbf5c9349d03963496694a0",
+              "sequence": 38,
+              "label": "Checkbox",
+              "name": "Events Services",
+              "alias": "events_services",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "b8f3812302a6036f92909084c2223b4c7f9a7124516d032ba6fa8da410f9b1a8",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "d5401fe1adbe1e98a2481be79621fc6658abba5c084acf9e7d88ed6951fe6326",
+              "sequence": 39,
+              "label": "Checkbox",
+              "name": "Executive Office",
+              "alias": "executive_office",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "617562e8f81e444dd604393cfc060df11076790ebed3d4c0a84225953dd38213",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "c832db295d75bb04c0449876a7ea49f82fe990acb9918959ecfeb6cd5f9dbe4f",
+              "sequence": 40,
+              "label": "Checkbox",
+              "name": "Facilities Services",
+              "alias": "facilities_services",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "5d53e633866a00762f4ee74a8e8b495885d2942be6b97a439322f236a6cd24ac",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "fffe5662133f20876fe9cd6136e6eb717525d8b4921291ef9fbf1adab3e65986",
+              "sequence": 41,
+              "label": "Checkbox",
+              "name": "Farming",
+              "alias": "farming",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "11f23b257b8ee548cc3ac5015efc5db45bb0477b76b0581ddd2729976104bffe",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "ae48e67dcfbf8dfa933ee99a195c096d18fc0e5214b1b453d696b1677730d360",
+              "sequence": 42,
+              "label": "Checkbox",
+              "name": "Financial Services",
+              "alias": "financial_services",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "1afde1166af4bdf6a100493f2163a016472eb2491342c714c8f63b256421fda1",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "4add7bd49b829b906abc3bef2dd9bae455effd96b4fbc5e137a739b6e39ad64b",
+              "sequence": 43,
+              "label": "Checkbox",
+              "name": "Fine Art",
+              "alias": "fine_art",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "922e8b3f8eb4c219e6c2600bcacdcf96fa9b23f49dfe5f0270cdff869c6bc923",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "4a7cfa907e94b023040bd291a568f4375dde0756d53aa0d6fc15fbf453ad7717",
+              "sequence": 44,
+              "label": "Checkbox",
+              "name": "Fishery",
+              "alias": "fishery",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "8586fbfb33c78c6336aa2fde9903068c5dc389b8023895663cc21eb28cb1caf6",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "13060cee3d73181703f95180c61fc40f258d6179f07f5ae213ea5832ae6ef060",
+              "sequence": 45,
+              "label": "Checkbox",
+              "name": "Food Production",
+              "alias": "food_production",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "73284337bee6896de9c1ce402ab77dcdcf2bd36a9ce39ebe9fa87feb4c2fdf21",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "bde0959d61324c2a0b0e72274fda244a2a9c396f77669e0c235636b452a38ed9",
+              "sequence": 46,
+              "label": "Checkbox",
+              "name": "Food/Beverages",
+              "alias": "food_beverages",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "47731b0eac6b46e786b853e197f857834aff9aa965cfe4a302033758c6813c70",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "c90e58b9526b3ed38faa4b3d399a6b3baf83756089642280675f97eece397b64",
+              "sequence": 47,
+              "label": "Checkbox",
+              "name": "Fundraising",
+              "alias": "fundraising",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "d00cac978cf961339412c89608a8a080ccdb4e7920036abee214400dc81ac5b7",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "fb4831da6ec8438f1a8af2df08c86bb25fec216276ad811a0fe4b3c80745be38",
+              "sequence": 48,
+              "label": "Checkbox",
+              "name": "Furniture",
+              "alias": "furniture",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "b2cfde42be4cb6ccb30e96fa28f7afbed141ec3512d21b30efabf92537a4d9fd",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "75e16c0439ace18bed421633ac573f350301d09a62d7b155a8ed70f5655c2ac9",
+              "sequence": 49,
+              "label": "Checkbox",
+              "name": "Gambling/Casinos",
+              "alias": "gambling_casinos",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "df59d6aec3c85e199de3391fbb277a6fe6a35bb728b893d7b86f206f8c875b59",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "cf4c628d5c3808c849968fd5945eaf79848353a41ce084b2b72f7fa6a0b3be93",
+              "sequence": 50,
+              "label": "Checkbox",
+              "name": "Glass/Ceramics/Concrete",
+              "alias": "glass_ceramics_concrete",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "ffdf1a03231bb6ac5912dec5d77c0f20313c0fed8f2203393a3cc80169364a2e",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "e1f6521e0a960adbefba1833213c8100fca25a422a6e0e0b08cf8ab3da9a1e93",
+              "sequence": 51,
+              "label": "Checkbox",
+              "name": "Government Administration",
+              "alias": "government_administration",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "b600169edce7490c498c2874128917bfd0f5daa62bad7533fdbf1fbb81cab1f1",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "043a60731ebd3b1173dfc595bf811960c933059131451a8471c4e831b6276ebf",
+              "sequence": 52,
+              "label": "Checkbox",
+              "name": "Government Relations",
+              "alias": "government_relations",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "ed6efb167846559056fbb83705f6246b4c22f736aa9f079909a7c4a88e3245b2",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "33bf43372bc1f8d638299c5cfdb25e2cca8a7b6de9b8898d630c15899de0b579",
+              "sequence": 53,
+              "label": "Checkbox",
+              "name": "Graphic Design/Web Design",
+              "alias": "graphic_design_web_design",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "f0fb57ca7312298b01eb12cba66c97769d52e0d2c465117fae0c9ae81ecd7ab7",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "69b5f237801c2a8f9b458f2e851291548d7fa7b57ccb3256ea6e449f2f5af549",
+              "sequence": 54,
+              "label": "Checkbox",
+              "name": "Health/Fitness",
+              "alias": "health_fitness",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "b367fd492421ebacce058c3cbc8baec8b4de41b169fdf23ccc47b4b59d70c8d9",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "b8f051161526aae1a0638f2908993d821e9cd2d4540921555438204a0550b383",
+              "sequence": 55,
+              "label": "Checkbox",
+              "name": "Higher Education/Acadamia",
+              "alias": "higher_education_acadamia",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "33353ff46dc29d19d2830050db88bdfd63f74f91c936eb27cb3368b4a4a6f9b4",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "1b3c4069416d0e4966cb7fc880ea6d7dd5dd54957850e1270e248cc4bae422b2",
+              "sequence": 56,
+              "label": "Checkbox",
+              "name": "Hospital/Health Care",
+              "alias": "hospital_health_care",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "dac158ee2258a14e71a31d4e9880f787d5f0727f177089fb0c4b8e6dccb7ba77",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "fd5d0bc4e8d6b6697d63866ae967c44546b209ca2ac016c7828c56d81f0dbefd",
+              "sequence": 57,
+              "label": "Checkbox",
+              "name": "Hospitality",
+              "alias": "hospitality",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "1a31101acea98f210fff4bdb7e513ed30f60c1a18d28e47cc28c8414edf824ee",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "a694131c3873a2ccee4347e1de48554faee9057f9582009c9485a9b395edc545",
+              "sequence": 58,
+              "label": "Checkbox",
+              "name": "Human Resources/HR",
+              "alias": "hr",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "48c6790a9d39447fbe1223286d251df911a863a3184f79d021cfc01b423454dc",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "c6bafa75fcd55136e35ab555aa07027a67a7b1b0a861d683fda3f981ff2c0620",
+              "sequence": 59,
+              "label": "Checkbox",
+              "name": "Import/Export",
+              "alias": "import_export",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "d5610417020cecb5459cf501bf2a6b52b01f4a63a1d44d62865c55dfebda68d4",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "20a85eb834d973775544980370324bab7bc9d90f50d454f84187e67f2d1844cb",
+              "sequence": 60,
+              "label": "Checkbox",
+              "name": "Individual/Family Services",
+              "alias": "individual_family_services",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "2200f74b08df2b53a2f493f98b563a1c72b849a3fa605cc2e74e996c7b738f46",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "1ed4c4ca61a7b1b11503ef0b3406d88d7642892ee4b6c78e3251bd51f7732872",
+              "sequence": 61,
+              "label": "Checkbox",
+              "name": "Industrial Automation",
+              "alias": "industrial_automation",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "0616f2e7fc86baddcf889e77415a59d64045d10d97761bde196ee40c31416f25",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "5efd5bb1ab400a03a8fb3476178c827c3f9c2e42aa26f189cf8e82a36d9d0e20",
+              "sequence": 62,
+              "label": "Checkbox",
+              "name": "Information Services",
+              "alias": "information_services",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "131d6aa87c80b199026b718b1c978b178fe63351b27dd5b345b4572a81913587",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "879b6b4db99ee4dce37dcbbc93f8a86ee20eee8e3882aec4e57cbaeff5c12d8b",
+              "sequence": 63,
+              "label": "Checkbox",
+              "name": "Information Technology/IT",
+              "alias": "information_technology",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "c1a7028312aea5b656296f6f4f5ce42b819a250b83e4ff83284a56d73aa93b17",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "6e5d4d26c60a9059ad2f0b6bfc8566fa67a7ecef251b71499e9d2614fc7e0a27",
+              "sequence": 64,
+              "label": "Checkbox",
+              "name": "Insurance",
+              "alias": "insurance",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "9a22c1be5aa92f7f9662f67c2a1379c1f3ffc6107c2b978b31c51f14730efb57",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "2924187e35d7bd3d141f00c0f09e34acf21dd98ad44185db86b8d288bbbd4979",
+              "sequence": 65,
+              "label": "Checkbox",
+              "name": "International Affairs",
+              "alias": "international_affairs",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "ece1891a36f58ae14584974a30a91f0580a2dbe836f5e655020a74b9622520e3",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "11725f50a7da2591ffb592a630847cabd6c76f72cf11a459ea5349173d7018e1",
+              "sequence": 66,
+              "label": "Checkbox",
+              "name": "International Trade/Development",
+              "alias": "international_trade_development",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "fb2dfc0ff155a3a7c6903e84aa66dc3ed339b380d88c05485cb2fdd70afeb883",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "2d9e88301bcb94961252d4434f39f11c2620a8cff174e9f7de7a3f29a840a559",
+              "sequence": 67,
+              "label": "Checkbox",
+              "name": "Internet",
+              "alias": "internet",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "9bbf2e46b39b73f12c1f3f9f1ac77f98add73104828f9970f36905f53861575d",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "5cfd2f40a9864e7920ce2331f5d737d34d5bbb9020f249554a1c62e37de78c65",
+              "sequence": 68,
+              "label": "Checkbox",
+              "name": "Investment Banking/Venture",
+              "alias": "investment_banking_venture",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "aea779613037ae8c706808835684fb82beecfb631a6d414c6eaa32b5527a18e1",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "96724b4e15369150b4f755bf90e27b5e46b8cc08c7f78c3c405a3f064e92f1e4",
+              "sequence": 69,
+              "label": "Checkbox",
+              "name": "Investment Management/Hedge Fund/Private Equity",
+              "alias": "investment_management_hedge_fund_private_equity",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "a1ec145f1a6532c8d8b7f02410cff57d347592400550a3f6b2ab4f2bbe2e9c0c",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "aa9c545b6951cc2d8c4ae41b93f209ca7d6119e9eb1c00c95b14195f95c1c1b8",
+              "sequence": 70,
+              "label": "Checkbox",
+              "name": "Judiciary",
+              "alias": "judiciary",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "4f0a09b35f1d9d7959ece3134d5130d0cb434490e77fdc613a7cbff2b0e088c7",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "1492183aef18aababed13ca27fad02cbb4405cfac1817944d7be9cd3b7b78b5b",
+              "sequence": 71,
+              "label": "Checkbox",
+              "name": "Law Enforcement",
+              "alias": "law_enforcement",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "78cb9bac17e63f02f0b35bc26dd351544b76538edebbc722b350741f27f72458",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "bdaae7abe2dba54452cbca16375d8169a7ec1eb02c0c432a5c095916ba3cebb7",
+              "sequence": 72,
+              "label": "Checkbox",
+              "name": "Law Practice/Law Firms",
+              "alias": "law_practice_law_firms",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "e815ff0e8affe2801aeaabd3e17c2b41ebc07a8695ebc18ffec2e1d0e7f45078",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "77a2f2542e86af2ea83fc3936c41549febfb168254cd48bd35400670cd584325",
+              "sequence": 73,
+              "label": "Checkbox",
+              "name": "Legal Services",
+              "alias": "legal_services",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "08cab3f46b9e4db198d16239de5ee6037e8ba54a2ab21babf7e37cebde24634d",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "a81f2a02ab441f7acb3b666db97fcf21cf689d177a4736939c0c5468d9aa911f",
+              "sequence": 74,
+              "label": "Checkbox",
+              "name": "Legislative Office",
+              "alias": "legislative_office",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "ad420f8664023e2bd344d7f5ad1bb376f89e5a475b877b8ad81dcedd724d0cff",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "e41b65ef9b371c1012d98b99917a79b35e5313bc954bfb650f9484d662cf6632",
+              "sequence": 75,
+              "label": "Checkbox",
+              "name": "Leisure/Travel",
+              "alias": "leisure_travel",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "3b2e73bf3459583123ab6bd70349047527995361256737897a91860cfcf9e87d",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "8732937ada9f0148e7c1cc2dc57bbe42046a5c7ee8e6277d4e3d1c69792937ed",
+              "sequence": 76,
+              "label": "Checkbox",
+              "name": "Library",
+              "alias": "library",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "cfbadd10b82a0c912d63253616d1936a64be1bb77a9cc0f380aad648181c30b1",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "e099eaa1db64d2f67bd91cb8e5af28b89c7d19fd3cbfdbd0a24aedd0205cae12",
+              "sequence": 77,
+              "label": "Checkbox",
+              "name": "Logistics/Procurement",
+              "alias": "logistics_procurement",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "159fe83bb99706b848ee78f8d060c083d53ca9eaf97d13b0d6a3291798cb98ff",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "49c86900b4c4eb5098beec04abfc1cf71bbe20632ec67cca9bb30d662238f8d0",
+              "sequence": 78,
+              "label": "Checkbox",
+              "name": "Luxury Goods/Jewelry",
+              "alias": "luxury_goods_jewelry",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "0253d51768944436745e28ed95bc52ccc5ddca1c3a88756779193c9133cb8710",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "8b26c164dd98588e8d4d57f192ea921445efad07494435c70d5bf0f1c9a31b7d",
+              "sequence": 79,
+              "label": "Checkbox",
+              "name": "Machinery",
+              "alias": "machinery",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "2375f369d856939aa7fa90b0cccb756b79792e8b22d1a144494eb66607e22224",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "7bbe4994ae01f6e1d8bdc1823d5e4e6139804babc6b9fc3298d7321ba5f233b0",
+              "sequence": 80,
+              "label": "Checkbox",
+              "name": "Management Consulting",
+              "alias": "management_consulting",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "d347c2a31e4a6d675a9674e7ee17bde1455be50b89c57fb58bd18043fd7bb844",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "4c7af68b22d5618d1b9b004f9c80e70ff24d43575d6d1611dc0d860b5af9c1a9",
+              "sequence": 81,
+              "label": "Checkbox",
+              "name": "Maritime",
+              "alias": "maritime",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "18615341d5e3be958704b0a3470c778684d25d6a331706e3bbed0c9f33e023ea",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "646ab2a4be2519eab00d18a3ffdb1af9bfa8d75bb60b4d4bdeab9cbf5509861b",
+              "sequence": 82,
+              "label": "Checkbox",
+              "name": "Market Research",
+              "alias": "market_research",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "5d7ac3dde8106c79317e320b8d9ed7ec18579ce40cf3b2fd494b5ea316082b9c",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "ce043f1f3997f591e65e7c7e3a01fd2ae1dad7ff61abe121f4d074ef95a7a86e",
+              "sequence": 83,
+              "label": "Checkbox",
+              "name": "Marketing/Advertising/Sales",
+              "alias": "marketing_advertising_sales",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "6e8c008067115ac4f5000f1673fca01992ee5d830c3662a52c1c94d1bfe07688",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "cbf7d6f5c31ba652ba79718cb813e020702a55277308642d4ec3a10e75e08ca9",
+              "sequence": 84,
+              "label": "Checkbox",
+              "name": "Mechanical or Industrial Engineering",
+              "alias": "mechanical_industrial_engineering",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "cd2194843b863fc3d088e4d52573b8770dd8cce007794546fbb3d8605320a735",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "a8c47e863ccfa420aefa97e2ac80b0df281836741189e38b354d344add559464",
+              "sequence": 85,
+              "label": "Checkbox",
+              "name": "Media Production",
+              "alias": "media_production",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "6e546761d8ea6901d3b7fbf61cae8cd29cdb7d4a9385bf64c76ef04ea38b0183",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "d40504a08cd448b5ec2ac0718248d3b7c5f4514c861c9b6e1c2056656100d162",
+              "sequence": 86,
+              "label": "Checkbox",
+              "name": "Medical Equipment",
+              "alias": "medical_equipment",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "ad7b1c0697564255af7c6b2588cf4b7806723f69349cf768d40b8a46ae563e38",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "2359ad9447228f3eddfb605fee3227f507aa8bd77dc68d7b23d8f4b1805ffe25",
+              "sequence": 87,
+              "label": "Checkbox",
+              "name": "Medical Practice",
+              "alias": "medical_practice",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "6b498bc18fa7811e7165edf83242083a6d7086887a63ab9c0e1d1156d1c59767",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "161ad70d65db583d00f73ca9586db34220f8704ab13e0659c30a4af4d1c0f0f3",
+              "sequence": 88,
+              "label": "Checkbox",
+              "name": "Mental Health Care",
+              "alias": "mental_health_care",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "7cc166018b77e42c2044ada101b12e76895511817ddcd09b0f3eed8bf3fa15e1",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "c663951eb52d6354de29b3da8f59c73fe671217852b3a39c90195ea89c2bc850",
+              "sequence": 89,
+              "label": "Checkbox",
+              "name": "Military Industry",
+              "alias": "military_industry",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "e8999d22b8647c813ad75442e7ee815b380aa4cd56ccf72f948f093ac2307f25",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "7256b80d765df3c7c7fdd91639af7280afd1a8cb0af4ae5dd88cebeb68cebac9",
+              "sequence": 90,
+              "label": "Checkbox",
+              "name": "Mining/Metals",
+              "alias": "mining_metals",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "32f52ef808bbaec64bb031b9e4a323cf6ae524510fb7740eca4bf50c8a21a6f6",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "849fb4a951f99b7a46bfeffbae71c6400b462c0abb09556a66509e98aae83bea",
+              "sequence": 91,
+              "label": "Checkbox",
+              "name": "Motion Pictures/Film",
+              "alias": "motion_pictures_film",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "b7d6fe960c18d4bce42d395a3c4aefe563a1d4bc5dd9cfc2388e184651412fb6",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "d8db707d0670141deceedf10f0f33a687b25978c20d490387c6ad2bcc5ce6ac5",
+              "sequence": 92,
+              "label": "Checkbox",
+              "name": "Museums/Institutions",
+              "alias": "museums_institutions",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "68c2a6e5a98bbc1f389a5fcb6fc1be92a6265940f77a9bc625cefd652302d94c",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "945f35275fad0e1cfe3f6bef4224b0eeae58b61d9bc635c42ecb29435c3ca9b0",
+              "sequence": 93,
+              "label": "Checkbox",
+              "name": "Music",
+              "alias": "music",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "8daa6a1824c6ec56a094ea454c44cfcbcc2acf3a79996c8980603994633ca91b",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "5f13c401e4b3a7f2bda5cbc97523ec8bbcbbdaec33a14581f806c006fd291a70",
+              "sequence": 94,
+              "label": "Checkbox",
+              "name": "Nanotechnology",
+              "alias": "nanotechnology",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "5fc59647c212da4d94a832244f5421ce24146673d53e67fd0c844bf17730be52",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "bc86e320df4461951fe4cef6859435e44e206b135f5260386844a6206e27c8a2",
+              "sequence": 95,
+              "label": "Checkbox",
+              "name": "Newspapers/Journalism",
+              "alias": "newspapers_journalism",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "05f8c498db1ca13c4e2935394bf22c331c60d62782832e0a05a0f9590dfc0205",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "19926ffe2fc19d7b0eaaf300c5874d15c8ab361eccd2d72336a70b489d814063",
+              "sequence": 96,
+              "label": "Checkbox",
+              "name": "Non-Profit/Volunteering",
+              "alias": "non-profit_volunteering",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "de73e5f70e4215d25153fe21780112c2a9dbbbe6695d6339e895c66f192ffebe",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "70c1a995f8313ad17cfd1761715837e77bae333666169659b7609897371b0701",
+              "sequence": 97,
+              "label": "Checkbox",
+              "name": "Oil/Energy/Solar/Greentech",
+              "alias": "oil_energy_solar_greentech",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "1b99512b5944a2cc3dccdaacff2a7c08a117425d96317fd1dd9fb4efef42b504",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "ab8b00d99eddb910546cb81ada104c2da48454a267bfce5d24a07c386c70418a",
+              "sequence": 98,
+              "label": "Checkbox",
+              "name": "Online Publishing",
+              "alias": "online_publishing",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "6f27499ba7eb417df0e8a1c99924de8417025a1925a5be72fe57b3d34a6af30d",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "b618c1ace85e86ded84f5019b021a01279e87eb0d6598457141b29d4dbf6cde7",
+              "sequence": 99,
+              "label": "Checkbox",
+              "name": "Outsourcing/Offshoring",
+              "alias": "outsourcing_offshoring",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "e6d98f55d44bede145b76288fed40e98308d3d3d8b65654e53e854d1834584c8",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "2d8e316af46305414c5056a67ddd29a8aa43e119053f89652ca2a16bd8eb10c4",
+              "sequence": 100,
+              "label": "Checkbox",
+              "name": "Package/Freight Delivery",
+              "alias": "package_freight_delivery",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "a8df8d694bbe032ff10cdf06f5006512dfea696a8e129da006d105f79c15f39a",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "7f4010f3ec6b814b09576579c210fc47bb3179af80a928841d8af972a4c9c872",
+              "sequence": 101,
+              "label": "Checkbox",
+              "name": "Packaging/Containers",
+              "alias": "packaging_containers",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "dedaa6bb0aa96d4e8186b441b7d0ab400e25a02cef8b3b2f0645766faafbd838",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "072e9f9a18d5bc21daf379d90aa383c039d405d3a8c3110f0eff19cc25428623",
+              "sequence": 102,
+              "label": "Checkbox",
+              "name": "Paper/Forest Products",
+              "alias": "paper_forest_products",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "7893ab8c73cd8a49eb7770e246149c852c8b8f806f1080a14dd89b0c4976cb40",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "288d98636e659997aca79eeb045353e25026aab17d24b6a05c70a5625e1ba4ce",
+              "sequence": 103,
+              "label": "Checkbox",
+              "name": "Performing Arts",
+              "alias": "performing_arts",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "7d86c1ce6a0cab351adf2e99c7ac9373e7889817c58b13e8dae24e12517f3194",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "8c2139e1137ef8942d7aa196a03c41e3972fb4e14c9b56fed6b72290ed057910",
+              "sequence": 104,
+              "label": "Checkbox",
+              "name": "Pharmaceuticals",
+              "alias": "pharmaceuticals",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "d0deee9c8cf46cc9f38ea2954e11eaef30954cc0f982a52a9262f02ae28895b9",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "f6229aecda19fa29077bd371954a8c106dc991f503a721fe56726537fba92a82",
+              "sequence": 105,
+              "label": "Checkbox",
+              "name": "Philanthropy",
+              "alias": "philanthropy",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "4e8ddf68b9ce67b4d62f3d154653fa98f860e9ca3bda62e988f4e29e3d5d7a10",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "bd2398aa4157a4961508ba2a1e0c90bbdab7d185a7eb0babf854282c4ef37157",
+              "sequence": 106,
+              "label": "Checkbox",
+              "name": "Photography",
+              "alias": "photography",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "35c9d210ed9baeb729671ba8bcf9524f6fe56f08e12cda56a9d2de77d2b2a33b",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "f7f4e3c8f6db3c5f3395069646f01328e4ccad8ce5a7960e140acc2aaec48772",
+              "sequence": 107,
+              "label": "Checkbox",
+              "name": "Plastics",
+              "alias": "plastics",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "c9117a153e5501c45a97d82faf466f0dff68f703e5262a2a493213e136e33488",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "e0b7ce3f29ed043f88a45360df85ce44d08ff7259dc9caece0d21bbc9a9f7e8e",
+              "sequence": 108,
+              "label": "Checkbox",
+              "name": "Political Organization",
+              "alias": "political_organization",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "8490b917fcc0b82cba3a1ebcfb1f6118228e4d6b650cf2f305c07e3f97a063c5",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "e3695a2337663a6b7691a8889c33d7e7d1af7425eb20531c1074fd63126764f0",
+              "sequence": 109,
+              "label": "Checkbox",
+              "name": "Primary/Secondary Education",
+              "alias": "primary_secondary_education",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "78127a7fcb4b494d5b3e97c087635a18c3e9ed7e6ac67eb102789b189e794783",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "43cdee24fd341b3619763b6d26ca0ebe0f3ba7f895981acb98c6d06df7a3386e",
+              "sequence": 110,
+              "label": "Checkbox",
+              "name": "Printing",
+              "alias": "printing",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "eaf9c84c68bff3dbd7ec0f6b8bfdf94d02bb457ce596f9b522962b5e7e891846",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "7ac603eaac560181d7c169e1bf12a38fa008a875930be635fde9b6d7578e0bc3",
+              "sequence": 111,
+              "label": "Checkbox",
+              "name": "Professional Training",
+              "alias": "professional_training",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "17b827cceb6025b1ef5d6045ca69d910964e4d914c26c7c9e61beaace3239b16",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "436c153600a8ae97478440c03ca0d9f96fe4aff0a223d03d785ef284ab7cefa7",
+              "sequence": 112,
+              "label": "Checkbox",
+              "name": "Program Development",
+              "alias": "program_development",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "31513f6603ab7a7a046c347f4088c04c2947ec52d4b7b2f4a6f700a997163066",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "fc412cef109100e0bb10db6d7705cf5271a0c5768831e92d99c7e50e86a69306",
+              "sequence": 113,
+              "label": "Checkbox",
+              "name": "Public Relations/PR",
+              "alias": "public_relations",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "51a8a102762323144653a8626767b4294d4e193833019628676c00b3e3b07a91",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "fade5944616a1b5ab74eeb0a398a52cedb6dbf5ba520721c3d49f15661b7746b",
+              "sequence": 114,
+              "label": "Checkbox",
+              "name": "Public Safety",
+              "alias": "public_safety",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "b17c78ba19992cdcbde421d5cf381cbebc8e88a56d9addb616b5216ba34f35e7",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "4f803edd777836aab47578e4da0f1d90da1c0050a59862f1e8286e67ee60c849",
+              "sequence": 115,
+              "label": "Checkbox",
+              "name": "Publishing Industry",
+              "alias": "publishing_industry",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "3e5a8d0e6bee8b87f3a5494b87e5e5001892d6410796489956bfc5f44ae9053d",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "487c547244d2e6be88d90c110cc6e2e742ae17260f440a63c21d5bcb0065735d",
+              "sequence": 116,
+              "label": "Checkbox",
+              "name": "Railroad Manufacture",
+              "alias": "railroad_manufacture",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "7b3fbe0273b760d9d266fafe758621e32d3f914e18a877ec6be2509966e2060c",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "7d519b5299ef67d7e1a209933b1e867b785f67e6bcd7daeded0d9f82507d3190",
+              "sequence": 117,
+              "label": "Checkbox",
+              "name": "Ranching",
+              "alias": "ranching",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "d642b92ecda26a2cf93b2830921a714adb4a060315a56833a8ad4d8a987ac621",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "c0703ef9e594bfab3319fafd2a26c20e3dd84fdeee68a3929047acbc7d703209",
+              "sequence": 118,
+              "label": "Checkbox",
+              "name": "Real Estate/Mortgage",
+              "alias": "real_estate_mortgage",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "eab08f052b0c2d601f329493fa2116d55a65faa4e0106ef0490ec43402f45fca",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "e91a6a2d667b8e9354626933a7618f9373b0f6f53c26d16833e8eabf6db3cec3",
+              "sequence": 119,
+              "label": "Checkbox",
+              "name": "Recreational Facilities/Services",
+              "alias": "recreational_facilities_services",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "e76906e42633afd3907c9dd99a19e8699c395f565c620819ee60bb7f1a766919",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "3b5554c09e86bfd1fb65da72e827cd56322e8384fc1b4f6d3848ca6b688d28f9",
+              "sequence": 120,
+              "label": "Checkbox",
+              "name": "Religious Institutions",
+              "alias": "religious_institutions",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "f09cc5e4dab6a1bcfa98fb515053f7b4341ef474bd1936fc8f413f33c593e0e3",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "efc76828a272b656d8562990db094e093b5c5f4810f96bbf7d64f68d11d7c99f",
+              "sequence": 121,
+              "label": "Checkbox",
+              "name": "Renewables/Environment",
+              "alias": "renewables_environment",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "2f3f7caed7105de39683b11dc34b4da8c0d16b050bf13a6301c479404582eb08",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "54f914b31a23947848804c4577c01f525aae96860b7b902afe29d6c9b3087cf7",
+              "sequence": 122,
+              "label": "Checkbox",
+              "name": "Research Industry",
+              "alias": "research_industry",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "4f4915e23e31930ccdcb8cc515e37696f984fb4004f10c082c368b4ce24f25f3",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "de417c62d4f8574987fbd42dbdfa7fbb2e2a0bed77e14c4a1ad78e5ac28d4f73",
+              "sequence": 123,
+              "label": "Checkbox",
+              "name": "Restaurants",
+              "alias": "restaurants",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "8493f78a99c235cc1f7c0ab5fdc2a760e9203d2c09230f9733b1f916461adb7b",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "bb2f4fb3010f8afe1267ddf616ecb52c4b9654ec772576cffdbb08a1b7d0279d",
+              "sequence": 124,
+              "label": "Checkbox",
+              "name": "Retail Industry",
+              "alias": "retail_industry",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "e3e2503ca9d9a89d52be8d0a7a47c46fef14aa444df4ede366c1a57de8f2bd25",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "e63395db83bd00dd087e0094bd66cffe54b48e7230ee2f62c025d8a9a2e3d37f",
+              "sequence": 125,
+              "label": "Checkbox",
+              "name": "Security/Investigations",
+              "alias": "security_investigations",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "7a74ce4a00ffba913b6c5d1236616cf3b798f562dba96eb204ff704fbedb5b26",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "0c10d118e927ab432cded2190328ff30d9e4b600be0828e7457364f692c34326",
+              "sequence": 126,
+              "label": "Checkbox",
+              "name": "Semiconductors",
+              "alias": "semiconductors",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "0172c7b6a82fd562dd947305f95d87099e98af5c98aab5bd70a8091dc6efd20d",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "f448f9a965facb8640345af1b54b6cd907833c2725aa5c9d298a9d208f43c5d2",
+              "sequence": 127,
+              "label": "Checkbox",
+              "name": "Shipbuilding",
+              "alias": "shipbuilding",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "2eebadf1f16264435e74fc1645f5725bb5a771bc2f43e7f4b5811aedfab40980",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "efddd2c2b012c73209bd4b6ad0a1e77e161eb986bd84b6cc122bbf24f3a1bb50",
+              "sequence": 128,
+              "label": "Checkbox",
+              "name": "Sporting Goods",
+              "alias": "sporting_goods",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "94c7430983a3ece9ba13b36e9b8b284d29b3033aca48d27328494193c2d4ebbb",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "81690708fd29cf316dd15903b3145aaf6ea046613767587fa44533fc986490da",
+              "sequence": 129,
+              "label": "Checkbox",
+              "name": "Sports",
+              "alias": "sports",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "73fd2060953f3c02cbe0b42a8942d36d6522f04a810656d1ec1b2786363dfd67",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "d2ee8c09a86310d97aa8fd122bec9934094c13045f37b5eaae6f12a97b8cad05",
+              "sequence": 130,
+              "label": "Checkbox",
+              "name": "Staffing/Recruiting",
+              "alias": "staffing_recruiting",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "32acdb3fdf13c723de893207d14a95f814ad0d2211400b0128b39e1cb7f7dc82",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "32f2aa419d8087b7377f1a181c1af3cf99ae24d44d4434c94fef9fb50159f738",
+              "sequence": 131,
+              "label": "Checkbox",
+              "name": "Supermarkets",
+              "alias": "supermarkets",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "cdaf771522274aad6b66a791d6b0c3501546d9e0ba90e435a83fd226fd3b7308",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "da25e81d2f73c4a647459b6cf9b7d12f058707b96150b464ce3ec1e1f731c872",
+              "sequence": 132,
+              "label": "Checkbox",
+              "name": "Telecommunications",
+              "alias": "telecommunications",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "49a6ab4a0919f524cdb13116a89d56b35701543a4769f2a229b032565107df1b",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "ea50a4fb6cb4524baa4607963d0184034452f884acf73ecb908e13277fdaa82c",
+              "sequence": 133,
+              "label": "Checkbox",
+              "name": "Textiles",
+              "alias": "textiles",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "9aa5ed361cb1445b1d4b1abc6bf5bf77447faa4e01c4a82abf727b19acc0a788",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "9400aafcf8f3103af0a1b834af7a47b4d2190d05d08aaa792c336f779bcdc76d",
+              "sequence": 134,
+              "label": "Checkbox",
+              "name": "Think Tanks",
+              "alias": "think_tanks",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "7ecd9d098175176aad35fa65e67a95811d6a185f90701188183d0a704dec2826",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "071cee3df2fda800f4a6d895a9cf608366af5956066e7a9e32370316c7d71041",
+              "sequence": 135,
+              "label": "Checkbox",
+              "name": "Tobacco",
+              "alias": "tobacco",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "4c73b7b800e53fc105a8421bebef4c40d7b0ae7f1365f99281e06ca9251d493a",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "b156cc8819ed5e8fb35afcd662fde0a21d150fec90fb1acb8499777e76049410",
+              "sequence": 136,
+              "label": "Checkbox",
+              "name": "Translation/Localization",
+              "alias": "translation_localization",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "834c06080b855bb31bc64ef7d8d893a699489f1bec970deccb45039bedcfe6a9",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "fb69d1a68ec0052047b585a6af3de9dfb93a6acef34e64ebd75869c6735841fa",
+              "sequence": 137,
+              "label": "Checkbox",
+              "name": "Transportation",
+              "alias": "transportation",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "4f39720e5cd55af1cc969a65a173fb95178daab5c5941bd2fc4973b852950016",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "907a0f52f577cfd745de44149e034b1c0fe2d55c50d7e0f1f566c81b1a0ad083",
+              "sequence": 138,
+              "label": "Checkbox",
+              "name": "Utilities",
+              "alias": "utilities",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "9fa45311259648222fe5e20cf2a53f9b03727eda75b4908ac7470a4900ec28f0",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "eb3546ceb5481c9150fb28e1ba643234d65b201489442684ac942b0521240518",
+              "sequence": 139,
+              "label": "Checkbox",
+              "name": "Venture Capital/VC",
+              "alias": "venture_capital",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "46f7360378599d74dc5c60f7f6b8191cd506601c86dac0396f04f5b5304b1166",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "b695f74fca78a905df573dcf55ccb341ea74df3e35a080e5e48a1ece9a372273",
+              "sequence": 140,
+              "label": "Checkbox",
+              "name": "Veterinary",
+              "alias": "veterinary",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "2a07cbd98df550dec0cb390554a3c0991e8e35c9615c8fa26da642936011da70",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "f6a4bb9ed75c2fd5f31e8b30c8fdedafca54b480195d8a4f4a4b64dbceca039e",
+              "sequence": 141,
+              "label": "Checkbox",
+              "name": "Warehousing",
+              "alias": "warehousing",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "d9df9120ec6bb6c9a5ba9a68618fb4646d3d6a630cc1c6bbbe41595d55650678",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "e662c7194d4de38f7a8bbca52a197c65cdd258f567c18234208833842e349522",
+              "sequence": 142,
+              "label": "Checkbox",
+              "name": "Wholesale",
+              "alias": "wholesale",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "1c2e665ebe84973f7795e6585ec7afb03455722d646b8d3c951402fa6bf0c00a",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "1e32b1c925dfb3740298367e89b21df11af72e3d5a96090a2d709eff829fbf54",
+              "sequence": 143,
+              "label": "Checkbox",
+              "name": "Wine/Spirits",
+              "alias": "wine_spirits",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "84a2b86c1a7e6c7ec158ea241e391c18e1e7490b24d1cb4d8c4d1b545201dc30",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "953a426ee1de01afee98f06337c6b9e9c55385a7c184e20cd0486dc2b0e26053",
+              "sequence": 144,
+              "label": "Checkbox",
+              "name": "Wireless",
+              "alias": "wireless",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            },
+            {
+              "id": "7a1c14dc0e8e1b69a39cf49bc095548bd34d1a854d8a76928979891b5d6d20d4",
+              "type": "boolean",
+              "kind": "dynamic",
+              "reference": "2b89edb90b54d5d8a9bb0a07e688c413bc287548b6934a745ed41e3e6932d585",
+              "sequence": 145,
+              "label": "Checkbox",
+              "name": "Writing/Editing",
+              "alias": "writing_editing",
+              "pipable": {
+                "group": "Checkbox",
+                "label": "Checkbox",
+                "template": "name",
+                "alias": "industry"
+              }
+            }
+          ],
+          "block": {
+            "type": "tripetto-block-checkboxes",
+            "version": "3.0.0",
+            "checkboxes": [
+              {
+                "id": "610422247d7a512d33d92f78cb348f770ac7f2f886ec96987f1b574e80958666",
+                "name": "Accounting",
+                "value": "accounting"
+              },
+              {
+                "id": "d6985e89f117da06cb9bea3bd02a58b23b8dd26f394449d0ae52e27610c5b215",
+                "name": "Airlines/Aviation",
+                "value": "airlines_aviation"
+              },
+              {
+                "id": "f5c4940f5020b9a7e82b356c460a0ad77be8918670cd37e13c8c3c5c27bd2cba",
+                "name": "Alternative Dispute Resolution",
+                "value": "alternative_dispute_resolution"
+              },
+              {
+                "id": "150484f4a00f786ed22e2c18eb8fb43f5e4789d9dbdfcebe458703eced9f9724",
+                "name": "Alternative Medicine",
+                "value": "alternative_medicine"
+              },
+              {
+                "id": "b9511777303e6e5e8fae0ee35e4e1823bfa6cf5f01491c95d4f7af50c2a885f1",
+                "name": "Animation",
+                "value": "animation"
+              },
+              {
+                "id": "40167791147f4eb91aa3da02b0b4c9146245649122132dd6cdcee240405b0173",
+                "name": "Apparel/Fashion",
+                "value": "apparel_fashion"
+              },
+              {
+                "id": "f0b0f9a2085b44d68e26ff887a3ea7f20de57294e564c9586f4d4203fc5e0c75",
+                "name": "Architecture/Planning",
+                "value": "architecture_planning"
+              },
+              {
+                "id": "68c5df4649d1a56ca17283a302c10c0fa2549b6171187a926a9b87643e6f3b3f",
+                "name": "Arts/Crafts",
+                "value": "arts_crafts"
+              },
+              {
+                "id": "f51903d4b1a60926b406cfc24f89726b54307e9f709c74b7c1c0e1fd03b350ba",
+                "name": "Automotive",
+                "value": "automotive"
+              },
+              {
+                "id": "d63e923bfc31031e4badde7ccebcd576932730cc957d3a1100d853c9f43bea0a",
+                "name": "Aviation/Aerospace",
+                "value": "aviation_aerospace"
+              },
+              {
+                "id": "8f9c5be14493adb9d548770fa18c944237dee303421684847a31be50ba2b3b1e",
+                "name": "Banking/Mortgage",
+                "value": "banking_mortgage"
+              },
+              {
+                "id": "5cb068cfda07c52a1def4f0aec0d9f26fcecea616508f76ea4f32a30b709910d",
+                "name": "Biotechnology/Greentech",
+                "value": "biotechnology_greentech"
+              },
+              {
+                "id": "671441de241e668444e3e9fd2d0f0abb9d6cf98b24d11e37c1961de397c17086",
+                "name": "Broadcast Media",
+                "value": "broadcast_media"
+              },
+              {
+                "id": "f35e9c1c5a3dab2c817e81976134e3becf26828dae799093d79a42f003e090e1",
+                "name": "Building Materials",
+                "value": "building_materials"
+              },
+              {
+                "id": "a5fe194816af1e4741f2f5270f3e9f5af3d7e0f8ca104acbee98c01c6ffcb291",
+                "name": "Business Supplies/Equipment",
+                "value": "business_supplies_equipment"
+              },
+              {
+                "id": "fc3c42a88c7173a82b48f93b060adc70556aecab878ec69b753356f0ede20632",
+                "name": "Capital Markets/Hedge Fund/Private Equity",
+                "value": "capital_markets_hedge_fund_private_equity"
+              },
+              {
+                "id": "749418f2ac61cadfba4e6f226bcd2c0996768453d53b893d07bb33a443e8d400",
+                "name": "Chemicals",
+                "value": "chemicals"
+              },
+              {
+                "id": "85dc23f68c7b475d39d2601c83cdb2fbbeecec3ce18772c70c420c7b344540cb",
+                "name": "Civic/Social Organization",
+                "value": "civic_social_organization"
+              },
+              {
+                "id": "45126cc8768b03cddc47e2157384cc57c6e3959847a1f3eda2513a4af9a018a9",
+                "name": "Civil Engineering",
+                "value": "civil_engineering"
+              },
+              {
+                "id": "3b4c7a4841751940933461ce988998f5b0c05a2df3d31477af8f23bf8bdc9f09",
+                "name": "Commercial Real Estate",
+                "value": "commercial_real_estate"
+              },
+              {
+                "id": "af535895f6b943784a683910268492fc3c94952742c8940930c71b998447bb65",
+                "name": "Computer Games",
+                "value": "computer_games"
+              },
+              {
+                "id": "23449b59d3ec22a5c50d929ceb88353da4bc6e11d62ab31da77d584be5a67857",
+                "name": "Computer Hardware",
+                "value": "computer_hardware"
+              },
+              {
+                "id": "d40ebd9aa9d01d59699ea287bd1973f408142633adbfc559ac37d0e2a4c7b3f6",
+                "name": "Computer Networking",
+                "value": "computer_networking"
+              },
+              {
+                "id": "e03f7a0942e51b98467dcb5d07ba3678ddd9c5dd3dddde6a081c8102545a5ed3",
+                "name": "Computer Software/Engineering",
+                "value": "computer_software_engineering"
+              },
+              {
+                "id": "27b256ccb5dbe86b5dc5bcb387e881d7d4fc207534195d998e508cf0e2371b5a",
+                "name": "Computer/Network Security",
+                "value": "computer_network_security"
+              },
+              {
+                "id": "d05f82758bf145ccac1d0f6c6a1c340196bbf6e35a78415730b849b82f214382",
+                "name": "Construction",
+                "value": "construction"
+              },
+              {
+                "id": "63beeaec8f215c9941f655420cc4df66b4d167578d002cf239501c4126c5a3f7",
+                "name": "Consumer Electronics",
+                "value": "consumer_electronics"
+              },
+              {
+                "id": "a76f9a02fa2113d37f32afffc283fedb2ab7885ebd825e1b66da6e0d37ded4c8",
+                "name": "Consumer Goods",
+                "value": "consumer_goods"
+              },
+              {
+                "id": "15c1cd8ee86f968aa8b1118f4c984e8422dd94db7300acc637a3962f0cdf583d",
+                "name": "Consumer Services",
+                "value": "consumer_services"
+              },
+              {
+                "id": "bd55b0d18461d3c45e99e6c12d2d9ecba39d72db79c8edd9e64e0ce135a8362a",
+                "name": "Cosmetics",
+                "value": "cosmetics"
+              },
+              {
+                "id": "e22e3241e3676a6982655570d32e62457c59dea54106b42a853dc9cf61cd9856",
+                "name": "Dairy",
+                "value": "dairy"
+              },
+              {
+                "id": "3d5172b27744d5cd04018beae013f268a0c8e2f648fc9caca0b2bcc4bb410023",
+                "name": "Defense/Space",
+                "value": "defense_space"
+              },
+              {
+                "id": "4388cf751598fe938f83856d625294363d583c770126253225a3f46326156b3f",
+                "name": "Design",
+                "value": "design"
+              },
+              {
+                "id": "5bbb3d01050c34c4324ba7eabe32a4562af5e700a7dc37ea88b302d5825fc1d9",
+                "name": "E-Learning",
+                "value": "e-learning"
+              },
+              {
+                "id": "09bf4d92e240acccd39ebe87aa7f41c31887ebe1c4051a5d39bd728ffe12a6d8",
+                "name": "Education Management",
+                "value": "education_management"
+              },
+              {
+                "id": "f9f2ee523671e22f32c7ea34792704a509369122b79157a20c4bf566e763a5cf",
+                "name": "Electrical/Electronic Manufacturing",
+                "value": "electrical_electronic_manufacturing"
+              },
+              {
+                "id": "12c2c7bca404ca2acd28d75e49f2d6c186bd7266a4c7bfc69de70b9c82373f1c",
+                "name": "Entertainment/Movie Production",
+                "value": "entertainment_movie_production"
+              },
+              {
+                "id": "f05bde7fc9b63068bf74f5d14e1eeaae1830176c36a44ca61b1837d482d86e3c",
+                "name": "Environmental Services",
+                "value": "environmental_services"
+              },
+              {
+                "id": "bc9eb5fcdb130ce7f512fee2f4afcd0c5a7e76b9fdbf5c9349d03963496694a0",
+                "name": "Events Services",
+                "value": "events_services"
+              },
+              {
+                "id": "d5401fe1adbe1e98a2481be79621fc6658abba5c084acf9e7d88ed6951fe6326",
+                "name": "Executive Office",
+                "value": "executive_office"
+              },
+              {
+                "id": "c832db295d75bb04c0449876a7ea49f82fe990acb9918959ecfeb6cd5f9dbe4f",
+                "name": "Facilities Services",
+                "value": "facilities_services"
+              },
+              {
+                "id": "fffe5662133f20876fe9cd6136e6eb717525d8b4921291ef9fbf1adab3e65986",
+                "name": "Farming",
+                "value": "farming"
+              },
+              {
+                "id": "ae48e67dcfbf8dfa933ee99a195c096d18fc0e5214b1b453d696b1677730d360",
+                "name": "Financial Services",
+                "value": "financial_services"
+              },
+              {
+                "id": "4add7bd49b829b906abc3bef2dd9bae455effd96b4fbc5e137a739b6e39ad64b",
+                "name": "Fine Art",
+                "value": "fine_art"
+              },
+              {
+                "id": "4a7cfa907e94b023040bd291a568f4375dde0756d53aa0d6fc15fbf453ad7717",
+                "name": "Fishery",
+                "value": "fishery"
+              },
+              {
+                "id": "13060cee3d73181703f95180c61fc40f258d6179f07f5ae213ea5832ae6ef060",
+                "name": "Food Production",
+                "value": "food_production"
+              },
+              {
+                "id": "bde0959d61324c2a0b0e72274fda244a2a9c396f77669e0c235636b452a38ed9",
+                "name": "Food/Beverages",
+                "value": "food_beverages"
+              },
+              {
+                "id": "c90e58b9526b3ed38faa4b3d399a6b3baf83756089642280675f97eece397b64",
+                "name": "Fundraising",
+                "value": "fundraising"
+              },
+              {
+                "id": "fb4831da6ec8438f1a8af2df08c86bb25fec216276ad811a0fe4b3c80745be38",
+                "name": "Furniture",
+                "value": "furniture"
+              },
+              {
+                "id": "75e16c0439ace18bed421633ac573f350301d09a62d7b155a8ed70f5655c2ac9",
+                "name": "Gambling/Casinos",
+                "value": "gambling_casinos"
+              },
+              {
+                "id": "cf4c628d5c3808c849968fd5945eaf79848353a41ce084b2b72f7fa6a0b3be93",
+                "name": "Glass/Ceramics/Concrete",
+                "value": "glass_ceramics_concrete"
+              },
+              {
+                "id": "e1f6521e0a960adbefba1833213c8100fca25a422a6e0e0b08cf8ab3da9a1e93",
+                "name": "Government Administration",
+                "value": "government_administration"
+              },
+              {
+                "id": "043a60731ebd3b1173dfc595bf811960c933059131451a8471c4e831b6276ebf",
+                "name": "Government Relations",
+                "value": "government_relations"
+              },
+              {
+                "id": "33bf43372bc1f8d638299c5cfdb25e2cca8a7b6de9b8898d630c15899de0b579",
+                "name": "Graphic Design/Web Design",
+                "value": "graphic_design_web_design"
+              },
+              {
+                "id": "69b5f237801c2a8f9b458f2e851291548d7fa7b57ccb3256ea6e449f2f5af549",
+                "name": "Health/Fitness",
+                "value": "health_fitness"
+              },
+              {
+                "id": "b8f051161526aae1a0638f2908993d821e9cd2d4540921555438204a0550b383",
+                "name": "Higher Education/Acadamia",
+                "value": "higher_education_acadamia"
+              },
+              {
+                "id": "1b3c4069416d0e4966cb7fc880ea6d7dd5dd54957850e1270e248cc4bae422b2",
+                "name": "Hospital/Health Care",
+                "value": "hospital_health_care"
+              },
+              {
+                "id": "fd5d0bc4e8d6b6697d63866ae967c44546b209ca2ac016c7828c56d81f0dbefd",
+                "name": "Hospitality",
+                "value": "hospitality"
+              },
+              {
+                "id": "a694131c3873a2ccee4347e1de48554faee9057f9582009c9485a9b395edc545",
+                "name": "Human Resources/HR",
+                "value": "hr"
+              },
+              {
+                "id": "c6bafa75fcd55136e35ab555aa07027a67a7b1b0a861d683fda3f981ff2c0620",
+                "name": "Import/Export",
+                "value": "import_export"
+              },
+              {
+                "id": "20a85eb834d973775544980370324bab7bc9d90f50d454f84187e67f2d1844cb",
+                "name": "Individual/Family Services",
+                "value": "individual_family_services"
+              },
+              {
+                "id": "1ed4c4ca61a7b1b11503ef0b3406d88d7642892ee4b6c78e3251bd51f7732872",
+                "name": "Industrial Automation",
+                "value": "industrial_automation"
+              },
+              {
+                "id": "5efd5bb1ab400a03a8fb3476178c827c3f9c2e42aa26f189cf8e82a36d9d0e20",
+                "name": "Information Services",
+                "value": "information_services"
+              },
+              {
+                "id": "879b6b4db99ee4dce37dcbbc93f8a86ee20eee8e3882aec4e57cbaeff5c12d8b",
+                "name": "Information Technology/IT",
+                "value": "information_technology"
+              },
+              {
+                "id": "6e5d4d26c60a9059ad2f0b6bfc8566fa67a7ecef251b71499e9d2614fc7e0a27",
+                "name": "Insurance",
+                "value": "insurance"
+              },
+              {
+                "id": "2924187e35d7bd3d141f00c0f09e34acf21dd98ad44185db86b8d288bbbd4979",
+                "name": "International Affairs",
+                "value": "international_affairs"
+              },
+              {
+                "id": "11725f50a7da2591ffb592a630847cabd6c76f72cf11a459ea5349173d7018e1",
+                "name": "International Trade/Development",
+                "value": "international_trade_development"
+              },
+              {
+                "id": "2d9e88301bcb94961252d4434f39f11c2620a8cff174e9f7de7a3f29a840a559",
+                "name": "Internet",
+                "value": "internet"
+              },
+              {
+                "id": "5cfd2f40a9864e7920ce2331f5d737d34d5bbb9020f249554a1c62e37de78c65",
+                "name": "Investment Banking/Venture",
+                "value": "investment_banking_venture"
+              },
+              {
+                "id": "96724b4e15369150b4f755bf90e27b5e46b8cc08c7f78c3c405a3f064e92f1e4",
+                "name": "Investment Management/Hedge Fund/Private Equity",
+                "value": "investment_management_hedge_fund_private_equity"
+              },
+              {
+                "id": "aa9c545b6951cc2d8c4ae41b93f209ca7d6119e9eb1c00c95b14195f95c1c1b8",
+                "name": "Judiciary",
+                "value": "judiciary"
+              },
+              {
+                "id": "1492183aef18aababed13ca27fad02cbb4405cfac1817944d7be9cd3b7b78b5b",
+                "name": "Law Enforcement",
+                "value": "law_enforcement"
+              },
+              {
+                "id": "bdaae7abe2dba54452cbca16375d8169a7ec1eb02c0c432a5c095916ba3cebb7",
+                "name": "Law Practice/Law Firms",
+                "value": "law_practice_law_firms"
+              },
+              {
+                "id": "77a2f2542e86af2ea83fc3936c41549febfb168254cd48bd35400670cd584325",
+                "name": "Legal Services",
+                "value": "legal_services"
+              },
+              {
+                "id": "a81f2a02ab441f7acb3b666db97fcf21cf689d177a4736939c0c5468d9aa911f",
+                "name": "Legislative Office",
+                "value": "legislative_office"
+              },
+              {
+                "id": "e41b65ef9b371c1012d98b99917a79b35e5313bc954bfb650f9484d662cf6632",
+                "name": "Leisure/Travel",
+                "value": "leisure_travel"
+              },
+              {
+                "id": "8732937ada9f0148e7c1cc2dc57bbe42046a5c7ee8e6277d4e3d1c69792937ed",
+                "name": "Library",
+                "value": "library"
+              },
+              {
+                "id": "e099eaa1db64d2f67bd91cb8e5af28b89c7d19fd3cbfdbd0a24aedd0205cae12",
+                "name": "Logistics/Procurement",
+                "value": "logistics_procurement"
+              },
+              {
+                "id": "49c86900b4c4eb5098beec04abfc1cf71bbe20632ec67cca9bb30d662238f8d0",
+                "name": "Luxury Goods/Jewelry",
+                "value": "luxury_goods_jewelry"
+              },
+              {
+                "id": "8b26c164dd98588e8d4d57f192ea921445efad07494435c70d5bf0f1c9a31b7d",
+                "name": "Machinery",
+                "value": "machinery"
+              },
+              {
+                "id": "7bbe4994ae01f6e1d8bdc1823d5e4e6139804babc6b9fc3298d7321ba5f233b0",
+                "name": "Management Consulting",
+                "value": "management_consulting"
+              },
+              {
+                "id": "4c7af68b22d5618d1b9b004f9c80e70ff24d43575d6d1611dc0d860b5af9c1a9",
+                "name": "Maritime",
+                "value": "maritime"
+              },
+              {
+                "id": "646ab2a4be2519eab00d18a3ffdb1af9bfa8d75bb60b4d4bdeab9cbf5509861b",
+                "name": "Market Research",
+                "value": "market_research"
+              },
+              {
+                "id": "ce043f1f3997f591e65e7c7e3a01fd2ae1dad7ff61abe121f4d074ef95a7a86e",
+                "name": "Marketing/Advertising/Sales",
+                "value": "marketing_advertising_sales"
+              },
+              {
+                "id": "cbf7d6f5c31ba652ba79718cb813e020702a55277308642d4ec3a10e75e08ca9",
+                "name": "Mechanical or Industrial Engineering",
+                "value": "mechanical_industrial_engineering"
+              },
+              {
+                "id": "a8c47e863ccfa420aefa97e2ac80b0df281836741189e38b354d344add559464",
+                "name": "Media Production",
+                "value": "media_production"
+              },
+              {
+                "id": "d40504a08cd448b5ec2ac0718248d3b7c5f4514c861c9b6e1c2056656100d162",
+                "name": "Medical Equipment",
+                "value": "medical_equipment"
+              },
+              {
+                "id": "2359ad9447228f3eddfb605fee3227f507aa8bd77dc68d7b23d8f4b1805ffe25",
+                "name": "Medical Practice",
+                "value": "medical_practice"
+              },
+              {
+                "id": "161ad70d65db583d00f73ca9586db34220f8704ab13e0659c30a4af4d1c0f0f3",
+                "name": "Mental Health Care",
+                "value": "mental_health_care"
+              },
+              {
+                "id": "c663951eb52d6354de29b3da8f59c73fe671217852b3a39c90195ea89c2bc850",
+                "name": "Military Industry",
+                "value": "military_industry"
+              },
+              {
+                "id": "7256b80d765df3c7c7fdd91639af7280afd1a8cb0af4ae5dd88cebeb68cebac9",
+                "name": "Mining/Metals",
+                "value": "mining_metals"
+              },
+              {
+                "id": "849fb4a951f99b7a46bfeffbae71c6400b462c0abb09556a66509e98aae83bea",
+                "name": "Motion Pictures/Film",
+                "value": "motion_pictures_film"
+              },
+              {
+                "id": "d8db707d0670141deceedf10f0f33a687b25978c20d490387c6ad2bcc5ce6ac5",
+                "name": "Museums/Institutions",
+                "value": "museums_institutions"
+              },
+              {
+                "id": "945f35275fad0e1cfe3f6bef4224b0eeae58b61d9bc635c42ecb29435c3ca9b0",
+                "name": "Music",
+                "value": "music"
+              },
+              {
+                "id": "5f13c401e4b3a7f2bda5cbc97523ec8bbcbbdaec33a14581f806c006fd291a70",
+                "name": "Nanotechnology",
+                "value": "nanotechnology"
+              },
+              {
+                "id": "bc86e320df4461951fe4cef6859435e44e206b135f5260386844a6206e27c8a2",
+                "name": "Newspapers/Journalism",
+                "value": "newspapers_journalism"
+              },
+              {
+                "id": "19926ffe2fc19d7b0eaaf300c5874d15c8ab361eccd2d72336a70b489d814063",
+                "name": "Non-Profit/Volunteering",
+                "value": "non-profit_volunteering"
+              },
+              {
+                "id": "70c1a995f8313ad17cfd1761715837e77bae333666169659b7609897371b0701",
+                "name": "Oil/Energy/Solar/Greentech",
+                "value": "oil_energy_solar_greentech"
+              },
+              {
+                "id": "ab8b00d99eddb910546cb81ada104c2da48454a267bfce5d24a07c386c70418a",
+                "name": "Online Publishing",
+                "value": "online_publishing"
+              },
+              {
+                "id": "b618c1ace85e86ded84f5019b021a01279e87eb0d6598457141b29d4dbf6cde7",
+                "name": "Outsourcing/Offshoring",
+                "value": "outsourcing_offshoring"
+              },
+              {
+                "id": "2d8e316af46305414c5056a67ddd29a8aa43e119053f89652ca2a16bd8eb10c4",
+                "name": "Package/Freight Delivery",
+                "value": "package_freight_delivery"
+              },
+              {
+                "id": "7f4010f3ec6b814b09576579c210fc47bb3179af80a928841d8af972a4c9c872",
+                "name": "Packaging/Containers",
+                "value": "packaging_containers"
+              },
+              {
+                "id": "072e9f9a18d5bc21daf379d90aa383c039d405d3a8c3110f0eff19cc25428623",
+                "name": "Paper/Forest Products",
+                "value": "paper_forest_products"
+              },
+              {
+                "id": "288d98636e659997aca79eeb045353e25026aab17d24b6a05c70a5625e1ba4ce",
+                "name": "Performing Arts",
+                "value": "performing_arts"
+              },
+              {
+                "id": "8c2139e1137ef8942d7aa196a03c41e3972fb4e14c9b56fed6b72290ed057910",
+                "name": "Pharmaceuticals",
+                "value": "pharmaceuticals"
+              },
+              {
+                "id": "f6229aecda19fa29077bd371954a8c106dc991f503a721fe56726537fba92a82",
+                "name": "Philanthropy",
+                "value": "philanthropy"
+              },
+              {
+                "id": "bd2398aa4157a4961508ba2a1e0c90bbdab7d185a7eb0babf854282c4ef37157",
+                "name": "Photography",
+                "value": "photography"
+              },
+              {
+                "id": "f7f4e3c8f6db3c5f3395069646f01328e4ccad8ce5a7960e140acc2aaec48772",
+                "name": "Plastics",
+                "value": "plastics"
+              },
+              {
+                "id": "e0b7ce3f29ed043f88a45360df85ce44d08ff7259dc9caece0d21bbc9a9f7e8e",
+                "name": "Political Organization",
+                "value": "political_organization"
+              },
+              {
+                "id": "e3695a2337663a6b7691a8889c33d7e7d1af7425eb20531c1074fd63126764f0",
+                "name": "Primary/Secondary Education",
+                "value": "primary_secondary_education"
+              },
+              {
+                "id": "43cdee24fd341b3619763b6d26ca0ebe0f3ba7f895981acb98c6d06df7a3386e",
+                "name": "Printing",
+                "value": "printing"
+              },
+              {
+                "id": "7ac603eaac560181d7c169e1bf12a38fa008a875930be635fde9b6d7578e0bc3",
+                "name": "Professional Training",
+                "value": "professional_training"
+              },
+              {
+                "id": "436c153600a8ae97478440c03ca0d9f96fe4aff0a223d03d785ef284ab7cefa7",
+                "name": "Program Development",
+                "value": "program_development"
+              },
+              {
+                "id": "fc412cef109100e0bb10db6d7705cf5271a0c5768831e92d99c7e50e86a69306",
+                "name": "Public Relations/PR",
+                "value": "public_relations"
+              },
+              {
+                "id": "fade5944616a1b5ab74eeb0a398a52cedb6dbf5ba520721c3d49f15661b7746b",
+                "name": "Public Safety",
+                "value": "public_safety"
+              },
+              {
+                "id": "4f803edd777836aab47578e4da0f1d90da1c0050a59862f1e8286e67ee60c849",
+                "name": "Publishing Industry",
+                "value": "publishing_industry"
+              },
+              {
+                "id": "487c547244d2e6be88d90c110cc6e2e742ae17260f440a63c21d5bcb0065735d",
+                "name": "Railroad Manufacture",
+                "value": "railroad_manufacture"
+              },
+              {
+                "id": "7d519b5299ef67d7e1a209933b1e867b785f67e6bcd7daeded0d9f82507d3190",
+                "name": "Ranching",
+                "value": "ranching"
+              },
+              {
+                "id": "c0703ef9e594bfab3319fafd2a26c20e3dd84fdeee68a3929047acbc7d703209",
+                "name": "Real Estate/Mortgage",
+                "value": "real_estate_mortgage"
+              },
+              {
+                "id": "e91a6a2d667b8e9354626933a7618f9373b0f6f53c26d16833e8eabf6db3cec3",
+                "name": "Recreational Facilities/Services",
+                "value": "recreational_facilities_services"
+              },
+              {
+                "id": "3b5554c09e86bfd1fb65da72e827cd56322e8384fc1b4f6d3848ca6b688d28f9",
+                "name": "Religious Institutions",
+                "value": "religious_institutions"
+              },
+              {
+                "id": "efc76828a272b656d8562990db094e093b5c5f4810f96bbf7d64f68d11d7c99f",
+                "name": "Renewables/Environment",
+                "value": "renewables_environment"
+              },
+              {
+                "id": "54f914b31a23947848804c4577c01f525aae96860b7b902afe29d6c9b3087cf7",
+                "name": "Research Industry",
+                "value": "research_industry"
+              },
+              {
+                "id": "de417c62d4f8574987fbd42dbdfa7fbb2e2a0bed77e14c4a1ad78e5ac28d4f73",
+                "name": "Restaurants",
+                "value": "restaurants"
+              },
+              {
+                "id": "bb2f4fb3010f8afe1267ddf616ecb52c4b9654ec772576cffdbb08a1b7d0279d",
+                "name": "Retail Industry",
+                "value": "retail_industry"
+              },
+              {
+                "id": "e63395db83bd00dd087e0094bd66cffe54b48e7230ee2f62c025d8a9a2e3d37f",
+                "name": "Security/Investigations",
+                "value": "security_investigations"
+              },
+              {
+                "id": "0c10d118e927ab432cded2190328ff30d9e4b600be0828e7457364f692c34326",
+                "name": "Semiconductors",
+                "value": "semiconductors"
+              },
+              {
+                "id": "f448f9a965facb8640345af1b54b6cd907833c2725aa5c9d298a9d208f43c5d2",
+                "name": "Shipbuilding",
+                "value": "shipbuilding"
+              },
+              {
+                "id": "efddd2c2b012c73209bd4b6ad0a1e77e161eb986bd84b6cc122bbf24f3a1bb50",
+                "name": "Sporting Goods",
+                "value": "sporting_goods"
+              },
+              {
+                "id": "81690708fd29cf316dd15903b3145aaf6ea046613767587fa44533fc986490da",
+                "name": "Sports",
+                "value": "sports"
+              },
+              {
+                "id": "d2ee8c09a86310d97aa8fd122bec9934094c13045f37b5eaae6f12a97b8cad05",
+                "name": "Staffing/Recruiting",
+                "value": "staffing_recruiting"
+              },
+              {
+                "id": "32f2aa419d8087b7377f1a181c1af3cf99ae24d44d4434c94fef9fb50159f738",
+                "name": "Supermarkets",
+                "value": "supermarkets"
+              },
+              {
+                "id": "da25e81d2f73c4a647459b6cf9b7d12f058707b96150b464ce3ec1e1f731c872",
+                "name": "Telecommunications",
+                "value": "telecommunications"
+              },
+              {
+                "id": "ea50a4fb6cb4524baa4607963d0184034452f884acf73ecb908e13277fdaa82c",
+                "name": "Textiles",
+                "value": "textiles"
+              },
+              {
+                "id": "9400aafcf8f3103af0a1b834af7a47b4d2190d05d08aaa792c336f779bcdc76d",
+                "name": "Think Tanks",
+                "value": "think_tanks"
+              },
+              {
+                "id": "071cee3df2fda800f4a6d895a9cf608366af5956066e7a9e32370316c7d71041",
+                "name": "Tobacco",
+                "value": "tobacco"
+              },
+              {
+                "id": "b156cc8819ed5e8fb35afcd662fde0a21d150fec90fb1acb8499777e76049410",
+                "name": "Translation/Localization",
+                "value": "translation_localization"
+              },
+              {
+                "id": "fb69d1a68ec0052047b585a6af3de9dfb93a6acef34e64ebd75869c6735841fa",
+                "name": "Transportation",
+                "value": "transportation"
+              },
+              {
+                "id": "907a0f52f577cfd745de44149e034b1c0fe2d55c50d7e0f1f566c81b1a0ad083",
+                "name": "Utilities",
+                "value": "utilities"
+              },
+              {
+                "id": "eb3546ceb5481c9150fb28e1ba643234d65b201489442684ac942b0521240518",
+                "name": "Venture Capital/VC",
+                "value": "venture_capital"
+              },
+              {
+                "id": "b695f74fca78a905df573dcf55ccb341ea74df3e35a080e5e48a1ece9a372273",
+                "name": "Veterinary",
+                "value": "veterinary"
+              },
+              {
+                "id": "f6a4bb9ed75c2fd5f31e8b30c8fdedafca54b480195d8a4f4a4b64dbceca039e",
+                "name": "Warehousing",
+                "value": "warehousing"
+              },
+              {
+                "id": "e662c7194d4de38f7a8bbca52a197c65cdd258f567c18234208833842e349522",
+                "name": "Wholesale",
+                "value": "wholesale"
+              },
+              {
+                "id": "1e32b1c925dfb3740298367e89b21df11af72e3d5a96090a2d709eff829fbf54",
+                "name": "Wine/Spirits",
+                "value": "wine_spirits"
+              },
+              {
+                "id": "953a426ee1de01afee98f06337c6b9e9c55385a7c184e20cd0486dc2b0e26053",
+                "name": "Wireless",
+                "value": "wireless"
+              },
+              {
+                "id": "2b89edb90b54d5d8a9bb0a07e688c413bc287548b6934a745ed41e3e6932d585",
+                "name": "Writing/Editing",
+                "value": "writing_editing"
+              }
+            ],
+            "alias": "industry"
+          }
+        },
+        {
+          "id": "69041109e9ac1e5007c6278b7e950d527c4c3b405925e868e8307e450c103e0b",
+          "name": "Do you need to be in close contact with people on your job?",
+          "nameVisible": true,
+          "slots": [
+            {
+              "id": "81c4d4480c2a2ac0ebb39ae8a4b722529729396abd76bd47b74761cba77443e7",
+              "type": "string",
+              "kind": "static",
+              "reference": "answer",
+              "label": "Answer",
+              "alias": "close_contact_with_people"
+            }
+          ],
+          "block": { "type": "tripetto-block-yes-no", "version": "2.0.0" }
+        },
+        {
+          "id": "1435f07ff9d23f2654854ff1c0317864e2b15d86cf395615866c962321f815af",
+          "name": "Do you commute to work?",
+          "nameVisible": true,
+          "slots": [
+            {
+              "id": "f62318ba9f5f05984047eb9ec76934794abbb1bed2387b3c86437c14f68cf5ad",
+              "type": "string",
+              "kind": "static",
+              "reference": "choice",
+              "label": "Choice",
+              "alias": "commute_to_work"
+            }
+          ],
+          "block": {
+            "type": "tripetto-block-multiple-choice",
+            "version": "2.0.0",
+            "choices": [
+              {
+                "id": "e72ece52dc32fba1a3709975cc82fdf797e06700bb2f5ee2dffa957775664eec",
+                "name": "No, I don't need to commute",
+                "value": "no"
+              },
+              {
+                "id": "5d7dc65b1492d94f43ab1c7877a0d32351804cfb1301bb6ef216917e879811f3",
+                "name": "Yes, I drive to work",
+                "value": "yes_drive"
+              },
+              {
+                "id": "e1c03e93fd7bb340abb70fa3c82427a59b81ac2e6e9ac1856ed8abf166fb83da",
+                "name": "Yes, I walk to my workplace",
+                "value": "yes_walk"
+              },
+              {
+                "id": "40a19a875b05b6654d7d0b6d3e375466ec3f3489af308fb58361e17265ce8a4e",
+                "name": "Yes, I take public transit to work",
+                "value": "yes_public_transit"
+              }
+            ],
+            "alias": "commute_to_work"
+          }
+        }
+      ],
+      "branches": [
+        {
+          "id": "e45098ce9d74c6e9d05fe8eb3cb82fcda4e9b1cf142ff5e8860e1f6b61e954f5",
+          "name": "Yes",
+          "conditions": [
+            {
+              "id": "13fc42038805cff9301cfbb5cf137e3a5c55626ffaafa4f36c408a9c5f1ee30e",
+              "block": {
+                "type": "tripetto-block-yes-no:no",
+                "version": "2.0.0",
+                "node": "69041109e9ac1e5007c6278b7e950d527c4c3b405925e868e8307e450c103e0b",
+                "slot": "81c4d4480c2a2ac0ebb39ae8a4b722529729396abd76bd47b74761cba77443e7"
+              }
+            }
+          ],
+          "jump": "abort"
+        }
+      ]
+    },
+    {
+      "id": "4b5fff204f1f24f633fc8c7609de779d2e347b9a74dd3966070853259292b600",
+      "name": "Place of work",
+      "nodes": [
+        {
+          "id": "5c3635147ab545dc8aa44587ffb9040e019d1f70867e371834e2992a97cbc159",
+          "name": "Where do you drive, walk, or take public transit to work?",
+          "nameVisible": true,
+          "slots": [
+            {
+              "id": "69acd2fc987647337dec2fed04a3051d972c3125019f4581ea5a37a883cedb6f",
+              "type": "text",
+              "kind": "static",
+              "reference": "value",
+              "label": "Text",
+              "alias": "where_do_you_work"
+            }
+          ],
+          "block": { "type": "tripetto-block-text", "version": "3.0.0" }
+        },
+        {
+          "id": "a8275984194da0c7bcd757c8f6496663b97f82a99056d05133b9aaaf593ef644",
+          "name": "How many days in a week do you need to commute to work?",
+          "nameVisible": true,
+          "slots": [
+            {
+              "id": "257adf4b486557e7b37ef7a16e57a04df7536b51b47b478c9273a69f7ae70a63",
+              "type": "numeric",
+              "kind": "static",
+              "reference": "number",
+              "label": "Number",
+              "alias": "days_need_to_commute",
+              "minimum": 0,
+              "maximum": 7
+            }
+          ],
+          "block": { "type": "tripetto-block-number", "version": "4.0.0" }
+        }
+      ]
+    }
+  ],
+  "builder": { "name": "tripetto", "version": "2.0.1" }
+}

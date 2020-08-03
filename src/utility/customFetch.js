@@ -32,7 +32,7 @@ export const customPost = async (url, token, values) => {
     body: JSON.stringify(values)
   }
   let payload;
-  await fetch(baseEndpoint + "/create_survey_response", postPayload)
+  await fetch(baseEndpoint + url, postPayload)
     .then(res => {
       payload = res.text();
     })
