@@ -158,10 +158,11 @@ const extractAnswers = (
       } else if (date_fields.includes(field.name)) {
         if (field.value !== undefined) {
           const date = new Date(field.string);
-          if (date !== "Invalid Date") {
-            finalResult[field.name] = date;
-          } else {
+          if (date == "Invalid Date") {
+            finalResult[field.name] = undefined;
             throw new Error("invalid date value at ", field.name);
+          } else {
+            finalResult[field.name] = field.string;
           }
         }
       } else finalResult[field.name] = field.value;
