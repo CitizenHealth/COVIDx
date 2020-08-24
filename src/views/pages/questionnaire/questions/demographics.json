@@ -35,7 +35,7 @@
           ],
           "block": {
             "type": "tripetto-block-yes-no",
-            "version": "2.0.0",
+            "version": "2.0.1",
             "altYes": "I consent",
             "altNo": "I do not consent"
           }
@@ -50,7 +50,7 @@
               "id": "5d2f6f3c8a87f7c5cb9e763e5cb2211c0a896518a9c8e021de6d8e6b873c27b4",
               "block": {
                 "type": "tripetto-block-yes-no:no",
-                "version": "2.0.0",
+                "version": "2.0.1",
                 "node": "45c32fc3489daa72861b371358a3b52e956399beb71566b8413aa4332c5e3d7c",
                 "slot": "429a3d484fb50862de15ce14893deed2db1a62d0544e8b00efdcd2e7cc04bd73"
               }
@@ -81,7 +81,7 @@
           ],
           "block": {
             "type": "tripetto-block-multiple-choice",
-            "version": "2.0.0",
+            "version": "2.0.1",
             "choices": [
               {
                 "id": "b16ce8bb2293c4282dcce189046e928249e7d4199cdf6c443317171a0c7c0c49",
@@ -114,512 +114,601 @@
           }
         },
         {
-          "id": "6f3ec04c7602f54d415ffb654da7c61b69fd868511816f6204b46a02744069db",
-          "name": "Do you currently have any of these symptoms?",
+          "id": "c80eabe705436221f070ad35f7735f9c383133678aed041f349f870deef84e17",
+          "name": "Do you have any COVID-19 symptoms?",
           "nameVisible": true,
           "slots": [
             {
-              "id": "c316b7d9c8d830c2f22000bc1bf7049bb810845c37bb0a04970a1e414d60da34",
-              "type": "boolean",
-              "kind": "dynamic",
-              "reference": "b445dbaa22756bfc444bf63aa68ad6e20d3922e4a5b90f07b7d37f313082bd56",
-              "sequence": 0,
-              "label": "Choice",
-              "name": "Fever",
-              "alias": "fever",
-              "pipable": {
-                "group": "Choice",
-                "label": "Choice",
-                "template": "name",
-                "alias": "current_symptoms"
-              }
-            },
-            {
-              "id": "90b170269d1dde4bf265b1b960cc67b43f19adbaefea2c207a7cf9d984584da6",
-              "type": "boolean",
-              "kind": "dynamic",
-              "reference": "bc05cc927c5855c653d92729a07ffd4a25a77a78e3bcfb0436a93fde1d2fd69b",
-              "sequence": 1,
-              "label": "Choice",
-              "name": "Chills",
-              "alias": "chills",
-              "pipable": {
-                "group": "Choice",
-                "label": "Choice",
-                "template": "name",
-                "alias": "current_symptoms"
-              }
-            },
-            {
-              "id": "6ffaa53637ef737799f3e36d445c017dcdde902eeb23ca6d6ba87a8b81b8489c",
-              "type": "boolean",
-              "kind": "dynamic",
-              "reference": "e71cefd93b332d29ec46dad878fbd73537aad87c3c7ee452d0c9af3619606965",
-              "sequence": 2,
-              "label": "Choice",
-              "name": "Fatigue",
-              "alias": "fatigue",
-              "pipable": {
-                "group": "Choice",
-                "label": "Choice",
-                "template": "name",
-                "alias": "current_symptoms"
-              }
-            },
-            {
-              "id": "afcb92b87e0e83b01a04dea88548ee9c607f6048974a13e280698b6b4a48b769",
-              "type": "boolean",
-              "kind": "dynamic",
-              "reference": "9c25d4fe1f992e472ede6d93ac452be4ab4de118bc6e91e772b21e9ef52e301d",
-              "sequence": 3,
-              "label": "Choice",
-              "name": "Dry cough",
-              "alias": "dry_cough",
-              "pipable": {
-                "group": "Choice",
-                "label": "Choice",
-                "template": "name",
-                "alias": "current_symptoms"
-              }
-            },
-            {
-              "id": "009ce7c8ea19c41c5ce61e30510effe5eb142c0d161cd0ecf90060d11c3bdbe6",
-              "type": "boolean",
-              "kind": "dynamic",
-              "reference": "86b95a7898c76ad345b087e88d3e3bf3a6b9e32393b055bf783dd0b17fc47922",
-              "sequence": 4,
-              "label": "Choice",
-              "name": "Wet cough (sputum)",
-              "alias": "wet_cough",
-              "pipable": {
-                "group": "Choice",
-                "label": "Choice",
-                "template": "name",
-                "alias": "current_symptoms"
-              }
-            },
-            {
-              "id": "829acbbef041853984c8e350ef1286a02948b27062e8c43cbb9366c13a1eb30b",
-              "type": "boolean",
-              "kind": "dynamic",
-              "reference": "b26df6bd9b2169bea248902630e4453b2950e6a7c400fb6293db06ccab33bff3",
-              "sequence": 5,
-              "label": "Choice",
-              "name": "Shortness of breath",
-              "alias": "shortness_of_breath",
-              "pipable": {
-                "group": "Choice",
-                "label": "Choice",
-                "template": "name",
-                "alias": "current_symptoms"
-              }
-            },
-            {
-              "id": "a3d7071f56e779811250ae80528a22d585707c3a2c55c578555e41ec77e8ba70",
-              "type": "boolean",
-              "kind": "dynamic",
-              "reference": "60e87e28442a70637f65e7bf724379318d7587110d1e24de91cfb33d89038322",
-              "sequence": 6,
-              "label": "Choice",
-              "name": "Loss of taste",
-              "alias": "loss_of_taste",
-              "pipable": {
-                "group": "Choice",
-                "label": "Choice",
-                "template": "name",
-                "alias": "current_symptoms"
-              }
-            },
-            {
-              "id": "4417bcdb79cccdefec200b1b8d924e06a08191aa1e02845be8ed5f9c41f93760",
-              "type": "boolean",
-              "kind": "dynamic",
-              "reference": "e031e00ac2304e6572317cefdb2bc377c16d828e7d4987197cf7080b65b9c218",
-              "sequence": 7,
-              "label": "Choice",
-              "name": "Loss of smell",
-              "alias": "loss_of_smell",
-              "pipable": {
-                "group": "Choice",
-                "label": "Choice",
-                "template": "name",
-                "alias": "current_symptoms"
-              }
-            },
-            {
-              "id": "f8f4d739e5c0f7e00551934a3e2b51651d8300c8035d4958767bb71a6868207c",
-              "type": "boolean",
-              "kind": "dynamic",
-              "reference": "966d26c308c5904409e241141b2a93f4fc1eecf051e18b5490dbcb48fda19c5c",
-              "sequence": 8,
-              "label": "Choice",
-              "name": "Diarrhea",
-              "alias": "diarrhea",
-              "pipable": {
-                "group": "Choice",
-                "label": "Choice",
-                "template": "name",
-                "alias": "current_symptoms"
-              }
-            },
-            {
-              "id": "16122a0a950322f28da1024a84c5ebe0ba91a068acb0c85fc3161027caa2dbf9",
-              "type": "boolean",
-              "kind": "dynamic",
-              "reference": "ed0417ed72c4fa8feaa2f4936aeb13a4ffdba4e05f71c6bd6d0171e31800ab46",
-              "sequence": 9,
-              "label": "Choice",
-              "name": "Sore throat",
-              "alias": "sore_throat",
-              "pipable": {
-                "group": "Choice",
-                "label": "Choice",
-                "template": "name",
-                "alias": "current_symptoms"
-              }
-            },
-            {
-              "id": "328def629e48b508822becb484192b7e78e1e61764174f91d3c467039e46259b",
-              "type": "boolean",
-              "kind": "dynamic",
-              "reference": "709db7e580ca646ba2444af6bc8b6e6b75f045fa879239e08d513f3c85c6613b",
-              "sequence": 10,
-              "label": "Choice",
-              "name": "Nausea",
-              "alias": "nausea",
-              "pipable": {
-                "group": "Choice",
-                "label": "Choice",
-                "template": "name",
-                "alias": "current_symptoms"
-              }
-            },
-            {
-              "id": "eaf7842ce4f1c1aa4d9ebbadb6135930c124fa5627e8c832e066b456754957f0",
-              "type": "boolean",
-              "kind": "dynamic",
-              "reference": "51e61514fa745fe0fa04405522820c1efb188fcedcb7c32c9a7f7ce6c31e467b",
-              "sequence": 11,
-              "label": "Choice",
-              "name": "Vomiting",
-              "alias": "vomiting",
-              "pipable": {
-                "group": "Choice",
-                "label": "Choice",
-                "template": "name",
-                "alias": "current_symptoms"
-              }
-            },
-            {
-              "id": "093741cbccc92fb7d80ccd010e7fdae4760ae98e19eb90e9a62df8287cd5994c",
-              "type": "boolean",
-              "kind": "dynamic",
-              "reference": "4fcb77bca9f5a313f8f4657eb0144fd0b5539913120c9265b0916f5e974e27f1",
-              "sequence": 12,
-              "label": "Choice",
-              "name": "Pressure feeling in chest",
-              "alias": "pressure_in_chest",
-              "pipable": {
-                "group": "Choice",
-                "label": "Choice",
-                "template": "name",
-                "alias": "current_symptoms"
-              }
-            },
-            {
-              "id": "fd637072c66643bccc8f80310866cdd07cd96d6afe1e079bad0f8d0fcc694122",
-              "type": "boolean",
-              "kind": "dynamic",
-              "reference": "4d4ee1d5c4e3295436b19c35db8d14b61f0fe7a1a91477284bd5d13f7b757fb3",
-              "sequence": 13,
-              "label": "Choice",
-              "name": "Pink eye",
-              "alias": "pink_eye",
-              "pipable": {
-                "group": "Choice",
-                "label": "Choice",
-                "template": "name",
-                "alias": "current_symptoms"
-              }
-            },
-            {
-              "id": "8f1e0551f5d88957c456042461559c760f1968ac81684ae0a209d4d6a3f5bf19",
-              "type": "boolean",
-              "kind": "dynamic",
-              "reference": "0215084ab3983c73beac049496518dc62ca22366f58ebf75e531a19327580cc3",
-              "sequence": 14,
-              "label": "Choice",
-              "name": "Headache",
-              "alias": "headache",
-              "pipable": {
-                "group": "Choice",
-                "label": "Choice",
-                "template": "name",
-                "alias": "current_symptoms"
-              }
-            },
-            {
-              "id": "38de18878f2091df6c25dc8947bbb42fdeb1fd70d6dada85064b209fcd1fd753",
-              "type": "boolean",
-              "kind": "dynamic",
-              "reference": "f7357f48e1fae3b5e9ce9bdeaca4554a18f412b7bb0717d9c0a2c1467a385787",
-              "sequence": 15,
-              "label": "Choice",
-              "name": "Confusion",
-              "alias": "confusion",
-              "pipable": {
-                "group": "Choice",
-                "label": "Choice",
-                "template": "name",
-                "alias": "current_symptoms"
-              }
-            },
-            {
-              "id": "9703eaeb14d2ec1dcb99872ed950a8c84e198845ee1872485e86babc45bd6385",
-              "type": "boolean",
-              "kind": "dynamic",
-              "reference": "4126e08d0e625b9851ac392c646a8dc25832ad10dfc630cf45588ec51e06352c",
-              "sequence": 16,
-              "label": "Choice",
-              "name": "Rash on feet",
-              "alias": "rash_on_feet",
-              "pipable": {
-                "group": "Choice",
-                "label": "Choice",
-                "template": "name",
-                "alias": "current_symptoms"
-              }
-            },
-            {
-              "id": "d1dd07b955443e148a7f9bf3e84b380a673f9e5fba6b203f98de4c023589a72b",
-              "type": "boolean",
-              "kind": "dynamic",
-              "reference": "e994dd99b311fd6178984f9e40a25479fd76921276abac5d9c3c3f68e44ccad4",
-              "sequence": 17,
-              "label": "Choice",
-              "name": "Abdominal pain",
-              "alias": "abdominal_pain",
-              "pipable": {
-                "group": "Choice",
-                "label": "Choice",
-                "template": "name",
-                "alias": "current_symptoms"
-              }
-            },
-            {
-              "id": "ef42b37f1d04e56755df8d6a7626fd53f06f6933daedda019f9df70ec6d1e960",
-              "type": "boolean",
-              "kind": "dynamic",
-              "reference": "45ee985f703f3f0f62223907c70cb165eceebad23ed066471470e49a7848eca9",
-              "sequence": 18,
-              "label": "Choice",
-              "name": "Chest pain",
-              "alias": "chest_pain",
-              "pipable": {
-                "group": "Choice",
-                "label": "Choice",
-                "template": "name",
-                "alias": "current_symptoms"
-              }
-            },
-            {
-              "id": "050136975a909a524e7d6a83476a54e41455c8fb2cffeb0ed37b9fb56d27cee0",
-              "type": "boolean",
-              "kind": "dynamic",
-              "reference": "71e0a9a72e337846a17de794bc690e0fa65ea0ee47dbeaf8b12fe2e454d76d1d",
-              "sequence": 19,
-              "label": "Choice",
-              "name": "Muscle pain",
-              "alias": "muscle_pain",
-              "pipable": {
-                "group": "Choice",
-                "label": "Choice",
-                "template": "name",
-                "alias": "current_symptoms"
-              }
-            },
-            {
-              "id": "06a9e9d78ec9f3a0508b6c1e784cacb4c77d7f0cda8ec4a6b491d897fad2c51f",
-              "type": "boolean",
-              "kind": "dynamic",
-              "reference": "30f2ac09b8d506feb197c85a1b4660e207e38ee2791bd6a3ce79b6dc05304a2d",
-              "sequence": 20,
-              "label": "Choice",
-              "name": "Loss of appetite",
-              "alias": "loss_of_appetite",
-              "pipable": {
-                "group": "Choice",
-                "label": "Choice",
-                "template": "name",
-                "alias": "current_symptoms"
-              }
-            },
-            {
-              "id": "e47e83a1b9117e18fd0c16f44b0bab69f3b365c44b00075568d986ab1f44bf83",
-              "type": "boolean",
-              "kind": "dynamic",
-              "reference": "f43b9d55f6f16212b43d94f9f3b11f81c76cd76044082a5d81c8a0d4e70453b2",
-              "sequence": 21,
-              "label": "Choice",
-              "name": "Hoarseness",
-              "alias": "hoarseness",
-              "pipable": {
-                "group": "Choice",
-                "label": "Choice",
-                "template": "name",
-                "alias": "current_symptoms"
-              }
-            },
-            {
-              "id": "27c16045aad8abd5e3ed715209eaf9741c68d171fc0dc0a19f30ed8c6e7ee496",
-              "type": "boolean",
-              "kind": "dynamic",
-              "reference": "1eb923b4de5c5bcc92777f6e8ec6ab1ab87934ac1a959632aaf7259f62c62f61",
-              "sequence": 22,
-              "label": "Choice",
-              "name": "No symptoms",
-              "alias": "no_symptoms",
-              "pipable": {
-                "group": "Choice",
-                "label": "Choice",
-                "template": "name",
-                "alias": "current_symptoms"
-              }
+              "id": "002fdee762d4f75679ef446bb1bab19aca57c48c6fb48418f58b23553285ac5a",
+              "type": "string",
+              "kind": "static",
+              "reference": "answer",
+              "label": "Answer",
+              "alias": "have_symptoms",
+              "required": true
             }
           ],
-          "block": {
-            "type": "tripetto-block-multiple-choice",
-            "version": "2.0.0",
-            "choices": [
-              {
-                "id": "b445dbaa22756bfc444bf63aa68ad6e20d3922e4a5b90f07b7d37f313082bd56",
-                "name": "Fever",
-                "value": "fever"
-              },
-              {
-                "id": "bc05cc927c5855c653d92729a07ffd4a25a77a78e3bcfb0436a93fde1d2fd69b",
-                "name": "Chills",
-                "value": "chills"
-              },
-              {
-                "id": "e71cefd93b332d29ec46dad878fbd73537aad87c3c7ee452d0c9af3619606965",
-                "name": "Fatigue",
-                "value": "fatigue"
-              },
-              {
-                "id": "9c25d4fe1f992e472ede6d93ac452be4ab4de118bc6e91e772b21e9ef52e301d",
-                "name": "Dry cough",
-                "value": "dry_cough"
-              },
-              {
-                "id": "86b95a7898c76ad345b087e88d3e3bf3a6b9e32393b055bf783dd0b17fc47922",
-                "name": "Wet cough (sputum)",
-                "value": "wet_cough"
-              },
-              {
-                "id": "b26df6bd9b2169bea248902630e4453b2950e6a7c400fb6293db06ccab33bff3",
-                "name": "Shortness of breath",
-                "value": "shortness_of_breath"
-              },
-              {
-                "id": "60e87e28442a70637f65e7bf724379318d7587110d1e24de91cfb33d89038322",
-                "name": "Loss of taste",
-                "value": "loss_of_taste"
-              },
-              {
-                "id": "e031e00ac2304e6572317cefdb2bc377c16d828e7d4987197cf7080b65b9c218",
-                "name": "Loss of smell",
-                "value": "loss_of_smell"
-              },
-              {
-                "id": "966d26c308c5904409e241141b2a93f4fc1eecf051e18b5490dbcb48fda19c5c",
-                "name": "Diarrhea",
-                "value": "diarrhea"
-              },
-              {
-                "id": "ed0417ed72c4fa8feaa2f4936aeb13a4ffdba4e05f71c6bd6d0171e31800ab46",
-                "name": "Sore throat",
-                "value": "sore_throat"
-              },
-              {
-                "id": "709db7e580ca646ba2444af6bc8b6e6b75f045fa879239e08d513f3c85c6613b",
-                "name": "Nausea",
-                "value": "nausea"
-              },
-              {
-                "id": "51e61514fa745fe0fa04405522820c1efb188fcedcb7c32c9a7f7ce6c31e467b",
-                "name": "Vomiting",
-                "value": "vomiting"
-              },
-              {
-                "id": "4fcb77bca9f5a313f8f4657eb0144fd0b5539913120c9265b0916f5e974e27f1",
-                "name": "Pressure feeling in chest",
-                "value": "pressure_in_chest"
-              },
-              {
-                "id": "4d4ee1d5c4e3295436b19c35db8d14b61f0fe7a1a91477284bd5d13f7b757fb3",
-                "name": "Pink eye",
-                "value": "pink_eye"
-              },
-              {
-                "id": "0215084ab3983c73beac049496518dc62ca22366f58ebf75e531a19327580cc3",
-                "name": "Headache",
-                "value": "headache"
-              },
-              {
-                "id": "f7357f48e1fae3b5e9ce9bdeaca4554a18f412b7bb0717d9c0a2c1467a385787",
-                "name": "Confusion",
-                "value": "confusion"
-              },
-              {
-                "id": "4126e08d0e625b9851ac392c646a8dc25832ad10dfc630cf45588ec51e06352c",
-                "name": "Rash on feet",
-                "value": "rash_on_feet"
-              },
-              {
-                "id": "e994dd99b311fd6178984f9e40a25479fd76921276abac5d9c3c3f68e44ccad4",
-                "name": "Abdominal pain",
-                "value": "abdominal_pain"
-              },
-              {
-                "id": "45ee985f703f3f0f62223907c70cb165eceebad23ed066471470e49a7848eca9",
-                "name": "Chest pain",
-                "value": "chest_pain"
-              },
-              {
-                "id": "71e0a9a72e337846a17de794bc690e0fa65ea0ee47dbeaf8b12fe2e454d76d1d",
-                "name": "Muscle pain",
-                "value": "muscle_pain"
-              },
-              {
-                "id": "30f2ac09b8d506feb197c85a1b4660e207e38ee2791bd6a3ce79b6dc05304a2d",
-                "name": "Loss of appetite",
-                "value": "loss_of_appetite"
-              },
-              {
-                "id": "f43b9d55f6f16212b43d94f9f3b11f81c76cd76044082a5d81c8a0d4e70453b2",
-                "name": "Hoarseness",
-                "value": "hoarseness"
-              },
-              {
-                "id": "1eb923b4de5c5bcc92777f6e8ec6ab1ab87934ac1a959632aaf7259f62c62f61",
-                "name": "No symptoms",
-                "value": "no_symptoms",
-                "exclusive": true
-              }
-            ],
-            "multiple": true,
-            "alignment": true,
-            "alias": "current_symptoms"
-          }
-        },
+          "block": { "type": "tripetto-block-yes-no", "version": "2.0.1" }
+        }
+      ],
+      "branches": [
         {
-          "id": "a47eb190e51e3d14fa13c66d68993233ea4b723a9200b21a6a47b42abf3ad0f5",
+          "id": "49164ea223be063678181b51960261ba0d2f92b044c9cd6681ba48f6f2c08f73",
+          "name": "Yes",
+          "clusters": [
+            {
+              "id": "f161f55f19c71232a7658046f707d769d1423128fecda0a893219e2a6d188017",
+              "name": "Symptoms",
+              "nodes": [
+                {
+                  "id": "6f3ec04c7602f54d415ffb654da7c61b69fd868511816f6204b46a02744069db",
+                  "name": "What symptoms do you have?",
+                  "nameVisible": true,
+                  "slots": [
+                    {
+                      "id": "c316b7d9c8d830c2f22000bc1bf7049bb810845c37bb0a04970a1e414d60da34",
+                      "type": "boolean",
+                      "kind": "dynamic",
+                      "reference": "b445dbaa22756bfc444bf63aa68ad6e20d3922e4a5b90f07b7d37f313082bd56",
+                      "sequence": 0,
+                      "label": "Choice",
+                      "name": "Fever",
+                      "alias": "fever",
+                      "pipable": {
+                        "group": "Choice",
+                        "label": "Choice",
+                        "template": "name",
+                        "alias": "current_symptoms"
+                      }
+                    },
+                    {
+                      "id": "90b170269d1dde4bf265b1b960cc67b43f19adbaefea2c207a7cf9d984584da6",
+                      "type": "boolean",
+                      "kind": "dynamic",
+                      "reference": "bc05cc927c5855c653d92729a07ffd4a25a77a78e3bcfb0436a93fde1d2fd69b",
+                      "sequence": 1,
+                      "label": "Choice",
+                      "name": "Chills",
+                      "alias": "chills",
+                      "pipable": {
+                        "group": "Choice",
+                        "label": "Choice",
+                        "template": "name",
+                        "alias": "current_symptoms"
+                      }
+                    },
+                    {
+                      "id": "6ffaa53637ef737799f3e36d445c017dcdde902eeb23ca6d6ba87a8b81b8489c",
+                      "type": "boolean",
+                      "kind": "dynamic",
+                      "reference": "e71cefd93b332d29ec46dad878fbd73537aad87c3c7ee452d0c9af3619606965",
+                      "sequence": 2,
+                      "label": "Choice",
+                      "name": "Fatigue",
+                      "alias": "fatigue",
+                      "pipable": {
+                        "group": "Choice",
+                        "label": "Choice",
+                        "template": "name",
+                        "alias": "current_symptoms"
+                      }
+                    },
+                    {
+                      "id": "afcb92b87e0e83b01a04dea88548ee9c607f6048974a13e280698b6b4a48b769",
+                      "type": "boolean",
+                      "kind": "dynamic",
+                      "reference": "9c25d4fe1f992e472ede6d93ac452be4ab4de118bc6e91e772b21e9ef52e301d",
+                      "sequence": 3,
+                      "label": "Choice",
+                      "name": "Dry cough",
+                      "alias": "dry_cough",
+                      "pipable": {
+                        "group": "Choice",
+                        "label": "Choice",
+                        "template": "name",
+                        "alias": "current_symptoms"
+                      }
+                    },
+                    {
+                      "id": "009ce7c8ea19c41c5ce61e30510effe5eb142c0d161cd0ecf90060d11c3bdbe6",
+                      "type": "boolean",
+                      "kind": "dynamic",
+                      "reference": "86b95a7898c76ad345b087e88d3e3bf3a6b9e32393b055bf783dd0b17fc47922",
+                      "sequence": 4,
+                      "label": "Choice",
+                      "name": "Wet cough (sputum)",
+                      "alias": "wet_cough",
+                      "pipable": {
+                        "group": "Choice",
+                        "label": "Choice",
+                        "template": "name",
+                        "alias": "current_symptoms"
+                      }
+                    },
+                    {
+                      "id": "829acbbef041853984c8e350ef1286a02948b27062e8c43cbb9366c13a1eb30b",
+                      "type": "boolean",
+                      "kind": "dynamic",
+                      "reference": "b26df6bd9b2169bea248902630e4453b2950e6a7c400fb6293db06ccab33bff3",
+                      "sequence": 5,
+                      "label": "Choice",
+                      "name": "Shortness of breath",
+                      "alias": "shortness_of_breath",
+                      "pipable": {
+                        "group": "Choice",
+                        "label": "Choice",
+                        "template": "name",
+                        "alias": "current_symptoms"
+                      }
+                    },
+                    {
+                      "id": "1009af0be02a68c029b95b3f4df9ed9a0f4cfcd9ea112a72a252e4dc8e6bd524",
+                      "type": "boolean",
+                      "kind": "dynamic",
+                      "reference": "3cb9af1daeb1f4edeba691a18846c7215fb640967617f9003424871ce2f308b8",
+                      "sequence": 6,
+                      "label": "Choice",
+                      "name": "Congestion",
+                      "alias": "congestion",
+                      "pipable": {
+                        "group": "Choice",
+                        "label": "Choice",
+                        "template": "name",
+                        "alias": "current_symptoms"
+                      }
+                    },
+                    {
+                      "id": "1bba5485af004e79cd8ff35a28b3ccfa88682bba7a6714b2edb0e882acfb01fe",
+                      "type": "boolean",
+                      "kind": "dynamic",
+                      "reference": "37b565d899e744f62c21f017c4af0841b4b7a66de6d5690ea5d23b0fb9ccf836",
+                      "sequence": 7,
+                      "label": "Choice",
+                      "name": "Runny nose",
+                      "alias": "runny_nose",
+                      "pipable": {
+                        "group": "Choice",
+                        "label": "Choice",
+                        "template": "name",
+                        "alias": "current_symptoms"
+                      }
+                    },
+                    {
+                      "id": "a3d7071f56e779811250ae80528a22d585707c3a2c55c578555e41ec77e8ba70",
+                      "type": "boolean",
+                      "kind": "dynamic",
+                      "reference": "60e87e28442a70637f65e7bf724379318d7587110d1e24de91cfb33d89038322",
+                      "sequence": 8,
+                      "label": "Choice",
+                      "name": "Loss of taste",
+                      "alias": "loss_of_taste",
+                      "pipable": {
+                        "group": "Choice",
+                        "label": "Choice",
+                        "template": "name",
+                        "alias": "current_symptoms"
+                      }
+                    },
+                    {
+                      "id": "4417bcdb79cccdefec200b1b8d924e06a08191aa1e02845be8ed5f9c41f93760",
+                      "type": "boolean",
+                      "kind": "dynamic",
+                      "reference": "e031e00ac2304e6572317cefdb2bc377c16d828e7d4987197cf7080b65b9c218",
+                      "sequence": 9,
+                      "label": "Choice",
+                      "name": "Loss of smell",
+                      "alias": "loss_of_smell",
+                      "pipable": {
+                        "group": "Choice",
+                        "label": "Choice",
+                        "template": "name",
+                        "alias": "current_symptoms"
+                      }
+                    },
+                    {
+                      "id": "f8f4d739e5c0f7e00551934a3e2b51651d8300c8035d4958767bb71a6868207c",
+                      "type": "boolean",
+                      "kind": "dynamic",
+                      "reference": "966d26c308c5904409e241141b2a93f4fc1eecf051e18b5490dbcb48fda19c5c",
+                      "sequence": 10,
+                      "label": "Choice",
+                      "name": "Diarrhea",
+                      "alias": "diarrhea",
+                      "pipable": {
+                        "group": "Choice",
+                        "label": "Choice",
+                        "template": "name",
+                        "alias": "current_symptoms"
+                      }
+                    },
+                    {
+                      "id": "16122a0a950322f28da1024a84c5ebe0ba91a068acb0c85fc3161027caa2dbf9",
+                      "type": "boolean",
+                      "kind": "dynamic",
+                      "reference": "ed0417ed72c4fa8feaa2f4936aeb13a4ffdba4e05f71c6bd6d0171e31800ab46",
+                      "sequence": 11,
+                      "label": "Choice",
+                      "name": "Sore throat",
+                      "alias": "sore_throat",
+                      "pipable": {
+                        "group": "Choice",
+                        "label": "Choice",
+                        "template": "name",
+                        "alias": "current_symptoms"
+                      }
+                    },
+                    {
+                      "id": "328def629e48b508822becb484192b7e78e1e61764174f91d3c467039e46259b",
+                      "type": "boolean",
+                      "kind": "dynamic",
+                      "reference": "709db7e580ca646ba2444af6bc8b6e6b75f045fa879239e08d513f3c85c6613b",
+                      "sequence": 12,
+                      "label": "Choice",
+                      "name": "Nausea",
+                      "alias": "nausea",
+                      "pipable": {
+                        "group": "Choice",
+                        "label": "Choice",
+                        "template": "name",
+                        "alias": "current_symptoms"
+                      }
+                    },
+                    {
+                      "id": "eaf7842ce4f1c1aa4d9ebbadb6135930c124fa5627e8c832e066b456754957f0",
+                      "type": "boolean",
+                      "kind": "dynamic",
+                      "reference": "51e61514fa745fe0fa04405522820c1efb188fcedcb7c32c9a7f7ce6c31e467b",
+                      "sequence": 13,
+                      "label": "Choice",
+                      "name": "Vomiting",
+                      "alias": "vomiting",
+                      "pipable": {
+                        "group": "Choice",
+                        "label": "Choice",
+                        "template": "name",
+                        "alias": "current_symptoms"
+                      }
+                    },
+                    {
+                      "id": "093741cbccc92fb7d80ccd010e7fdae4760ae98e19eb90e9a62df8287cd5994c",
+                      "type": "boolean",
+                      "kind": "dynamic",
+                      "reference": "4fcb77bca9f5a313f8f4657eb0144fd0b5539913120c9265b0916f5e974e27f1",
+                      "sequence": 14,
+                      "label": "Choice",
+                      "name": "Pressure feeling in chest",
+                      "alias": "pressure_in_chest",
+                      "pipable": {
+                        "group": "Choice",
+                        "label": "Choice",
+                        "template": "name",
+                        "alias": "current_symptoms"
+                      }
+                    },
+                    {
+                      "id": "fd637072c66643bccc8f80310866cdd07cd96d6afe1e079bad0f8d0fcc694122",
+                      "type": "boolean",
+                      "kind": "dynamic",
+                      "reference": "4d4ee1d5c4e3295436b19c35db8d14b61f0fe7a1a91477284bd5d13f7b757fb3",
+                      "sequence": 15,
+                      "label": "Choice",
+                      "name": "Pink eye",
+                      "alias": "pink_eye",
+                      "pipable": {
+                        "group": "Choice",
+                        "label": "Choice",
+                        "template": "name",
+                        "alias": "current_symptoms"
+                      }
+                    },
+                    {
+                      "id": "8f1e0551f5d88957c456042461559c760f1968ac81684ae0a209d4d6a3f5bf19",
+                      "type": "boolean",
+                      "kind": "dynamic",
+                      "reference": "0215084ab3983c73beac049496518dc62ca22366f58ebf75e531a19327580cc3",
+                      "sequence": 16,
+                      "label": "Choice",
+                      "name": "Headache",
+                      "alias": "headache",
+                      "pipable": {
+                        "group": "Choice",
+                        "label": "Choice",
+                        "template": "name",
+                        "alias": "current_symptoms"
+                      }
+                    },
+                    {
+                      "id": "38de18878f2091df6c25dc8947bbb42fdeb1fd70d6dada85064b209fcd1fd753",
+                      "type": "boolean",
+                      "kind": "dynamic",
+                      "reference": "f7357f48e1fae3b5e9ce9bdeaca4554a18f412b7bb0717d9c0a2c1467a385787",
+                      "sequence": 17,
+                      "label": "Choice",
+                      "name": "Confusion",
+                      "alias": "confusion",
+                      "pipable": {
+                        "group": "Choice",
+                        "label": "Choice",
+                        "template": "name",
+                        "alias": "current_symptoms"
+                      }
+                    },
+                    {
+                      "id": "9703eaeb14d2ec1dcb99872ed950a8c84e198845ee1872485e86babc45bd6385",
+                      "type": "boolean",
+                      "kind": "dynamic",
+                      "reference": "4126e08d0e625b9851ac392c646a8dc25832ad10dfc630cf45588ec51e06352c",
+                      "sequence": 18,
+                      "label": "Choice",
+                      "name": "Rash on feet",
+                      "alias": "rash_on_feet",
+                      "pipable": {
+                        "group": "Choice",
+                        "label": "Choice",
+                        "template": "name",
+                        "alias": "current_symptoms"
+                      }
+                    },
+                    {
+                      "id": "d1dd07b955443e148a7f9bf3e84b380a673f9e5fba6b203f98de4c023589a72b",
+                      "type": "boolean",
+                      "kind": "dynamic",
+                      "reference": "e994dd99b311fd6178984f9e40a25479fd76921276abac5d9c3c3f68e44ccad4",
+                      "sequence": 19,
+                      "label": "Choice",
+                      "name": "Abdominal pain",
+                      "alias": "abdominal_pain",
+                      "pipable": {
+                        "group": "Choice",
+                        "label": "Choice",
+                        "template": "name",
+                        "alias": "current_symptoms"
+                      }
+                    },
+                    {
+                      "id": "ef42b37f1d04e56755df8d6a7626fd53f06f6933daedda019f9df70ec6d1e960",
+                      "type": "boolean",
+                      "kind": "dynamic",
+                      "reference": "45ee985f703f3f0f62223907c70cb165eceebad23ed066471470e49a7848eca9",
+                      "sequence": 20,
+                      "label": "Choice",
+                      "name": "Chest pain",
+                      "alias": "chest_pain",
+                      "pipable": {
+                        "group": "Choice",
+                        "label": "Choice",
+                        "template": "name",
+                        "alias": "current_symptoms"
+                      }
+                    },
+                    {
+                      "id": "050136975a909a524e7d6a83476a54e41455c8fb2cffeb0ed37b9fb56d27cee0",
+                      "type": "boolean",
+                      "kind": "dynamic",
+                      "reference": "71e0a9a72e337846a17de794bc690e0fa65ea0ee47dbeaf8b12fe2e454d76d1d",
+                      "sequence": 21,
+                      "label": "Choice",
+                      "name": "Muscle pain",
+                      "alias": "muscle_pain",
+                      "pipable": {
+                        "group": "Choice",
+                        "label": "Choice",
+                        "template": "name",
+                        "alias": "current_symptoms"
+                      }
+                    },
+                    {
+                      "id": "06a9e9d78ec9f3a0508b6c1e784cacb4c77d7f0cda8ec4a6b491d897fad2c51f",
+                      "type": "boolean",
+                      "kind": "dynamic",
+                      "reference": "30f2ac09b8d506feb197c85a1b4660e207e38ee2791bd6a3ce79b6dc05304a2d",
+                      "sequence": 22,
+                      "label": "Choice",
+                      "name": "Loss of appetite",
+                      "alias": "loss_of_appetite",
+                      "pipable": {
+                        "group": "Choice",
+                        "label": "Choice",
+                        "template": "name",
+                        "alias": "current_symptoms"
+                      }
+                    },
+                    {
+                      "id": "e47e83a1b9117e18fd0c16f44b0bab69f3b365c44b00075568d986ab1f44bf83",
+                      "type": "boolean",
+                      "kind": "dynamic",
+                      "reference": "f43b9d55f6f16212b43d94f9f3b11f81c76cd76044082a5d81c8a0d4e70453b2",
+                      "sequence": 23,
+                      "label": "Choice",
+                      "name": "Hoarseness",
+                      "alias": "hoarseness",
+                      "pipable": {
+                        "group": "Choice",
+                        "label": "Choice",
+                        "template": "name",
+                        "alias": "current_symptoms"
+                      }
+                    },
+                    {
+                      "id": "d586aae70e9df0ab7cf7cc60f276ce06df2939a7a425ae97ba3274177c840c84",
+                      "type": "boolean",
+                      "kind": "dynamic",
+                      "reference": "756e7b148a8e0fa20ada3701efb95d53718b07f599780e0428a287746c6b3889",
+                      "sequence": 24,
+                      "label": "Choice",
+                      "name": "Bluish lips or face",
+                      "alias": "bluish_lips_face",
+                      "pipable": {
+                        "group": "Choice",
+                        "label": "Choice",
+                        "template": "name",
+                        "alias": "current_symptoms"
+                      }
+                    }
+                  ],
+                  "block": {
+                    "type": "tripetto-block-multiple-choice",
+                    "version": "2.0.1",
+                    "choices": [
+                      {
+                        "id": "b445dbaa22756bfc444bf63aa68ad6e20d3922e4a5b90f07b7d37f313082bd56",
+                        "name": "Fever",
+                        "value": "fever"
+                      },
+                      {
+                        "id": "bc05cc927c5855c653d92729a07ffd4a25a77a78e3bcfb0436a93fde1d2fd69b",
+                        "name": "Chills",
+                        "value": "chills"
+                      },
+                      {
+                        "id": "e71cefd93b332d29ec46dad878fbd73537aad87c3c7ee452d0c9af3619606965",
+                        "name": "Fatigue",
+                        "value": "fatigue"
+                      },
+                      {
+                        "id": "9c25d4fe1f992e472ede6d93ac452be4ab4de118bc6e91e772b21e9ef52e301d",
+                        "name": "Dry cough",
+                        "value": "dry_cough"
+                      },
+                      {
+                        "id": "86b95a7898c76ad345b087e88d3e3bf3a6b9e32393b055bf783dd0b17fc47922",
+                        "name": "Wet cough (sputum)",
+                        "value": "wet_cough"
+                      },
+                      {
+                        "id": "b26df6bd9b2169bea248902630e4453b2950e6a7c400fb6293db06ccab33bff3",
+                        "name": "Shortness of breath",
+                        "value": "shortness_of_breath"
+                      },
+                      {
+                        "id": "3cb9af1daeb1f4edeba691a18846c7215fb640967617f9003424871ce2f308b8",
+                        "name": "Congestion",
+                        "value": "congestion"
+                      },
+                      {
+                        "id": "37b565d899e744f62c21f017c4af0841b4b7a66de6d5690ea5d23b0fb9ccf836",
+                        "name": "Runny nose",
+                        "value": "runny_nose"
+                      },
+                      {
+                        "id": "60e87e28442a70637f65e7bf724379318d7587110d1e24de91cfb33d89038322",
+                        "name": "Loss of taste",
+                        "value": "loss_of_taste"
+                      },
+                      {
+                        "id": "e031e00ac2304e6572317cefdb2bc377c16d828e7d4987197cf7080b65b9c218",
+                        "name": "Loss of smell",
+                        "value": "loss_of_smell"
+                      },
+                      {
+                        "id": "966d26c308c5904409e241141b2a93f4fc1eecf051e18b5490dbcb48fda19c5c",
+                        "name": "Diarrhea",
+                        "value": "diarrhea"
+                      },
+                      {
+                        "id": "ed0417ed72c4fa8feaa2f4936aeb13a4ffdba4e05f71c6bd6d0171e31800ab46",
+                        "name": "Sore throat",
+                        "value": "sore_throat"
+                      },
+                      {
+                        "id": "709db7e580ca646ba2444af6bc8b6e6b75f045fa879239e08d513f3c85c6613b",
+                        "name": "Nausea",
+                        "value": "nausea"
+                      },
+                      {
+                        "id": "51e61514fa745fe0fa04405522820c1efb188fcedcb7c32c9a7f7ce6c31e467b",
+                        "name": "Vomiting",
+                        "value": "vomiting"
+                      },
+                      {
+                        "id": "4fcb77bca9f5a313f8f4657eb0144fd0b5539913120c9265b0916f5e974e27f1",
+                        "name": "Pressure feeling in chest",
+                        "value": "pressure_in_chest"
+                      },
+                      {
+                        "id": "4d4ee1d5c4e3295436b19c35db8d14b61f0fe7a1a91477284bd5d13f7b757fb3",
+                        "name": "Pink eye",
+                        "value": "pink_eye"
+                      },
+                      {
+                        "id": "0215084ab3983c73beac049496518dc62ca22366f58ebf75e531a19327580cc3",
+                        "name": "Headache",
+                        "value": "headache"
+                      },
+                      {
+                        "id": "f7357f48e1fae3b5e9ce9bdeaca4554a18f412b7bb0717d9c0a2c1467a385787",
+                        "name": "Confusion",
+                        "value": "confusion"
+                      },
+                      {
+                        "id": "4126e08d0e625b9851ac392c646a8dc25832ad10dfc630cf45588ec51e06352c",
+                        "name": "Rash on feet",
+                        "value": "rash_on_feet"
+                      },
+                      {
+                        "id": "e994dd99b311fd6178984f9e40a25479fd76921276abac5d9c3c3f68e44ccad4",
+                        "name": "Abdominal pain",
+                        "value": "abdominal_pain"
+                      },
+                      {
+                        "id": "45ee985f703f3f0f62223907c70cb165eceebad23ed066471470e49a7848eca9",
+                        "name": "Chest pain",
+                        "value": "chest_pain"
+                      },
+                      {
+                        "id": "71e0a9a72e337846a17de794bc690e0fa65ea0ee47dbeaf8b12fe2e454d76d1d",
+                        "name": "Muscle pain",
+                        "value": "muscle_pain"
+                      },
+                      {
+                        "id": "30f2ac09b8d506feb197c85a1b4660e207e38ee2791bd6a3ce79b6dc05304a2d",
+                        "name": "Loss of appetite",
+                        "value": "loss_of_appetite"
+                      },
+                      {
+                        "id": "f43b9d55f6f16212b43d94f9f3b11f81c76cd76044082a5d81c8a0d4e70453b2",
+                        "name": "Hoarseness",
+                        "value": "hoarseness"
+                      },
+                      {
+                        "id": "756e7b148a8e0fa20ada3701efb95d53718b07f599780e0428a287746c6b3889",
+                        "name": "Bluish lips or face",
+                        "value": "bluish_lips_face"
+                      }
+                    ],
+                    "multiple": true,
+                    "alignment": true,
+                    "alias": "current_symptoms"
+                  }
+                }
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "id": "d882c75056a7ba900257bb903970bc2542bfb309d21712fdef3d09a3050decd3",
+              "block": {
+                "type": "tripetto-block-yes-no:yes",
+                "version": "2.0.1",
+                "node": "c80eabe705436221f070ad35f7735f9c383133678aed041f349f870deef84e17",
+                "slot": "002fdee762d4f75679ef446bb1bab19aca57c48c6fb48418f58b23553285ac5a"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0b55011ad336fdc0c1dfdfc14228f205c13697ac0ae3fce94fce1210453b262a",
+      "name": "Health check",
+      "nodes": [
+        {
+          "id": "5b9b6110fec618ee2f069a2f1376729ef5a4abf479ee39f6580a5649f5a0cfa8",
           "name": "Do you have a thermometer right now?",
           "nameVisible": true,
           "slots": [
             {
-              "id": "149e7d62a9dd183106de47c5acda487abcbbd041a17c9ab12b393e776547d377",
+              "id": "0c6a5582f565a49e220121b433abd552749a5ef1fa473eb1ceea1070d1a2086d",
               "type": "string",
               "kind": "static",
               "reference": "answer",
@@ -627,26 +716,26 @@
               "alias": "have_thermometer"
             }
           ],
-          "block": { "type": "tripetto-block-yes-no", "version": "2.0.0" }
+          "block": { "type": "tripetto-block-yes-no", "version": "2.0.1" }
         }
       ],
       "branches": [
         {
-          "id": "4db9d825f29613f02de136de68c81883f4d1d7cb60bf3ca0b4f3d6cf459c76d6",
+          "id": "9251c6f930c1abe8d1a0dae0a469c7f5b94c603f27e49092e3bc9f716692882f",
           "name": "Yes",
           "clusters": [
             {
-              "id": "4cba9504d45ca363d78fa3a5f56677b2d5b7cc9432b57efbc99f41d35845003c",
+              "id": "9e1c4a30670c4109bf5d81b5e56684eeb184b364c42d6e5535eefe225b9a73b3",
               "name": "Temperature",
               "nodes": [
                 {
-                  "id": "639c4dd9fe97d4bdc0a7fce16f23fd4ee041cd5df6ed3738615dcdd18a093aa6",
+                  "id": "03e4121552e9e41d67488f4a8926ed27f1be5645c555dc2da465ec0baad6dbc9",
                   "name": "What is your temperature?",
                   "nameVisible": true,
                   "placeholder": "0.0",
                   "slots": [
                     {
-                      "id": "7af31a699184bec76bb0057c91facea8bfb1b8b1c6f1143df91c78378ca65d3a",
+                      "id": "ebaf72cec2ccd434686e752737cd6803c4cff7b77714505a643ccc630eb372c3",
                       "type": "numeric",
                       "kind": "static",
                       "reference": "number",
@@ -658,16 +747,16 @@
                   ],
                   "block": {
                     "type": "tripetto-block-number",
-                    "version": "4.0.0"
+                    "version": "4.0.1"
                   }
                 },
                 {
-                  "id": "ba11fcbb9e9d1826c1ca01dda5faf5e5b33ec162c57c03154e17acd2438c3a55",
+                  "id": "c45b9fbd1db348d861925412c78e599374f8e29a6f8a4b153ce14599ac2843bb",
                   "name": "Which temperature scale are you using?",
                   "nameVisible": true,
                   "slots": [
                     {
-                      "id": "0d68af5cb15c40c3e43ffb9b20782d283ec0d7e774a370c3850f9db4263727be",
+                      "id": "ceb87457a469f263a4dd92ea3a6bfde34c59d93df4f25739a93056edebe1eee1",
                       "type": "string",
                       "kind": "static",
                       "reference": "choice",
@@ -677,7 +766,7 @@
                   ],
                   "block": {
                     "type": "tripetto-block-multiple-choice",
-                    "version": "2.0.0",
+                    "version": "2.0.1",
                     "choices": [
                       {
                         "id": "596990764c3fca6fa4dbef41944d0466ad41aa7d0d857894c50c64d1c47a9eeb",
@@ -699,31 +788,31 @@
           ],
           "conditions": [
             {
-              "id": "36f0bc894d6fe76e71b85b31b427fa8daabb5f88ac5170c8230691024bc0e64f",
+              "id": "ba555092d8d29e218f5bad4c2e253cf999e9e5b244c4bd21b91e2e0fc5283215",
               "block": {
                 "type": "tripetto-block-yes-no:yes",
-                "version": "2.0.0",
-                "node": "a47eb190e51e3d14fa13c66d68993233ea4b723a9200b21a6a47b42abf3ad0f5",
-                "slot": "149e7d62a9dd183106de47c5acda487abcbbd041a17c9ab12b393e776547d377"
+                "version": "2.0.1",
+                "node": "5b9b6110fec618ee2f069a2f1376729ef5a4abf479ee39f6580a5649f5a0cfa8",
+                "slot": "0c6a5582f565a49e220121b433abd552749a5ef1fa473eb1ceea1070d1a2086d"
               }
             }
           ]
         },
         {
-          "id": "6351fca59945e8bd99db12349643e236bd551c2b0c01d4f2f7fb2fd9e5116092",
+          "id": "7ee039d8d8d88cbdcd0efb0791f79523ce8d1eb520b2e211deedabbb96c9f417",
           "name": "No",
           "clusters": [
             {
-              "id": "68d01a867169a75064c8bfe57fe39d5deedc875cfad3f96195290dce610bac1d",
+              "id": "75f6427cbbedf38f81cdfc4626d4131f76ce8069ec1fb7fb5f197f3478d6803c",
               "name": "Fever best guess",
               "nodes": [
                 {
-                  "id": "a05c61558f6403a888996bbd50d50439b04a78c445e495acb7b7446d5c2f27de",
+                  "id": "d06f4db3a27aa5e10fbfc8f81f4536397c7682e4221907c35e0ff3e3d6cd9ae9",
                   "name": "How severe do you think your fever is?",
                   "nameVisible": true,
                   "slots": [
                     {
-                      "id": "90841249a8238abeed5c99188d66bc0acc8f4ab944587cef72827a016e955f42",
+                      "id": "c61b1b52991960f553ce648d0343a291826c075b6219392af14458fa1ec7b3ca",
                       "type": "string",
                       "kind": "static",
                       "reference": "choice",
@@ -733,7 +822,7 @@
                   ],
                   "block": {
                     "type": "tripetto-block-multiple-choice",
-                    "version": "2.0.0",
+                    "version": "2.0.1",
                     "choices": [
                       {
                         "id": "934150f5794827ef7243078b3a750ad6140915b2bb5cfd6d3fdab405e4d85271",
@@ -765,12 +854,12 @@
           ],
           "conditions": [
             {
-              "id": "3e4a95af838b44a796af5e396a992447287d9368b7eacc638b64a3c274f055d8",
+              "id": "400a6fa9cd2e879af5542a0e3c320b532d8b230060f1a8a2ed7753bcca76ebb7",
               "block": {
                 "type": "tripetto-block-yes-no:no",
-                "version": "2.0.0",
-                "node": "a47eb190e51e3d14fa13c66d68993233ea4b723a9200b21a6a47b42abf3ad0f5",
-                "slot": "149e7d62a9dd183106de47c5acda487abcbbd041a17c9ab12b393e776547d377"
+                "version": "2.0.1",
+                "node": "5b9b6110fec618ee2f069a2f1376729ef5a4abf479ee39f6580a5649f5a0cfa8",
+                "slot": "0c6a5582f565a49e220121b433abd552749a5ef1fa473eb1ceea1070d1a2086d"
               }
             }
           ]
@@ -798,7 +887,7 @@
               "maximum": 2200
             }
           ],
-          "block": { "type": "tripetto-block-number", "version": "4.0.0" }
+          "block": { "type": "tripetto-block-number", "version": "4.0.1" }
         },
         {
           "id": "cff5b35e48985105651d5a6df37139b416374d9eed1ee7c57e2ce8a53baa2f5e",
@@ -816,7 +905,7 @@
           ],
           "block": {
             "type": "tripetto-block-multiple-choice",
-            "version": "2.0.0",
+            "version": "2.0.1",
             "choices": [
               {
                 "id": "6d93e19de2fb0bff1f98279ee024a486847947be22979e9108b37eed36db2fe0",
@@ -864,7 +953,7 @@
           ],
           "block": {
             "type": "tripetto-block-dropdown",
-            "version": "3.0.0",
+            "version": "3.0.1",
             "options": [
               {
                 "id": "b961516d72ee147edb3b32a9b1fd5546884bac7456375eb900d8554503a265a7",
@@ -2138,7 +2227,7 @@
               "alias": "zip_code"
             }
           ],
-          "block": { "type": "tripetto-block-text", "version": "3.0.0" }
+          "block": { "type": "tripetto-block-text", "version": "3.0.1" }
         }
       ]
     },
@@ -2314,7 +2403,7 @@
           ],
           "block": {
             "type": "tripetto-block-multiple-choice",
-            "version": "2.0.0",
+            "version": "2.0.1",
             "choices": [
               {
                 "id": "25405aaed8574d445b94c056c0c9d2d6256aa21da3885292d8c2a0ee5f4158b9",
@@ -2396,7 +2485,7 @@
                       "alias": "race_other"
                     }
                   ],
-                  "block": { "type": "tripetto-block-text", "version": "3.0.0" }
+                  "block": { "type": "tripetto-block-text", "version": "3.0.1" }
                 }
               ]
             }
@@ -2407,7 +2496,7 @@
               "block": {
                 "choice": "5b5a5025c0ecbd829c242e83f10326ab5a029a3291e3a52413da35743f7c29e9",
                 "type": "tripetto-block-multiple-choice",
-                "version": "2.0.0",
+                "version": "2.0.1",
                 "node": "916e174f536eb7f5f19ab22c214510dedaa2b32727d5c0578d4aeebf220aef47",
                 "slot": "aa50ccb0e226094c0d86e859b70668b9478f7cf39c044162e4e7399d29868c5d"
               }
@@ -2506,43 +2595,11 @@
               }
             },
             {
-              "id": "f19f784cba1a66034471613b2242fd7dc03e930829a8b1fdc0e46b2738c330f4",
-              "type": "boolean",
-              "kind": "dynamic",
-              "reference": "44e80f279bc5e5e4ea557855223ca050988dbafaa7c2fe48240d8f78a197fe40",
-              "sequence": 5,
-              "label": "Checkbox",
-              "name": "Dutch",
-              "alias": "dutch",
-              "pipable": {
-                "group": "Checkbox",
-                "label": "Checkbox",
-                "template": "name",
-                "alias": "ethnicity"
-              }
-            },
-            {
-              "id": "9aacdfc9a5e0a11bbdd03347773631b1fce47f20942b9bdcacec48d7dfb2b217",
-              "type": "boolean",
-              "kind": "dynamic",
-              "reference": "a6625f915372ab90bc8bf46ac6c1a6585483efb081453466d465d5e670541927",
-              "sequence": 6,
-              "label": "Checkbox",
-              "name": "English",
-              "alias": "english",
-              "pipable": {
-                "group": "Checkbox",
-                "label": "Checkbox",
-                "template": "name",
-                "alias": "ethnicity"
-              }
-            },
-            {
               "id": "d2d470f7a6d172764bc31fdc1cc903c0031797411f6435a59a9ae34ee9e48ca8",
               "type": "boolean",
               "kind": "dynamic",
               "reference": "ce760ee263fbc831f668754d200e9eafa032b5ea561c5c22e4f340eb3278cd80",
-              "sequence": 7,
+              "sequence": 5,
               "label": "Checkbox",
               "name": "French",
               "alias": "french",
@@ -2558,26 +2615,10 @@
               "type": "boolean",
               "kind": "dynamic",
               "reference": "37970bb119308d9fc71afa867d3dc4eeb314dedb8ff41698ba58ffed56ade429",
-              "sequence": 8,
+              "sequence": 6,
               "label": "Checkbox",
               "name": "German",
               "alias": "german",
-              "pipable": {
-                "group": "Checkbox",
-                "label": "Checkbox",
-                "template": "name",
-                "alias": "ethnicity"
-              }
-            },
-            {
-              "id": "81575b3040183e5654720c5528b74473898a6615e345781e397ced26192caff8",
-              "type": "boolean",
-              "kind": "dynamic",
-              "reference": "b51c6fa49c5ae135574fc20f1f1e9750b7922633cfec87351d32fe7a3d03784c",
-              "sequence": 9,
-              "label": "Checkbox",
-              "name": "Hmong",
-              "alias": "hmong",
               "pipable": {
                 "group": "Checkbox",
                 "label": "Checkbox",
@@ -2590,7 +2631,7 @@
               "type": "boolean",
               "kind": "dynamic",
               "reference": "7db81b5df58f493ecfc12ffb4655dd7a8af57c9601647b6aad462c52a73b61a9",
-              "sequence": 10,
+              "sequence": 7,
               "label": "Checkbox",
               "name": "Irish",
               "alias": "irish",
@@ -2606,7 +2647,7 @@
               "type": "boolean",
               "kind": "dynamic",
               "reference": "2334a53886166038e4d13f970833215cd73dc418463b97e1cc164c27f6f1c749",
-              "sequence": 11,
+              "sequence": 8,
               "label": "Checkbox",
               "name": "Indian",
               "alias": "indian",
@@ -2622,7 +2663,7 @@
               "type": "boolean",
               "kind": "dynamic",
               "reference": "05ae17d2125621a7c56b0de093d1358960a95ff725d23d5dd80e5f330fe8336f",
-              "sequence": 12,
+              "sequence": 9,
               "label": "Checkbox",
               "name": "Inuit",
               "alias": "inuit",
@@ -2638,7 +2679,7 @@
               "type": "boolean",
               "kind": "dynamic",
               "reference": "fa6beba30f35307e693fa62eb5a9e8bb415c6a8a392e222ff2dcd8769aec2b7b",
-              "sequence": 13,
+              "sequence": 10,
               "label": "Checkbox",
               "name": "Japanese",
               "alias": "japanese",
@@ -2654,7 +2695,7 @@
               "type": "boolean",
               "kind": "dynamic",
               "reference": "9942eadc01f58eaf6ac864fc4f247656d692e19c972d8b9f4c44e6c25a7fb392",
-              "sequence": 14,
+              "sequence": 11,
               "label": "Checkbox",
               "name": "Korean",
               "alias": "korean",
@@ -2670,26 +2711,10 @@
               "type": "boolean",
               "kind": "dynamic",
               "reference": "d276843abfc9da6a3351cb264915f40177f0640f468cea0e0584546ae2060788",
-              "sequence": 15,
+              "sequence": 12,
               "label": "Checkbox",
               "name": "Navajo",
               "alias": "navajo",
-              "pipable": {
-                "group": "Checkbox",
-                "label": "Checkbox",
-                "template": "name",
-                "alias": "ethnicity"
-              }
-            },
-            {
-              "id": "3e0202d5feee200c1198bf07876525bf50c185bca3fcaddd2d1d05acf7a65f18",
-              "type": "boolean",
-              "kind": "dynamic",
-              "reference": "bb740891487e8765caf56be55c49d7fe0ac06eedaa0f0d17d4698e30d7808e84",
-              "sequence": 16,
-              "label": "Checkbox",
-              "name": "Polish",
-              "alias": "polish",
               "pipable": {
                 "group": "Checkbox",
                 "label": "Checkbox",
@@ -2702,26 +2727,10 @@
               "type": "boolean",
               "kind": "dynamic",
               "reference": "85a250542d2c5f04cf9da2e781bafe2bdce1c6a17e2dff708777d40beca00c18",
-              "sequence": 17,
+              "sequence": 13,
               "label": "Checkbox",
               "name": "Russian",
               "alias": "russian",
-              "pipable": {
-                "group": "Checkbox",
-                "label": "Checkbox",
-                "template": "name",
-                "alias": "ethnicity"
-              }
-            },
-            {
-              "id": "701f859842bd190954d481cd654bd4708a161fe1c4018583efa5fdb270ac12e9",
-              "type": "boolean",
-              "kind": "dynamic",
-              "reference": "eb5f18c73e1054ac900118a9e7df296c0626fb1219569dd9152238f33548cfe5",
-              "sequence": 18,
-              "label": "Checkbox",
-              "name": "Thai",
-              "alias": "thai",
               "pipable": {
                 "group": "Checkbox",
                 "label": "Checkbox",
@@ -2734,7 +2743,7 @@
               "type": "boolean",
               "kind": "dynamic",
               "reference": "f118b8f36ee2154c2787a25d31cf07fcda42ac5d6965e3e87fe093d3b66d418a",
-              "sequence": 19,
+              "sequence": 14,
               "label": "Checkbox",
               "name": "Turk",
               "alias": "turk",
@@ -2750,42 +2759,10 @@
               "type": "boolean",
               "kind": "dynamic",
               "reference": "d41f4a55cfc60e83df5f28d09410dc7db2cef2778502aea64e69552cfdccbba5",
-              "sequence": 20,
+              "sequence": 15,
               "label": "Checkbox",
               "name": "Somali",
               "alias": "somali",
-              "pipable": {
-                "group": "Checkbox",
-                "label": "Checkbox",
-                "template": "name",
-                "alias": "ethnicity"
-              }
-            },
-            {
-              "id": "86c4535e8dc155239f805e4934a293c7291d86f88bf8c5e22c2d8bda23a03b4a",
-              "type": "boolean",
-              "kind": "dynamic",
-              "reference": "06d124b472c062ac3e591cc5cbb466741b68a342c0f5462c16f95b8c7393fa2d",
-              "sequence": 21,
-              "label": "Checkbox",
-              "name": "Spaniard",
-              "alias": "spaniard",
-              "pipable": {
-                "group": "Checkbox",
-                "label": "Checkbox",
-                "template": "name",
-                "alias": "ethnicity"
-              }
-            },
-            {
-              "id": "1c4ab7ffb99c89dc84b6b83f68d27d60da3c8cee4b4518e36560c155c814a29a",
-              "type": "boolean",
-              "kind": "dynamic",
-              "reference": "1c3e0b4a1706347cf6cedf39cb1541f634821bd1ee7d05b7f5d8a71cfa927173",
-              "sequence": 22,
-              "label": "Checkbox",
-              "name": "Vietnamese",
-              "alias": "vietnamese",
               "pipable": {
                 "group": "Checkbox",
                 "label": "Checkbox",
@@ -2798,7 +2775,7 @@
               "type": "boolean",
               "kind": "dynamic",
               "reference": "5cfb487e680724e11c2918e095c467cbfd8b17df38727b8be65d4818e1a11697",
-              "sequence": 23,
+              "sequence": 16,
               "label": "Checkbox",
               "name": "Other",
               "alias": "other",
@@ -2812,7 +2789,7 @@
           ],
           "block": {
             "type": "tripetto-block-checkboxes",
-            "version": "3.0.0",
+            "version": "3.0.1",
             "checkboxes": [
               {
                 "id": "043360b0e08d5d6aa621b3f2da892a93dfe35af18cb567726fe48c13706141da",
@@ -2840,16 +2817,6 @@
                 "value": "chinese"
               },
               {
-                "id": "44e80f279bc5e5e4ea557855223ca050988dbafaa7c2fe48240d8f78a197fe40",
-                "name": "Dutch",
-                "value": "dutch"
-              },
-              {
-                "id": "a6625f915372ab90bc8bf46ac6c1a6585483efb081453466d465d5e670541927",
-                "name": "English",
-                "value": "english"
-              },
-              {
                 "id": "ce760ee263fbc831f668754d200e9eafa032b5ea561c5c22e4f340eb3278cd80",
                 "name": "French",
                 "value": "french"
@@ -2858,11 +2825,6 @@
                 "id": "37970bb119308d9fc71afa867d3dc4eeb314dedb8ff41698ba58ffed56ade429",
                 "name": "German",
                 "value": "german"
-              },
-              {
-                "id": "b51c6fa49c5ae135574fc20f1f1e9750b7922633cfec87351d32fe7a3d03784c",
-                "name": "Hmong",
-                "value": "hmong"
               },
               {
                 "id": "7db81b5df58f493ecfc12ffb4655dd7a8af57c9601647b6aad462c52a73b61a9",
@@ -2895,19 +2857,9 @@
                 "value": "navajo"
               },
               {
-                "id": "bb740891487e8765caf56be55c49d7fe0ac06eedaa0f0d17d4698e30d7808e84",
-                "name": "Polish",
-                "value": "polish"
-              },
-              {
                 "id": "85a250542d2c5f04cf9da2e781bafe2bdce1c6a17e2dff708777d40beca00c18",
                 "name": "Russian",
                 "value": "russian"
-              },
-              {
-                "id": "eb5f18c73e1054ac900118a9e7df296c0626fb1219569dd9152238f33548cfe5",
-                "name": "Thai",
-                "value": "thai"
               },
               {
                 "id": "f118b8f36ee2154c2787a25d31cf07fcda42ac5d6965e3e87fe093d3b66d418a",
@@ -2918,16 +2870,6 @@
                 "id": "d41f4a55cfc60e83df5f28d09410dc7db2cef2778502aea64e69552cfdccbba5",
                 "name": "Somali",
                 "value": "somali"
-              },
-              {
-                "id": "06d124b472c062ac3e591cc5cbb466741b68a342c0f5462c16f95b8c7393fa2d",
-                "name": "Spaniard",
-                "value": "spaniard"
-              },
-              {
-                "id": "1c3e0b4a1706347cf6cedf39cb1541f634821bd1ee7d05b7f5d8a71cfa927173",
-                "name": "Vietnamese",
-                "value": "vietnamese"
               },
               {
                 "id": "5cfb487e680724e11c2918e095c467cbfd8b17df38727b8be65d4818e1a11697",
@@ -2963,7 +2905,7 @@
                       "alias": "ethnicity_other"
                     }
                   ],
-                  "block": { "type": "tripetto-block-text", "version": "3.0.0" }
+                  "block": { "type": "tripetto-block-text", "version": "3.0.1" }
                 }
               ]
             }
@@ -2974,7 +2916,7 @@
               "block": {
                 "checkbox": "5cfb487e680724e11c2918e095c467cbfd8b17df38727b8be65d4818e1a11697",
                 "type": "tripetto-block-checkboxes",
-                "version": "3.0.0",
+                "version": "3.0.1",
                 "node": "1524c2e4ab3d6d847934f6a2499ad531f0e5cdce5af6738a26f8b30fa824a9ef",
                 "slot": "6d0c62a15492ed4decbb6297b609e73cec96daf7477415baf5eb08b8da0ae11f",
                 "checked": true
@@ -3005,10 +2947,10 @@
               "alias": "email"
             }
           ],
-          "block": { "type": "tripetto-block-email", "version": "3.0.0" }
+          "block": { "type": "tripetto-block-email", "version": "3.0.1" }
         }
       ]
     }
   ],
-  "builder": { "name": "tripetto", "version": "2.0.1" }
+  "builder": { "name": "tripetto", "version": "2.0.4" }
 }

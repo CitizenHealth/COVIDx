@@ -1,8 +1,9 @@
 import React, { useEffect, useContext } from "react";
 import { Card, CardBody } from "reactstrap";
 import "./questionnaire.scss";
-import * as TripettoCollector from "tripetto-collector";
-import * as TripettoCollectorRolling from "tripetto-collector-rolling";
+import { run } from "tripetto-runner-autoscroll";
+import { Export } from "tripetto-runner-foundation";
+
 import { UserContext } from "App";
 import { forms, parsingRules } from "./questions/utils";
 import { customPost } from "utility/customFetch";
@@ -12,26 +13,35 @@ const SurveyQuestions = ({ match }) => {
   console.log(match.params.questionType);
 
   useEffect(() => {
-    TripettoCollectorRolling.run({
-      element: document.getElementById("survey"), // Or supply your own element here
+    run({
+      element: document.getElementById("survey"),
       definition: forms[match.params.questionType],
-      style: {
-        centerActiveBlock: true,
+      styles: {
+        contract: { name: "tripetto-runner-autoscroll", version: "3.5.3" },
+        showNavigation: "auto",
         showProgressbar: true,
         showEnumerators: false,
-        showNavigation: true,
-        showScrollbar: true,
+        showScrollbar: false,
         autoFocus: false,
+        verticalAlignment: "middle",
+        direction: "vertical",
+        hidePast: false,
+        hideUpcoming: false,
+        showSeparateSubmit: false,
+        showPreviousButton: true,
       },
-      onFinish: (instance) => {
-        const fields = TripettoCollector.Export.fields(instance).fields;
+      l10n: {
+        contract: { name: "tripetto-runner-autoscroll", version: "3.5.3" },
+      },
+      onSubmit: (instance) => {
+        const fields = Export.fields(instance).fields;
 
         console.log(fields);
         const survey_answers = {
           form: match.params.questionType,
           responses: parsingRules[match.params.questionType](fields),
         };
-        console.log(survey_answers);
+        console.log("survey_answers:", survey_answers);
         if (survey_answers["responses"].hasOwnProperty("how_are_you_feeling")) {
           customPost(
             "/health_checkin/response",

@@ -27,9 +27,9 @@
 #survey {
   background-color: white;
   height: 80vh;
-  > .tripetto-collector-rolling {
-    width: inherit;
-    height: inherit;
+  > iframe {
+    height: inherit !important;
     position: relative;
+    padding: 30px 20px;
   }
 }
