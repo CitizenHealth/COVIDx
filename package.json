@@ -11,7 +11,7 @@
     "apexcharts": "^3.15.3",
     "auth0-js": "^9.12.2",
     "availity-reactstrap-validation": "^2.6.1",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "axios-mock-adapter": "~1.17.0",
     "babel-plugin-react-intl": "^5.1.18",
     "bootstrap": "^4.4.1",
