@@ -102,7 +102,7 @@
   },
   "devDependencies": {
     "html-webpack-plugin": "^4.0.4",
-    "node-sass": "^4.13.1",
+    "node-sass": "^7.0.0",
     "react-app-rewire-postcss": "^3.0.2",
     "react-app-rewired": "^2.1.5"
   },
