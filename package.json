@@ -31,7 +31,7 @@
     "leaflet": "^1.6.0",
     "leaflet-heatmap": "^1.0.0",
     "match-sorter": "~4.0.2",
-    "moment": "~2.24.0",
+    "moment": "~2.29.2",
     "namor": "^2.0.2",
     "postcss-rtl": "^1.5.0",
     "prismjs": "^1.19.0",
